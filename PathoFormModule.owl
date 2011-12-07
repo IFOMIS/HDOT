@@ -1,0 +1,3412 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY bfo "http://www.ifomis.org/bfo/1.1#" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY acgt "http://www.ifomis.org/acgt/1.0#" >
+    <!ENTITY acgt2 "http://www.ifomis.org/acgt/1.0#3" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY ro "http://www.ifomis.org/obo/ro/1.0#" >
+    <!ENTITY AT "http://www.ifomis.org/acgt/1.0#AT/" >
+    <!ENTITY snap "http://www.ifomis.org/bfo/1.1/snap#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY span "http://www.ifomis.org/bfo/1.1/span#" >
+    <!ENTITY SGOT "http://www.ifomis.org/acgt/1.0#SGOT/" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY SIOP2001 "http://www.ifomis.org/acgt/1.0#SIOP2001/" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY hSNF5 "http://www.ifomis.org/acgt/1.0#SMARCB/hSNF5/" >
+    <!ENTITY hSNF52 "http://www.ifomis.org/acgt/1.0#SMARCB1/hSNF5/" >
+    <!ENTITY NumberOfStemCellsX10ToThe8ANC "http://www.ifomis.org/acgt/1.0#NumberOfStemCellsX10ToThe8ANC/" >
+    <!ENTITY NumberOfStemCellsX10ToThe4CD3 "http://www.ifomis.org/acgt/1.0#NumberOfStemCellsX10ToThe4CD3+/" >
+    <!ENTITY NumberOfStemCellsX10ToThe6CD34 "http://www.ifomis.org/acgt/1.0#NumberOfStemCellsX10ToThe6CD34+/" >
+]>
+
+
+<rdf:RDF xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.w3.org/2002/07/owl"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:snap="http://www.ifomis.org/bfo/1.1/snap#"
+     xmlns:ro="http://www.ifomis.org/obo/ro/1.0#"
+     xmlns:NumberOfStemCellsX10ToThe8ANC="&acgt;NumberOfStemCellsX10ToThe8ANC/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:acgt2="&acgt;3"
+     xmlns:SIOP2001="&acgt;SIOP2001/"
+     xmlns:bfo="http://www.ifomis.org/bfo/1.1#"
+     xmlns:NumberOfStemCellsX10ToThe6CD34="&acgt;NumberOfStemCellsX10ToThe6CD34+/"
+     xmlns:hSNF5="&acgt;SMARCB/hSNF5/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:NumberOfStemCellsX10ToThe4CD3="&acgt;NumberOfStemCellsX10ToThe4CD3+/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:acgt="http://www.ifomis.org/acgt/1.0#"
+     xmlns:hSNF52="&acgt;SMARCB1/hSNF5/"
+     xmlns:SGOT="&acgt;SGOT/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:AT="&acgt;AT/"
+     xmlns:span="http://www.ifomis.org/bfo/1.1/span#">
+    <Ontology rdf:about="http://www.ifomis.org/acgt/1.0">
+        <dc:creator rdf:datatype="&xsd;string">Cristian Cocos</dc:creator>
+        <dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
+        <dc:publisher rdf:datatype="&xsd;string">Insitute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
+        <dc:creator rdf:datatype="&xsd;string">Mathias Brochhausen</dc:creator>
+        <dc:title rdf:datatype="&xsd;string">Pathological Formation Module</dc:title>
+        <dc:creator rdf:datatype="&xsd;string">Sarah Lerch</dc:creator>
+        <dc:creator>Ulf Schwarz</dc:creator>
+        <imports rdf:resource="http://www.ifomis.org/hdot"/>
+    </Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <AnnotationProperty rdf:about="&dc;publisher"/>
+    <AnnotationProperty rdf:about="&dc;creator"/>
+    <AnnotationProperty rdf:about="&dc;title"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2001/XMLSchema#date -->
+
+    <rdfs:Datatype rdf:about="&xsd;date"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#addedBy -->
+
+    <ObjectProperty rdf:about="&acgt;addedBy">
+        <rdfs:domain rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#adds -->
+
+    <ObjectProperty rdf:about="&acgt;adds">
+        <inverseOf rdf:resource="&acgt;addedBy"/>
+        <rdfs:range rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#administrativeProcessOf -->
+
+    <ObjectProperty rdf:about="&acgt;administrativeProcessOf">
+        <inverseOf rdf:resource="&acgt;hasAdministrativeProcess"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#adverseReactionTo -->
+
+    <ObjectProperty rdf:about="&acgt;adverseReactionTo"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#beginningOf -->
+
+    <ObjectProperty rdf:about="&acgt;beginningOf">
+        <inverseOf rdf:resource="&acgt;hasBeginning"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#birthOf -->
+
+    <ObjectProperty rdf:about="&acgt;birthOf"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#bloodPressureOf -->
+
+    <ObjectProperty rdf:about="&acgt;bloodPressureOf">
+        <inverseOf rdf:resource="&acgt;hasBloodPressure"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;pressureOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#breadthOf -->
+
+    <ObjectProperty rdf:about="&acgt;breadthOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#brotherOf -->
+
+    <ObjectProperty rdf:about="&acgt;brotherOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;siblingOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#causedBy -->
+
+    <ObjectProperty rdf:about="&acgt;causedBy">
+        <inverseOf rdf:resource="&acgt;causes"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#causes -->
+
+    <ObjectProperty rdf:about="&acgt;causes"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#characterizedBy -->
+
+    <ObjectProperty rdf:about="&acgt;characterizedBy"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#characterizes -->
+
+    <ObjectProperty rdf:about="&acgt;characterizes">
+        <inverseOf rdf:resource="&acgt;characterizedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#clinicalStudyLeaderOf -->
+
+    <ObjectProperty rdf:about="&acgt;clinicalStudyLeaderOf"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#clinicalTrialLeaderOf -->
+
+    <ObjectProperty rdf:about="&acgt;clinicalTrialLeaderOf"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#clinicalTrialPriorFor -->
+
+    <ObjectProperty rdf:about="&acgt;clinicalTrialPriorFor">
+        <rdfs:subPropertyOf rdf:resource="&acgt;administrativeProcessOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#compatibleWith -->
+
+    <ObjectProperty rdf:about="&acgt;compatibleWith"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#concomitantWith -->
+
+    <ObjectProperty rdf:about="&acgt;concomitantWith">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <inverseOf rdf:resource="&acgt;concomitantWith"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#contralateralTo -->
+
+    <ObjectProperty rdf:about="&acgt;contralateralTo">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment rdf:datatype="&xsd;string">def = &quot;On the other side. The contralateral breast is the breast on the other breast. A stroke affecting the right side of the brain may cause contralateral paralysis, affecting the left arm and leg. The opposite of contralateral is ipsilateral which refers to the same side.&quot; Not sure what the domain might be though...</rdfs:comment>
+        <inverseOf rdf:resource="&acgt;contralateralTo"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#createdBy -->
+
+    <ObjectProperty rdf:about="&acgt;createdBy">
+        <rdfs:subPropertyOf rdf:resource="&acgt;patientIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#creates -->
+
+    <ObjectProperty rdf:about="&acgt;creates">
+        <inverseOf rdf:resource="&acgt;createdBy"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasPatient"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#deathOf -->
+
+    <ObjectProperty rdf:about="&acgt;deathOf"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#denies -->
+
+    <ObjectProperty rdf:about="&acgt;denies"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#depthOf -->
+
+    <ObjectProperty rdf:about="&acgt;depthOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#describedBy -->
+
+    <ObjectProperty rdf:about="&acgt;describedBy">
+        <inverseOf rdf:resource="&acgt;describes"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#describes -->
+
+    <ObjectProperty rdf:about="&acgt;describes"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#diagnosedBy -->
+
+    <ObjectProperty rdf:about="&acgt;diagnosedBy"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#diagnoses -->
+
+    <ObjectProperty rdf:about="&acgt;diagnoses">
+        <inverseOf rdf:resource="&acgt;diagnosedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#diameterOf -->
+
+    <ObjectProperty rdf:about="&acgt;diameterOf">
+        <inverseOf rdf:resource="&acgt;hasDiameter"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#diseaseOf -->
+
+    <ObjectProperty rdf:about="&acgt;diseaseOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;undergoneBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#disposition_of -->
+
+    <ObjectProperty rdf:about="&acgt;disposition_of"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#distantMetastasisOf -->
+
+    <ObjectProperty rdf:about="&acgt;distantMetastasisOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;metastasisOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#distantRecurrenceOf -->
+
+    <ObjectProperty rdf:about="&acgt;distantRecurrenceOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;relapseOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#doseOf -->
+
+    <ObjectProperty rdf:about="&acgt;doseOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#excisedBy -->
+
+    <ObjectProperty rdf:about="&acgt;excisedBy">
+        <rdfs:domain rdf:resource="&acgt;MaterialOrganismalIndependentContinuant"/>
+        <inverseOf rdf:resource="&acgt;excises"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;removedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#excises -->
+
+    <ObjectProperty rdf:about="&acgt;excises">
+        <rdfs:range rdf:resource="&acgt;MaterialOrganismalIndependentContinuant"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;removes"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#followUpOf -->
+
+    <ObjectProperty rdf:about="&acgt;followUpOf">
+        <inverseOf rdf:resource="&acgt;hasFollowUp"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#frequencyOf -->
+
+    <ObjectProperty rdf:about="&acgt;frequencyOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#fulfiledBy -->
+
+    <ObjectProperty rdf:about="&acgt;fulfiledBy"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#fulfils -->
+
+    <ObjectProperty rdf:about="&acgt;fulfils">
+        <inverseOf rdf:resource="&acgt;fulfiledBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#functionOf -->
+
+    <ObjectProperty rdf:about="&acgt;functionOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;implementedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#genderOf -->
+
+    <ObjectProperty rdf:about="&acgt;genderOf"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#graftedBy -->
+
+    <ObjectProperty rdf:about="&acgt;graftedBy">
+        <rdfs:domain rdf:resource="&acgt;MaterialOrganismalIndependentContinuant"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;addedBy"/>
+        <inverseOf rdf:resource="&acgt;grafts"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#grafts -->
+
+    <ObjectProperty rdf:about="&acgt;grafts">
+        <rdfs:comment rdf:datatype="&xsd;string">see http://en.wikipedia.org/wiki/Medical_grafting</rdfs:comment>
+        <rdfs:range rdf:resource="&acgt;MaterialOrganismalIndependentContinuant"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;adds"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#greaterOrEqualThan -->
+
+    <ObjectProperty rdf:about="&acgt;greaterOrEqualThan"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasAdministrativeProcess -->
+
+    <ObjectProperty rdf:about="&acgt;hasAdministrativeProcess"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasAdverseReaction -->
+
+    <ObjectProperty rdf:about="&acgt;hasAdverseReaction">
+        <inverseOf rdf:resource="&acgt;adverseReactionTo"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasBeginning -->
+
+    <ObjectProperty rdf:about="&acgt;hasBeginning"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasBirth -->
+
+    <ObjectProperty rdf:about="&acgt;hasBirth">
+        <inverseOf rdf:resource="&acgt;birthOf"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasBloodPressure -->
+
+    <ObjectProperty rdf:about="&acgt;hasBloodPressure">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasPressure"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasBreadth -->
+
+    <ObjectProperty rdf:about="&acgt;hasBreadth">
+        <inverseOf rdf:resource="&acgt;breadthOf"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasLength"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasClinicalStudyLeader -->
+
+    <ObjectProperty rdf:about="&acgt;hasClinicalStudyLeader">
+        <inverseOf rdf:resource="&acgt;clinicalStudyLeaderOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasClinicalTrialLeader -->
+
+    <ObjectProperty rdf:about="&acgt;hasClinicalTrialLeader">
+        <inverseOf rdf:resource="&acgt;clinicalTrialLeaderOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasClinicalTrialPrior -->
+
+    <ObjectProperty rdf:about="&acgt;hasClinicalTrialPrior">
+        <inverseOf rdf:resource="&acgt;clinicalTrialPriorFor"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasAdministrativeProcess"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasDeath -->
+
+    <ObjectProperty rdf:about="&acgt;hasDeath">
+        <inverseOf rdf:resource="&acgt;deathOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasDepth -->
+
+    <ObjectProperty rdf:about="&acgt;hasDepth">
+        <inverseOf rdf:resource="&acgt;depthOf"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasLength"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasDiameter -->
+
+    <ObjectProperty rdf:about="&acgt;hasDiameter">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasLength"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasDisease -->
+
+    <ObjectProperty rdf:about="&acgt;hasDisease">
+        <inverseOf rdf:resource="&acgt;diseaseOf"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;undergoes"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasDistantMetastasis -->
+
+    <ObjectProperty rdf:about="&acgt;hasDistantMetastasis">
+        <inverseOf rdf:resource="&acgt;distantMetastasisOf"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasMetastasis"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasDistantRecurrence -->
+
+    <ObjectProperty rdf:about="&acgt;hasDistantRecurrence">
+        <inverseOf rdf:resource="&acgt;distantRecurrenceOf"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasRelapse"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasDose -->
+
+    <ObjectProperty rdf:about="&acgt;hasDose">
+        <inverseOf rdf:resource="&acgt;doseOf"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasMagnitude"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasFollowUp -->
+
+    <ObjectProperty rdf:about="&acgt;hasFollowUp"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasFrequency -->
+
+    <ObjectProperty rdf:about="&acgt;hasFrequency">
+        <inverseOf rdf:resource="&acgt;frequencyOf"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasMagnitude"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasFunction -->
+
+    <ObjectProperty rdf:about="&acgt;hasFunction">
+        <inverseOf rdf:resource="&acgt;functionOf"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;implements"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasGender -->
+
+    <ObjectProperty rdf:about="&acgt;hasGender">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <inverseOf rdf:resource="&acgt;genderOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasHeight -->
+
+    <ObjectProperty rdf:about="&acgt;hasHeight">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasLength"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasHistory -->
+
+    <ObjectProperty rdf:about="&acgt;hasHistory">
+        <inverseOf rdf:resource="&acgt;partOfHistoryOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasIdentifier -->
+
+    <ObjectProperty rdf:about="&acgt;hasIdentifier"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasInfluenceOn -->
+
+    <ObjectProperty rdf:about="&acgt;hasInfluenceOn">
+        <inverseOf rdf:resource="&acgt;influencedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasInput -->
+
+    <ObjectProperty rdf:about="&acgt;hasInput">
+        <rdfs:range rdf:resource="&snap;Object"/>
+        <rdfs:domain rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasLaterality -->
+
+    <ObjectProperty rdf:about="&acgt;hasLaterality">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <inverseOf rdf:resource="&acgt;lateralityOf"/>
+        <rdfs:domain rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasLength -->
+
+    <ObjectProperty rdf:about="&acgt;hasLength">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasMagnitude"/>
+        <inverseOf rdf:resource="&acgt;lengthOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasLocalRecurrence -->
+
+    <ObjectProperty rdf:about="&acgt;hasLocalRecurrence">
+        <rdfs:domain rdf:resource="&acgt;MalignNeoplasm"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasRegionalRecurrence"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasMagnitude -->
+
+    <ObjectProperty rdf:about="&acgt;hasMagnitude">
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasMalignancy -->
+
+    <ObjectProperty rdf:about="&acgt;hasMalignancy">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&acgt;PathologicalFormation"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasMetastasis -->
+
+    <ObjectProperty rdf:about="&acgt;hasMetastasis">
+        <rdfs:domain rdf:resource="&acgt;Neoplasm"/>
+        <rdfs:range rdf:resource="&acgt;Neoplasm"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasMother -->
+
+    <ObjectProperty rdf:about="&acgt;hasMother">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasParent"/>
+        <inverseOf rdf:resource="&acgt;motherOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasName -->
+
+    <ObjectProperty rdf:about="&acgt;hasName">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasIdentifier"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasObjectBoundary -->
+
+    <ObjectProperty rdf:about="&acgt;hasObjectBoundary">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <inverseOf rdf:resource="&acgt;objectBoundaryOf"/>
+        <rdfs:domain rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasOutcome -->
+
+    <ObjectProperty rdf:about="&acgt;hasOutcome">
+        <rdfs:subPropertyOf rdf:resource="&acgt;causes"/>
+        <inverseOf rdf:resource="&acgt;outcomeOf"/>
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasOutput -->
+
+    <ObjectProperty rdf:about="&acgt;hasOutput">
+        <inverseOf rdf:resource="&acgt;outputOf"/>
+        <rdfs:range rdf:resource="&snap;Object"/>
+        <rdfs:domain rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasParent -->
+
+    <ObjectProperty rdf:about="&acgt;hasParent">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasRelative"/>
+        <inverseOf rdf:resource="&acgt;parentOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasPartNeoplasm -->
+
+    <ObjectProperty rdf:about="&acgt;hasPartNeoplasm">
+        <rdfs:range rdf:resource="&acgt;Neoplasm"/>
+        <rdfs:subPropertyOf rdf:resource="&ro;hasPart"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasPatient -->
+
+    <ObjectProperty rdf:about="&acgt;hasPatient">
+        <inverseOf rdf:resource="&acgt;patientIn"/>
+        <rdfs:range rdf:resource="&snap;Object"/>
+        <rdfs:subPropertyOf rdf:resource="&ro;hasParticipant"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasPlace -->
+
+    <ObjectProperty rdf:about="&acgt;hasPlace">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasPressure -->
+
+    <ObjectProperty rdf:about="&acgt;hasPressure">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasMagnitude"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasProcessBoundary -->
+
+    <ObjectProperty rdf:about="&acgt;hasProcessBoundary"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasProcessEnd -->
+
+    <ObjectProperty rdf:about="&acgt;hasProcessEnd">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasProcessBoundary"/>
+        <inverseOf rdf:resource="&acgt;processEndOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasProcessStart -->
+
+    <ObjectProperty rdf:about="&acgt;hasProcessStart">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasProcessBoundary"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasProgenitor -->
+
+    <ObjectProperty rdf:about="&acgt;hasProgenitor">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasParent"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasProtocol -->
+
+    <ObjectProperty rdf:about="&acgt;hasProtocol">
+        <inverseOf rdf:resource="&acgt;protocolOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasPulseRepetitionFrequency -->
+
+    <ObjectProperty rdf:about="&acgt;hasPulseRepetitionFrequency">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasMagnitude"/>
+        <inverseOf rdf:resource="&acgt;pulseRepetitionFrequencyOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasQuality -->
+
+    <ObjectProperty rdf:about="&acgt;hasQuality"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasReason -->
+
+    <ObjectProperty rdf:about="&acgt;hasReason"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasReceptor -->
+
+    <ObjectProperty rdf:about="&acgt;hasReceptor">
+        <rdfs:range rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasRegionalRecurrence -->
+
+    <ObjectProperty rdf:about="&acgt;hasRegionalRecurrence">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasRelapse"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasRelapse -->
+
+    <ObjectProperty rdf:about="&acgt;hasRelapse">
+        <rdfs:range rdf:resource="&acgt;MalignNeoplasm"/>
+        <rdfs:domain rdf:resource="&acgt;MalignNeoplasm"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasRelative -->
+
+    <ObjectProperty rdf:about="&acgt;hasRelative">
+        <inverseOf rdf:resource="&acgt;relativeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasRole -->
+
+    <ObjectProperty rdf:about="&acgt;hasRole">
+        <rdfs:subPropertyOf rdf:resource="&acgt;implements"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasSameMainActiveIngrediantAs -->
+
+    <ObjectProperty rdf:about="&acgt;hasSameMainActiveIngrediantAs">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <inverseOf rdf:resource="&acgt;hasSameMainActiveIngrediantAs"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasSibling -->
+
+    <ObjectProperty rdf:about="&acgt;hasSibling">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasRelative"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasSize -->
+
+    <ObjectProperty rdf:about="&acgt;hasSize">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasMagnitude"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasSpatialPosition -->
+
+    <ObjectProperty rdf:about="&acgt;hasSpatialPosition">
+        <inverseOf rdf:resource="&acgt;spatialPositionOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasState -->
+
+    <ObjectProperty rdf:about="&acgt;hasState">
+        <inverseOf rdf:resource="&acgt;stateOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasSubfunction -->
+
+    <ObjectProperty rdf:about="&acgt;hasSubfunction">
+        <inverseOf rdf:resource="&acgt;subfunctionOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasSubsystem -->
+
+    <ObjectProperty rdf:about="&acgt;hasSubsystem">
+        <rdfs:subPropertyOf rdf:resource="&ro;hasPart"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasTumorClass -->
+
+    <ObjectProperty rdf:about="&acgt;hasTumorClass">
+        <rdfs:domain rdf:resource="&acgt;MalignNeoplasm"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasVolume -->
+
+    <ObjectProperty rdf:about="&acgt;hasVolume">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasMagnitude"/>
+        <inverseOf rdf:resource="&acgt;volumeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasWeight -->
+
+    <ObjectProperty rdf:about="&acgt;hasWeight">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasMagnitude"/>
+        <inverseOf rdf:resource="&acgt;weightOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasWidth -->
+
+    <ObjectProperty rdf:about="&acgt;hasWidth">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasLength"/>
+        <inverseOf rdf:resource="&acgt;widthOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#has_dispostion -->
+
+    <ObjectProperty rdf:about="&acgt;has_dispostion">
+        <inverseOf rdf:resource="&acgt;disposition_of"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#heightOf -->
+
+    <ObjectProperty rdf:about="&acgt;heightOf">
+        <inverseOf rdf:resource="&acgt;hasHeight"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hinderedBy -->
+
+    <ObjectProperty rdf:about="&acgt;hinderedBy">
+        <rdfs:range rdf:resource="&snap;Object"/>
+        <rdfs:subPropertyOf rdf:resource="&ro;hasParticipant"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hinders -->
+
+    <ObjectProperty rdf:about="&acgt;hinders">
+        <inverseOf rdf:resource="&acgt;hinderedBy"/>
+        <rdfs:domain rdf:resource="&snap;Object"/>
+        <rdfs:subPropertyOf rdf:resource="&ro;participatesIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#identifierOf -->
+
+    <ObjectProperty rdf:about="&acgt;identifierOf">
+        <inverseOf rdf:resource="&acgt;hasIdentifier"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#implementedBy -->
+
+    <ObjectProperty rdf:about="&acgt;implementedBy"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#implements -->
+
+    <ObjectProperty rdf:about="&acgt;implements">
+        <inverseOf rdf:resource="&acgt;implementedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#indicatedByNeoplasm -->
+
+    <ObjectProperty rdf:about="&acgt;indicatedByNeoplasm">
+        <rdfs:range rdf:resource="&acgt;Neoplasm"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#influencedBy -->
+
+    <ObjectProperty rdf:about="&acgt;influencedBy"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#inputOf -->
+
+    <ObjectProperty rdf:about="&acgt;inputOf">
+        <inverseOf rdf:resource="&acgt;hasInput"/>
+        <rdfs:range rdf:resource="&snap;Object"/>
+        <rdfs:domain rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#ipsilateralTo -->
+
+    <ObjectProperty rdf:about="&acgt;ipsilateralTo">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment rdf:datatype="&xsd;string">def = &quot;On the same side. A study of &quot;ipsilateral breast tumor recurrence following lumpectomy and radiation therapy&quot; pertains to cancer returning in the same breast as has been treated. A lesion in the right side of the brain may affect vision ipsilaterally, in the right eye.&quot; Not sure what the domain migh be though...</rdfs:comment>
+        <inverseOf rdf:resource="&acgt;ipsilateralTo"/>
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#isDeniedBy -->
+
+    <ObjectProperty rdf:about="&acgt;isDeniedBy">
+        <inverseOf rdf:resource="&acgt;denies"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#isFunctionalOrStructural -->
+
+    <ObjectProperty rdf:about="&acgt;isFunctionalOrStructural">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#isQualityOf -->
+
+    <ObjectProperty rdf:about="&acgt;isQualityOf">
+        <inverseOf rdf:resource="&acgt;hasQuality"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#issuedBy -->
+
+    <ObjectProperty rdf:about="&acgt;issuedBy">
+        <inverseOf rdf:resource="&acgt;issues"/>
+        <rdfs:range rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#issues -->
+
+    <ObjectProperty rdf:about="&acgt;issues">
+        <rdfs:domain rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#lateralityOf -->
+
+    <ObjectProperty rdf:about="&acgt;lateralityOf">
+        <rdfs:range rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#lengthOf -->
+
+    <ObjectProperty rdf:about="&acgt;lengthOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#localRecurrenceOf -->
+
+    <ObjectProperty rdf:about="&acgt;localRecurrenceOf">
+        <inverseOf rdf:resource="&acgt;hasLocalRecurrence"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;regionalRecurrenceOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#locusOf -->
+
+    <ObjectProperty rdf:about="&acgt;locusOf">
+        <rdfs:comment rdf:datatype="&xsd;string">There&#39;s another RO relation called &quot;locationOf,&quot; which is why I have renamed this to locusOf.</rdfs:comment>
+        <inverseOf rdf:resource="&acgt;situatedIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#magnitudeOf -->
+
+    <ObjectProperty rdf:about="&acgt;magnitudeOf">
+        <rdfs:comment rdf:datatype="&xsd;string">synonyms: assessment, evaluation</rdfs:comment>
+        <inverseOf rdf:resource="&acgt;hasMagnitude"/>
+        <rdfs:range rdf:resource="&bfo;Entity"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#measuredBy -->
+
+    <ObjectProperty rdf:about="&acgt;measuredBy">
+        <inverseOf rdf:resource="&acgt;measures"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#measures -->
+
+    <ObjectProperty rdf:about="&acgt;measures">
+        <rdfs:subPropertyOf rdf:resource="&acgt;reveals"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#metastasisOf -->
+
+    <ObjectProperty rdf:about="&acgt;metastasisOf">
+        <rdfs:domain rdf:resource="&acgt;Neoplasm"/>
+        <rdfs:range rdf:resource="&acgt;Neoplasm"/>
+        <inverseOf rdf:resource="&acgt;hasMetastasis"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#motherOf -->
+
+    <ObjectProperty rdf:about="&acgt;motherOf">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;parentOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#nationalHospitalFor -->
+
+    <ObjectProperty rdf:about="&acgt;nationalHospitalFor"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#neoplasticPartOf -->
+
+    <ObjectProperty rdf:about="&acgt;neoplasticPartOf">
+        <rdfs:domain rdf:resource="&acgt;Neoplasm"/>
+        <inverseOf rdf:resource="&acgt;hasPartNeoplasm"/>
+        <rdfs:subPropertyOf rdf:resource="&ro;partOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#objectBoundaryOf -->
+
+    <ObjectProperty rdf:about="&acgt;objectBoundaryOf">
+        <rdfs:range rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#outcomeOf -->
+
+    <ObjectProperty rdf:about="&acgt;outcomeOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;causedBy"/>
+        <rdfs:domain rdf:resource="&bfo;Entity"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#outputOf -->
+
+    <ObjectProperty rdf:about="&acgt;outputOf">
+        <rdfs:domain rdf:resource="&snap;Object"/>
+        <rdfs:range rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#parentOf -->
+
+    <ObjectProperty rdf:about="&acgt;parentOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;relativeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#partOfHistoryOf -->
+
+    <ObjectProperty rdf:about="&acgt;partOfHistoryOf"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#patientAt -->
+
+    <ObjectProperty rdf:about="&acgt;patientAt"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#patientIn -->
+
+    <ObjectProperty rdf:about="&acgt;patientIn">
+        <rdfs:domain rdf:resource="&snap;Object"/>
+        <rdfs:subPropertyOf rdf:resource="&ro;participatesIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#picturedBy -->
+
+    <ObjectProperty rdf:about="&acgt;picturedBy">
+        <rdfs:domain rdf:resource="&acgt;OrganismalIndependentContinuant"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#pictures -->
+
+    <ObjectProperty rdf:about="&acgt;pictures">
+        <rdfs:range rdf:resource="&acgt;OrganismalIndependentContinuant"/>
+        <inverseOf rdf:resource="&acgt;picturedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#placeOf -->
+
+    <ObjectProperty rdf:about="&acgt;placeOf">
+        <inverseOf rdf:resource="&acgt;hasPlace"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#plannedBy -->
+
+    <ObjectProperty rdf:about="&acgt;plannedBy"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#plans -->
+
+    <ObjectProperty rdf:about="&acgt;plans">
+        <inverseOf rdf:resource="&acgt;plannedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#pressureOf -->
+
+    <ObjectProperty rdf:about="&acgt;pressureOf">
+        <inverseOf rdf:resource="&acgt;hasPressure"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#processBoundaryOf -->
+
+    <ObjectProperty rdf:about="&acgt;processBoundaryOf">
+        <inverseOf rdf:resource="&acgt;hasProcessBoundary"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#processEndOf -->
+
+    <ObjectProperty rdf:about="&acgt;processEndOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;processBoundaryOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#processStartOf -->
+
+    <ObjectProperty rdf:about="&acgt;processStartOf">
+        <inverseOf rdf:resource="&acgt;hasProcessStart"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;processBoundaryOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#progenitorOf -->
+
+    <ObjectProperty rdf:about="&acgt;progenitorOf">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <inverseOf rdf:resource="&acgt;hasProgenitor"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;parentOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#promptedBy -->
+
+    <ObjectProperty rdf:about="&acgt;promptedBy">
+        <rdfs:subPropertyOf rdf:resource="&acgt;causedBy"/>
+        <inverseOf rdf:resource="&acgt;prompts"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#prompts -->
+
+    <ObjectProperty rdf:about="&acgt;prompts">
+        <rdfs:subPropertyOf rdf:resource="&acgt;causes"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#protocolOf -->
+
+    <ObjectProperty rdf:about="&acgt;protocolOf"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#providesSample -->
+
+    <ObjectProperty rdf:about="&acgt;providesSample"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#pulseRepetitionFrequencyOf -->
+
+    <ObjectProperty rdf:about="&acgt;pulseRepetitionFrequencyOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#realizedBy -->
+
+    <ObjectProperty rdf:about="&acgt;realizedBy">
+        <inverseOf rdf:resource="&acgt;realizes"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#realizes -->
+
+    <ObjectProperty rdf:about="&acgt;realizes"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#receives -->
+
+    <ObjectProperty rdf:about="&acgt;receives"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#receivesPreTherapy -->
+
+    <ObjectProperty rdf:about="&acgt;receivesPreTherapy"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#regionalRecurrenceOf -->
+
+    <ObjectProperty rdf:about="&acgt;regionalRecurrenceOf">
+        <inverseOf rdf:resource="&acgt;hasRegionalRecurrence"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;relapseOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#relapseOf -->
+
+    <ObjectProperty rdf:about="&acgt;relapseOf">
+        <rdfs:range rdf:resource="&acgt;MalignNeoplasm"/>
+        <rdfs:domain rdf:resource="&acgt;MalignNeoplasm"/>
+        <inverseOf rdf:resource="&acgt;hasRelapse"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#relativeOf -->
+
+    <ObjectProperty rdf:about="&acgt;relativeOf"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#removedBy -->
+
+    <ObjectProperty rdf:about="&acgt;removedBy">
+        <inverseOf rdf:resource="&acgt;removes"/>
+        <rdfs:domain rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#removes -->
+
+    <ObjectProperty rdf:about="&acgt;removes">
+        <rdfs:range rdf:resource="&snap;Object"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#revealedBy -->
+
+    <ObjectProperty rdf:about="&acgt;revealedBy"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#reveals -->
+
+    <ObjectProperty rdf:about="&acgt;reveals">
+        <rdfs:comment rdf:datatype="&xsd;string">The corect way to deal with &quot;reveals&quot; is to make it a 3 place relation: x reveals quality of y. Existence is a property, so we shouldn&#39;t feel compelled to add &quot;process&quot; to the range.</rdfs:comment>
+        <inverseOf rdf:resource="&acgt;revealedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#roleOf -->
+
+    <ObjectProperty rdf:about="&acgt;roleOf">
+        <inverseOf rdf:resource="&acgt;hasRole"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;implementedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#sampledBy -->
+
+    <ObjectProperty rdf:about="&acgt;sampledBy">
+        <inverseOf rdf:resource="&acgt;samples"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#sampledFrom -->
+
+    <ObjectProperty rdf:about="&acgt;sampledFrom">
+        <inverseOf rdf:resource="&acgt;providesSample"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#samples -->
+
+    <ObjectProperty rdf:about="&acgt;samples"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#siblingOf -->
+
+    <ObjectProperty rdf:about="&acgt;siblingOf">
+        <inverseOf rdf:resource="&acgt;hasSibling"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;relativeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#signedBy -->
+
+    <ObjectProperty rdf:about="&acgt;signedBy"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#signs -->
+
+    <ObjectProperty rdf:about="&acgt;signs">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <inverseOf rdf:resource="&acgt;signedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#sisterOf -->
+
+    <ObjectProperty rdf:about="&acgt;sisterOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;siblingOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#situatedIn -->
+
+    <ObjectProperty rdf:about="&acgt;situatedIn"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#sizeOf -->
+
+    <ObjectProperty rdf:about="&acgt;sizeOf">
+        <inverseOf rdf:resource="&acgt;hasSize"/>
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#smallerOrEqualThan -->
+
+    <ObjectProperty rdf:about="&acgt;smallerOrEqualThan"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#spatialPositionOf -->
+
+    <ObjectProperty rdf:about="&acgt;spatialPositionOf"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#stateOf -->
+
+    <ObjectProperty rdf:about="&acgt;stateOf"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#storedIn -->
+
+    <ObjectProperty rdf:about="&acgt;storedIn">
+        <inverseOf rdf:resource="&acgt;stores"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#stores -->
+
+    <ObjectProperty rdf:about="&acgt;stores"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#subfunctionOf -->
+
+    <ObjectProperty rdf:about="&acgt;subfunctionOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#subsystemOf -->
+
+    <ObjectProperty rdf:about="&acgt;subsystemOf">
+        <rdfs:comment rdf:datatype="&xsd;string">a part is a subsystem in case it has some contribution to the function of the greater system (i.e. is not causally inert)</rdfs:comment>
+        <inverseOf rdf:resource="&acgt;hasSubsystem"/>
+        <rdfs:subPropertyOf rdf:resource="&ro;partOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#synchronousWith -->
+
+    <ObjectProperty rdf:about="&acgt;synchronousWith">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#tumorClassOf -->
+
+    <ObjectProperty rdf:about="&acgt;tumorClassOf">
+        <rdfs:range rdf:resource="&acgt;MalignNeoplasm"/>
+        <inverseOf rdf:resource="&acgt;hasTumorClass"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#undergoes -->
+
+    <ObjectProperty rdf:about="&acgt;undergoes">
+        <rdfs:comment rdf:datatype="&xsd;string">the key difference b/w participatesIn and undergoes is that the continuant that undergoes a process is the largest continuant that undergoes that process</rdfs:comment>
+        <inverseOf rdf:resource="&acgt;undergoneBy"/>
+        <rdfs:subPropertyOf rdf:resource="&ro;participatesIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#undergoesMedicalProcess -->
+
+    <ObjectProperty rdf:about="&acgt;undergoesMedicalProcess">
+        <rdfs:comment rdf:datatype="&xsd;string">old name: undergoesMedicalProcedure</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="&acgt;undergoes"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#undergoneBy -->
+
+    <ObjectProperty rdf:about="&acgt;undergoneBy">
+        <rdfs:subPropertyOf rdf:resource="&ro;hasParticipant"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#undertakenBy -->
+
+    <ObjectProperty rdf:about="&acgt;undertakenBy">
+        <inverseOf rdf:resource="&acgt;undertakes"/>
+        <rdfs:subPropertyOf rdf:resource="&ro;hasAgent"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#undertakes -->
+
+    <ObjectProperty rdf:about="&acgt;undertakes">
+        <rdfs:subPropertyOf rdf:resource="&ro;agentIn"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#usedBy -->
+
+    <ObjectProperty rdf:about="&acgt;usedBy"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#uses -->
+
+    <ObjectProperty rdf:about="&acgt;uses">
+        <inverseOf rdf:resource="&acgt;usedBy"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#volumeOf -->
+
+    <ObjectProperty rdf:about="&acgt;volumeOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#weightOf -->
+
+    <ObjectProperty rdf:about="&acgt;weightOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#widthOf -->
+
+    <ObjectProperty rdf:about="&acgt;widthOf">
+        <rdfs:subPropertyOf rdf:resource="&acgt;magnitudeOf"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#agentIn -->
+
+    <ObjectProperty rdf:about="&ro;agentIn"/>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#contains -->
+
+    <ObjectProperty rdf:about="&ro;contains"/>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#hasAgent -->
+
+    <ObjectProperty rdf:about="&ro;hasAgent"/>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#hasPart -->
+
+    <ObjectProperty rdf:about="&ro;hasPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#hasParticipant -->
+
+    <ObjectProperty rdf:about="&ro;hasParticipant"/>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#hasProperPart -->
+
+    <ObjectProperty rdf:about="&ro;hasProperPart">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#locatedIn -->
+
+    <ObjectProperty rdf:about="&ro;locatedIn"/>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#partOf -->
+
+    <ObjectProperty rdf:about="&ro;partOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+    </ObjectProperty>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#participatesIn -->
+
+    <ObjectProperty rdf:about="&ro;participatesIn"/>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#precededBy -->
+
+    <ObjectProperty rdf:about="&ro;precededBy"/>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#precedes -->
+
+    <ObjectProperty rdf:about="&ro;precedes"/>
+    
+
+
+    <!-- http://www.ifomis.org/obo/ro/1.0#properPartOf -->
+
+    <ObjectProperty rdf:about="&ro;properPartOf"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasBirthDate -->
+
+    <DatatypeProperty rdf:about="&acgt;hasBirthDate">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasBooleanValue -->
+
+    <DatatypeProperty rdf:about="&acgt;hasBooleanValue">
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasCardinal -->
+
+    <DatatypeProperty rdf:about="&acgt;hasCardinal">
+        <rdfs:range rdf:resource="&xsd;integer"/>
+        <rdfs:domain rdf:resource="&owl;Thing"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasDate -->
+
+    <DatatypeProperty rdf:about="&acgt;hasDate">
+        <rdfs:range rdf:resource="&xsd;date"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasDateTime -->
+
+    <DatatypeProperty rdf:about="&acgt;hasDateTime">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasFloatValue -->
+
+    <DatatypeProperty rdf:about="&acgt;hasFloatValue">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasNumericalValue"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasIntegerValue -->
+
+    <DatatypeProperty rdf:about="&acgt;hasIntegerValue">
+        <rdfs:subPropertyOf rdf:resource="&acgt;hasNumericalValue"/>
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasNumberOfSiblings -->
+
+    <DatatypeProperty rdf:about="&acgt;hasNumberOfSiblings">
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasNumericalValue -->
+
+    <DatatypeProperty rdf:about="&acgt;hasNumericalValue"/>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#hasStringValue -->
+
+    <DatatypeProperty rdf:about="&acgt;hasStringValue">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#isCellCycleSpecific -->
+
+    <DatatypeProperty rdf:about="&acgt;isCellCycleSpecific">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#operable -->
+
+    <DatatypeProperty rdf:about="&acgt;operable">
+        <rdfs:domain rdf:resource="&acgt;PathologicalFormation"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#revealsNumberOfLungMetastases -->
+
+    <DatatypeProperty rdf:about="&acgt;revealsNumberOfLungMetastases">
+        <rdfs:range rdf:resource="&xsd;int"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#roleOfDatatype -->
+
+    <DatatypeProperty rdf:about="&acgt;roleOfDatatype">
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#tumorigenic -->
+
+    <DatatypeProperty rdf:about="&acgt;tumorigenic">
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#AT/RT -->
+
+    <Class rdf:about="&acgt;AT/RT">
+        <rdfs:subClassOf rdf:resource="&acgt;RhabdoidTumor"/>
+        <rdfs:comment>Rhabdoid Tumor in the brain
+Short for Atypical Teratoid/Rhabdoid Tumor</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Adenoma -->
+
+    <Class rdf:about="&acgt;Adenoma">
+        <rdfs:subClassOf rdf:resource="&acgt;BenignNeoplasm"/>
+        <disjointWith rdf:resource="&acgt;CysticNephroma"/>
+        <disjointWith rdf:resource="&acgt;MesoblasticNephroma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#BenignNeoplasm -->
+
+    <Class rdf:about="&acgt;BenignNeoplasm">
+        <rdfs:subClassOf rdf:resource="&acgt;Neoplasm"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;hasMetastasis"/>
+                <cardinality rdf:datatype="&xsd;nonNegativeInteger">0</cardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;hasMalignancy"/>
+                <hasValue rdf:resource="&acgt;NoMalignancy"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <disjointWith rdf:resource="&acgt;MalignNeoplasm"/>
+        <disjointWith rdf:resource="&acgt;SemiMalignNeoplasm"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#BiologicalIndependentContinuant -->
+
+    <Class rdf:about="&acgt;BiologicalIndependentContinuant">
+        <rdfs:subClassOf rdf:resource="&snap;Object"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Carcinoma -->
+
+    <Class rdf:about="&acgt;Carcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;MalignNeoplasm"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&acgt;Metastasis"/>
+                    <rdf:Description rdf:about="&acgt;PrimaryTumor"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+        <disjointWith rdf:resource="&acgt;DysontogeneticTumor"/>
+        <disjointWith rdf:resource="&acgt;HaematooncologicalTumor"/>
+        <disjointWith rdf:resource="&acgt;MixedTumor"/>
+        <disjointWith rdf:resource="&acgt;NeuroendocrineTumor"/>
+        <disjointWith rdf:resource="&acgt;Sarcoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#ChromophobeRenalCarcinoma -->
+
+    <Class rdf:about="&acgt;ChromophobeRenalCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;RenalCellCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;ClearCellCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;PapillaryRenalCellCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#ClearCellCarcinoma -->
+
+    <Class rdf:about="&acgt;ClearCellCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;RenalCellCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;PapillaryRenalCellCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#ClearCellTumor -->
+
+    <Class rdf:about="&acgt;ClearCellTumor">
+        <rdfs:subClassOf rdf:resource="&acgt;Sarcoma"/>
+        <disjointWith rdf:resource="&acgt;PrimitiveNeuroectodermalTumor"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#ColloidCarcinoma -->
+
+    <Class rdf:about="&acgt;ColloidCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;InvasiveMammaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;InflammatoryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;InvasiveDuctalCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;InvasiveLobularCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;MedullaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;TubularCarcinoma"/>
+        <rdfs:comment rdf:datatype="&xsd;string">aka MucinousCarcinoma</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#ComedoCarcinoma -->
+
+    <Class rdf:about="&acgt;ComedoCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;InvasiveDuctalCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;MixedCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;SchirrousCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CompletelyNecroticNephroblastoma -->
+
+    <Class rdf:about="&acgt;CompletelyNecroticNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;LowRiskNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;CysticPartiallyDifferentiatedNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CysticNephroma -->
+
+    <Class rdf:about="&acgt;CysticNephroma">
+        <rdfs:subClassOf rdf:resource="&acgt;BenignNeoplasm"/>
+        <disjointWith rdf:resource="&acgt;MesoblasticNephroma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CysticPartiallyDifferentiatedNephroblastoma -->
+
+    <Class rdf:about="&acgt;CysticPartiallyDifferentiatedNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;LowRiskNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#DCIS -->
+
+    <Class rdf:about="&acgt;DCIS">
+        <rdfs:subClassOf rdf:resource="&acgt;NonInvasiveMammaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;LCIS"/>
+        <disjointWith rdf:resource="&acgt;PagetNippleTumor"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Ductal Carcinoma In Situ, aka intraductal carcinoma</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#DiffuseAnaplasticNephroblastoma -->
+
+    <Class rdf:about="&acgt;DiffuseAnaplasticNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;HighRiskNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;HighRiskBlastemaRichNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#DysontogeneticTumor -->
+
+    <Class rdf:about="&acgt;DysontogeneticTumor">
+        <rdfs:subClassOf rdf:resource="&acgt;MalignNeoplasm"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&acgt;Metastasis"/>
+                    <rdf:Description rdf:about="&acgt;PrimaryTumor"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+        <disjointWith rdf:resource="&acgt;HaematooncologicalTumor"/>
+        <disjointWith rdf:resource="&acgt;MixedTumor"/>
+        <disjointWith rdf:resource="&acgt;NeuroendocrineTumor"/>
+        <disjointWith rdf:resource="&acgt;Sarcoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#EpithelialNephroblastoma -->
+
+    <Class rdf:about="&acgt;EpithelialNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;IntermediateRiskNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;FocalAnaplasticNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;IntermediateRiskBlastemaRichNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;MixedNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;StromaRichNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#ExtrarenalPrimaryTumor -->
+
+    <Class rdf:about="&acgt;ExtrarenalPrimaryTumor">
+        <rdfs:subClassOf rdf:resource="&acgt;PrimaryTumor"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#FocalAnaplasticNephroblastoma -->
+
+    <Class rdf:about="&acgt;FocalAnaplasticNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;IntermediateRiskNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;IntermediateRiskBlastemaRichNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;MixedNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;StromaRichNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Granuloma -->
+
+    <Class rdf:about="&acgt;Granuloma">
+        <rdfs:subClassOf rdf:resource="&acgt;PathologicalFormation"/>
+        <disjointWith rdf:resource="&acgt;Thrombus"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#HaematooncologicalTumor -->
+
+    <Class rdf:about="&acgt;HaematooncologicalTumor">
+        <rdfs:subClassOf rdf:resource="&acgt;MalignNeoplasm"/>
+        <rdfs:subClassOf rdf:resource="&acgt;PrimaryTumor"/>
+        <disjointWith rdf:resource="&acgt;Metastasis"/>
+        <disjointWith rdf:resource="&acgt;MixedTumor"/>
+        <disjointWith rdf:resource="&acgt;NeuroendocrineTumor"/>
+        <disjointWith rdf:resource="&acgt;Sarcoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#HighRiskBlastemaRichNephroblastoma -->
+
+    <Class rdf:about="&acgt;HighRiskBlastemaRichNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;HighRiskNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#HighRiskNephroblastoma -->
+
+    <Class rdf:about="&acgt;HighRiskNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;Nephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;IntermediateRiskNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;LowRiskNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#ImmaterialOrganismalIndependentContinuant -->
+
+    <Class rdf:about="&acgt;ImmaterialOrganismalIndependentContinuant">
+        <rdfs:subClassOf rdf:resource="&acgt;OrganismalIndependentContinuant"/>
+        <disjointWith rdf:resource="&acgt;MaterialOrganismalIndependentContinuant"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#InflammatoryCarcinoma -->
+
+    <Class rdf:about="&acgt;InflammatoryCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;InvasiveMammaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;InvasiveDuctalCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;InvasiveLobularCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;MedullaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;TubularCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#InfratentorialMeningeosis -->
+
+    <Class rdf:about="&acgt;InfratentorialMeningeosis">
+        <rdfs:subClassOf rdf:resource="&acgt;Meningeosis"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#IntermediateRiskBlastemaRichNephroblastoma -->
+
+    <Class rdf:about="&acgt;IntermediateRiskBlastemaRichNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;IntermediateRiskNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;MixedNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;StromaRichNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#IntermediateRiskNephroblastoma -->
+
+    <Class rdf:about="&acgt;IntermediateRiskNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;Nephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;LowRiskNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#IntestinalLesion -->
+
+    <Class rdf:about="&acgt;IntestinalLesion">
+        <rdfs:subClassOf rdf:resource="&acgt;Lesion"/>
+        <disjointWith rdf:resource="&acgt;LiverLesion"/>
+        <disjointWith rdf:resource="&acgt;SpleenLesion"/>
+        <disjointWith rdf:resource="&acgt;VascularLesion"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#InvasiveDuctalCarcinoma -->
+
+    <Class rdf:about="&acgt;InvasiveDuctalCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;InvasiveMammaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;InvasiveLobularCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;MedullaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;TubularCarcinoma"/>
+        <rdfs:comment rdf:datatype="&xsd;string">aka &quot;no special type&quot;</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#InvasiveLobularCarcinoma -->
+
+    <Class rdf:about="&acgt;InvasiveLobularCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;InvasiveMammaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;MedullaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;TubularCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#InvasiveMammaryCarcinoma -->
+
+    <Class rdf:about="&acgt;InvasiveMammaryCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;MammaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;NonInvasiveMammaryCarcinoma"/>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#LCIS -->
+
+    <Class rdf:about="&acgt;LCIS">
+        <rdfs:subClassOf rdf:resource="&acgt;NonInvasiveMammaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;PagetNippleTumor"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Lesion -->
+
+    <Class rdf:about="&acgt;Lesion">
+        <rdfs:subClassOf rdf:resource="&acgt;PathologicalFormation"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#LiverLesion -->
+
+    <Class rdf:about="&acgt;LiverLesion">
+        <rdfs:subClassOf rdf:resource="&acgt;Lesion"/>
+        <disjointWith rdf:resource="&acgt;SpleenLesion"/>
+        <disjointWith rdf:resource="&acgt;VascularLesion"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#LowRiskNephroblastoma -->
+
+    <Class rdf:about="&acgt;LowRiskNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;Nephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#MRT -->
+
+    <Class rdf:about="&acgt;MRT">
+        <rdfs:subClassOf rdf:resource="&acgt;RhabdoidTumor"/>
+        <rdfs:comment>Rhabdoid tumor in soft tissue (except kidney)
+MRT is short for Malign Rhabdoid Tumor</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#MalignNeoplasm -->
+
+    <Class rdf:about="&acgt;MalignNeoplasm">
+        <rdfs:subClassOf rdf:resource="&acgt;Neoplasm"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;hasDistantRecurrence"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;distantRecurrenceOf"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;relapseOf"/>
+                <allValuesFrom rdf:resource="&acgt;MalignNeoplasm"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;hasMalignancy"/>
+                <someValuesFrom>
+                    <Class>
+                        <oneOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&acgt;HighMalignancy"/>
+                            <rdf:Description rdf:about="&acgt;LowMalignancy"/>
+                            <rdf:Description rdf:about="&acgt;IntermediateMalignancy"/>
+                        </oneOf>
+                    </Class>
+                </someValuesFrom>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;hasLocalRecurrence"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;hasRelapse"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;regionalRecurrenceOf"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;relapseOf"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;hasRegionalRecurrence"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;localRecurrenceOf"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <disjointWith rdf:resource="&acgt;SemiMalignNeoplasm"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#MammaryCarcinoma -->
+
+    <Class rdf:about="&acgt;MammaryCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;Carcinoma"/>
+        <disjointWith rdf:resource="&acgt;RenalCellCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#MaterialOrganismalIndependentContinuant -->
+
+    <Class rdf:about="&acgt;MaterialOrganismalIndependentContinuant">
+        <rdfs:subClassOf rdf:resource="&acgt;OrganismalIndependentContinuant"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#MedullaryCarcinoma -->
+
+    <Class rdf:about="&acgt;MedullaryCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;InvasiveMammaryCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;TubularCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Meningeosis -->
+
+    <Class rdf:about="&acgt;Meningeosis">
+        <rdfs:subClassOf rdf:resource="&acgt;Metastasis"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#MesoblasticNephroma -->
+
+    <Class rdf:about="&acgt;MesoblasticNephroma">
+        <rdfs:subClassOf rdf:resource="&acgt;BenignNeoplasm"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Metastasis -->
+
+    <Class rdf:about="&acgt;Metastasis">
+        <rdfs:subClassOf rdf:resource="&acgt;MalignNeoplasm"/>
+        <disjointWith rdf:resource="&acgt;PrimaryTumor"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#MixedCarcinoma -->
+
+    <Class rdf:about="&acgt;MixedCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;InvasiveDuctalCarcinoma"/>
+        <disjointWith rdf:resource="&acgt;SchirrousCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#MixedNephroblastoma -->
+
+    <Class rdf:about="&acgt;MixedNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;IntermediateRiskNephroblastoma"/>
+        <disjointWith rdf:resource="&acgt;StromaRichNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#MixedTumor -->
+
+    <Class rdf:about="&acgt;MixedTumor">
+        <rdfs:subClassOf rdf:resource="&acgt;MalignNeoplasm"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&acgt;Metastasis"/>
+                    <rdf:Description rdf:about="&acgt;PrimaryTumor"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+        <disjointWith rdf:resource="&acgt;NeuroendocrineTumor"/>
+        <disjointWith rdf:resource="&acgt;Sarcoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Neoplasm -->
+
+    <Class rdf:about="&acgt;Neoplasm">
+        <equivalentClass>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&acgt;BenignNeoplasm"/>
+                    <rdf:Description rdf:about="&acgt;MalignNeoplasm"/>
+                    <rdf:Description rdf:about="&acgt;SemiMalignNeoplasm"/>
+                </unionOf>
+            </Class>
+        </equivalentClass>
+        <rdfs:subClassOf rdf:resource="&acgt;PathologicalFormation"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;hasMetastasis"/>
+                <onClass rdf:resource="&acgt;Metastasis"/>
+                <minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minQualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="&xsd;string">aka tumor</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Nephroblastoma -->
+
+    <Class rdf:about="&acgt;Nephroblastoma">
+        <equivalentClass>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&acgt;HighRiskNephroblastoma"/>
+                    <rdf:Description rdf:about="&acgt;IntermediateRiskNephroblastoma"/>
+                    <rdf:Description rdf:about="&acgt;LowRiskNephroblastoma"/>
+                </unionOf>
+            </Class>
+        </equivalentClass>
+        <rdfs:subClassOf rdf:resource="&acgt;DysontogeneticTumor"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Nephroblastomatosis -->
+
+    <Class rdf:about="&acgt;Nephroblastomatosis">
+        <rdfs:subClassOf rdf:resource="&acgt;PathologicalFormation"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#NeuroendocrineTumor -->
+
+    <Class rdf:about="&acgt;NeuroendocrineTumor">
+        <rdfs:subClassOf rdf:resource="&acgt;MalignNeoplasm"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&acgt;Metastasis"/>
+                    <rdf:Description rdf:about="&acgt;PrimaryTumor"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+        <disjointWith rdf:resource="&acgt;Sarcoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#NonInvasiveMammaryCarcinoma -->
+
+    <Class rdf:about="&acgt;NonInvasiveMammaryCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;MammaryCarcinoma"/>
+        <rdfs:comment rdf:datatype="&xsd;string">Non-invasive aka &quot;in situ&quot;</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#OrganismalIndependentContinuant -->
+
+    <Class rdf:about="&acgt;OrganismalIndependentContinuant">
+        <equivalentClass>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&acgt;ImmaterialOrganismalIndependentContinuant"/>
+                    <rdf:Description rdf:about="&acgt;MaterialOrganismalIndependentContinuant"/>
+                </unionOf>
+            </Class>
+        </equivalentClass>
+        <rdfs:subClassOf rdf:resource="&acgt;BiologicalIndependentContinuant"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;hasLaterality"/>
+                <cardinality rdf:datatype="&xsd;nonNegativeInteger">1</cardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#PagetNippleTumor -->
+
+    <Class rdf:about="&acgt;PagetNippleTumor">
+        <rdfs:subClassOf rdf:resource="&acgt;NonInvasiveMammaryCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#PapillaryRenalCellCarcinoma -->
+
+    <Class rdf:about="&acgt;PapillaryRenalCellCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;RenalCellCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#PathologicalFormation -->
+
+    <Class rdf:about="&acgt;PathologicalFormation">
+        <rdfs:subClassOf rdf:resource="&acgt;MaterialOrganismalIndependentContinuant"/>
+        <rdfs:comment>Def.: A MaterialOrganismalIndependentContiuant whic is not part of the canonical body.</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#PrimaryTumor -->
+
+    <Class rdf:about="&acgt;PrimaryTumor">
+        <rdfs:subClassOf rdf:resource="&acgt;MalignNeoplasm"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#PrimitiveNeuroectodermalTumor -->
+
+    <Class rdf:about="&acgt;PrimitiveNeuroectodermalTumor">
+        <rdfs:subClassOf rdf:resource="&acgt;Sarcoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#RTK -->
+
+    <Class rdf:about="&acgt;RTK">
+        <rdfs:subClassOf rdf:resource="&acgt;RhabdoidTumor"/>
+        <rdfs:comment>Rhabdoid Tumor of the Kidney</rdfs:comment>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#RegressiveTypeNephroblastoma -->
+
+    <Class rdf:about="&acgt;RegressiveTypeNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;IntermediateRiskNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#RenalCellCarcinoma -->
+
+    <Class rdf:about="&acgt;RenalCellCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;Carcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#RhabdoidTumor -->
+
+    <Class rdf:about="&acgt;RhabdoidTumor">
+        <rdfs:subClassOf rdf:resource="&acgt;DysontogeneticTumor"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Sarcoma -->
+
+    <Class rdf:about="&acgt;Sarcoma">
+        <rdfs:subClassOf rdf:resource="&acgt;MalignNeoplasm"/>
+        <rdfs:subClassOf>
+            <Class>
+                <unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&acgt;Metastasis"/>
+                    <rdf:Description rdf:about="&acgt;PrimaryTumor"/>
+                </unionOf>
+            </Class>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#SchirrousCarcinoma -->
+
+    <Class rdf:about="&acgt;SchirrousCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;InvasiveDuctalCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#SecondaryMetastasis -->
+
+    <Class rdf:about="&acgt;SecondaryMetastasis">
+        <rdfs:subClassOf rdf:resource="&acgt;Metastasis"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#SemiMalignNeoplasm -->
+
+    <Class rdf:about="&acgt;SemiMalignNeoplasm">
+        <rdfs:subClassOf rdf:resource="&acgt;Neoplasm"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#SpleenLesion -->
+
+    <Class rdf:about="&acgt;SpleenLesion">
+        <rdfs:subClassOf rdf:resource="&acgt;Lesion"/>
+        <disjointWith rdf:resource="&acgt;VascularLesion"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#StromaRichNephroblastoma -->
+
+    <Class rdf:about="&acgt;StromaRichNephroblastoma">
+        <rdfs:subClassOf rdf:resource="&acgt;IntermediateRiskNephroblastoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#SupratentorialMeningeosis -->
+
+    <Class rdf:about="&acgt;SupratentorialMeningeosis">
+        <rdfs:subClassOf rdf:resource="&acgt;Meningeosis"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Thrombus -->
+
+    <Class rdf:about="&acgt;Thrombus">
+        <rdfs:subClassOf rdf:resource="&acgt;PathologicalFormation"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#TubularCarcinoma -->
+
+    <Class rdf:about="&acgt;TubularCarcinoma">
+        <rdfs:subClassOf rdf:resource="&acgt;InvasiveMammaryCarcinoma"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#TumorCapsule -->
+
+    <Class rdf:about="&acgt;TumorCapsule">
+        <rdfs:subClassOf rdf:resource="&acgt;PathologicalFormation"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&ro;partOf"/>
+                <someValuesFrom rdf:resource="&acgt;Neoplasm"/>
+            </Restriction>
+        </rdfs:subClassOf>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#TumorCell -->
+
+    <Class rdf:about="&acgt;TumorCell">
+        <rdfs:subClassOf rdf:resource="&acgt;PathologicalFormation"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#UrogenitalMalformation -->
+
+    <Class rdf:about="&acgt;UrogenitalMalformation">
+        <rdfs:subClassOf rdf:resource="&acgt;PathologicalFormation"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#VascularLesion -->
+
+    <Class rdf:about="&acgt;VascularLesion">
+        <rdfs:subClassOf rdf:resource="&acgt;Lesion"/>
+    </Class>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.1#Entity -->
+
+    <Class rdf:about="&bfo;Entity"/>
+    
+
+
+    <!-- http://www.ifomis.org/bfo/1.1/snap#Object -->
+
+    <Class rdf:about="&snap;Object"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <Class rdf:about="&owl;Thing"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Absent -->
+
+    <Thing rdf:about="&acgt;Absent">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#BRGrade1 -->
+
+    <Thing rdf:about="&acgt;BRGrade1">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#BRGrade2 -->
+
+    <Thing rdf:about="&acgt;BRGrade2">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#BRGrade3 -->
+
+    <Thing rdf:about="&acgt;BRGrade3">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_0 -->
+
+    <Thing rdf:about="&acgt;CN_0">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_I -->
+
+    <Thing rdf:about="&acgt;CN_I">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_II -->
+
+    <Thing rdf:about="&acgt;CN_II">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_III -->
+
+    <Thing rdf:about="&acgt;CN_III">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_IV -->
+
+    <Thing rdf:about="&acgt;CN_IV">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_IX -->
+
+    <Thing rdf:about="&acgt;CN_IX">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_V -->
+
+    <Thing rdf:about="&acgt;CN_V">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_VI -->
+
+    <Thing rdf:about="&acgt;CN_VI">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_VII -->
+
+    <Thing rdf:about="&acgt;CN_VII">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_VIII -->
+
+    <Thing rdf:about="&acgt;CN_VIII">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_X -->
+
+    <Thing rdf:about="&acgt;CN_X">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_XI -->
+
+    <Thing rdf:about="&acgt;CN_XI">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#CN_XII -->
+
+    <Thing rdf:about="&acgt;CN_XII">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Center -->
+
+    <Thing rdf:about="&acgt;Center">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Curative -->
+
+    <Thing rdf:about="&acgt;Curative">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#DN -->
+
+    <Thing rdf:about="&acgt;DN">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#EU-RHAB -->
+
+    <Thing rdf:about="&acgt;EU-RHAB">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <rdfs:comment>European Rhabdoid Study</rdfs:comment>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#FuhrmanGradeI -->
+
+    <Thing rdf:about="&acgt;FuhrmanGradeI">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#FuhrmanGradeII -->
+
+    <Thing rdf:about="&acgt;FuhrmanGradeII">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#FuhrmanGradeIII -->
+
+    <Thing rdf:about="&acgt;FuhrmanGradeIII">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#FuhrmanGradeIV -->
+
+    <Thing rdf:about="&acgt;FuhrmanGradeIV">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Functional -->
+
+    <Thing rdf:about="&acgt;Functional">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#G1 -->
+
+    <Thing rdf:about="&acgt;G1">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#G2 -->
+
+    <Thing rdf:about="&acgt;G2">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#G3 -->
+
+    <Thing rdf:about="&acgt;G3">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#G4 -->
+
+    <Thing rdf:about="&acgt;G4">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#GX -->
+
+    <Thing rdf:about="&acgt;GX">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#HERATrial -->
+
+    <Thing rdf:about="&acgt;HERATrial">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <rdfs:comment rdf:datatype="&xsd;string">http://www.heratrial.com/</rdfs:comment>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#HighMalignancy -->
+
+    <Thing rdf:about="&acgt;HighMalignancy">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#IntermediateMalignancy -->
+
+    <Thing rdf:about="&acgt;IntermediateMalignancy">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#IntermediateToxicity -->
+
+    <Thing rdf:about="&acgt;IntermediateToxicity">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#LP -->
+
+    <Thing rdf:about="&acgt;LP">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Left -->
+
+    <Thing rdf:about="&acgt;Left">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#LowMalignancy -->
+
+    <Thing rdf:about="&acgt;LowMalignancy">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#M -->
+
+    <Thing rdf:about="&acgt;M">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#MP -->
+
+    <Thing rdf:about="&acgt;MP">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#MildToxicity -->
+
+    <Thing rdf:about="&acgt;MildToxicity">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#NoMalignancy -->
+
+    <Thing rdf:about="&acgt;NoMalignancy">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#NoToxicity -->
+
+    <Thing rdf:about="&acgt;NoToxicity">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#OM -->
+
+    <Thing rdf:about="&acgt;OM">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#OP -->
+
+    <Thing rdf:about="&acgt;OP">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#OX -->
+
+    <Thing rdf:about="&acgt;OX">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Palliative -->
+
+    <Thing rdf:about="&acgt;Palliative">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Present -->
+
+    <Thing rdf:about="&acgt;Present">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Right -->
+
+    <Thing rdf:about="&acgt;Right">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#SIOP2001/GPOH -->
+
+    <Thing rdf:about="&acgt;SIOP2001/GPOH">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#SIOP2001/GPOHClinicalTrial -->
+
+    <Thing rdf:about="&acgt;SIOP2001/GPOHClinicalTrial">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#SevereToxicity -->
+
+    <Thing rdf:about="&acgt;SevereToxicity">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#StageI -->
+
+    <Thing rdf:about="&acgt;StageI">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <rdfs:comment rdf:datatype="&xsd;string">definition: Tumor confined to kidney and completely resected</rdfs:comment>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#StageII -->
+
+    <Thing rdf:about="&acgt;StageII">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <rdfs:comment rdf:datatype="&xsd;string">definition: Microscopic residual tumor, tumor penetration through renal capsule</rdfs:comment>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#StageIII -->
+
+    <Thing rdf:about="&acgt;StageIII">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <rdfs:comment rdf:datatype="&xsd;string">definition: Gross residual disease confined to abdomen, lymph node involvement, diffuse peritoneal contamination (tumor rupture)</rdfs:comment>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#StageIV -->
+
+    <Thing rdf:about="&acgt;StageIV">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <rdfs:comment rdf:datatype="&xsd;string">definition: Hematogenous Metastases: lung, noncontiguous liver, bone, and brain</rdfs:comment>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#StageV -->
+
+    <Thing rdf:about="&acgt;StageV">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+        <rdfs:comment rdf:datatype="&xsd;string">definition: Bilateral renal involvement at diagnosis</rdfs:comment>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#Structural -->
+
+    <Thing rdf:about="&acgt;Structural">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#TM -->
+
+    <Thing rdf:about="&acgt;TM">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#TP -->
+
+    <Thing rdf:about="&acgt;TP">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- http://www.ifomis.org/acgt/1.0#UnclassifiableMalignancy -->
+
+    <Thing rdf:about="&acgt;UnclassifiableMalignancy">
+        <rdf:type rdf:resource="&owl;NamedIndividual"/>
+    </Thing>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;Curative"/>
+            <rdf:Description rdf:about="&acgt;Palliative"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;IntermediateToxicity"/>
+            <rdf:Description rdf:about="&acgt;MildToxicity"/>
+            <rdf:Description rdf:about="&acgt;SevereToxicity"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;BRGrade1"/>
+            <rdf:Description rdf:about="&acgt;BRGrade2"/>
+            <rdf:Description rdf:about="&acgt;BRGrade3"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;HERATrial"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;DN"/>
+            <rdf:Description rdf:about="&acgt;LP"/>
+            <rdf:Description rdf:about="&acgt;M"/>
+            <rdf:Description rdf:about="&acgt;MP"/>
+            <rdf:Description rdf:about="&acgt;OM"/>
+            <rdf:Description rdf:about="&acgt;OP"/>
+            <rdf:Description rdf:about="&acgt;OX"/>
+            <rdf:Description rdf:about="&acgt;TM"/>
+            <rdf:Description rdf:about="&acgt;TP"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;Center"/>
+            <rdf:Description rdf:about="&acgt;Left"/>
+            <rdf:Description rdf:about="&acgt;Right"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;FuhrmanGradeI"/>
+            <rdf:Description rdf:about="&acgt;FuhrmanGradeII"/>
+            <rdf:Description rdf:about="&acgt;FuhrmanGradeIII"/>
+            <rdf:Description rdf:about="&acgt;FuhrmanGradeIV"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;G1"/>
+            <rdf:Description rdf:about="&acgt;G2"/>
+            <rdf:Description rdf:about="&acgt;G3"/>
+            <rdf:Description rdf:about="&acgt;G4"/>
+            <rdf:Description rdf:about="&acgt;GX"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;StageI"/>
+            <rdf:Description rdf:about="&acgt;StageII"/>
+            <rdf:Description rdf:about="&acgt;StageIII"/>
+            <rdf:Description rdf:about="&acgt;StageIV"/>
+            <rdf:Description rdf:about="&acgt;StageV"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;Functional"/>
+            <rdf:Description rdf:about="&acgt;Structural"/>
+        </distinctMembers>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.2.3.22702) http://owlapi.sourceforge.net -->
+
