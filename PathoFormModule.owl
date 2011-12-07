@@ -48,11 +48,11 @@
      xmlns:AT="&acgt;AT/"
      xmlns:span="http://www.ifomis.org/bfo/1.1/span#">
     <Ontology rdf:about="http://www.ifomis.org/acgt/1.0">
+        <dc:title rdf:datatype="&xsd;string">ACGT Master Ontology</dc:title>
         <dc:creator rdf:datatype="&xsd;string">Cristian Cocos</dc:creator>
         <dc:creator rdf:datatype="&xsd;string">Holger Stenzhorn</dc:creator>
         <dc:publisher rdf:datatype="&xsd;string">Insitute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
         <dc:creator rdf:datatype="&xsd;string">Mathias Brochhausen</dc:creator>
-        <dc:title rdf:datatype="&xsd;string">Pathological Formation Module</dc:title>
         <dc:creator rdf:datatype="&xsd;string">Sarah Lerch</dc:creator>
         <dc:creator>Ulf Schwarz</dc:creator>
         <imports rdf:resource="http://www.ifomis.org/hdot"/>
@@ -1960,14 +1960,14 @@ Short for Atypical Teratoid/Rhabdoid Tumor</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&acgt;Neoplasm"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&acgt;hasMetastasis"/>
-                <cardinality rdf:datatype="&xsd;nonNegativeInteger">0</cardinality>
+                <onProperty rdf:resource="&acgt;hasMalignancy"/>
+                <hasValue rdf:resource="&acgt;NoMalignancy"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&acgt;hasMalignancy"/>
-                <hasValue rdf:resource="&acgt;NoMalignancy"/>
+                <onProperty rdf:resource="&acgt;hasMetastasis"/>
+                <cardinality rdf:datatype="&xsd;nonNegativeInteger">0</cardinality>
             </Restriction>
         </rdfs:subClassOf>
         <disjointWith rdf:resource="&acgt;MalignNeoplasm"/>
@@ -2336,13 +2336,43 @@ MRT is short for Malign Rhabdoid Tumor</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&acgt;Neoplasm"/>
         <rdfs:subClassOf>
             <Restriction>
+                <onProperty rdf:resource="&acgt;hasRelapse"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;hasLocalRecurrence"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;regionalRecurrenceOf"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;localRecurrenceOf"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;relapseOf"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
                 <onProperty rdf:resource="&acgt;hasDistantRecurrence"/>
                 <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&acgt;distantRecurrenceOf"/>
+                <onProperty rdf:resource="&acgt;hasRegionalRecurrence"/>
                 <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
             </Restriction>
         </rdfs:subClassOf>
@@ -2350,6 +2380,12 @@ MRT is short for Malign Rhabdoid Tumor</rdfs:comment>
             <Restriction>
                 <onProperty rdf:resource="&acgt;relapseOf"/>
                 <allValuesFrom rdf:resource="&acgt;MalignNeoplasm"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&acgt;distantRecurrenceOf"/>
+                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2364,42 +2400,6 @@ MRT is short for Malign Rhabdoid Tumor</rdfs:comment>
                         </oneOf>
                     </Class>
                 </someValuesFrom>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&acgt;hasLocalRecurrence"/>
-                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&acgt;hasRelapse"/>
-                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&acgt;regionalRecurrenceOf"/>
-                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&acgt;relapseOf"/>
-                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&acgt;hasRegionalRecurrence"/>
-                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&acgt;localRecurrenceOf"/>
-                <minCardinality rdf:datatype="&xsd;nonNegativeInteger">0</minCardinality>
             </Restriction>
         </rdfs:subClassOf>
         <disjointWith rdf:resource="&acgt;SemiMalignNeoplasm"/>
@@ -3320,30 +3320,11 @@ MRT is short for Malign Rhabdoid Tumor</rdfs:comment>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&acgt;Curative"/>
-            <rdf:Description rdf:about="&acgt;Palliative"/>
-        </distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&acgt;IntermediateToxicity"/>
-            <rdf:Description rdf:about="&acgt;MildToxicity"/>
-            <rdf:Description rdf:about="&acgt;SevereToxicity"/>
-        </distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&acgt;BRGrade1"/>
-            <rdf:Description rdf:about="&acgt;BRGrade2"/>
-            <rdf:Description rdf:about="&acgt;BRGrade3"/>
-        </distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&acgt;HERATrial"/>
+            <rdf:Description rdf:about="&acgt;G1"/>
+            <rdf:Description rdf:about="&acgt;G2"/>
+            <rdf:Description rdf:about="&acgt;G3"/>
+            <rdf:Description rdf:about="&acgt;G4"/>
+            <rdf:Description rdf:about="&acgt;GX"/>
         </distinctMembers>
     </rdf:Description>
     <rdf:Description>
@@ -3363,28 +3344,15 @@ MRT is short for Malign Rhabdoid Tumor</rdfs:comment>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&acgt;Center"/>
-            <rdf:Description rdf:about="&acgt;Left"/>
-            <rdf:Description rdf:about="&acgt;Right"/>
+            <rdf:Description rdf:about="&acgt;Functional"/>
+            <rdf:Description rdf:about="&acgt;Structural"/>
         </distinctMembers>
     </rdf:Description>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&acgt;FuhrmanGradeI"/>
-            <rdf:Description rdf:about="&acgt;FuhrmanGradeII"/>
-            <rdf:Description rdf:about="&acgt;FuhrmanGradeIII"/>
-            <rdf:Description rdf:about="&acgt;FuhrmanGradeIV"/>
-        </distinctMembers>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDifferent"/>
-        <distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&acgt;G1"/>
-            <rdf:Description rdf:about="&acgt;G2"/>
-            <rdf:Description rdf:about="&acgt;G3"/>
-            <rdf:Description rdf:about="&acgt;G4"/>
-            <rdf:Description rdf:about="&acgt;GX"/>
+            <rdf:Description rdf:about="&acgt;Curative"/>
+            <rdf:Description rdf:about="&acgt;Palliative"/>
         </distinctMembers>
     </rdf:Description>
     <rdf:Description>
@@ -3400,8 +3368,40 @@ MRT is short for Malign Rhabdoid Tumor</rdfs:comment>
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDifferent"/>
         <distinctMembers rdf:parseType="Collection">
-            <rdf:Description rdf:about="&acgt;Functional"/>
-            <rdf:Description rdf:about="&acgt;Structural"/>
+            <rdf:Description rdf:about="&acgt;BRGrade1"/>
+            <rdf:Description rdf:about="&acgt;BRGrade2"/>
+            <rdf:Description rdf:about="&acgt;BRGrade3"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;FuhrmanGradeI"/>
+            <rdf:Description rdf:about="&acgt;FuhrmanGradeII"/>
+            <rdf:Description rdf:about="&acgt;FuhrmanGradeIII"/>
+            <rdf:Description rdf:about="&acgt;FuhrmanGradeIV"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;HERATrial"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;IntermediateToxicity"/>
+            <rdf:Description rdf:about="&acgt;MildToxicity"/>
+            <rdf:Description rdf:about="&acgt;SevereToxicity"/>
+        </distinctMembers>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="&acgt;Center"/>
+            <rdf:Description rdf:about="&acgt;Left"/>
+            <rdf:Description rdf:about="&acgt;Right"/>
         </distinctMembers>
     </rdf:Description>
 </rdf:RDF>
