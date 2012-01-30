@@ -37,17 +37,18 @@
      xmlns:obo2="http://www.ifomis.org/chronious/mlocc#&obo;"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:obo3="&hdot;http://purl.obolibrary.org/obo/"
-     xmlns:span="http://www.ifomis.org/bfo/1.1/span#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <Ontology rdf:about="http://www.ifomis.org/hdot">
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:span="http://www.ifomis.org/bfo/1.1/span#">
+    <Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/hdot">
         <dc:title rdf:datatype="&xsd;string">Health Data Ontology Trunk  (HDOT)</dc:title>
         <dc:publisher rdf:datatype="&xsd;string">Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
         <dc:date rdf:datatype="&xsd;string">June 10, 2011</dc:date>
         <dc:creator rdf:datatype="&xsd;string">Luc Schneider</dc:creator>
         <dc:source rdf:datatype="&xsd;string">Middle Layer Ontology For Clinical Care (MLOCC)</dc:source>
         <dc:creator rdf:datatype="&xsd;string">Ulf Schwarz</dc:creator>
-        <versionInfo>1</versionInfo>
         <dc:creator>Mathias Brochhausen</dc:creator>
+        <versionInfo>1</versionInfo>
+        <versionIRI rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot"/>
         <imports rdf:resource="&obo;iao.owl"/>
         <imports rdf:resource="http://www.ifomis.org/bfo/1.1"/>
     </Ontology>
@@ -748,6 +749,14 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/OBI_0000011 -->
+
+    <rdf:Description rdf:about="&obo;OBI_0000011">
+        <rdfs:subClassOf rdf:resource="&mlocc;IntentionalProcess"/>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/OBI_0000112 -->
 
     <Class rdf:about="&obo;OBI_0000112">
@@ -853,6 +862,13 @@
         <rdfs:subClassOf rdf:resource="&snap;Disposition"/>
         <rdfs:subClassOf>
             <Restriction>
+                <onProperty rdf:resource="&mlocc;realizedBy"/>
+                <onClass rdf:resource="&obo;OGMS_0000063"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
                 <onProperty rdf:resource="&mlocc;isDispositionOf"/>
                 <someValuesFrom>
                     <Class>
@@ -862,13 +878,6 @@
                         </unionOf>
                     </Class>
                 </someValuesFrom>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&mlocc;realizedBy"/>
-                <onClass rdf:resource="&obo;OGMS_0000063"/>
-                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>Examples: InfectiousDisease, Syndrom, Allergy, Alcoholism</rdfs:comment>
@@ -914,15 +923,15 @@
         <rdfs:subClassOf rdf:resource="http://www.ifomis.org/chronious/mlocc#&obo;OGMS_0000060"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&ro;has_part"/>
-                <someValuesFrom rdf:resource="&hdot;http://purl.obolibrary.org/obo/OGMS_0000061"/>
+                <onProperty rdf:resource="&mlocc;realizes"/>
+                <onClass rdf:resource="&obo;OGMS_0000031"/>
+                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;realizes"/>
-                <onClass rdf:resource="&obo;OGMS_0000031"/>
-                <qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</qualifiedCardinality>
+                <onProperty rdf:resource="&ro;has_part"/>
+                <someValuesFrom rdf:resource="&hdot;http://purl.obolibrary.org/obo/OGMS_0000061"/>
             </Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119>http://ontology.buffalo.edu/medo/Disease_and_Diagnosis.pdf</obo:IAO_0000119>
@@ -991,7 +1000,13 @@
 
     <Class rdf:about="&obo;OGMS_0000092">
         <rdfs:label>life course</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&span;Process"/>
+        <rdfs:subClassOf rdf:resource="&mlocc;NaturalProcess"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&ro;has_participant"/>
+                <someValuesFrom rdf:resource="&mlocc;Organism"/>
+            </Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&ro;has_part"/>
@@ -1003,12 +1018,6 @@
                         </unionOf>
                     </Class>
                 </someValuesFrom>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&ro;has_participant"/>
-                <someValuesFrom rdf:resource="&mlocc;Organism"/>
             </Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119>http://code.google.com/p/ogms/issues/detail?id=38</obo:IAO_0000119>
@@ -1045,7 +1054,7 @@
 
     <Class rdf:about="&obo;OGMS_0000096">
         <rdfs:label>health care process</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&mlocc;IntentionalProcess"/>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&mlocc;undergoneBy"/>
@@ -1305,6 +1314,9 @@
         <rdfs:label>abnormal</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;Canonicality"/>
         <disjointWith rdf:resource="&hdot;Normal"/>
+        <obo:IAO_0000115>the quality of a property which is not expected from the individual in which its is found</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <rdfs:comment>An abnormal property is often but not always pathologic: A high above average IQ is abnormal but not pathologic but a very high blood pressure is pathologic.</rdfs:comment>
     </Class>
     
 
@@ -1358,6 +1370,9 @@
     <Class rdf:about="&mlocc;Acute">
         <rdfs:label>acute</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;Recurrency"/>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000115>rapid emergence of symptoms, short duration of symptoms
+</obo:IAO_0000115>
     </Class>
     
 
@@ -1368,6 +1383,12 @@
         <rdfs:label>addiction</rdfs:label>
         <rdfs:label>dependence</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000031"/>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&mlocc;isDispositionOf"/>
+                <someValuesFrom rdf:resource="&mlocc;Organism"/>
+            </Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&mlocc;outcomeOf"/>
@@ -1382,12 +1403,6 @@
                         </intersectionOf>
                     </Class>
                 </someValuesFrom>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&mlocc;isDispositionOf"/>
-                <someValuesFrom rdf:resource="&mlocc;Organism"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -1407,7 +1422,7 @@
 
     <Class rdf:about="&mlocc;AdministrativeProcess">
         <rdfs:label>administrative process</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&mlocc;IntentionalProcess"/>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <disjointWith rdf:resource="&mlocc;MolecularBiologyTechnique"/>
         <rdfs:comment>Example: ClinicalDocumentation, PatientAdmission, RadiotherapyPlanning, Signing</rdfs:comment>
     </Class>
@@ -2015,7 +2030,7 @@
     <Class rdf:about="&mlocc;CalibrationProcess">
         <rdfs:label>calibration</rdfs:label>
         <rdfs:label>calibration process</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&mlocc;IntentionalProcess"/>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&ro;has_agent"/>
@@ -2288,6 +2303,8 @@
     <Class rdf:about="&mlocc;Chronic">
         <rdfs:label>chronic</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;Recurrency"/>
+        <obo:IAO_0000115>constant after emergence, long duration of symptoms</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -2467,12 +2484,6 @@
         <rdfs:subClassOf rdf:resource="&snap;Role"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;hasRelatum"/>
-                <someValuesFrom rdf:resource="&obo;OGMS_0000031"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
                 <onProperty rdf:resource="&mlocc;isRoleOf"/>
                 <someValuesFrom>
                     <Class>
@@ -2483,6 +2494,12 @@
                         </unionOf>
                     </Class>
                 </someValuesFrom>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&mlocc;hasRelatum"/>
+                <someValuesFrom rdf:resource="&obo;OGMS_0000031"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -2496,6 +2513,12 @@
         <rdfs:subClassOf rdf:resource="&snap;Role"/>
         <rdfs:subClassOf>
             <Restriction>
+                <onProperty rdf:resource="&mlocc;hasRelatum"/>
+                <someValuesFrom rdf:resource="&obo;OGMS_0000031"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
                 <onProperty rdf:resource="&mlocc;isRoleOf"/>
                 <someValuesFrom>
                     <Class>
@@ -2506,12 +2529,6 @@
                         </unionOf>
                     </Class>
                 </someValuesFrom>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&mlocc;hasRelatum"/>
-                <someValuesFrom rdf:resource="&obo;OGMS_0000031"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -2610,6 +2627,8 @@
         <rdfs:label>cost</rdfs:label>
         <rdfs:label>economic burden</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;Magnitude"/>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000115>costs to a population due to disease, covering treatment, time-loss and lost productivity</obo:IAO_0000115>
     </Class>
     
 
@@ -2634,6 +2653,8 @@
     <Class rdf:about="&mlocc;Curable">
         <rdfs:label>curable</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;Responsiveness"/>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000115>Pathological process can be ended. Disease can be eliminated</obo:IAO_0000115>
     </Class>
     
 
@@ -2696,6 +2717,9 @@
                 <someValuesFrom rdf:resource="&mlocc;Population"/>
             </Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000115>deaths in a certain number of inhabitants during a certain time-interval</obo:IAO_0000115>
+        <rdfs:comment>usually units of deaths per 1000 individuals per year, one unit equals 0,1 %</rdfs:comment>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -2911,14 +2935,14 @@
         <rdfs:subClassOf rdf:resource="&mlocc;Magnitude"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;isQualityof"/>
-                <someValuesFrom rdf:resource="&mlocc;HumanBeing"/>
+                <onProperty rdf:resource="&mlocc;measureFor"/>
+                <someValuesFrom rdf:resource="&mlocc;SocialBurden"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;measureFor"/>
-                <someValuesFrom rdf:resource="&mlocc;SocialBurden"/>
+                <onProperty rdf:resource="&mlocc;isQualityof"/>
+                <someValuesFrom rdf:resource="&mlocc;HumanBeing"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>sum of years lost because of premature mortality and years of life lived with disability, adjusted for the severity of disability</rdfs:comment>
@@ -3094,18 +3118,18 @@
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&mlocc;isRoleOf"/>
-                <someValuesFrom rdf:resource="&mlocc;BiologicalMacromolecule"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&mlocc;isRoleOf"/>
                 <someValuesFrom>
                     <Restriction>
                         <onProperty rdf:resource="&mlocc;meansOf"/>
                         <someValuesFrom rdf:resource="&mlocc;BiochemicalProcess"/>
                     </Restriction>
                 </someValuesFrom>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&mlocc;isRoleOf"/>
+                <someValuesFrom rdf:resource="&mlocc;BiologicalMacromolecule"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -3131,7 +3155,7 @@
 
     <Class rdf:about="&mlocc;EstimationProcess">
         <rdfs:label>estimation process</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&mlocc;IntentionalProcess"/>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&ro;has_agent"/>
@@ -3159,6 +3183,12 @@
         <rdfs:subClassOf rdf:resource="&mlocc;OrganismalCondition"/>
         <rdfs:subClassOf>
             <Restriction>
+                <onProperty rdf:resource="&mlocc;isQualityof"/>
+                <someValuesFrom rdf:resource="&mlocc;Organism"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
                 <onProperty rdf:resource="&mlocc;causedBy"/>
                 <someValuesFrom>
                     <Restriction>
@@ -3166,12 +3196,6 @@
                         <someValuesFrom rdf:resource="&mlocc;RiskFactor"/>
                     </Restriction>
                 </someValuesFrom>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&mlocc;isQualityof"/>
-                <someValuesFrom rdf:resource="&mlocc;Organism"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -3290,14 +3314,14 @@
         <rdfs:subClassOf rdf:resource="&mlocc;FrequencyOfVisits"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;measureFor"/>
-                <someValuesFrom rdf:resource="&mlocc;MorbidityLevel"/>
+                <onProperty rdf:resource="&mlocc;isQualityof"/>
+                <someValuesFrom rdf:resource="&mlocc;SequenceOfHospitalizations"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;isQualityof"/>
-                <someValuesFrom rdf:resource="&mlocc;SequenceOfHospitalizations"/>
+                <onProperty rdf:resource="&mlocc;measureFor"/>
+                <someValuesFrom rdf:resource="&mlocc;MorbidityLevel"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -3636,14 +3660,14 @@
         <rdfs:subClassOf rdf:resource="&mlocc;CardiacCycleProcess"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;hasQuality"/>
-                <someValuesFrom rdf:resource="&mlocc;HeartRate"/>
+                <onProperty rdf:resource="&ro;has_part"/>
+                <someValuesFrom rdf:resource="&mlocc;HeartBeat"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&ro;has_part"/>
-                <someValuesFrom rdf:resource="&mlocc;HeartBeat"/>
+                <onProperty rdf:resource="&mlocc;hasQuality"/>
+                <someValuesFrom rdf:resource="&mlocc;HeartRate"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -3773,25 +3797,25 @@
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&mlocc;hasQuality"/>
-                <someValuesFrom rdf:resource="&mlocc;BodyMassIndex"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&mlocc;hasQuality"/>
-                <someValuesFrom rdf:resource="&mlocc;Sex"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&mlocc;hasQuality"/>
                 <someValuesFrom rdf:resource="&mlocc;Height"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&mlocc;hasQuality"/>
+                <someValuesFrom rdf:resource="&mlocc;BodyMassIndex"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&mlocc;hasQuality"/>
                 <someValuesFrom rdf:resource="&mlocc;HeartRate"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&mlocc;hasQuality"/>
+                <someValuesFrom rdf:resource="&mlocc;Sex"/>
             </Restriction>
         </rdfs:subClassOf>
         <disjointWith rdf:resource="&mlocc;Microorganism"/>
@@ -3953,7 +3977,7 @@
 
     <Class rdf:about="&mlocc;InformationProcess">
         <rdfs:label>information process</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&mlocc;IntentionalProcess"/>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
     </Class>
     
 
@@ -4085,6 +4109,9 @@
         <rdfs:label>invasive</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;Invasiveness"/>
         <disjointWith rdf:resource="&mlocc;NonInvasive"/>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000115>the quality of a medical process which requires significant contact to the organism</obo:IAO_0000115>
+        <rdfs:comment>The patient&#39;s consent is often statutory</rdfs:comment>
     </Class>
     
 
@@ -4108,6 +4135,8 @@
                 <someValuesFrom rdf:resource="&mlocc;MedicalProcess"/>
             </Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000115>the quality of a procedure determined by the necessary extent of physical contact during the procedure.</obo:IAO_0000115>
     </Class>
     
 
@@ -4133,6 +4162,8 @@
                 <someValuesFrom rdf:resource="&mlocc;OrganismalIndependentContinuant"/>
             </Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000115>the quality of parts of an organism to be localized on a certain side of the body</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -4259,6 +4290,8 @@
         <rdfs:label>long-acting</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;ActingDuration"/>
         <disjointWith rdf:resource="&mlocc;ShortActing"/>
+        <obo:IAO_0000115>the quality of a pharmaceutical substances to influence physical and chemical processes in an organisms for a long duration</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
         <rdfs:comment>12 hours +, up to 24 hours</rdfs:comment>
     </Class>
     
@@ -4313,12 +4346,6 @@
         <rdfs:subClassOf rdf:resource="&mlocc;Magnitude"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;isQualityof"/>
-                <someValuesFrom rdf:resource="&mlocc;HumanBeing"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
                 <onProperty rdf:resource="&mlocc;outcomeOf"/>
                 <someValuesFrom>
                     <Class>
@@ -4333,6 +4360,14 @@
                 </someValuesFrom>
             </Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&mlocc;isQualityof"/>
+                <someValuesFrom rdf:resource="&mlocc;HumanBeing"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>a value between 0 and 5 on a scale by the Medical Research Council to measure muscle strength</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -4366,6 +4401,9 @@
     <Class rdf:about="&mlocc;Magnitude">
         <rdfs:label>magnitude</rdfs:label>
         <rdfs:subClassOf rdf:resource="&snap;Quality"/>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000232>definition needs elaboration</obo:IAO_0000232>
+        <obo:IAO_0000115>the measurement for a scalable quality</obo:IAO_0000115>
     </Class>
     
 
@@ -4571,12 +4609,6 @@
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000104"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;plans"/>
-                <someValuesFrom rdf:resource="&mlocc;TherapeuticProcess"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
                 <onProperty rdf:resource="&mlocc;issuedBy"/>
                 <someValuesFrom>
                     <Restriction>
@@ -4584,6 +4616,12 @@
                         <someValuesFrom rdf:resource="&mlocc;Physician"/>
                     </Restriction>
                 </someValuesFrom>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&mlocc;plans"/>
+                <someValuesFrom rdf:resource="&mlocc;TherapeuticProcess"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -4603,17 +4641,17 @@
                 </unionOf>
             </Class>
         </equivalentClass>
-        <rdfs:subClassOf rdf:resource="&mlocc;IntentionalProcess"/>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&ro;has_agent"/>
-                <someValuesFrom rdf:resource="&mlocc;HumanBeing"/>
-            </Restriction>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&mlocc;undergoneBy"/>
                 <someValuesFrom rdf:resource="&mlocc;Organism"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&ro;has_agent"/>
+                <someValuesFrom rdf:resource="&mlocc;HumanBeing"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -4708,7 +4746,7 @@
 
     <Class rdf:about="&mlocc;MolecularBiologyTechnique">
         <rdfs:label>molecular biology technique</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&mlocc;IntentionalProcess"/>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&ro;has_agent"/>
@@ -4791,6 +4829,8 @@
                 <someValuesFrom rdf:resource="&mlocc;DeathRate"/>
             </Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000115>the quality of a population measured by the death rate</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -4918,6 +4958,10 @@
     <Class rdf:about="&mlocc;NonInvasive">
         <rdfs:label>non-invasive</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;Invasiveness"/>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <rdfs:comment>open question: what about minimally invasive procedures? Should we put them to invasive or non-inavsive?
+</rdfs:comment>
+        <rdfs:comment>the quality of a medical process not to be require any significant amount of direct physical contact</rdfs:comment>
     </Class>
     
 
@@ -4976,6 +5020,8 @@
                 </someValuesFrom>
             </Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000115>the quality to effect an organism in a negative way, i.e. to lead to pathological changes</obo:IAO_0000115>
     </Class>
     
 
@@ -5180,6 +5226,12 @@
         <rdfs:subClassOf rdf:resource="&mlocc;BiologicalIndependentContinuant"/>
         <rdfs:subClassOf>
             <Restriction>
+                <onProperty rdf:resource="&mlocc;hasQuality"/>
+                <someValuesFrom rdf:resource="&mlocc;Age"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
                 <onProperty rdf:resource="&mlocc;undergoes"/>
                 <someValuesFrom rdf:resource="&mlocc;Death"/>
             </Restriction>
@@ -5187,7 +5239,7 @@
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&mlocc;hasQuality"/>
-                <someValuesFrom rdf:resource="&mlocc;Age"/>
+                <someValuesFrom rdf:resource="&mlocc;Weight"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -5200,12 +5252,6 @@
             <Restriction>
                 <onProperty rdf:resource="&ro;has_part"/>
                 <someValuesFrom rdf:resource="&mlocc;OrganismalIndependentContinuant"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&mlocc;hasQuality"/>
-                <someValuesFrom rdf:resource="&mlocc;Weight"/>
             </Restriction>
         </rdfs:subClassOf>
         <disjointWith rdf:resource="&mlocc;OrganismalIndependentContinuant"/>
@@ -5543,14 +5589,14 @@
         <rdfs:subClassOf rdf:resource="&mlocc;ChemicalSubstance"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&ro;part_of"/>
-                <someValuesFrom rdf:resource="&mlocc;DosageForm"/>
+                <onProperty rdf:resource="&mlocc;hasRole"/>
+                <someValuesFrom rdf:resource="&mlocc;Drug"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;hasRole"/>
-                <someValuesFrom rdf:resource="&mlocc;Drug"/>
+                <onProperty rdf:resource="&ro;part_of"/>
+                <someValuesFrom rdf:resource="&mlocc;DosageForm"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -5574,14 +5620,14 @@
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000090"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;hasMeans"/>
-                <someValuesFrom rdf:resource="&mlocc;PharmaceuticalSubstance"/>
+                <onProperty rdf:resource="&ro;has_part"/>
+                <someValuesFrom rdf:resource="&hdot;PharmacologicalProcedure"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&ro;has_part"/>
-                <someValuesFrom rdf:resource="&hdot;PharmacologicalProcedure"/>
+                <onProperty rdf:resource="&mlocc;hasMeans"/>
+                <someValuesFrom rdf:resource="&mlocc;PharmaceuticalSubstance"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -5825,6 +5871,9 @@
                 <someValuesFrom rdf:resource="&mlocc;Population"/>
             </Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000115>people with poor health related to certain number of members of the population</obo:IAO_0000115>
+        <rdfs:comment>definition needs elaboration</rdfs:comment>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -5834,6 +5883,8 @@
     <Class rdf:about="&mlocc;Preventable">
         <rdfs:label>preventable</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;Responsiveness"/>
+        <obo:IAO_0000115>The occurrence of pathologic process can be averted.</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -5898,6 +5949,9 @@
         <rdfs:label>progressive</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;Progressiveness"/>
         <disjointWith rdf:resource="&mlocc;Stable"/>
+        <obo:IAO_0000115>the quality of a disease which is worsening.
+</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -5914,7 +5968,7 @@
                 </unionOf>
             </Class>
         </equivalentClass>
-        <rdfs:subClassOf rdf:resource="&snap;Quality"/>
+        <rdfs:subClassOf rdf:resource="&mlocc;Recurrency"/>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&mlocc;isQualityof"/>
@@ -5931,6 +5985,8 @@
                 </someValuesFrom>
             </Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000115>prognosis of a pathological process with respect to worsening</obo:IAO_0000115>
     </Class>
     
 
@@ -6166,6 +6222,8 @@
                 </someValuesFrom>
             </Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000115>the quality of a pathological process, i.e. disease, which can be influenced by medical treatment </obo:IAO_0000115>
     </Class>
     
 
@@ -6191,6 +6249,8 @@
                 </someValuesFrom>
             </Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000115> the quality of a pathological process of which effects can be undone</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -6259,6 +6319,8 @@
                 <someValuesFrom rdf:resource="&mlocc;PharmaceuticalSubstance"/>
             </Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000115>the quality of a pharmaceutical substance to be fed in a certain way to the patients body</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -6305,14 +6367,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&ro;has_participant"/>
-                <someValuesFrom rdf:resource="&mlocc;EmergencyDepartment"/>
+                <onProperty rdf:resource="&ro;has_part"/>
+                <someValuesFrom rdf:resource="&obo;OGMS_0000101"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&ro;has_part"/>
-                <someValuesFrom rdf:resource="&obo;OGMS_0000101"/>
+                <onProperty rdf:resource="&ro;has_participant"/>
+                <someValuesFrom rdf:resource="&mlocc;EmergencyDepartment"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -6326,6 +6388,12 @@
         <rdfs:subClassOf rdf:resource="&mlocc;SequenceOfVisits"/>
         <rdfs:subClassOf>
             <Restriction>
+                <onProperty rdf:resource="&ro;has_participant"/>
+                <someValuesFrom rdf:resource="&mlocc;Hospital"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
                 <onProperty rdf:resource="&mlocc;hasQuality"/>
                 <someValuesFrom rdf:resource="&mlocc;FrequencyOfHospitalizations"/>
             </Restriction>
@@ -6334,12 +6402,6 @@
             <Restriction>
                 <onProperty rdf:resource="&ro;has_part"/>
                 <someValuesFrom rdf:resource="&obo;OGMS_0000098"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&ro;has_participant"/>
-                <someValuesFrom rdf:resource="&mlocc;Hospital"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -6390,12 +6452,6 @@
         <rdfs:subClassOf rdf:resource="&mlocc;AdministrativeProcess"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;hasQuality"/>
-                <someValuesFrom rdf:resource="&mlocc;FrequencyOfVisits"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
                 <onProperty rdf:resource="&ro;has_part"/>
                 <someValuesFrom rdf:resource="&obo;OGMS_0000097"/>
             </Restriction>
@@ -6438,6 +6494,12 @@
                     </Restriction>
                 </intersectionOf>
             </Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&mlocc;hasQuality"/>
+                <someValuesFrom rdf:resource="&mlocc;FrequencyOfVisits"/>
+            </Restriction>
         </rdfs:subClassOf>
     </Class>
     
@@ -6487,6 +6549,8 @@
     <Class rdf:about="&mlocc;ShortActing">
         <rdfs:label>short-acting</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;ActingDuration"/>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000115>the quality of a pharmaceutical substances to influence physical and chemical processes in an organisms for a short duration</obo:IAO_0000115>
         <rdfs:comment>6-9 hours</rdfs:comment>
     </Class>
     
@@ -6508,8 +6572,8 @@
         <rdfs:subClassOf rdf:resource="&mlocc;Malfunction"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;isDispositionOf"/>
-                <someValuesFrom rdf:resource="&mlocc;Organism"/>
+                <onProperty rdf:resource="&mlocc;causes"/>
+                <someValuesFrom rdf:resource="&mlocc;Fatigue"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -6530,8 +6594,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&mlocc;causes"/>
-                <someValuesFrom rdf:resource="&mlocc;Fatigue"/>
+                <onProperty rdf:resource="&mlocc;isDispositionOf"/>
+                <someValuesFrom rdf:resource="&mlocc;Organism"/>
             </Restriction>
         </rdfs:subClassOf>
     </Class>
@@ -6596,6 +6660,9 @@
                 <someValuesFrom rdf:resource="&mlocc;DisabilityAdjustedLifeYear"/>
             </Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment>measured in DALY</rdfs:comment>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000115>the quality of a population to be afflicted by disease compared to completely healthy conditions</obo:IAO_0000115>
     </Class>
     
 
@@ -6676,6 +6743,9 @@
     <Class rdf:about="&mlocc;Stable">
         <rdfs:label>stable</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;Progressiveness"/>
+        <rdfs:comment>definition needs elaboration</rdfs:comment>
+        <obo:IAO_0000115>the quality of a disease which is not worsening</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -6977,7 +7047,9 @@
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:comment rdf:datatype="&xsd;string">applies primarily to ChemicalSubstance</rdfs:comment>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
         <rdfs:comment>Examples: Cardiotoxicity, Hematotoxicity, Neurotoxicity</rdfs:comment>
+        <obo:IAO_0000115>the quality of a substance to damage an organisms or its substructure</obo:IAO_0000115>
     </Class>
     
 
@@ -7015,6 +7087,9 @@
     <Class rdf:about="&mlocc;Treatable">
         <rdfs:label>treatable</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;Responsiveness"/>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <rdfs:comment>definition needs elaboration</rdfs:comment>
+        <obo:IAO_0000115>the effects of the pathologic process can be handled</obo:IAO_0000115>
     </Class>
     
 
@@ -7396,6 +7471,9 @@
                 <someValuesFrom rdf:resource="&mlocc;MorbidityLevel"/>
             </Restriction>
         </rdfs:subClassOf>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <rdfs:comment>YLD is labeled as “years living with disability” but it is usually taken as short term for “Years Lost due to Disability”. </rdfs:comment>
+        <obo:IAO_0000115>the number of years which are lost to the individual or the population due to disabilities and disease effects</obo:IAO_0000115>
     </Class>
     
 
@@ -7425,12 +7503,6 @@
         <rdfs:subClassOf rdf:resource="&mlocc;NaturalProcess"/>
         <rdfs:subClassOf>
             <Restriction>
-                <onProperty rdf:resource="&ro;part_of"/>
-                <someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
                 <onProperty rdf:resource="&mlocc;undergoneBy"/>
                 <someValuesFrom>
                     <Class>
@@ -7440,6 +7512,12 @@
                         </unionOf>
                     </Class>
                 </someValuesFrom>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
+                <onProperty rdf:resource="&ro;part_of"/>
+                <someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
             </Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>Examples: Bleeding, Coughing, CharacterChange, Diarrhea, Fibrosis, Headache, Hearing, Infection, Inflammation, GeneExpression, GeneticMutation, TumorDevelopment</rdfs:comment>
@@ -7461,6 +7539,9 @@
             </Class>
         </equivalentClass>
         <rdfs:subClassOf rdf:resource="&snap;Quality"/>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000112>The canonicality of an IQ in a certain human is determined by comparison to the expected IQ of human beings.</obo:IAO_0000112>
+        <obo:IAO_0000115>the quality of a property which is found in some member of a class to  related to the properties which are expected for members of this class. </obo:IAO_0000115>
     </Class>
     
 
@@ -7479,6 +7560,8 @@
     <Class rdf:about="&hdot;Normal">
         <rdfs:label>normal</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;Canonicality"/>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
+        <obo:IAO_0000115>the quality of a property which is expected for members of certain class</obo:IAO_0000115>
     </Class>
     
 
@@ -7488,15 +7571,6 @@
     <Class rdf:about="&hdot;PharmacologicalProcedure">
         <rdfs:label>pharmacological procedure</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;TherapeuticProcedure"/>
-    </Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot#Progressive -->
-
-    <Class rdf:about="&hdot;Progressive">
-        <rdfs:label>progressive</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&mlocc;Recurrency"/>
     </Class>
     
 
@@ -7515,6 +7589,8 @@
     <Class rdf:about="&hdot;Transient">
         <rdfs:label>transient</rdfs:label>
         <rdfs:subClassOf rdf:resource="&mlocc;Recurrency"/>
+        <obo:IAO_0000115>rapid emergence and instant vanishing of symptoms, reemergence possible</obo:IAO_0000115>
+        <obo:IAO_0000117>ifomis</obo:IAO_0000117>
     </Class>
     
 
@@ -7527,6 +7603,12 @@
         <rdfs:subClassOf rdf:resource="http://www.ifomis.org/chronious/mlocc#&obo;OGMS_0000060"/>
         <rdfs:subClassOf>
             <Restriction>
+                <onProperty rdf:resource="&mlocc;hasQuality"/>
+                <someValuesFrom rdf:resource="&mlocc;Abnormal"/>
+            </Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <Restriction>
                 <onProperty rdf:resource="&mlocc;realizes"/>
                 <someValuesFrom>
                     <Class>
@@ -7536,12 +7618,6 @@
                         </unionOf>
                     </Class>
                 </someValuesFrom>
-            </Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <Restriction>
-                <onProperty rdf:resource="&mlocc;hasQuality"/>
-                <someValuesFrom rdf:resource="&mlocc;Abnormal"/>
             </Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119>http://ontology.buffalo.edu/medo/Disease_and_Diagnosis.pdf</obo:IAO_0000119>
@@ -7561,17 +7637,9 @@
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&mlocc;OccupationalRehabilitationProcess"/>
-            <rdf:Description rdf:about="&mlocc;PhysicalRehabilitationProcess"/>
-            <rdf:Description rdf:about="&mlocc;VocationalRehabilitationProcess"/>
-        </members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&mlocc;GaseousAggregate"/>
-            <rdf:Description rdf:about="&mlocc;LiquidAggregate"/>
-            <rdf:Description rdf:about="&mlocc;SolidAggregate"/>
+            <rdf:Description rdf:about="&mlocc;PhysicalFunctioningAbility"/>
+            <rdf:Description rdf:about="&mlocc;PsychologicalFunctioningAbility"/>
+            <rdf:Description rdf:about="&mlocc;SocialFunctioningAbility"/>
         </members>
     </rdf:Description>
     <rdf:Description>
@@ -7585,26 +7653,9 @@
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&mlocc;PhysicalFunctioningAbility"/>
-            <rdf:Description rdf:about="&mlocc;PsychologicalFunctioningAbility"/>
-            <rdf:Description rdf:about="&mlocc;SocialFunctioningAbility"/>
-        </members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&mlocc;Acute"/>
-            <rdf:Description rdf:about="&mlocc;Chronic"/>
-            <rdf:Description rdf:about="&hdot;Progressive"/>
-            <rdf:Description rdf:about="&hdot;Transient"/>
-        </members>
-    </rdf:Description>
-    <rdf:Description>
-        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
-        <members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&mlocc;Female"/>
-            <rdf:Description rdf:about="&mlocc;Male"/>
-            <rdf:Description rdf:about="&mlocc;UndifferentiatedGender"/>
+            <rdf:Description rdf:about="&mlocc;OccupationalRehabilitationProcess"/>
+            <rdf:Description rdf:about="&mlocc;PhysicalRehabilitationProcess"/>
+            <rdf:Description rdf:about="&mlocc;VocationalRehabilitationProcess"/>
         </members>
     </rdf:Description>
     <rdf:Description>
@@ -7619,6 +7670,22 @@
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&mlocc;HighMalignancy"/>
+            <rdf:Description rdf:about="&mlocc;IntermediateMalignancy"/>
+            <rdf:Description rdf:about="&mlocc;LowMalignancy"/>
+        </members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&mlocc;Female"/>
+            <rdf:Description rdf:about="&mlocc;Male"/>
+            <rdf:Description rdf:about="&mlocc;UndifferentiatedGender"/>
+        </members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <members rdf:parseType="Collection">
             <rdf:Description rdf:about="&mlocc;Bilateral"/>
             <rdf:Description rdf:about="&mlocc;Left"/>
             <rdf:Description rdf:about="&mlocc;Midline"/>
@@ -7628,9 +7695,9 @@
     <rdf:Description>
         <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
         <members rdf:parseType="Collection">
-            <rdf:Description rdf:about="&mlocc;HighMalignancy"/>
-            <rdf:Description rdf:about="&mlocc;IntermediateMalignancy"/>
-            <rdf:Description rdf:about="&mlocc;LowMalignancy"/>
+            <rdf:Description rdf:about="&mlocc;GaseousAggregate"/>
+            <rdf:Description rdf:about="&mlocc;LiquidAggregate"/>
+            <rdf:Description rdf:about="&mlocc;SolidAggregate"/>
         </members>
     </rdf:Description>
 </rdf:RDF>
