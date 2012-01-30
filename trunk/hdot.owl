@@ -4062,6 +4062,7 @@
                 </someValuesFrom>
             </Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment>to be discussed: replace intentional process by planed process</rdfs:comment>
     </Class>
     
 
