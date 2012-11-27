@@ -227,7 +227,7 @@
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="&obo;OGMS_0000031"/>
+                <owl:complementOf rdf:resource="&obo;BFO_0000034"/>
             </owl:Class>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -238,7 +238,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="&obo;BFO_0000034"/>
+                <owl:complementOf rdf:resource="&obo;OGMS_0000031"/>
             </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">Disturbance, impairment or abnormality of function.</obo:IAO_0000115>
@@ -595,7 +595,7 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_029 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_029">
-        <rdfs:label>social object</rdfs:label>
+        <rdfs:label xml:lang="en">social object</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000031"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1650,12 +1650,6 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000015">
         <rdfs:label xml:lang="en">clinical history</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000014"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_028"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000055"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A series of statements representing health-relevant qualities of a patient and of a patient&#39;s family.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000015</obo:IAO_0000119>
     </owl:Class>
@@ -1678,12 +1672,6 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000018">
         <rdfs:label xml:lang="en">laboratory finding</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000014"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_028"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000056"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A representation of a quality of a specimen that is the output of a laboratory test and that can support an inference to an assertion about some quality of the patient.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000018</obo:IAO_0000119>
     </owl:Class>
@@ -1708,11 +1696,6 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:label xml:lang="en">symptom</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001018"/>
         <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf rdf:resource="&obo;OGMS_0000024"/>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
                 <owl:someValuesFrom>
@@ -1727,6 +1710,11 @@ PMID:12345</obo:IAO_0000112>
                     </owl:Class>
                 </owl:someValuesFrom>
             </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&obo;OGMS_0000024"/>
+            </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">(HDOT_CORE) A quality of a patient that is observed by the patient and is hypothesized by the patient to be a realization of a disease.</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">In contrast to the definition provided in OGMS, we assume that symptoms are qualities of continuants only. However, a sign may of course be the outcome of an occurrent.</rdfs:comment>
@@ -1758,11 +1746,6 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:label xml:lang="en">sign</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001018"/>
         <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf rdf:resource="&obo;OGMS_0000020"/>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
                 <owl:someValuesFrom>
@@ -1777,6 +1760,11 @@ PMID:12345</obo:IAO_0000112>
                     </owl:Class>
                 </owl:someValuesFrom>
             </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&obo;OGMS_0000020"/>
+            </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">(HDOT_CORE) A quality of a patient, a material entity that is part of a patient, any one of which is observed in a physical examination and is deemed by the clinician to be of clinical significance.</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">In contrast to the definition provided in OGMS, we assume that signs are qualities of continuants only. However, a sign may of course be the outcome of an occurrent.</rdfs:comment>
@@ -1859,14 +1847,14 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000113"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000045"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000061"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000061"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000113"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000045"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1944,15 +1932,15 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:label xml:lang="en">constitutional genetic disease</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_003"/>
         <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf rdf:resource="&obo;OGMS_0000034"/>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000113"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000051"/>
             </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&obo;OGMS_0000034"/>
+            </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A disease whose physical basis is a constitutional genetic disorder.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000035</obo:IAO_0000119>
@@ -2095,12 +2083,6 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000055">
         <rdfs:label xml:lang="en">clinical history taking</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002234"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000015"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">An interview in which a clinician elicits a clinical history from a patient or from a third party who is reporting on behalf of the patient.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000055</obo:IAO_0000119>
     </owl:Class>
@@ -2112,12 +2094,6 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000056">
         <rdfs:label xml:lang="en">laboratory test</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002234"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000018"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A measurement assay that has as input a patient-derived specimen, and as output a result that represents a quality of the specimen.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000056</obo:IAO_0000119>
     </owl:Class>
@@ -2129,12 +2105,6 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000057">
         <rdfs:label xml:lang="en">physical examination</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002234"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000083"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A sequence of acts of observing and measuring qualities of a patient performed by a clinician; measurements may occur with and without elicitation.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000057</obo:IAO_0000119>
     </owl:Class>
@@ -2195,12 +2165,6 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000182"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000118"/>
                 <owl:allValuesFrom>
                     <owl:Class>
@@ -2219,6 +2183,12 @@ PMID:12345</obo:IAO_0000112>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000138"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">The totality of all processes through which a given disease instance is realized.</obo:IAO_0000115>
@@ -2265,12 +2235,6 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000073">
         <rdfs:label xml:lang="en">diagnosis</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000006"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_028"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000104"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">(HDOT_CORE) moved here from &quot;data item&quot;</rdfs:comment>
         <obo:IAO_0000115 xml:lang="en">The representation of a conclusion of a diagnostic process.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000073</obo:IAO_0000119>
@@ -2380,12 +2344,6 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000083">
         <rdfs:label xml:lang="en">physical examination finding</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000014"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_028"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000057"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000083</obo:IAO_0000119>
     </owl:Class>
     
@@ -2652,12 +2610,6 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000104">
         <rdfs:label xml:lang="en">diagnostic process</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002234"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000073"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">An interpretive process that has as input a clinical picture of a given patient and as output an assertion (diagnostic statement) to the effect that the patient has a disease of such and such a type.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000104</obo:IAO_0000119>
     </owl:Class>
@@ -3166,14 +3118,14 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
-                <owl:someValuesFrom rdf:resource="&obo;CHEBI_23367"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000055"/>
+                <owl:someValuesFrom rdf:resource="&obo;GO_0003674"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000055"/>
-                <owl:someValuesFrom rdf:resource="&obo;GO_0003674"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                <owl:someValuesFrom rdf:resource="&obo;CHEBI_23367"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A process involving the interconversion of chemical species.</obo:IAO_0000115>
