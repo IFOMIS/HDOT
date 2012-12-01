@@ -7,29 +7,31 @@
     <!ENTITY obo2 "http://purl.obofoundry.org/obo/" >
     <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY trunk "http://hdot.googlecode.com/svn/trunk/" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#"
-     xml:base="http://hdot.googlecode.com/svn/trunk/hdot_core.owl"
+<rdf:RDF xmlns="&trunk;hdot_core.owl#"
+     xml:base="&trunk;hdot_core.owl"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:obo2="http://purl.obofoundry.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:trunk="http://hdot.googlecode.com/svn/trunk/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
-    <owl:Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl">
+    <owl:Ontology rdf:about="&trunk;hdot_core.owl">
         <dc:contributor rdf:datatype="&xsd;string">Emilio Sanfilippo</dc:contributor>
         <title rdf:datatype="&xsd;string">Health Data Ontology Trunc (HDOT) Core</title>
         <publisher rdf:datatype="&xsd;string">Institute for Formal Ontology and Medical Information Science (IFOMIS)</publisher>
         <creator rdf:datatype="&xsd;string">Luc Schneider</creator>
         <dc:contributor rdf:datatype="&xsd;string">Ulf Schwarz</dc:contributor>
-        <owl:versionIRI rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl"/>
+        <owl:versionIRI rdf:resource="&trunk;hdot_core.owl"/>
         <owl:imports rdf:resource="&obo;bfo.owl"/>
     </owl:Ontology>
     
@@ -44,9 +46,9 @@
      -->
 
     <owl:AnnotationProperty rdf:about="&oboInOwl;hasSynonym"/>
-    <owl:AnnotationProperty rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#title"/>
-    <owl:AnnotationProperty rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#publisher"/>
-    <owl:AnnotationProperty rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#creator"/>
+    <owl:AnnotationProperty rdf:about="&trunk;hdot_core.owl#title"/>
+    <owl:AnnotationProperty rdf:about="&trunk;hdot_core.owl#publisher"/>
+    <owl:AnnotationProperty rdf:about="&trunk;hdot_core.owl#creator"/>
     
 
 
@@ -72,11 +74,11 @@
     
 
 
-    <!-- IAO_0000219 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/IAO_0000219 -->
 
-    <owl:ObjectProperty rdf:about="IAO_0000219">
+    <owl:ObjectProperty rdf:about="&trunk;IAO_0000219">
         <rdfs:label xml:lang="en">denotes</rdfs:label>
-        <rdfs:domain rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_033"/>
+        <rdfs:domain rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_033"/>
         <rdfs:subPropertyOf rdf:resource="&obo;IAO_0000136"/>
     </owl:ObjectProperty>
     
@@ -84,7 +86,7 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_028 -->
 
-    <owl:ObjectProperty rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_028">
+    <owl:ObjectProperty rdf:about="&trunk;hdot_core.owl#HDOT_CORE_028">
         <rdfs:label xml:lang="en">outcome of</rdfs:label>
         <rdfs:range rdf:resource="&obo;BFO_0000015"/>
         <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000056"/>
@@ -99,6 +101,27 @@
                 </owl:intersectionOf>
             </owl:Class>
         </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_036 -->
+
+    <owl:ObjectProperty rdf:about="&trunk;hdot_core.owl#HDOT_CORE_036">
+        <rdfs:label xml:lang="en">topic of</rdfs:label>
+        <rdfs:range rdf:resource="&obo2;IAO_0000030"/>
+        <owl:inverseOf rdf:resource="&obo;IAO_0000136"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_037 -->
+
+    <owl:ObjectProperty rdf:about="&trunk;hdot_core.owl#HDOT_CORE_037">
+        <rdfs:label xml:lang="en">denoted by</rdfs:label>
+        <owl:inverseOf rdf:resource="&trunk;IAO_0000219"/>
+        <rdfs:range rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_033"/>
+        <rdfs:subPropertyOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_036"/>
     </owl:ObjectProperty>
     
 
@@ -189,7 +212,7 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_001 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_001">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_001">
         <rdfs:label xml:lang="en">pathological organismal quality</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001995"/>
         <rdfs:subClassOf>
@@ -215,7 +238,7 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_003 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_003">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_003">
         <rdfs:label xml:lang="en">genetic disease</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000031"/>
         <rdfs:subClassOf>
@@ -231,7 +254,7 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_004 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_004">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_004">
         <rdfs:label xml:lang="en">dysfunction</rdfs:label>
         <rdfs:label xml:lang="en">insufficiency</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
@@ -259,7 +282,7 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_005 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_005">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_005">
         <rdfs:label xml:lang="en">biological function</rdfs:label>
         <rdfs:label xml:lang="en">organismal function</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000034"/>
@@ -277,7 +300,7 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_006 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_006">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_006">
         <rdfs:label xml:lang="en">material anatomical entity</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000030"/>
         <rdfs:subClassOf>
@@ -288,7 +311,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_026"/>
+                <owl:complementOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_026"/>
             </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">anatomical structure or portion of body substance</obo:IAO_0000115>
@@ -299,12 +322,12 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_007">
         <rdfs:label xml:lang="en">canonical anatomical structure</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_023"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_023"/>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_024"/>
+                <owl:complementOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_024"/>
             </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">Material anatomical entity which is generated by coordinated expression of the organism&#39;s own genes that guide its morphogenesis; has inherent 3D shape; its parts are connected and spatially related to one another in patterns determined by coordinated gene expression.</obo:IAO_0000115>
@@ -317,9 +340,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_008 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_008">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_008">
         <rdfs:label xml:lang="en">acellular anatomical structure</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure which consists of cell parts and cell substances and together does not constitute a cell or a tissue.</obo:IAO_0000115>
         <obo:IAO_0000112 xml:lang="en">basement membrane, osteoid, prostatic concretion.</obo:IAO_0000112>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Acellular_anatomical_structure</obo:IAO_0000119>
@@ -329,9 +352,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_009 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_009">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_009">
         <rdfs:label xml:lang="en">anatomical cluster</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure, which has as its parts a heterogeneous collection of organs, organ parts, cells, cell parts or body part subdivisions that are adjacent to, or continuous with one another; does not constitute a cell part, cell, tissue, organ, organ system or organ system subdivision, cardinal body part, body part subdivision or anatomical junction. </obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Anatomical_cluster</obo:IAO_0000119>
         <obo:IAO_0000112 xml:lang="en">joint, adnexa of uterus, root of lung, renal pedicle, back.</obo:IAO_0000112>
@@ -341,9 +364,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_010">
         <rdfs:label xml:lang="en">body</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000175"/>
@@ -358,9 +381,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_011 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_011">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_011">
         <rdfs:label xml:lang="en">body of vertebrate</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_010"/>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Body_of_vertebrate</obo:IAO_0000119>
     </owl:Class>
     
@@ -368,9 +391,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_012 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_012">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_012">
         <rdfs:label xml:lang="en">human body</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_011"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_011"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure which is the aggregate material substance of an individual member of the human species. Examples: male human body and female human body.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Human_body</obo:IAO_0000119>
     </owl:Class>
@@ -379,9 +402,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_013 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_013">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_013">
         <rdfs:label xml:lang="en">cardinal body part</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure, which has as its direct parts instances of anatomical sets of organs and cardinal organ parts spatially associated with either the skull, vertebral column, or the skeleton of a limb; in their aggregate are surrounded by a part of the skin.</obo:IAO_0000115>
         <obo:IAO_0000112 xml:lang="en">Head, body proper, right upper limb.</obo:IAO_0000112>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Cardinal_body_part</obo:IAO_0000119>
@@ -391,9 +414,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_014 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_014">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_014">
         <rdfs:label xml:lang="en">cardinal cell part</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure which is demarcated by bona fide or fiat boundaries within a cell. </obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Cardinal_cell_part</obo:IAO_0000119>
         <obo:IAO_0000112 xml:lang="en">plasma membrane, mitochondrion, cell nucleus, neurite.</obo:IAO_0000112>
@@ -403,9 +426,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_015 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_015">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_015">
         <rdfs:label xml:lang="en">cardinal organ part</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure which has as its direct parts two or more types of tissue and is continuous with one or more anatomical structures likewise constituted by two or more portions of tissues distinct from those of their complement. </obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Cardinal_organ_part</obo:IAO_0000119>
         <obo:IAO_0000112 xml:lang="en">osteon, cortical bone, neck of femur, bronchopulmonary segment, left lobe of liver, anterior right side of heart, interventricular branch of left coronary artery, right atrium, mitral valve, head of pancreas.</obo:IAO_0000112>
@@ -415,9 +438,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_016 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_016">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_016">
         <rdfs:label xml:lang="en">cardinal tissue part</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure, which is a subdivision of tissue demarcated by fiat boundaries. </obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Cardinal_tissue_part</obo:IAO_0000119>
         <obo:IAO_0000112 xml:lang="en">stratum germinativum, lamina of cerebral cortex.</obo:IAO_0000112>
@@ -427,9 +450,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_017 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_017">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_017">
         <rdfs:label xml:lang="en">cell</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure which has as its boundary the external surface of a maximally connected plasma membrane. </obo:IAO_0000115>
         <rdfs:comment xml:lang="en">In the FMA, cell implies eukaryotic cell. Prokaryotic cells included in a metazoon are not parts of the metazoan organism. Old definition: anatomical structure that has as its parts a maximally connected cell compartment surronded by a maximally connected plasma mebrane.</rdfs:comment>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Cell</obo:IAO_0000119>
@@ -440,9 +463,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_018 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_018">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_018">
         <rdfs:label xml:lang="en">organ</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure which has as its direct parts portions of two or more types of tissue or two or more types of cardinal organ part which constitute a maximally connected anatomical structure demarcated predominantly by a bona fide anatomical surface. </obo:IAO_0000115>
         <obo:IAO_0000112 xml:lang="en">femur, biceps, liver, heart, skin, tracheobronchial tree, ovary</obo:IAO_0000112>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Organ</obo:IAO_0000119>
@@ -452,9 +475,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_019 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_019">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_019">
         <rdfs:label xml:lang="en">organ system</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure, which has as its direct parts instances of one or more organ types which are interconnected with one another by zones of continuity. </obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Organ_system</obo:IAO_0000119>
         <obo:IAO_0000112 xml:lang="en">skeletal system, cardiovascular system, alimentary system.</obo:IAO_0000112>
@@ -464,9 +487,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_020 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_020">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_020">
         <rdfs:label xml:lang="en">organ system subdivision</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure, which consists of a specific set of the members of (predominantly) one organ or organ part subclass interconnected by zones of continuity or body substances; is demarcated from other subdivisions of the same organ system by one or more zones of continuity or anatomical lines; together with other subdivisions of the same organ system, it constitutes an organ system. </obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Organ_system_subdivision</obo:IAO_0000119>
         <obo:IAO_0000112 xml:lang="en">rib cage, facial skeleton, portal system, central nervous system, upper respiratory tract, muscle group of back.</obo:IAO_0000112>
@@ -476,9 +499,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_021 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_021">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_021">
         <rdfs:label xml:lang="en">portion of tissue</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure which has as its parts cells of predominantly one type with or without intercellular matrix. </obo:IAO_0000115>
         <obo:IAO_0000112 xml:lang="en">epithelium, muscle tissue, connective tissue, neural tissue, lymphoid tissue.</obo:IAO_0000112>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Portion_of_tissue</obo:IAO_0000119>
@@ -488,9 +511,9 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_022 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_022">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_022">
         <rdfs:label xml:lang="en">subdivision of cardinal body part</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
         <obo:IAO_0000115 xml:lang="en">Anatomical structure, which is a subdivision of a cardinal body part; it may exclude bones; is demarcated from other subdivisions of the same cardinal body part by anatomical surfaces or lines or topographical references; together with other contiguous subdivisions of the same cardinal body part, it constitutes a cardinal body part. </obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Subdivision_of_cardinal_body_part</obo:IAO_0000119>
         <obo:IAO_0000112 xml:lang="en">thorax, perineum, back of neck, forearm, hand, phalanx, nose, auricle of ear, scrotum.</obo:IAO_0000112>
@@ -500,12 +523,12 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_023 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_023">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_023">
         <rdfs:label xml:lang="en">anatomical structure</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_006"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_006"/>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_025"/>
+                <owl:complementOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_025"/>
             </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">canonical or variant anatomical structure</obo:IAO_0000115>
@@ -516,12 +539,12 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_024 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_024">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_024">
         <rdfs:label xml:lang="en">variant anatomical structure</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_023"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_023"/>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+                <owl:complementOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_007"/>
             </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000119 xml:lang="en">http://ontology.buffalo.edu/bio/OBR.pdf</obo:IAO_0000119>
@@ -533,18 +556,18 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_025 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_025">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_025">
         <rdfs:label xml:lang="en">portion of body substance</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_006"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_006"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:allValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010"/>
+                <owl:allValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_010"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_023"/>
+                <owl:complementOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_023"/>
             </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">Material anatomical entity in a gaseous, liquid, semisolid or solid state, with or without the admixture of cells and biological macromolecules; produced by anatomical structures or derived from inhaled and ingested substances that have been modified by anatomical structures.</obo:IAO_0000115>
@@ -556,7 +579,7 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_026 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_026">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_026">
         <rdfs:label xml:lang="en">material pathological entity</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000030"/>
         <rdfs:subClassOf>
@@ -577,7 +600,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_006"/>
+                <owl:complementOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_006"/>
             </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">anatomical entity that results from processes other than those governed by the organism’s structural genes.</obo:IAO_0000115>
@@ -588,7 +611,7 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_027 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_027">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_027">
         <rdfs:label xml:lang="en">chemical entity role</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000023"/>
         <rdfs:subClassOf>
@@ -604,7 +627,7 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_029 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_029">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_029">
         <rdfs:label xml:lang="en">social object</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000030"/>
         <rdfs:subClassOf>
@@ -619,22 +642,28 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_030 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_030">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_030">
         <rdfs:label xml:lang="en">institution</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_029"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_029"/>
     </owl:Class>
     
 
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_031 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_031">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_031">
         <rdfs:label xml:lang="en">biobank</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000245"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000174"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_032"/>
+                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_032"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_037"/>
+                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_038"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A facility or core that provides storage for any type of biospecimen.</obo:IAO_0000115>
@@ -645,13 +674,19 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_032 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_032">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_032">
         <rdfs:label xml:lang="en">biobank sample</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000671"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_037"/>
+                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_035"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000175"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_031"/>
+                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_031"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A sample from an organism that is part of some biobank</obo:IAO_0000115>
@@ -661,7 +696,7 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_033 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_033">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_033">
         <rdfs:label xml:lang="en">identifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo2;IAO_0000030"/>
     </owl:Class>
@@ -670,12 +705,12 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_034 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_034">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_034">
         <rdfs:label xml:lang="en">person name</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_033"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_033"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="IAO_0000219"/>
+                <owl:onProperty rdf:resource="&trunk;IAO_0000219"/>
                 <owl:onClass rdf:resource="&obo;NCBITaxon_9606"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
@@ -686,13 +721,13 @@
 
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_035 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_035">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_035">
         <rdfs:label xml:lang="en">biobank sample identifier</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_033"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_033"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="IAO_0000219"/>
-                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_032"/>
+                <owl:onProperty rdf:resource="&trunk;IAO_0000219"/>
+                <owl:onClass rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_032"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -701,9 +736,25 @@
     
 
 
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_038 -->
+
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_038">
+        <rdfs:label xml:lang="en">biobank identifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_033"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;IAO_0000219"/>
+                <owl:onClass rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_031"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#clinical_picture -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#clinical_picture">
+    <owl:Class rdf:about="&trunk;hdot_core.owl#clinical_picture">
         <rdfs:label xml:lang="en">clinical picture</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000006"/>
         <rdfs:comment xml:lang="en">(HDOT_CORE) moved here from &quot;data item&quot;</rdfs:comment>
@@ -779,7 +830,7 @@
 
     <owl:Class rdf:about="&obo;CHEBI_24432">
         <rdfs:label xml:lang="en">biological role</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_027"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_027"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
@@ -862,7 +913,7 @@
 
     <owl:Class rdf:about="&obo;CHEBI_33232">
         <rdfs:label xml:lang="en">application</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_027"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_027"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
@@ -955,7 +1006,7 @@
 
     <owl:Class rdf:about="&obo;CHEBI_51086">
         <rdfs:label xml:lang="en">chemical role</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_027"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_027"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
@@ -1600,7 +1651,7 @@
     <owl:Class rdf:about="&obo;IAO_0000578">
         <rdfs:label xml:lang="en">CRID</rdfs:label>
         <rdfs:label xml:lang="en">Centrally Registered IDentifier</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_033"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_033"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000111"/>
@@ -1700,7 +1751,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OBI_0000245">
         <rdfs:label xml:lang="en">institution</rdfs:label>
         <rdfs:label xml:lang="en">organization</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_030"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_030"/>
         <obo:IAO_0000115 xml:lang="en">An organization is a continuant entity which can play roles, has members, and has a set of organization rules. Members of organizations are either organizations themselves or individual people. Members can bear specific organization member roles that are determined in the organization rules. The organization rules also determine how decisions are made on behalf of the organization by the organization members.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OBI_0000245</obo:IAO_0000119>
     </owl:Class>
@@ -1715,7 +1766,7 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000175"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010"/>
+                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_010"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">a material obtained from an organism in order to be a representative of the whole</obo:IAO_0000115>
@@ -1781,7 +1832,7 @@ PMID:12345</obo:IAO_0000112>
                 <owl:onProperty rdf:resource="&obo;BFO_0000084"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_028"/>
+                        <owl:onProperty rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_028"/>
                         <owl:someValuesFrom rdf:resource="&obo;OGMS_0000055"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
@@ -1814,7 +1865,7 @@ PMID:12345</obo:IAO_0000112>
                 <owl:onProperty rdf:resource="&obo;BFO_0000084"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_028"/>
+                        <owl:onProperty rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_028"/>
                         <owl:someValuesFrom rdf:resource="&obo;OGMS_0000056"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
@@ -1995,12 +2046,6 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000061"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
@@ -2009,6 +2054,12 @@ PMID:12345</obo:IAO_0000112>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000113"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000045"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000061"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A disposition (i) to undergo pathological processes that (ii) exists in an organism because of one or more disorders in that organism.</obo:IAO_0000115>
@@ -2056,17 +2107,17 @@ PMID:12345</obo:IAO_0000112>
 
     <owl:Class rdf:about="&obo;OGMS_0000034">
         <rdfs:label xml:lang="en">acquired genetic disease</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_003"/>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf rdf:resource="&obo;OGMS_0000035"/>
-            </owl:Class>
-        </rdfs:subClassOf>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_003"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000113"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000050"/>
             </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&obo;OGMS_0000035"/>
+            </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A disease whose physical basis is an acquired genetic disorder.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000034</obo:IAO_0000119>
@@ -2078,7 +2129,7 @@ PMID:12345</obo:IAO_0000112>
 
     <owl:Class rdf:about="&obo;OGMS_0000035">
         <rdfs:label xml:lang="en">constitutional genetic disease</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_003"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_003"/>
         <rdfs:subClassOf>
             <owl:Class>
                 <owl:complementOf rdf:resource="&obo;OGMS_0000034"/>
@@ -2175,7 +2226,7 @@ PMID:12345</obo:IAO_0000112>
 
     <owl:Class rdf:about="&obo;OGMS_0000045">
         <rdfs:label xml:lang="en">disorder</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_026"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_026"/>
         <obo:IAO_0000115 xml:lang="en">A material entity which is clinically abnormal and part of an extended organism. Disorders are the physical basis of disease.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000045</obo:IAO_0000119>
     </owl:Class>
@@ -2285,7 +2336,7 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
-                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010"/>
+                <owl:onClass rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_010"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -2313,14 +2364,14 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000182"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000138"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000138"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2388,7 +2439,7 @@ PMID:12345</obo:IAO_0000112>
                 <owl:onProperty rdf:resource="&obo;BFO_0000084"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_028"/>
+                        <owl:onProperty rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_028"/>
                         <owl:someValuesFrom rdf:resource="&obo;OGMS_0000104"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
@@ -2416,7 +2467,7 @@ PMID:12345</obo:IAO_0000112>
 
     <owl:Class rdf:about="&obo;OGMS_0000077">
         <rdfs:label xml:lang="en">pathological formation</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_026"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_026"/>
         <obo:IAO_0000115 xml:lang="en">(HDOT_CORE) a non-canonical part of an anatomical structure that results from a pathological process</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000077</obo:IAO_0000119>
         <obo:IAO_0000112 xml:lang="en">tumour, ulcer</obo:IAO_0000112>
@@ -2428,10 +2479,10 @@ PMID:12345</obo:IAO_0000112>
 
     <owl:Class rdf:about="&obo;OGMS_0000078">
         <rdfs:label xml:lang="en">pathological anatomical structure</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_026"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_026"/>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:complementOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_023"/>
+                <owl:complementOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_023"/>
             </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">An anatomical structure (FMA) is pathological whenever (1) it has come into being as a result of changes in some pre-existing canonical anatomical structure, (2) through processes other than the expression of the normal complement of genes of an organism of the given type, and (3) is predisposed to have health-related consequences for the organism in question manifested by symptoms and signs.</obo:IAO_0000115>
@@ -2445,7 +2496,7 @@ PMID:12345</obo:IAO_0000112>
 
     <owl:Class rdf:about="&obo;OGMS_0000079">
         <rdfs:label xml:lang="en">portion of pathological body substance</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_026"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_026"/>
         <obo:IAO_0000119 xml:lang="en">http://ontology.buffalo.edu/bio/OBR.pdf</obo:IAO_0000119>
         <obo:IAO_0000115 xml:lang="en">portion of body substance resulting from a pathological process</obo:IAO_0000115>
         <obo:IAO_0000112 xml:lang="en">portion of pus, portion of amyloid</obo:IAO_0000112>
@@ -2508,7 +2559,7 @@ PMID:12345</obo:IAO_0000112>
                 <owl:onProperty rdf:resource="&obo;BFO_0000084"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_028"/>
+                        <owl:onProperty rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_028"/>
                         <owl:someValuesFrom rdf:resource="&obo;OGMS_0000057"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
@@ -2552,7 +2603,7 @@ PMID:12345</obo:IAO_0000112>
 
     <owl:Class rdf:about="&obo;OGMS_0000086">
         <rdfs:label xml:lang="en">syndrome</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_001"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_001"/>
         <obo:IAO_0000115 xml:lang="en">A pattern of signs and symptoms that typically co-occur.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000086</obo:IAO_0000119>
     </owl:Class>
@@ -2567,7 +2618,7 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000111"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010"/>
+                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_010"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">An object aggregate consisting of an organism and all material entities located within the organism, overlapping the organism, or occupying sites formed in part by the organism.</obo:IAO_0000115>
@@ -2593,7 +2644,7 @@ PMID:12345</obo:IAO_0000112>
 
     <owl:Class rdf:about="&obo;OGMS_0000089">
         <rdfs:label xml:lang="en">congenital malformation</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_026"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_026"/>
         <obo:IAO_0000115 xml:lang="en">A structurally anomalous part of an organism acquired during fetal development and present at birth (but not necessarily hereditary) which is hypothesized to be harmful for the organism.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000089</obo:IAO_0000119>
     </owl:Class>
@@ -2756,7 +2807,7 @@ PMID:12345</obo:IAO_0000112>
 
     <owl:Class rdf:about="&obo;OGMS_0000102">
         <rdfs:label xml:lang="en">injury</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_026"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_026"/>
         <rdfs:comment xml:lang="en">(Editor&#39;s note) At the scale of organism (as opposed to the cellular scale or the population scale), an injury is typically the result of a catastrophic event. Consider the implications of making &#39;injury&#39; a subtype of &#39;disorder&#39;.</rdfs:comment>
         <obo:IAO_0000115 xml:lang="en">A part of an organism that has undergone a change in structural integrity and has a higher chance of dysfunction or causing dysfunction in another structure.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000102</obo:IAO_0000119>
@@ -2810,14 +2861,14 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000060"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000136"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000063"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000181"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000091"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000181"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000091"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000136"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000063"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A part of a disease course that includes a temporary convalescense.</obo:IAO_0000115>
@@ -3155,7 +3206,7 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_017"/>
+                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_017"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119>http://purl.obolibrary.org/obo/PATO_0001396</obo:IAO_0000119>
