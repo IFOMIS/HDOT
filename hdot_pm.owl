@@ -8,6 +8,7 @@
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY hdot "http://hdot.googlecode.com/svn/trunk/hdot.owl#" >
+    <!ENTITY hdot_pm "http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#" >
     <!ENTITY hdot_core "http://hdot.googlecode.com/svn/trunk/hdot_core.owl#" >
 ]>
 
@@ -18,6 +19,7 @@
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:hdot_pm="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:hdot_core="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#">
@@ -60,9 +62,9 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0001 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0001 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0001">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0001">
         <rdfs:label xml:lang="en">portion of blood</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_025"/>
         <obo:IAO_0000115 xml:lang="en">Portion of body substance which consists of plasma and blood cells.</obo:IAO_0000115>
@@ -71,9 +73,9 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0002 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0002 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0002">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0002">
         <rdfs:label xml:lang="en">portion of plasma</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_025"/>
         <obo:IAO_0000115 xml:lang="en">Body substance in liquid state contained in the lumen of arterial and venous trees, blood capillary and the cardiac chambers; constitutes the liquid phase of blood.</obo:IAO_0000115>
@@ -82,9 +84,9 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0003 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0003 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0003">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0003">
         <rdfs:label xml:lang="en">serum</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_025"/>
         <obo:IAO_0000115 xml:lang="en">Body substance derived from plasma by the elimination of fibrinogen.</obo:IAO_0000115>
@@ -93,9 +95,9 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0004 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0004 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0004">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0004">
         <rdfs:label xml:lang="en">transudate</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_025"/>
         <obo:IAO_0000115 xml:lang="en">Body substance in liquid state, which is derived from plasma by passage through the (intact) wall of capillaries without further processing by secretory cells or glands.</obo:IAO_0000115>
@@ -104,20 +106,20 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0005 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0005 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0005">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0005">
         <rdfs:label xml:lang="en">cerebrospinal fluid</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_0004"/>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0004"/>
         <obo:IAO_0000115 xml:lang="en">Transudate contained in the subarachnoid space.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Cerebrospinal_fluid</obo:IAO_0000119>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0006 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0006 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0006">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0006">
         <rdfs:label xml:lang="en">portion of excreted substance</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_025"/>
         <obo:IAO_0000115 xml:lang="en">Body substance derived from ingested substances that have been modified by one or more organs.</obo:IAO_0000115>
@@ -127,19 +129,19 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0007 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0007 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0007">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0007">
         <rdfs:label xml:lang="en">portion of urine</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_0006"/>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0006"/>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Portion_of_urine</obo:IAO_0000119>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0008 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0008 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0008">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0008">
         <rdfs:label xml:lang="en">organ region</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_015"/>
         <obo:IAO_0000115 xml:lang="en">Cardinal organ part which is a fiat subdivision of an organ.</obo:IAO_0000115>
@@ -149,11 +151,11 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0009 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0009 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0009">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0009">
         <rdfs:label xml:lang="en">organ zone</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_0008"/>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0008"/>
         <obo:IAO_0000115 xml:lang="en">Organ region with one or more floating fiat boundaries.</obo:IAO_0000115>
         <obo:IAO_0000112 xml:lang="en">apical zone of lung, superior pole of kidney, gingiva, apex of prostate, ascending colon proper.</obo:IAO_0000112>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Organ_zone</obo:IAO_0000119>
@@ -161,63 +163,93 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0010 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0010 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0010">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0010">
         <rdfs:label xml:lang="en">zone of bone organ</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_0009"/>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0009"/>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Zone_of_bone_organ</obo:IAO_0000119>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0011 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0011 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0011">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0011">
         <rdfs:label xml:lang="en">bone marrow</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_0010"/>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0010"/>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Bone_marrow</obo:IAO_0000119>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0012 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0012 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0012">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0012">
         <rdfs:label xml:lang="en">portion of pathological tissue</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000078"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0013 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0013 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0013">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0013">
         <rdfs:label xml:lang="en">portion of tumour tissue</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_0012"/>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0012"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_0014"/>
+                <owl:someValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0014"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot.owl#HDOT_0014 -->
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_0014">
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0014">
         <rdfs:label xml:lang="en">neoplasm</rdfs:label>
         <rdfs:label xml:lang="en">tumour</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000077"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0016"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_0012"/>
+                <owl:someValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0012"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119 xml:lang="en">http://www.ifomis.org/acgt/1.0#Neoplasm</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0015 -->
+
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0015">
+        <rdfs:label xml:lang="en">pathological cell</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000078"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0016 -->
+
+    <owl:Class rdf:about="&hdot_pm;HDOT_PM_0016">
+        <rdfs:label xml:lang="en">tumour cell</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0015"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0014"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
 </rdf:RDF>
 
