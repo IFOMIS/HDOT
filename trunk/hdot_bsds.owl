@@ -7,6 +7,8 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY hdot_pm "http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#" >
+    <!ENTITY hdot_core "http://hdot.googlecode.com/svn/trunk/hdot_core.owl#" >
 ]>
 
 
@@ -15,10 +17,12 @@
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:hdot_pm="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:hdot_core="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#">
     <owl:Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl">
-        <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl"/>
+        <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl"/>
     </owl:Ontology>
     
 
@@ -42,6 +46,29 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_018 -->
+
+    <owl:ObjectProperty rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_018">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdfs:label xml:lang="en">precedes</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">an occurrent o precedes an occurrent o&#39; iff the temporal location of o precedes that of o&#39;.</obo:IAO_0000115>
+        <rdfs:range rdf:resource="&obo;BFO_0000003"/>
+        <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
+    </owl:ObjectProperty>
     
 
 
@@ -72,6 +99,528 @@
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9606"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_002 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_002">
+        <rdfs:label xml:lang="en">informed consent</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000027"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:onClass rdf:resource="&hdot_core;HDOT_CORE_032"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_003 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_003">
+        <rdfs:label xml:lang="en">storage location</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000029"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_004 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_004">
+        <rdfs:label xml:lang="en">blood sample</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:allValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_005 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_005">
+        <rdfs:label xml:lang="en">urine sample</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:allValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0007"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_006 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_006">
+        <rdfs:label xml:lang="en">plasma sample</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:allValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0002"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_007 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_007">
+        <rdfs:label xml:lang="en">serum sample</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:allValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0003"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_008 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_008">
+        <rdfs:label xml:lang="en">tumour tissue sample</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:allValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0013"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_009 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_009">
+        <rdfs:label xml:lang="en">normal tissue sample</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:allValuesFrom rdf:resource="&hdot_core;HDOT_CORE_021"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_010 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_010">
+        <rdfs:label xml:lang="en">bone marrow sample</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0011"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_011 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_011">
+        <rdfs:label xml:lang="en">cerebrospinal fluid sample</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:allValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0005"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_012 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_012">
+        <rdfs:label xml:lang="en">biomaterial collection</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000155"/>
+                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_016"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002234"/>
+                <owl:someValuesFrom rdf:resource="&hdot_core;HDOT_CORE_032"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_013 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_013">
+        <rdfs:label xml:lang="en">biomaterial storage</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_036"/>
+                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_025"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000155"/>
+                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_015"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
+                <owl:someValuesFrom rdf:resource="&hdot_core;HDOT_CORE_032"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002234"/>
+                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_003"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_014 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_014">
+        <rdfs:label xml:lang="en">date</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_015 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_015">
+        <rdfs:label xml:lang="en">date of biomaterial storage</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_014"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_016 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_016">
+        <rdfs:label xml:lang="en">date of biomaterial collection</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_014"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_017 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_017">
+        <rdfs:label xml:lang="en">biomaterial processing</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_019 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_019">
+        <rdfs:label xml:lang="en">biomaterial storage before processing</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_013"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_018"/>
+                        <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_017"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_013"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_020 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_020">
+        <rdfs:label xml:lang="en">room temperature</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_025"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_021 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_021">
+        <rdfs:label xml:lang="en">refrigerator</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_025"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_022 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_022">
+        <rdfs:label xml:lang="en">deep frozen: -20°C</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_025"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_023 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_023">
+        <rdfs:label xml:lang="en">deep frozen: -80°C</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_025"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_024 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_024">
+        <rdfs:label xml:lang="en">stabilisation agent added</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_025"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_025 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_025">
+        <rdfs:label xml:lang="en">biomaterial processing method</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000104"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_017"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_026 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_026">
+        <rdfs:label xml:lang="en">directly processed</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_025"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_027 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_027">
+        <rdfs:label xml:lang="en">histology finding</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000006"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000084"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_028"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_031"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_028 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_028">
+        <rdfs:label xml:lang="en">histology document</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000178"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000101"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_027"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_028"/>
+                <owl:someValuesFrom rdf:resource="&obo;OBI_0600020"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_029 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_029">
+        <rdfs:label xml:lang="en">inhomogeneous tumour</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0014"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_033"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_030 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_030">
+        <rdfs:label xml:lang="en">homogeneous tumour</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0014"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_032"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_031 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_031">
+        <rdfs:label xml:lang="en">histology tissue</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_036"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_027"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000040"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_032 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_032">
+        <rdfs:label xml:lang="en">homogeneous tumour tissue</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_031"/>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0013"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_030"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_033 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_033">
+        <rdfs:label xml:lang="en">inhomogeneous tumour tissue</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_031"/>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0013"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_029"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_034 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_034">
+        <rdfs:label xml:lang="en">vital tumour cell</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0016"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_035 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_035">
+        <rdfs:label xml:lang="en">necrotic tumour cell</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0016"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_021 -->
+
+    <rdf:Description rdf:about="&hdot_core;HDOT_CORE_021">
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_031"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_032 -->
+
+    <rdf:Description rdf:about="&hdot_core;HDOT_CORE_032">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_036"/>
+                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_002"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_003"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_013"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_028"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_012"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OBI_0600020 -->
+
+    <owl:Class rdf:about="&obo;OBI_0600020">
+        <rdfs:label xml:lang="en">histology</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002234"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_028"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OBI_0600020</obo:IAO_0000119>
+        <obo:IAO_0000115 xml:lang="en">the visual examination of cells or tissue (or images of them) with an assessment regarding a quality of the cells or tissue.</obo:IAO_0000115>
     </owl:Class>
 </rdf:RDF>
 
