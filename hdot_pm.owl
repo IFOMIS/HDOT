@@ -7,16 +7,12 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-    <!ENTITY hdot "http://hdot.googlecode.com/svn/trunk/hdot.owl#" >
     <!ENTITY hdot_pm "http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#" >
     <!ENTITY hdot_core "http://hdot.googlecode.com/svn/trunk/hdot_core.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="http://hdot.googlecode.com/svn/trunk/hdot.owl#"
-     xml:base="http://hdot.googlecode.com/svn/trunk/hdot.owl"
-     xmlns:hdot="http://hdot.googlecode.com/svn/trunk/hdot.owl#"
-     xmlns:obo="http://purl.obolibrary.org/obo/"
+<rdf:RDF xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:hdot_pm="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#"
