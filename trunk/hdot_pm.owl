@@ -12,7 +12,9 @@
 ]>
 
 
-<rdf:RDF xmlns:obo="http://purl.obolibrary.org/obo/"
+<rdf:RDF xmlns="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#"
+     xml:base="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:hdot_pm="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#"
@@ -211,14 +213,14 @@
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000077"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0016"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
+                <owl:someValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0012"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
-                <owl:someValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0012"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0016"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119 xml:lang="en">http://www.ifomis.org/acgt/1.0#Neoplasm</obo:IAO_0000119>
@@ -246,6 +248,28 @@
                 <owl:someValuesFrom rdf:resource="&hdot_pm;HDOT_PM_0014"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0000125 -->
+
+    <owl:Class rdf:about="&obo;PATO_0000125">
+        <rdfs:label xml:lang="en">mass</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <obo:IAO_0000115 xml:lang="en">A physical quality that inheres in a bearer by virtue of the proportion of the bearer&#39;s amount of matter.</obo:IAO_0000115>
+        <obo:IAO_0000119>http://purl.obolibrary.org/obo/PATO_0000125</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0000146 -->
+
+    <owl:Class rdf:about="&obo;PATO_0000146">
+        <rdfs:label xml:lang="en">temperature</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <obo:IAO_0000115 xml:lang="en">A physical quality of the thermal energy of a system.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0000146</obo:IAO_0000119>
     </owl:Class>
 </rdf:RDF>
 
