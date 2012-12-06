@@ -7,6 +7,7 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
     <!ENTITY hdot_core "http://hdot.googlecode.com/svn/trunk/hdot_core.owl#" >
 ]>
 
@@ -18,7 +19,8 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:hdot_core="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#">
+     xmlns:hdot_core="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl">
         <hdot_core:title xml:lang="en">HDOT p-medicine (HDOT_PM)</hdot_core:title>
         <hdot_core:publisher xml:lang="en">Institute for Formal Ontology and Medical Information Science</hdot_core:publisher>
@@ -214,14 +216,20 @@
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000077"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0012"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0016"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0016"/>
+                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_028"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0040"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0012"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119 xml:lang="en">http://www.ifomis.org/acgt/1.0#Neoplasm</obo:IAO_0000119>
@@ -298,16 +306,6 @@
                 <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0018"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0021 -->
-
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0021">
-        <rdfs:label xml:lang="en">mental disease</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000031"/>
-        <rdfs:seeAlso xml:lang="en">SNOMED &quot;menta disorder&quot; http://purl.bioontology.org/ontology/SNOMEDCT/74732009</rdfs:seeAlso>
     </owl:Class>
     
 
@@ -501,6 +499,21 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     
 
 
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0040 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0040">
+        <rdfs:label xml:lang="en">cell proliferation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000061"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000055"/>
+                <owl:someValuesFrom rdf:resource="&obo;DOID_14566"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/CHEBI_16646 -->
 
     <owl:Class rdf:about="&obo;CHEBI_16646">
@@ -588,6 +601,70 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     
 
 
+    <!-- http://purl.obolibrary.org/obo/DOID_0014667 -->
+
+    <owl:Class rdf:about="&obo;DOID_0014667">
+        <rdfs:label xml:lang="en">disease of metabolism</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000031"/>
+        <obo:IAO_0000115 xml:lang="en">A disease that involving errors in metabolic processes of building or degredation of molecules.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/DOID_0014667</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/DOID_0050117 -->
+
+    <owl:Class rdf:about="&obo;DOID_0050117">
+        <rdfs:label xml:lang="en">disease by infectious agent</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000031"/>
+        <obo:IAO_0000115 xml:lang="en">A disease that is the consequence of the presence of pathogenic microbial agents, including pathogenic viruses, pathogenic bacteria, fungi, protozoa, multicellular parasites, and aberrant proteins known as prions.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/DOID_0050117</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/DOID_14566 -->
+
+    <owl:Class rdf:about="&obo;DOID_14566">
+        <rdfs:label xml:lang="en">disease of cellular proliferation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000031"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0040"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A disease that is characterized by abnormally rapid cell division.</obo:IAO_0000115>
+        <oboInOwl:hasSynonym xml:lang="en">cell process disease</oboInOwl:hasSynonym>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/DOID_14566</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/DOID_150 -->
+
+    <owl:Class rdf:about="&obo;DOID_150">
+        <rdfs:label xml:lang="en">disease of mental health</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000031"/>
+        <obo:IAO_0000115 xml:lang="en">A disease that involves a psychological or behavioral pattern generally associated with subjective distress or disability that occurs in an individual, and which are not a part of normal development or culture.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/DOID_150</obo:IAO_0000119>
+        <oboInOwl:hasSynonym xml:lang="en">mental disease</oboInOwl:hasSynonym>
+        <oboInOwl:hasSynonym xml:lang="en">mental disorder</oboInOwl:hasSynonym>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/DOID_7 -->
+
+    <owl:Class rdf:about="&obo;DOID_7">
+        <rdfs:label xml:lang="en">disease of anatomical entity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000031"/>
+        <obo:IAO_0000115 xml:lang="en">A disease that manifests in a defined anatomical structure.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/DOID_7</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/MFOEM_000001 -->
 
     <owl:Class rdf:about="&obo;MFOEM_000001">
@@ -596,25 +673,25 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
                 <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002218"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
                 <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002218"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">An emotion process is a complex mental process that is a synchronized aggregate of constituent mental processes including an appraisal process as part, and which gives rise to an action tendency.</obo:IAO_0000115>
@@ -716,6 +793,14 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     
 
 
+    <!-- http://purl.obolibrary.org/obo/OGMS_0000045 -->
+
+    <rdf:Description rdf:about="&obo;OGMS_0000045">
+        <rdfs:seeAlso xml:lang="en">http://purl.obolibrary.org/obo/DOID_0060035</rdfs:seeAlso>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/PATO_0000125 -->
 
     <owl:Class rdf:about="&obo;PATO_0000125">
@@ -735,6 +820,23 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         <obo:IAO_0000115 xml:lang="en">A physical quality of the thermal energy of a system.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0000146</obo:IAO_0000119>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="&obo;OGMS_0000086">
+        <rdfs:seeAlso xml:lang="en">http://purl.obolibrary.org/obo/DOID_225</rdfs:seeAlso>
+    </rdf:Description>
+    <rdf:Description rdf:about="&hdot_core;HDOT_CORE_003">
+        <rdfs:seeAlso xml:lang="en">http://purl.obolibrary.org/obo/DOID_630</rdfs:seeAlso>
+    </rdf:Description>
 </rdf:RDF>
 
 
