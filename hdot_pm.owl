@@ -501,6 +501,77 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     
 
 
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0040 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0040">
+        <rdfs:label xml:lang="en">pharmaceutical role</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_33232"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000081"/>
+                <owl:someValuesFrom rdf:resource="&obo;CHEBI_59999"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A pharmaceutical role is the role of a chemical substance that is used as a pharmaceutical.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0041 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0041">
+        <rdfs:label xml:lang="en">pharmaceutical substance</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;CHEBI_59999"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000087"/>
+                        <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0040"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_59999"/>
+        <obo:IAO_0000115 xml:lang="en">A chemical substance that has a pharmaceutical role.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0042 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0042">
+        <rdfs:label xml:lang="en">long- or short-acting</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000145"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0041"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A pharamaceutical substance has the quality of being long- or short-acting depending on whether its effects last for a longer or shorter period.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0043 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0043">
+        <rdfs:label xml:lang="en">long-acting</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0042"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0044 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0044">
+        <rdfs:label xml:lang="en">short-acting</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0042"/>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/CHEBI_16646 -->
 
     <owl:Class rdf:about="&obo;CHEBI_16646">
@@ -678,25 +749,25 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
                 <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002218"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">An emotion process is a complex mental process that is a synchronized aggregate of constituent mental processes including an appraisal process as part, and which gives rise to an action tendency.</obo:IAO_0000115>
