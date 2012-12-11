@@ -6,6 +6,7 @@
     <!ENTITY obo "http://purl.obolibrary.org/obo/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY RID "http://purl.bioontology.org/ontology/RID/" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
     <!ENTITY hdot_core "http://hdot.googlecode.com/svn/trunk/hdot_core.owl#" >
@@ -16,6 +17,7 @@
      xml:base="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:RID="http://purl.bioontology.org/ontology/RID/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -217,14 +219,14 @@
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000077"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0016"/>
+                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_028"/>
+                <owl:someValuesFrom rdf:resource="&obo;GO_0008283"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_028"/>
-                <owl:someValuesFrom rdf:resource="&obo;GO_0008283"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0016"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -590,6 +592,23 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     
 
 
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0045 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0045">
+        <rdfs:label xml:lang="en">body mass index</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="&hdot_core;HDOT_CORE_010"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A general indicator of the body fat an individual is carrying based upon the ratio of weight to height.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Body_Mass_Index</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0046 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0046">
@@ -646,6 +665,127 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">Physical toxicants are substances that, due to their physical nature, interfere with biological processes. Examples include coal dust and asbestos fibers, both of which can ultimately be fatal if inhaled.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Toxicity</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0049 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0049">
+        <rdfs:label xml:lang="en">surface size</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <obo:IAO_0000115 xml:lang="en">A 2-D extent quality inhering in a bearer by virtue of the bearer&#39;s amount of 2-dimensional surface it has.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0050 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0050">
+        <rdfs:label xml:lang="en">body surface area</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0049"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="&hdot_core;HDOT_CORE_010"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A measure of the 2-dimensional extent of the body surface (i.e., the skin). Body surface area (BSA) can be calculated by mathematical formula or from a chart that relates height to weight. BSA is often an important factor in dosing.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Body_Surface_Area</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0051 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0051">
+        <rdfs:label xml:lang="en">body temperature</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000146"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="&hdot_core;HDOT_CORE_010"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0052 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0052">
+        <rdfs:label xml:lang="en">pharmacological treatment</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000090"/>
+        <obo:IAO_0000115 xml:lang="en">Treatment of disease through the use of drugs</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Pharmacological_Treatment</obo:IAO_0000119>
+        <oboInOwl:hasSynonym xml:lang="en">pharmacotherapy</oboInOwl:hasSynonym>
+        <oboInOwl:hasSynonym xml:lang="en">treatment with medication</oboInOwl:hasSynonym>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0053 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0053">
+        <rdfs:label xml:lang="en">radiation treatment</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000090"/>
+        <obo:IAO_0000115 xml:lang="en">Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Radiation_Therapy</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0054 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0054">
+        <rdfs:label xml:lang="en">resection</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&RID;RID1560"/>
+        <obo:IAO_0000115 xml:lang="en">The act of cutting out; the surgical removal of part or all of a structure or organ.</obo:IAO_0000115>
+        <oboInOwl:hasSynonym xml:lang="en">excision</oboInOwl:hasSynonym>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Excision</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0055 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0055">
+        <rdfs:label xml:lang="en">amputation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&RID;RID1560"/>
+        <obo:IAO_0000115 xml:lang="en">The surgical removal of all or part of a limb or other appendage.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Amputation</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.bioontology.org/ontology/RID/RID1560 -->
+
+    <owl:Class rdf:about="&RID;RID1560">
+        <rdfs:label xml:lang="en">surgical procedure</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000090"/>
+        <obo:IAO_0000115 xml:lang="en">Operations carried out for the correction of deformities and defects, repair of injuries, and diagnosis and cure of certain diseases.</obo:IAO_0000115>
+        <obo:IAO_0000119>http://purl.bioontology.org/ontology/RID/RID1560</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.bioontology.org/ontology/RID/RID1649 -->
+
+    <owl:Class rdf:about="&RID;RID1649">
+        <rdfs:label xml:lang="en">transplantation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&RID;RID1560"/>
+        <obo:IAO_0000115 xml:lang="en">Transference of a tissue or organ, alive or dead, within an individual, between individuals of the same species, or between individuals of different species. [MeSH]</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.bioontology.org/ontology/RID/RID1649</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.bioontology.org/ontology/RID/RID39252 -->
+
+    <owl:Class rdf:about="&RID;RID39252">
+        <rdfs:label xml:lang="en">chemotherapy</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0052"/>
+        <obo:IAO_0000119 xml:lang="en">http://purl.bioontology.org/ontology/RID/RID39252</obo:IAO_0000119>
     </owl:Class>
     
 
@@ -826,8 +966,8 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         <rdfs:subClassOf rdf:resource="&obo;MF_0000020"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002218"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -844,8 +984,8 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
+                <owl:onProperty rdf:resource="&obo;RO_0002218"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">An emotion process is a complex mental process that is a synchronized aggregate of constituent mental processes including an appraisal process as part, and which gives rise to an action tendency.</obo:IAO_0000115>
@@ -955,6 +1095,36 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     
 
 
+    <!-- http://purl.obolibrary.org/obo/OGMS_0000090 -->
+
+    <rdf:Description rdf:about="&obo;OGMS_0000090">
+        <rdfs:seeAlso>http://purl.bioontology.org/ontology/RID/RID8</rdfs:seeAlso>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0000011 -->
+
+    <owl:Class rdf:about="&obo;PATO_0000011">
+        <rdfs:label xml:lang="en">age</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <obo:IAO_0000115 xml:lang="en">A time quality inhering in a bearer by virtue of how long the bearer has existed.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0000011</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0000122 -->
+
+    <owl:Class rdf:about="&obo;PATO_0000122">
+        <rdfs:label xml:lang="en">length</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <obo:IAO_0000115 xml:lang="en">A 1-D extent quality which is equal to the distance between two points.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0000122</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/PATO_0000125 -->
 
     <owl:Class rdf:about="&obo;PATO_0000125">
@@ -973,6 +1143,39 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
         <obo:IAO_0000115 xml:lang="en">A physical quality of the thermal energy of a system.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0000146</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0000918 -->
+
+    <owl:Class rdf:about="&obo;PATO_0000918">
+        <rdfs:label xml:lang="en">volume</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <obo:IAO_0000115 xml:lang="en">A 3-D extent quality inhering in a bearer by virtue of the bearer&#39;s amount of 3-dimensional space it occupies.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0000918</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0001019 -->
+
+    <owl:Class rdf:about="&obo;PATO_0001019">
+        <rdfs:label xml:lang="en">density</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <obo:IAO_0000115 xml:lang="en">A physical quality which inheres in a bearer by virtue of some influence is exerted by the bearer&#39;s mass per unit size.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0001019</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0001025 -->
+
+    <owl:Class rdf:about="&obo;PATO_0001025">
+        <rdfs:label xml:lang="en">pressure</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <obo:IAO_0000115 xml:lang="en">A physical quality that inheres in a bearer by virtue of the bearer&#39;s amount of force per unit area it exerts.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0001025</obo:IAO_0000119>
     </owl:Class>
     
 
