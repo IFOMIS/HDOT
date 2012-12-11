@@ -40,7 +40,7 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:span="http://www.ifomis.org/bfo/1.1/span#">
     <Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/hdot">
-        <dc:title rdf:datatype="&xsd;string">Health Data Ontology Trunk  (HDOT)</dc:title>
+        <dc:title rdf:datatype="&xsd;string">Health Data Ontology Trunk (HDOT)</dc:title>
         <dc:publisher rdf:datatype="&xsd;string">Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
         <dc:date rdf:datatype="&xsd;string">June 10, 2011</dc:date>
         <dc:creator rdf:datatype="&xsd;string">Luc Schneider</dc:creator>
