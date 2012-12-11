@@ -217,8 +217,8 @@
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000077"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0012"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0016"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -229,8 +229,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0016"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0012"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">We need to distinguish &quot;neoplasm&quot; as a disease from the result of the cell proliferation process that realizes it,namely the tumour. A tumour has size and mass, a neoplasm disease as a disposition has not.</rdfs:comment>
@@ -500,6 +500,21 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0039">
         <rdfs:label xml:lang="en">toxicity</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&obo;BFO_0000027"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000030"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">Toxicity is the degree to which a substance can damage an organism. Toxicity can refer to the effect on a whole organism, such as an animal, bacterium, or plant, as well as the effect on a substructure of the organism, such as a cell (cytotoxicity) or an organ such as the liver (hepatotoxicity).</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Toxicity</obo:IAO_0000119>
     </owl:Class>
     
 
@@ -575,38 +590,14 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0045 -->
-
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0045">
-        <rdfs:label xml:lang="en">toxicity</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000145"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&obo;BFO_0000027"/>
-                            <rdf:Description rdf:about="&obo;BFO_0000030"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">Toxicity is the degree to which a substance can damage an organism. Toxicity can refer to the effect on a whole organism, such as an animal, bacterium, or plant, as well as the effect on a substructure of the organism, such as a cell (cytotoxicity) or an organ such as the liver (hepatotoxicity).</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Toxicity</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0046 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0046">
         <rdfs:label xml:lang="en">chemical toxicity</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0045"/>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0039"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
                 <owl:someValuesFrom rdf:resource="&obo;CHEBI_59999"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -620,10 +611,10 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0047">
         <rdfs:label xml:lang="en">biological toxicity</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0045"/>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0039"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -637,10 +628,10 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0048">
         <rdfs:label xml:lang="en">physical toxicity</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0045"/>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0039"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:intersectionOf rdf:parseType="Collection">
@@ -835,6 +826,12 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         <rdfs:subClassOf rdf:resource="&obo;MF_0000020"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002218"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
                 <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
             </owl:Restriction>
@@ -843,12 +840,6 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
                 <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002218"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
