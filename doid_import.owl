@@ -24,9 +24,6 @@
 
 
     <!-- 
-
-
-
     ///////////////////////////////////////////////////////////////////////////////////////
     //
     // Annotation properties
@@ -4140,7 +4137,6 @@
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0948749</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">carcinoma of Retroperitoneum</oboInOwl:hasExactSynonym>
         <oboInOwl:hasRelatedSynonym rdf:datatype="&xsd;string">carcinoma of the retroperitoneum</oboInOwl:hasRelatedSynonym>
-
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
@@ -5809,7 +5805,7 @@
 
     <owl:Class rdf:about="&obo;DOID_14566">
         <rdfs:label rdf:datatype="&xsd;string">disease of cellular proliferation</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4"/>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000031"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease that is characterized by abnormally rapid cell division.</obo:IAO_0000115>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">DOID:0000818</oboInOwl:hasAlternativeId>
         <oboInOwl:id rdf:datatype="&xsd;string">DOID:14566</oboInOwl:id>
@@ -17381,16 +17377,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/DOID_4 -->
-
-    <owl:Class rdf:about="&obo;DOID_4">
-        <rdfs:label xml:lang="en">disease</rdfs:label>
-        <obo:IAO_0000115 xml:lang="en">A disease is a disposition (i) to undergo pathological processes that (ii) exists in an organism because of one or more disorders in that organism.</obo:IAO_0000115>
-        <rdfs:comment xml:lang="en">http://ontology.buffalo.edu/medo/Disease_and_Diagnosis.pdf]</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/DOID_4000 -->
 
     <owl:Class rdf:about="&obo;DOID_4000">
@@ -20760,7 +20746,6 @@
         <oboInOwl:id rdf:datatype="&xsd;string">DOID:4584</oboInOwl:id>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C4719</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:253082002</oboInOwl:hasDbXref>
-
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0431118</oboInOwl:hasDbXref>
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">meningioma of the Choroid Plexus</oboInOwl:hasExactSynonym>
@@ -26957,7 +26942,6 @@
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C4173</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:10060008</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:134345002</oboInOwl:hasDbXref>
-
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:189674003</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:253021007</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0334350</oboInOwl:hasDbXref>
@@ -32460,7 +32444,6 @@
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Lipoma of Heart</oboInOwl:hasExactSynonym>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6741</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1332849</oboInOwl:hasDbXref>
-
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
@@ -35471,7 +35454,6 @@
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
     
-
 
 
     <!-- http://purl.obolibrary.org/obo/DOID_6936 -->
@@ -43205,7 +43187,6 @@
 
     <!-- http://purl.obolibrary.org/obo/DOID_8649 -->
 
-
     <owl:Class rdf:about="&obo;DOID_8649">
         <rdfs:label rdf:datatype="&xsd;string">tongue cancer</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;DOID_8618"/>
@@ -45302,6 +45283,16 @@
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">orbital sarcoma</oboInOwl:hasExactSynonym>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OGMS_0000031 -->
+
+    <owl:Class rdf:about="&obo;OGMS_0000031">
+        <rdfs:label xml:lang="en">disease</rdfs:label>
+        <obo:IAO_0000115 xml:lang="en">A disease is a disposition (i) to undergo pathological processes that (ii) exists in an organism because of one or more disorders in that organism.</obo:IAO_0000115>
+        <rdfs:comment xml:lang="en">http://ontology.buffalo.edu/medo/Disease_and_Diagnosis.pdf]</rdfs:comment>
     </owl:Class>
 </rdf:RDF>
 
