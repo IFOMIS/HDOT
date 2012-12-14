@@ -24,8 +24,11 @@
      xmlns:hdot_core="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl">
-        <hdot_core:creator xml:lang="en">Institute for Formal Ontology and Medical Information Science (IFOMIS)</hdot_core:creator>
+        <hdot_core:creator xml:lang="en">Emilio M.Sanfilippo</hdot_core:creator>
+        <hdot_core:publisher xml:lang="en">Institute for Formal Ontology and Medical Information Science (IFOMIS)</hdot_core:publisher>
+        <hdot_core:creator xml:lang="en">Luc Schneider</hdot_core:creator>
         <hdot_core:title xml:lang="en">The Heath Data Ontology Trunk Patient Empowerment Module (HDOT_PEM)</hdot_core:title>
+        <hdot_core:creator xml:lang="en">Ulf Schwarz</hdot_core:creator>
         <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl"/>
     </owl:Ontology>
     
@@ -137,6 +140,89 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
+    <!-- http://purl.obolibrary.org/obo/MD_0000013 -->
+
+    <owl:Class rdf:about="&obo;MD_0000013">
+        <rdfs:label xml:lang="en">depressed mood episode</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;MD_0000024"/>
+        <rdfs:comment xml:lang="en">The criteria below are based on the formal DSM-IV criteria for a Major Depressive Episode. A diagnoses of major depressive episode requires that the patient has—over a two-week period—experienced five or more of the symptoms below, and these must be outside the patient&apos;s normal behaviour. Either depressed mood or decreased interest or pleasure must be one of the five (although both are frequently concomitant).
+
+Mood
+    For the better part of nearly every day, the patient reports a depressed mood or appears depressed to others.
+        The patient may state that he or she has been feeling sad, depressed, blue, empty, &quot;down in the dumps,&quot; hopeless, etc. If the patient is in denial about these feelings, yet appears to be on the verge of tearfulness, manifests a depressed facial expression and disposition, or appears to be overly irritable, these may also indicate the presence of depressed mood. Some people may report physical complaints (i.e., aches, pains, headaches) rather than depressed mood, and physical symptoms without physical cause are sometimes indicators of depression.
+
+Anhedonia and loss of interest
+
+    For most of nearly every day, interest or pleasure is markedly decreased in nearly all activities (noted by the patient or by others).
+        People suffering with depression tend to lose interest in things they once found enjoyable. Activities are no longer enjoyable and there is often a loss of interest in or desire for sex. People who are depressed may say, &quot;I just don&apos;t care anymore,&quot; or &quot;nothing matters anymore.&quot; Friends and family of the depressed person may notice that he/she has withdrawn from friends, or has neglected or quit doing activities that were once a source of enjoyment.
+
+Change in eating, appetite, or weight
+
+    Although not dieting, there is a marked loss or gain of weight (such as 5% in one month) or appetite is markedly decreased or increased nearly every day.
+    Changes in appetite take on two manifestations: under- or over-eating.
+        In the first instance, some people never feel hungry, can go long periods without wanting to eat, may forget to eat, or if they do eat a small amount of food may be sufficient. A reduction in weight is often associated with a melancholic type of depression.
+        In the second instance, some people tend toward an increase in appetite and may gain significant amounts of weight. They may tend to crave certain types of food such as sweets or carbohydrates. People with seasonal affective disorder (SAD) often crave foods high in carbohydrates. Weight gain is often associated with atypical depression.
+
+Sleep
+
+    Nearly every day the patient sleeps excessively, known as hypersomnia, or not enough, known as insomnia.
+        Insomnia is the most common type of sleep disturbance for people who are clinically depressed. Having difficulty falling asleep at night is known as &quot;initial&quot; insomnia; waking in the middle of the night and being unable to go back to sleep as &quot;middle insomnia&quot;, and; waking too early as &quot;terminal insomnia&quot;. Insomnia is often associated with a melancholic type of depression.
+        A less frequent sleeping problem is oversleeping (called &quot;hypersomnia&quot;). This may occur in the form of sleeping for prolonged periods at night or increased sleeping during the daytime. Even with excess sleep, a person may still feel tired and sluggish during the day. People with seasonal affective disorder (SAD) may sleep longer during the winter months. Hypersomnia is often associated with an atypical depression.
+
+Motor activity
+
+    Nearly every day others can see that the patient&apos;s activity is agitated or slow.
+        People suffering from depression may be either quite agitated (psychomotor agitation), or very lethargic (psychomotor retardation) in their mannerisms and behavior. If a person is agitated, he or she may find it difficult to sit still, may pace the room, wring his/her hands, or fidget with clothes or objects. Someone with psychomotor retardation tends to move sluggishly, may move across a room very slowly, avert his/her eyes, sit slumped in a chair and speak slowly, saying little.
+        In terms of diagnosis, the agitation or slowing down of one&apos;s demeanor must be to the degree that it can be observed by others.
+
+Fatigue
+
+    Nearly every day the person experiences extreme fatigue.[3]
+        A decrease in energy and feeling fatigued are very common symptoms for those who are clinically depressed. A person may feel tired without having engaged in any physical activity, and day-to-day tasks become difficult, including getting washed and dressed in the morning. Job tasks or housework become very tiring, and the person finds that his/her work at home, school, or on the job suffers.[4]
+
+Self-worth
+
+    Nearly every day the patient feels worthless or inappropriately guilty. These feelings are not just about being depressed, they may be delusional.
+        Depressed people may think of themselves in very negative, unrealistic ways such as manifesting a preoccupation with past &quot;failures&quot;, personalisation of trivial events, or believing that minor mistakes prove their inadequacy. They also may have an unrealistic sense of personal responsibility and see things beyond their control as being their fault. Additionally, self-loathing is common in clinical depression, and can lead to a downward spiral when combined with other symptoms.
+
+Concentration
+
+    Noted by the patient or by others, nearly every day the patient is indecisive or has trouble thinking or concentrating.
+        A person with depression frequently experiences negative and pessimistic thoughts, and reports that his/her ability to think, concentrate, or make decisions becomes impaired. Memory and distraction problems are common. This problem can be notably pronounced, causing significant difficulty in functioning for those involved in intellectually demanding activities.
+
+Thoughts of death
+
+    The patient has had repeated thoughts about death (other than the fear of dying), suicide (with or without a plan) or has made a suicide attempt.
+        The frequency and intensity of thoughts about suicide can range from believing that friends and family would be better off if one were dead, to frequent thoughts about committing suicide (generally related to wishing to stop the emotional pain), to detailed plans about how the suicide would be carried out. Less severely suicidal people may have regular thoughts of suicide, while those who are more severely suicidal may have made specific plans and decided upon a day and location for the suicide attempt.
+            Thoughts of suicide occur mostly when triggered. Thoughts of suicide happen more frequently than normal.
+
+Diagnostic caveats
+
+In diagnosing the symptoms a trained therapist must take the following into account:
+
+    These symptoms must cause clinically important distress, or impair work, social or personal functioning, and they should not fulfil the criteria for Mixed Episode.
+    The symptoms are not due to the direct physiological effects of a substance (e.g., abuse of a drug or medication) or a general medical condition (e.g., hypothyroidism).
+    Other than in the case of severe symptoms (severely impaired functioning, severe preoccupation with worthlessness, ideas of suicide, delusions or hallucinations or psychomotor retardation), the episode should not have begun within two months of the loss of a loved one.
+ 
+
+[Wikipedia: http://en.wikipedia.org/wiki/Major_depressive_episode]
+</rdfs:comment>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MD_0000013</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/MD_0000024 -->
+
+    <owl:Class rdf:about="&obo;MD_0000024">
+        <rdfs:label xml:lang="en">pathological mental process</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000061"/>
+        <obo:IAO_0000119>http://purl.obolibrary.org/obo/MD_0000024</obo:IAO_0000119>
+        <obo:IAO_0000115 xml:lang="en">A pathological process which is the manifestation of a mental disorder.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/MD_0000049 -->
 
     <owl:Class rdf:about="&obo;MD_0000049">
@@ -150,6 +236,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
 Depression is considered a heterogeneous condition in which different biologic abnormalities may be present such as a significant weight loss or gain, too little or too much sleep, physical agitation or slowing down, fatigue or loss of energy, feelings of worthlessness or excessive guilt, feelings of hopelessness and helplessness, lowered ability to think, to concentrate or make decisions and recurrent thoughts of death or suicide.
 
 p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
+        <obo:IAO_0000115 xml:lang="en">depression disease is a disease of mental health that is realized in a depressed mood episode</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -778,6 +865,16 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         </rdfs:subClassOf>
         <hdot_pm:patientLanguageDefinition xml:lang="en">Pain perception during sexual intercourse is a sensation of subjective physical sufferance on sexual apparatus during sexual intercourse</hdot_pm:patientLanguageDefinition>
         <obo:IAO_0000115 xml:lang="en">Sensory perception of pain during sexual intercourse is a pain that is experienced during sexual intercourses</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_039 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_039">
+        <rdfs:label xml:lang="en">appraisal of physical abilities</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;MFOEM_000005"/>
+        <obo:IAO_0000115 xml:lang="en">Appraisal of physical abilities is an appraisal that specifies one&apos;s evaluation of her physical abilities</obo:IAO_0000115>
     </owl:Class>
     
 
