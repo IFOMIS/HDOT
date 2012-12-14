@@ -19,7 +19,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
-    <owl:Ontology rdf:about="https://hdot.googlecode.com/svn/trunk/DOID_import.owl">
+    <owl:Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/DOID_import.owl">
         <owl:versionInfo>This ontology is a branch of the Human Disease Ontology (DOID) concerning disease of celluar proliferation</owl:versionInfo>
     </owl:Ontology>
     
