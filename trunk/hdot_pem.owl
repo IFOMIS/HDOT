@@ -30,6 +30,7 @@
         <hdot_core:title xml:lang="en">The Heath Data Ontology Trunk Patient Empowerment Module (HDOT_PEM)</hdot_core:title>
         <hdot_core:creator xml:lang="en">Ulf Schwarz</hdot_core:creator>
         <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl"/>
+        <owl:imports rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl"/>
     </owl:Ontology>
     
 
