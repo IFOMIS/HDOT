@@ -433,7 +433,6 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_007 -->
 
     <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_007">
-        <rdfs:label xml:lang="en">belief about the body</rdfs:label>
         <rdfs:label xml:lang="en">body image</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000005"/>
         <obo:IAO_0000115 xml:lang="en">Appraisal of body is a cognitive representation which represents a judgment about one’s own body</obo:IAO_0000115>
@@ -566,9 +565,10 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_013 -->
 
     <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_013">
-        <rdfs:label xml:lang="en">appraisal of self-rated health</rdfs:label>
+        <rdfs:label xml:lang="en">GSRH</rdfs:label>
+        <rdfs:label xml:lang="en">global self-rated health</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000005"/>
-        <obo:IAO_0000115 xml:lang="en">Appraisal of self-rated health is the subjective perception of one’s own health; it is relative to how the patient believes his/her health state is.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">global self-rated health is the subjective perception of one’s own health; it is relative to how the patient believes his/her health state is.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">p-medicine Deliverable 14.2, Specification of linguistic schema</obo:IAO_0000119>
     </owl:Class>
     
@@ -876,6 +876,83 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <rdfs:label xml:lang="en">appraisal of physical abilities</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000005"/>
         <obo:IAO_0000115 xml:lang="en">Appraisal of physical abilities is an appraisal that specifies one&apos;s evaluation of her physical abilities</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_040 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_040">
+        <rdfs:label xml:lang="en">state anxiety</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="&obo;MF_0000020"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_041 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_041">
+        <rdfs:label xml:lang="en">emotional support</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000104"/>
+        <obo:IAO_0000119 xml:lang="en">http://medical-dictionary.thefreedictionary.com/emotional+support+1</obo:IAO_0000119>
+        <obo:IAO_0000115 xml:lang="en">the sensitive, understanding approach that helps patients accept and deal with their illnesses; communicate their anxieties and fears; derive comfort from a gentle, sympathetic, caring person; and increase their ability to care for themselves.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_042 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_042">
+        <rdfs:label xml:lang="en">financial problem</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&obo;OGMS_0000084"/>
+                            <rdf:Description rdf:about="&obo;OGMS_0000087"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_043 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_043">
+        <rdfs:label xml:lang="en">personality</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001995"/>
+        <obo:IAO_0000115 xml:lang="en">The complex of all the attributes--behavioral, temperamental, emotional and mental--that characterize a unique individual.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Personality</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_044 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_044">
+        <rdfs:label xml:lang="en">relative global self rated health</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_013"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_045 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_045">
+        <rdfs:label xml:lang="en">absolute global self rated health</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_013"/>
     </owl:Class>
     
 
