@@ -242,6 +242,19 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
+    <!-- http://purl.obolibrary.org/obo/MFOEM_000003 -->
+
+    <rdf:Description rdf:about="&obo;MFOEM_000003">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000132"/>
+                <owl:someValuesFrom rdf:resource="&obo;MF_0000020"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/MFOEM_000009 -->
 
     <owl:Class rdf:about="&obo;MFOEM_000009">
@@ -294,6 +307,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
 
     <owl:Class rdf:about="&obo;MFOEM_000028">
         <rdfs:label xml:lang="en">anxiety</rdfs:label>
+        <rdfs:label xml:lang="en">state anxiety</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000001"/>
         <obo:IAO_0000115 xml:lang="en">A negative, aversive emotion provoked by the prospect of future threat. Distinguished from fear since it is triggered by a distal threat whereas fear is triggered by an immediate threat. Often gradual and long-lasting, whereas fear usually has sudden onset and offset.   [Source: OCEAS]</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">Anxiety can be defined as “an intense emotional response caused by the preconscious recognition that a repressed conflict is about to emerge into consciousness” (Gerrig, Zimbardo, 2002). This emotional state includes feelings of apprehension, tension, nervousness, and worry accompanied by physiological arousal related to future danger events, in which an unpleasant specific future crisis is fairly likely. More specifically, it is a condition of persistent and uncontrollable nervousness, stress, and worry that is triggered by anticipation of future events, memories of past events, or ruminations over day-to-day events, both trivial and major, with disproportionate fears of catastrophic consequences.
@@ -633,6 +647,12 @@ p-medicine, D.14</rdfs:comment>
     <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_018">
         <rdfs:label xml:lang="en">cognitive closure</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
+                <owl:someValuesFrom rdf:resource="&obo;NCBITaxon_9606"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">Cognitive closure describes the desire or &quot;need&quot; some individuals have for information that will allow them to conclude an issue that had previously (for them at least) been clouded in ambiguity and uncertainty.
 </obo:IAO_0000115>
         <hdot_pm:patientLanguageDefinition xml:lang="en">Cognitive closure is the condition in which a person looks for an answer whatever it is, that is preferable to uncertainty and ambiguity</hdot_pm:patientLanguageDefinition>
@@ -762,6 +782,12 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_029">
         <rdfs:label xml:lang="en">close mindedness</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
+                <owl:someValuesFrom rdf:resource="&obo;NCBITaxon_9606"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">Close mindedness is a disposition of some extended organism that is realized in a cognitive process by which someone is intolerant of the beliefs and opinions of other people</obo:IAO_0000115>
         <hdot_pm:patientLanguageDefinition xml:lang="en">Close mindedness is the inability to consider other possibilities, believes and points of view</hdot_pm:patientLanguageDefinition>
     </owl:Class>
@@ -953,6 +979,25 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_045">
         <rdfs:label xml:lang="en">absolute global self rated health</rdfs:label>
         <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_013"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_046 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_046">
+        <rdfs:label xml:lang="en">trait anxiety</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
+                <owl:someValuesFrom rdf:resource="&obo;NCBITaxon_9606"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <hdot_pm:patientLanguageDefinition xml:lang="en"> Trait anxiety is a stable tendency to respond with state anxiety in the anticipation of
+threatening situations</hdot_pm:patientLanguageDefinition>
+        <obo:IAO_0000119 xml:lang="en">&lt;http://en.wikipedia.org/wiki/Trait_anxiety#cite_note-52&gt;</obo:IAO_0000119>
+        <obo:IAO_0000115 xml:lang="en">Trait anxiety is a disposition of a person to undergo a state anxiety</obo:IAO_0000115>
     </owl:Class>
     
 
