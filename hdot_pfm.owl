@@ -24,8 +24,8 @@
         <hdot_core:title>The Health Data Ontology Trunk Pathological Formation Module (HDOT_PFM)</hdot_core:title>
         <hdot_core:creator>Ulf Schwarz</hdot_core:creator>
         <hdot_core:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</hdot_core:publisher>
+        <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/doid_import.owl"/>
         <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl"/>
-        <owl:imports rdf:resource="https://hdot.googlecode.com/svn/trunk/DOID_import.owl"/>
     </owl:Ontology>
     
 
