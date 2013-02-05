@@ -219,12 +219,6 @@
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000077"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0016"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
                 <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0012"/>
             </owl:Restriction>
@@ -235,7 +229,12 @@
                 <owl:someValuesFrom rdf:resource="&obo;GO_0008283"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">We need to distinguish &quot;neoplasm&quot; as a disease from the result of the cell proliferation process that realizes it,namely the tumour. A tumour has size and mass, a neoplasm disease as a disposition has not.</rdfs:comment>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0016"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000119 xml:lang="en">http://www.ifomis.org/acgt/1.0#Neoplasm</obo:IAO_0000119>
     </owl:Class>
     
@@ -938,7 +937,7 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A disease that is characterized by abnormally rapid cell division.</obo:IAO_0000115>
-        <rdfs:comment xml:lang="en">We need to distinguish &quot;neoplasm&quot; as a disease from the result of the cell proliferation process that realizes it,namely the tumour. A tumour has size and mass, a neoplasm disease as a disposition has not.</rdfs:comment>
+        <rdfs:comment xml:lang="en">We need to distinguish between cancer as a disease from the result of the cell proliferation process that realizes it,namely the neoplasm or tumour. A tumour has size and mass, a cancer disease as a disposition has not.</rdfs:comment>
         <oboInOwl:hasSynonym xml:lang="en">cell process disease</oboInOwl:hasSynonym>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/DOID_14566</obo:IAO_0000119>
     </owl:Class>
@@ -1000,12 +999,6 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
                 <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1013,6 +1006,12 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002218"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">An emotion process is a complex mental process that is a synchronized aggregate of constituent mental processes including an appraisal process as part, and which gives rise to an action tendency.</obo:IAO_0000115>
