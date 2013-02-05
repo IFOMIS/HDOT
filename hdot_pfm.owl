@@ -18,15 +18,14 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:hdot_core="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#">
     <owl:Ontology rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl">
-        <owl:versionInfo>It contains information about pathological formation entities</owl:versionInfo>
+        <owl:versionInfo>HDOT_Pathological Formation Module (hdot_pfm) contains information about pathological formation entities (e.g. neoplasm). Inasmuch as this ontology is developed for the project &amp;apos;p-medicine&amp;apos;, it mainly contains information about three types of neoplasm: breast neoplasm, blood neoplasm and kidney neoplasm. HDOT_PFM imports a small branch of the Human Disease Ontology (DOID), altough its semantics is slightly changed</owl:versionInfo>
         <hdot_core:creator>Luc Schneider</hdot_core:creator>
         <hdot_core:creator>Emilio M.Sanfilippo</hdot_core:creator>
         <hdot_core:title>The Health Data Ontology Trunk Pathological Formation Module (HDOT_PFM)</hdot_core:title>
         <hdot_core:creator>Ulf Schwarz</hdot_core:creator>
         <hdot_core:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</hdot_core:publisher>
-        <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/doid_import.owl"/>
         <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl"/>
-        
+        <owl:imports rdf:resource="https://hdot.googlecode.com/svn/trunk/DOID_import.owl"/>
     </owl:Ontology>
     
 
@@ -39,6 +38,30 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/GO_0008283 -->
+
+    <rdf:Description rdf:about="http://purl.obolibrary.org/obo/GO_0008283">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/RO_0002234"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
 </rdf:RDF>
 
 
