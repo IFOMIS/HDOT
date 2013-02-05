@@ -82,6 +82,15 @@
     
 
 
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014">
+        <rdfs:label>neoplasm</rdfs:label>
+        <obo:IAO_0000412>http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/DOID_0001816 -->
 
     <owl:Class rdf:about="&obo;DOID_0001816">
@@ -299,7 +308,7 @@
 
     <owl:Class rdf:about="&obo;DOID_0060071">
         <rdfs:label rdf:datatype="&xsd;string">pre-malignant neoplasm</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_14566"/>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
         <oboInOwl:creation_date rdf:datatype="&xsd;string">2011-05-11T12:18:41Z</oboInOwl:creation_date>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease of cellular proliferation that results in abnormal growths in the body, which do not invade or destroy the surrounding tissue but, given enough time, will transform into a cancer.</obo:IAO_0000115>
         <oboInOwl:id rdf:datatype="&xsd;string">DOID:0060071</oboInOwl:id>
@@ -314,7 +323,7 @@
 
     <owl:Class rdf:about="&obo;DOID_0060072">
         <rdfs:label rdf:datatype="&xsd;string">benign neoplasm</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_14566"/>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
         <oboInOwl:creation_date rdf:datatype="&xsd;string">2011-05-11T12:18:41Z</oboInOwl:creation_date>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease of cellular proliferation that results in abnormal growths in the body which lack the ability to metastasize.</obo:IAO_0000115>
         <oboInOwl:id rdf:datatype="&xsd;string">DOID:0060072</oboInOwl:id>
@@ -1460,21 +1469,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/DOID_14566 -->
-
-    <owl:Class rdf:about="&obo;DOID_14566">
-        <rdfs:label rdf:datatype="&xsd;string">disease of cellular proliferation</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000031"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease that is characterized by abnormally rapid cell division.</obo:IAO_0000115>
-        <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">DOID:0000818</oboInOwl:hasAlternativeId>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:14566</oboInOwl:id>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">cell process disease</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/DOID_1475 -->
 
     <owl:Class rdf:about="&obo;DOID_1475">
@@ -1648,8 +1642,8 @@
     <!-- http://purl.obolibrary.org/obo/DOID_162 -->
 
     <owl:Class rdf:about="&obo;DOID_162">
-        <rdfs:label xml:lang="en">cancer</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_14566"/>
+        <rdfs:label>malignant neoplasm</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
         <obo:IAO_0000115 xml:lang="en">A disease of cellular proliferation that is malignant and primary, characterized by uncontrolled cellular proliferation, local cell invasion and metastasis.</obo:IAO_0000115>
     </owl:Class>
     
@@ -10263,16 +10257,6 @@
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0023483</oboInOwl:hasDbXref>
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/OGMS_0000031 -->
-
-    <owl:Class rdf:about="&obo;OGMS_0000031">
-        <rdfs:label xml:lang="en">disease</rdfs:label>
-        <obo:IAO_0000115 xml:lang="en">A disease is a disposition (i) to undergo pathological processes that (ii) exists in an organism because of one or more disorders in that organism.</obo:IAO_0000115>
-        <rdfs:comment xml:lang="en">http://ontology.buffalo.edu/medo/Disease_and_Diagnosis.pdf]</rdfs:comment>
     </owl:Class>
 </rdf:RDF>
 
