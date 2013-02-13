@@ -20,6 +20,9 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl">
+        <owl:versionInfo>under development</owl:versionInfo>
+        <oboInOwl:created_by>Emilio M.Sanfilippo</oboInOwl:created_by>
+        <rdfs:comment>This is an HDOT owl module for testing a data schema in p-medicine.</rdfs:comment>
         <owl:imports rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl"/>
     </owl:Ontology>
     
@@ -162,6 +165,12 @@
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
@@ -169,12 +178,6 @@
                         <owl:someValuesFrom rdf:resource="&obo;OMRSE_00000011"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">age at primary diagnosis; full years at primary diagnosis</obo:IAO_0000115>
@@ -284,17 +287,17 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:complementOf rdf:resource="&obo;DOID_0060072"/>
-                    </owl:Class>
-                </owl:someValuesFrom>
+                <owl:someValuesFrom rdf:resource="&obo;DOID_162"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom rdf:resource="&obo;DOID_162"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="&obo;DOID_0060072"/>
+                    </owl:Class>
+                </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">diameter of invasive tumour. Not including any in situ disease sorrounding the invasive element</obo:IAO_0000115>
@@ -310,18 +313,18 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                <owl:someValuesFrom rdf:resource="http://sig.uw.edu/fma#Hormone"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
                 <owl:someValuesFrom>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&obo;BFO_0000087"/>
                         <owl:someValuesFrom rdf:resource="&obo;OMRSE_00000011"/>
                     </owl:Restriction>
                 </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
-                <owl:someValuesFrom rdf:resource="http://sig.uw.edu/fma#Hormone"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -336,14 +339,14 @@
         <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
-                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_009"/>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_009"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">whether or not the patient receives adjuvant hormone therapy</obo:IAO_0000115>
