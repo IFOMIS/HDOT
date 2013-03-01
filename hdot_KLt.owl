@@ -1,0 +1,672 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#"
+     xml:base="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl">
+        <rdfs:comment>HDOT Kiel Module. This is an HDOT module for testing purposes in p-medicine.</rdfs:comment>
+        <owl:imports rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#found_in -->
+
+    <owl:ObjectProperty rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#found_in"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue -->
+
+    <owl:DatatypeProperty rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_002 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_002">
+        <rdfs:label>MRD value</rdfs:label>
+        <rdfs:label>ERG_PM value</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000074"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_003 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_003">
+        <rdfs:label>gebdatum</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000011"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>age at treatment day 1 in days</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_004 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_004">
+        <rdfs:label>T1PM_DAT</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>Date of day 1 protocol M in days after treatment day 1</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_005 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_005">
+        <rdfs:label>immunom</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="&obo;PR_000001892"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>number of myeloid antigen</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_006 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_006">
+        <rdfs:label>immunom value</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000074"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000177"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_005"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_007 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_007">
+        <rdfs:label>chromosomal alteration</rdfs:label>
+        <rdfs:label>chromosomal abnormality</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_004"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_008 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_008">
+        <rdfs:label>TEL-AML1</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_36080"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_009 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_009">
+        <rdfs:label>examination on TEL-AML1</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_008"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_010 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_010">
+        <rdfs:label>body weight</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;PATO_0000128"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
+                        <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_011 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_011">
+        <rdfs:label>body weight measurement datum</rdfs:label>
+        <rdfs:label>body weight initial</rdfs:label>
+        <rdfs:label>gewini</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_010"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_012 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_012">
+        <rdfs:label>body leght</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;PATO_0000122"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
+                        <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_013 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_013">
+        <rdfs:label>body height initial</rdfs:label>
+        <rdfs:label>laengini</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_012"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_014 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_014">
+        <rdfs:label>body surface initial</rdfs:label>
+        <rdfs:label>KOINI</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0050"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_015 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_015">
+        <rdfs:label>blast 8</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="http://sig.uw.edu/fma#Blast_cell"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>blasts in peripheral blood day 8</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_016 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_016">
+        <rdfs:label>blast 15</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000032"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="http://sig.uw.edu/fma#Blast_cell"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115>blasts in BM at day 15</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_017 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_017">
+        <rdfs:label>ERG_PM 1 leukemic cell among 101 cells</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_002"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_022"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#found_in"/>
+                                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_017"/>
+                                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">101</owl:maxQualifiedCardinality>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_018 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_018">
+        <rdfs:label>ERG_PM 1 leukemic cell among 102 cells</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_002"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_022"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#found_in"/>
+                                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_017"/>
+                                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">102</owl:maxQualifiedCardinality>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_019 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_019">
+        <rdfs:label>ERG_PM 1 leukemic cell among 103 cells</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_002"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_022"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#found_in"/>
+                                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_017"/>
+                                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">103</owl:maxQualifiedCardinality>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_020 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_020">
+        <rdfs:label>ERG_PM 1 leukemic cell among 104 cells</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_002"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_022"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#found_in"/>
+                                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_017"/>
+                                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">104</owl:maxQualifiedCardinality>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_021 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_021">
+        <rdfs:label>ERG_PM no leukemic cells detected</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_002"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_022"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_022 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_022">
+        <rdfs:label>leukemic cell</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0016"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_023 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_023">
+        <rdfs:label>BAL according to EGIL criteria</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_006"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_024 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_024">
+        <rdfs:label>my-positive ALL</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_006"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_025 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_025">
+        <rdfs:label>no myeloid antigene</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_006"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:onClass rdf:resource="&obo;PR_000001892"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_026 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_026">
+        <rdfs:label>blast 8 value</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000074"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000177"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_015"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_027 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_027">
+        <rdfs:label>blast 8 value not appraisable</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_026"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_028 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_028">
+        <rdfs:label>blast 8 value not appraisable, probably POOR-Responder</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_026"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_029 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_029">
+        <rdfs:label>blast 8 value not appraisalbe, probably GOOD-Responder</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_026"/>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PATO_0000128 -->
+
+    <owl:Class rdf:about="&obo;PATO_0000128">
+        <rdfs:label>weight</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <obo:IAO_0000115>A physical quality inhering in a bearer that has mass near a gravitational body.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PR_000001892 -->
+
+    <owl:Class rdf:about="&obo;PR_000001892">
+        <rdfs:label>myeloid antigen</rdfs:label>
+        <rdfs:label>CD33 molecule</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_36080"/>
+        <obo:IAO_0000119>http://purl.obolibrary.org/obo/PR_000001892</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/PR_000007173 -->
+
+    <owl:Class rdf:about="&obo;PR_000007173">
+        <rdfs:label>transcriptional regulator ERG</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_36080"/>
+        <obo:IAO_0000115>A protein that is a translation product of the human ERG gene or a 1:1 ortholog thereof.</obo:IAO_0000115>
+        <obo:IAO_0000412>http://purl.obolibrary.org/obo/PR_000007173</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://sig.uw.edu/fma#Blast_cell -->
+
+    <owl:Class rdf:about="http://sig.uw.edu/fma#Blast_cell">
+        <rdfs:label>blast cell</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_017"/>
+        <obo:IAO_0000412>http://sig.uw.edu/fma#Blast_cell</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0000695 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000695">
+        <rdfs:label>sex</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001995"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000119>http://www.ebi.ac.uk/efo/EFO_0000695</obo:IAO_0000119>
+        <obo:IAO_0000115>An organismal quality inhering in a bearer by virtue of the bearer&apos;s ability to undergo sexual reproduction in order to differentiate the individuals or types involved.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0001265 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0001265">
+        <rdfs:label>female</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000695"/>
+        <obo:IAO_0000119>http://www.ebi.ac.uk/efo/EFO_0001265</obo:IAO_0000119>
+        <obo:IAO_0000115>A biological sex quality inhering in an individual or a population that only produces gametes that can be fertilised by male gametes.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ebi.ac.uk/efo/EFO_0001266 -->
+
+    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0001266">
+        <rdfs:label>male</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.ebi.ac.uk/efo/EFO_0000695"/>
+        <obo:IAO_0000115>A biological sex quality inhering in an individual or a population whose sex organs contain only male gametes.</obo:IAO_0000115>
+        <obo:IAO_0000119>http://www.ebi.ac.uk/efo/EFO_0001266</obo:IAO_0000119>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
