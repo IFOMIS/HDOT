@@ -63,10 +63,20 @@
     
 
 
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0008 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0008">
+        <rdfs:label>image type DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000101"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0016 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0016">
-        <rdfs:label>SOP class UID</rdfs:label>
+        <rdfs:label>SOP class UID DICOM</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
@@ -76,7 +86,7 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0018 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0018">
-        <rdfs:label>SOP instance UID</rdfs:label>
+        <rdfs:label>SOP instance UID DICOM</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
@@ -86,8 +96,8 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0020 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0020">
-        <rdfs:label>study date</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <rdfs:label>study date DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
     
@@ -96,8 +106,8 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0021 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0021">
-        <rdfs:label>series date</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <rdfs:label>series date DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
     
@@ -106,8 +116,8 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0022 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0022">
-        <rdfs:label>acquisition date</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <rdfs:label>acquisition date DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
     
@@ -116,8 +126,8 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0023 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0023">
-        <rdfs:label>content date</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <rdfs:label>content date DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
     
@@ -126,8 +136,8 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0024 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0024">
-        <rdfs:label>overlay date</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <rdfs:label>overlay date DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
     
@@ -136,8 +146,8 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,002A -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,002A">
-        <rdfs:label>acquisition date time</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <rdfs:label>acquisition date time DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
     
@@ -146,8 +156,8 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0030 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0030">
-        <rdfs:label>study time</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <rdfs:label>study time DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
     
@@ -156,8 +166,8 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0032 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0032">
-        <rdfs:label>acquisition time</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <rdfs:label>acquisition time DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
     
@@ -166,8 +176,8 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0033 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0033">
-        <rdfs:label>content time</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <rdfs:label>content time DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
     
@@ -176,8 +186,8 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0034 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0034">
-        <rdfs:label>overlay time</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <rdfs:label>overlay time DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
     
@@ -186,7 +196,7 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0010,0010 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0010,0010">
-        <rdfs:label>patient name</rdfs:label>
+        <rdfs:label>patient name DICOM</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_034"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
@@ -196,8 +206,8 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0010,0020 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0010,0020">
-        <rdfs:label>patient ID</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
+        <rdfs:label>patient ID DICOM</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_045"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
     
@@ -216,7 +226,7 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,000E -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,000E">
-        <rdfs:label>series instance UID</rdfs:label>
+        <rdfs:label>series instance UID DICOM</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
@@ -226,7 +236,7 @@
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,0010 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,0010">
-        <rdfs:label>study ID</rdfs:label>
+        <rdfs:label>study ID DICOM</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
@@ -240,32 +250,6 @@
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000029"/>
         <obo:IAO_0000412>DICOM</obo:IAO_0000412>
     </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/IAO_0000416 -->
-
-    <owl:Class rdf:about="&obo;IAO_0000416">
-        <rdfs:label>time measurement datum</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000032"/>
-        <obo:IAO_0000412>http://purl.obolibrary.org/obo/IAO_0000416</obo:IAO_0000412>
-        <obo:IAO_0000115>A scalar measurement datum that is the result of measuring a temporal interval</obo:IAO_0000115>
-    </owl:Class>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="&obo;IAO_0000101">
-        <oboInOwl:hasSynonym>DICOM: Image type</oboInOwl:hasSynonym>
-        <rdfs:comment>DICOM ID: 0008,0008</rdfs:comment>
-    </rdf:Description>
 </rdf:RDF>
 
 
