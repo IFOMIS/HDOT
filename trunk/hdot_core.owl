@@ -126,6 +126,32 @@
     
 
 
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#hasBirth -->
+
+    <owl:ObjectProperty rdf:about="&trunk;hdot_core.owl#hasBirth">
+        <rdfs:range rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_041"/>
+        <rdfs:domain rdf:resource="&obo;OGMS_0000087"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#hasDeath -->
+
+    <owl:ObjectProperty rdf:about="&trunk;hdot_core.owl#hasDeath">
+        <rdfs:range rdf:resource="&obo;GO_0016265"/>
+        <rdfs:domain rdf:resource="&obo;OGMS_0000087"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#hasName -->
+
+    <owl:ObjectProperty rdf:about="&trunk;hdot_core.owl#hasName">
+        <rdfs:range rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_034"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/IAO_0000136 -->
 
     <owl:ObjectProperty rdf:about="&obo;IAO_0000136">
@@ -202,6 +228,92 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#hasBirthDate -->
+
+    <owl:DatatypeProperty rdf:about="&trunk;hdot_core.owl#hasBirthDate">
+        <rdfs:domain rdf:resource="&obo;OGMS_0000087"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#hasBooleanValue -->
+
+    <owl:DatatypeProperty rdf:about="&trunk;hdot_core.owl#hasBooleanValue">
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#hasDate -->
+
+    <owl:DatatypeProperty rdf:about="&trunk;hdot_core.owl#hasDate">
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;BFO_0000015"/>
+                    <rdf:Description rdf:about="&obo;BFO_0000035"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#hasDeathDate -->
+
+    <owl:DatatypeProperty rdf:about="&trunk;hdot_core.owl#hasDeathDate">
+        <rdfs:domain rdf:resource="&obo;OGMS_0000087"/>
+        <rdfs:range rdf:resource="&xsd;dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#hasFloatValue -->
+
+    <owl:DatatypeProperty rdf:about="&trunk;hdot_core.owl#hasFloatValue">
+        <rdfs:subPropertyOf rdf:resource="&trunk;hdot_core.owl#hasNumericalValue"/>
+        <rdfs:range rdf:resource="&xsd;float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#hasIntegerValue -->
+
+    <owl:DatatypeProperty rdf:about="&trunk;hdot_core.owl#hasIntegerValue">
+        <rdfs:subPropertyOf rdf:resource="&trunk;hdot_core.owl#hasNumericalValue"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#hasNumericalValue -->
+
+    <owl:DatatypeProperty rdf:about="&trunk;hdot_core.owl#hasNumericalValue"/>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#hasStringValue -->
+
+    <owl:DatatypeProperty rdf:about="&trunk;hdot_core.owl#hasStringValue">
+        <rdfs:domain rdf:resource="&obo2;IAO_0000030"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -254,6 +366,15 @@
     
 
 
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_0042 -->
+
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_0042">
+        <rdfs:label>institution identifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_033"/>
+    </owl:Class>
+    
+
+
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_005 -->
 
     <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_005">
@@ -278,15 +399,15 @@
         <rdfs:label xml:lang="en">material anatomical entity</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000030"/>
         <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_026"/>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
                 <owl:allValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_026"/>
+            </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">anatomical structure or portion of body substance</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://ontology.buffalo.edu/bio/OBR.pdf</obo:IAO_0000119>
@@ -534,15 +655,15 @@
         <rdfs:label xml:lang="en">portion of body substance</rdfs:label>
         <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_006"/>
         <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_023"/>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
                 <owl:allValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_010"/>
             </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_023"/>
-            </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">Material anatomical entity in a gaseous, liquid, semisolid or solid state, with or without the admixture of cells and biological macromolecules; produced by anatomical structures or derived from inhaled and ingested substances that have been modified by anatomical structures.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Portion_of_body_substance</obo:IAO_0000119>
@@ -653,14 +774,14 @@
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000671"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_037"/>
-                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_035"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000175"/>
+                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_031"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000175"/>
-                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_031"/>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_037"/>
+                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_035"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A sample from an organism that is part of some biobank</obo:IAO_0000115>
@@ -689,6 +810,12 @@
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#hasStringValue"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -714,7 +841,7 @@
 
     <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_038">
         <rdfs:label xml:lang="en">biobank identifier</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_033"/>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_0042"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&trunk;IAO_0000219"/>
@@ -759,6 +886,58 @@
     
 
 
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_041 -->
+
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_041">
+        <rdfs:label>birth</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000060"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#hasDate"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_042 -->
+
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_042">
+        <rdfs:label>date of death</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_043 -->
+
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_043">
+        <rdfs:label>date of birth</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_044 -->
+
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_044">
+        <rdfs:label>hospital identifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_0042"/>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_045 -->
+
+    <owl:Class rdf:about="&trunk;hdot_core.owl#HDOT_CORE_045">
+        <rdfs:label>person identifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_033"/>
+    </owl:Class>
+    
+
+
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#clinical_picture -->
 
     <owl:Class rdf:about="&trunk;hdot_core.owl#clinical_picture">
@@ -780,6 +959,12 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
                 <owl:someValuesFrom rdf:resource="&obo;BFO_0000001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#hasStringValue"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119>http://purl.obofoundry.org/obo/IAO_0000030</obo:IAO_0000119>
@@ -1155,6 +1340,13 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000136"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#hasDate"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;dateTime"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A permanent cessation of all vital functions: the end of life; can be applied to a whole organism or to a part of an organism.</obo:IAO_0000115>
@@ -1936,6 +2128,12 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:label xml:lang="en">homo sapiens</rdfs:label>
         <rdfs:label xml:lang="en">human being</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000087"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#hasName"/>
+                <owl:someValuesFrom rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_034"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/NCBITaxon_9606</obo:IAO_0000119>
     </owl:Class>
     
@@ -1948,6 +2146,12 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+                <owl:someValuesFrom rdf:resource="&obo;MF_0000020"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002218"/>
                 <owl:allValuesFrom>
                     <owl:Class>
@@ -1957,12 +2161,6 @@ PMID:12345</obo:IAO_0000112>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MF_0000020"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A processual entity that realizes a plan which is the concretization of a plan specification.</obo:IAO_0000115>
@@ -2138,11 +2336,6 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:label xml:lang="en">symptom</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000028"/>
         <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf rdf:resource="&obo;OGMS_0000024"/>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
                 <owl:someValuesFrom>
@@ -2157,6 +2350,11 @@ PMID:12345</obo:IAO_0000112>
                     </owl:Class>
                 </owl:someValuesFrom>
             </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&obo;OGMS_0000024"/>
+            </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">(HDOT_CORE) A quality of a patient that is observed by the patient and is hypothesized by the patient to be a realization of a disease.</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">In contrast to the definition provided in OGMS, we assume that symptoms are qualities of continuants only. However, a sign may of course be the outcome of an occurrent.</rdfs:comment>
@@ -2188,6 +2386,11 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:label xml:lang="en">sign</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000028"/>
         <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&obo;OGMS_0000020"/>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
                 <owl:someValuesFrom>
@@ -2202,11 +2405,6 @@ PMID:12345</obo:IAO_0000112>
                     </owl:Class>
                 </owl:someValuesFrom>
             </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf rdf:resource="&obo;OGMS_0000020"/>
-            </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">(HDOT_CORE) A quality of a patient, a material entity that is part of a patient, any one of which is observed in a physical examination and is deemed by the clinician to be of clinical significance.</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">In contrast to the definition provided in OGMS, we assume that signs are qualities of continuants only. However, a sign may of course be the outcome of an occurrent.</rdfs:comment>
@@ -2296,14 +2494,14 @@ PMID:12345</obo:IAO_0000112>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000061"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000061"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A disposition (i) to undergo pathological processes that (ii) exists in an organism because of one or more disorders in that organism.</obo:IAO_0000115>
@@ -2319,14 +2517,14 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A state of balance among all the body systems needed for the body to survive and function correctly.</obo:IAO_0000115>
@@ -2375,15 +2573,15 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:label xml:lang="en">constitutional genetic disease</rdfs:label>
         <rdfs:subClassOf rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_003"/>
         <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&obo;OGMS_0000034"/>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000113"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000051"/>
             </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf rdf:resource="&obo;OGMS_0000034"/>
-            </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A disease whose physical basis is a constitutional genetic disorder.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000035</obo:IAO_0000119>
@@ -2608,6 +2806,18 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000182"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000138"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000118"/>
                 <owl:allValuesFrom>
                     <owl:Class>
@@ -2620,18 +2830,6 @@ PMID:12345</obo:IAO_0000112>
                         </owl:intersectionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000138"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">The totality of all processes through which a given disease instance is realized.</obo:IAO_0000115>
@@ -2859,6 +3057,32 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000087">
         <rdfs:label xml:lang="en">extended organism</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000027"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#hasBirth"/>
+                <owl:onClass rdf:resource="&trunk;hdot_core.owl#HDOT_CORE_041"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#hasDeath"/>
+                <owl:onClass rdf:resource="&obo;GO_0016265"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#hasBirthDate"/>
+                <owl:someValuesFrom rdf:resource="&xsd;dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&trunk;hdot_core.owl#hasDeathDate"/>
+                <owl:someValuesFrom rdf:resource="&xsd;dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000111"/>
@@ -3105,14 +3329,14 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000060"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000136"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000063"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000181"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000091"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000181"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000091"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000136"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000063"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A part of a disease course that includes a temporary convalescense.</obo:IAO_0000115>
@@ -3583,14 +3807,14 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000015"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
-                <owl:someValuesFrom rdf:resource="&obo;CHEBI_23367"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000055"/>
+                <owl:someValuesFrom rdf:resource="&obo;GO_0003674"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000055"/>
-                <owl:someValuesFrom rdf:resource="&obo;GO_0003674"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                <owl:someValuesFrom rdf:resource="&obo;CHEBI_23367"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A process involving the interconversion of chemical species.</obo:IAO_0000115>
