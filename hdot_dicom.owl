@@ -1,0 +1,274 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY obo "http://purl.obolibrary.org/obo/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
+]>
+
+
+<rdf:RDF xmlns="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#"
+     xml:base="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl"
+     xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
+    <owl:Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl">
+        <rdfs:label>Health Data Ontology Trunk DICOM module</rdfs:label>
+        <rdfs:label>HDOT DICOM</rdfs:label>
+        <rdfs:label></rdfs:label>
+        <rdfs:comment>The HDOT_DICOM module includes some DICOM classes in OWL for the purposes of p-medicine. It does not include the whole DICOM, since the p-medicine user will have the possibility to extend the module by herself by the means of the Ontology Aggregator Tool (under development)</rdfs:comment>
+        <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <owl:AnnotationProperty rdf:about="&oboInOwl;hasSynonym"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0016 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0016">
+        <rdfs:label>SOP class UID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0018 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0018">
+        <rdfs:label>SOP instance UID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0020 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0020">
+        <rdfs:label>study date</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0021 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0021">
+        <rdfs:label>series date</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0022 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0022">
+        <rdfs:label>acquisition date</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0023 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0023">
+        <rdfs:label>content date</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0024 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0024">
+        <rdfs:label>overlay date</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,002A -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,002A">
+        <rdfs:label>acquisition date time</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0030 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0030">
+        <rdfs:label>study time</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0032 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0032">
+        <rdfs:label>acquisition time</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0033 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0033">
+        <rdfs:label>content time</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0034 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0008,0034">
+        <rdfs:label>overlay time</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000416"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0010,0010 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0010,0010">
+        <rdfs:label>patient name</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_034"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0010,0020 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0010,0020">
+        <rdfs:label>patient ID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,000D -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,000D">
+        <rdfs:label>study instance UID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,000E -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,000E">
+        <rdfs:label>series instance UID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,0010 -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,0010">
+        <rdfs:label>study ID</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,00AA -->
+
+    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_dicom.owl#HDOT_DICOM_0020,00AA">
+        <rdfs:label>report number</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000029"/>
+        <obo:IAO_0000412>DICOM</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/IAO_0000416 -->
+
+    <owl:Class rdf:about="&obo;IAO_0000416">
+        <rdfs:label>time measurement datum</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000032"/>
+        <obo:IAO_0000412>http://purl.obolibrary.org/obo/IAO_0000416</obo:IAO_0000412>
+        <obo:IAO_0000115>A scalar measurement datum that is the result of measuring a temporal interval</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="&obo;IAO_0000101">
+        <oboInOwl:hasSynonym>DICOM: Image type</oboInOwl:hasSynonym>
+        <rdfs:comment>DICOM ID: 0008,0008</rdfs:comment>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+
