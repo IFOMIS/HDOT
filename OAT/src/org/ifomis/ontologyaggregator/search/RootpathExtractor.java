@@ -15,7 +15,7 @@ import org.ncbo.stanford.sparql.examples.SimpleTest;
 import uk.ac.ebi.ontocat.OntologyTerm;
 
 /**
- * Extracts the path to root for a hit ina given ontology found in the BioPortal
+ * Extracts the path to root for a hit in a given ontology found in the BioPortal
  * using a SPARQL query.
  * 
  * @author Nikolina
@@ -128,14 +128,17 @@ public class RootpathExtractor {
 
 			// parse response
 			String[] lines = response.split("\n");
-
+			
+			//the first line is always the name of the variables to be returned
 			if (lines.length == 1) {
 				// no results
 				parent = "";
 				break;
+//			} else if (lines.length == 1) {
 			} else {
 				//TODO parse all paths to root
 				// take always the last returned parent
+				
 				String line = lines[lines.length - 1];
 
 				String[] lineTokens = line.split("\t");
