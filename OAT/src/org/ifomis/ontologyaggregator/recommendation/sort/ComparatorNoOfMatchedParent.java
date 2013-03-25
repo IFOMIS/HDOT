@@ -20,7 +20,7 @@ public class ComparatorNoOfMatchedParent implements Comparator<Recommendation> {
 
 		Integer r2ParentNo = r2.getParentNo();
 
-		return r1ParentNo.compareTo(r2ParentNo);
+		return r2ParentNo.compareTo(r1ParentNo);
 	}
 
 }
