@@ -5,13 +5,13 @@ import java.util.Comparator;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 
 
-public class ComparatorMatchedClass implements Comparator<Recommendation>{
+public class ComparatorNoParentsOfHdotClass implements Comparator<Recommendation>{
 
 	@Override
 	public int compare(Recommendation r1, Recommendation r2) {
 		
-		//TODO define how to compare it
-		return r1.getMatchedClass().compareTo(r2.getMatchedClass());
+		//TODO define how to compare it		
+		return ((Integer)r1.getHdotHierarchy().size()).compareTo(r2.getHdotHierarchy().size());
 	}
 
 }

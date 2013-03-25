@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
-
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.notifications.EmailSender;
@@ -156,9 +155,9 @@ public class RecommendationGenerator {
 		// TODO put the imported ontos in external list and read in
 		this.importedOntologies = new ArrayList<String>();
 		importedOntologies
-				.add("<http://hdot.googlecode.com/svn/trunk/doid_import.owl>");
+				.add("http://hdot.googlecode.com/svn/trunk/doid_import.owl");
 		importedOntologies
-				.add("<http://purl.obolibrary.org/obo/bfo.owl><http://purl.obolibrary.org/obo/bfo/2012-11-15-bugfix/bfo.owl>");
+				.add("http://purl.obolibrary.org/obo/bfo.owl");
 
 		// Get hold of an ontology manager
 		this.ontology_manager = OWLManager.createOWLOntologyManager();
@@ -324,7 +323,7 @@ public class RecommendationGenerator {
 		List<OntologyTerm> childrenOfHit = ontologyService
 				.getChildren(this.currentHit);
 
-		if (importedOntologies.contains(hdotModule.getOntologyID().toString())) {
+		if (importedOntologies.contains(hdotModule.getOntologyID().getOntologyIRI().toString())) {
 			log.info("RECOMMENDATION POSSIBLE ONLY IN CORE OF HDOT");
 			onlyInCore = true;
 		}
@@ -411,7 +410,7 @@ public class RecommendationGenerator {
 		OntologyTerm matchedTerm = null;
 
 		// check if the current class is hdot_core
-		boolean isHdotCore = currentOntology.getOntologyID().toString()
+		boolean isHdotCore = currentOntology.getOntologyID().getOntologyIRI().toString()
 				.contains("http://hdot.googlecode.com/svn/trunk/hdot_core.owl");
 
 		// iterate over all classes of the ontology and try to find a match of
@@ -467,8 +466,10 @@ public class RecommendationGenerator {
 				}
 				matchedTerm.setLabel(pureLabelOfHdotClass);
 			} else {
-				double similarityOfLabels = DiceCoefficient.diceCoefficientOptimized(currentLabel, pureLabelOfHdotClass);
-				if ( similarityOfLabels > 0.90) {
+				double similarityOfLabels = DiceCoefficient
+						.diceCoefficientOptimized(currentLabel,
+								pureLabelOfHdotClass);
+				if (similarityOfLabels > 0.90) {
 
 					log.info("\nLABELS of BioPortal HIT and HDOT CLASS SIMILARITY > 90\n");
 					log.info("pureLabelOfHdotClass: " + pureLabelOfHdotClass);
@@ -476,7 +477,7 @@ public class RecommendationGenerator {
 					log.info("label of currentCandidate: "
 							+ currentCandidate.getLabel());
 					log.info("similarity of labels: " + similarityOfLabels);
-					
+
 					if (conceptIdsMatch) {
 						log.info("\nIDs MATCH and LABELS SIMILAR");
 					}
@@ -492,7 +493,7 @@ public class RecommendationGenerator {
 				matchedTerm.setURI(new URI(hdotClass.toStringID()));
 				matchedTerm.setLabel(pureLabelOfHdotClass);
 				matchedTerm.setOntologyAccession(currentOntology
-						.getOntologyID().toString());
+						.getOntologyID().getOntologyIRI().toString());
 
 				List<String> definitions = ontologyService
 						.getDefinitions(this.currentHit);
@@ -544,6 +545,8 @@ public class RecommendationGenerator {
 								currentOntology, counterForParents,
 								matchedTerm, definitions, synonyms,
 								childrenOfHit));
+						matchedTerm = null;
+						continue;
 					}
 				}
 				// in case a match was found quit the loop for the classes

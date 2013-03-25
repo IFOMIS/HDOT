@@ -28,11 +28,15 @@ public class Recommendation {
 	private String searchedTerm;
 	private List<OWLClass> hdotHierarchy;
 	private OWLOntology hdotModule;
-	private int parentNo;
+	private int parentNoOfHit;
 	private OntologyTerm matchedClass;
 	private List<String> hitSynonyms;
 	private List<OntologyTerm> hitChildren;
 	private Stack<OntologyTerm> hitHierarchy;
+
+	public Stack<OntologyTerm> getHitHierarchy() {
+		return hitHierarchy;
+	}
 
 	public Recommendation(int hitNo, OntologyTerm hit, boolean idsMatched,
 			boolean labelsMatched, String searchedTerm,
@@ -47,7 +51,7 @@ public class Recommendation {
 		this.searchedTerm = searchedTerm;
 		this.hdotHierarchy = hierarchy;
 		this.hdotModule = hdotModule;
-		this.parentNo = parentNo;
+		this.parentNoOfHit = parentNo;
 		this.matchedClass = matchedClass;
 		this.hitDefinitions = definitions;
 		this.hitSynonyms = synonyms;
@@ -75,7 +79,7 @@ public class Recommendation {
 			messageBuffer.append(label);
 
 		}
-		messageBuffer.append("\n\n\t\tparent No:" + (this.parentNo));
+		messageBuffer.append("\n\n\t\tparent No:" + (this.parentNoOfHit));
 		messageBuffer.append("  of the current hit matched the concept:\n\t\t");
 		messageBuffer.append(matchedClass.getURI().toString());
 		messageBuffer.append("\t");
@@ -170,7 +174,7 @@ public class Recommendation {
 		return labelsMatched;
 	}
 
-	public List<OWLClass> getHierarchy() {
+	public List<OWLClass> getHdotHierarchy() {
 		return hdotHierarchy;
 	}
 
@@ -179,7 +183,7 @@ public class Recommendation {
 	}
 
 	public int getParentNo() {
-		return parentNo;
+		return parentNoOfHit;
 	}
 
 	public OntologyTerm getMatchedClass() {
