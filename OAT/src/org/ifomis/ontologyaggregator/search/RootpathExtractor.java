@@ -51,6 +51,8 @@ public class RootpathExtractor {
 
 	private int counterForPrefLabels = 0;
 	private int counterForLabels = 0;
+	private List<Stack<OntologyTerm>> listOfPaths;
+	
 
 	public RootpathExtractor(String currentTerm, String date) {
 		this.searchedTerm = currentTerm;

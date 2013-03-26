@@ -32,6 +32,8 @@ public class Recommendation {
 	private OntologyTerm matchedClass;
 	private List<String> hitSynonyms;
 	private List<OntologyTerm> hitChildren;
+	
+
 	private Stack<OntologyTerm> hitHierarchy;
 
 	public Stack<OntologyTerm> getHitHierarchy() {
@@ -188,5 +190,8 @@ public class Recommendation {
 
 	public OntologyTerm getMatchedClass() {
 		return matchedClass;
+	}
+	public List<OntologyTerm> getHitChildren() {
+		return hitChildren;
 	}
 }

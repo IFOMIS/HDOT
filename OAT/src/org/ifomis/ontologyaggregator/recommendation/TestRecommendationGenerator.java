@@ -77,39 +77,44 @@ public class TestRecommendationGenerator {
 				// yes/no
 				while (!rg.getListOfRecommendations().isEmpty()) {
 					rf.checkValidRecommendations();
+					
 					UserInputReader inputReader = new UserInputReader();
 					inputReader.addUserInputListener(rf);
-					inputReader.start();
-
+					inputReader.startListeningAcceptInput();
+					
 					if (rf.isAccept()) {
+						if(!(rf.getAcceptedRecommendation().getHitChildren().isEmpty())){
+							inputReader.startListeningIncludeSubclassesInput();
+						}
+						
 						break;
 					}
 				}
 
-				if (!rf.isAccept()) {
-					RecommendationGenerator rgSecond = new RecommendationGenerator(
-							"data/hdot/hdot_all.owl", "", se.getListOfPaths()
-									.subList(5, 10), term,
-							se.getRestrictedBps(), start);
-
-					RecommendationFilter rfSecond = new RecommendationFilter(
-							term, rgSecond.getListOfRecommendations(),
-							rgSecond.getListOfRecsPossibleInCoreOfHDOT(),
-							rgSecond.getListImportedNotLeafMatches(),
-							rgSecond.getListOfInCoreNotLeafMatches());
-					rfSecond.checkValidRecommendations();
-
-					while (!rg.getListOfRecommendations().isEmpty()) {
-						rf.checkValidRecommendations();
-						UserInputReader inputReader = new UserInputReader();
-						inputReader.addUserInputListener(rf);
-						inputReader.start();
-
-						if (rf.isAccept()) {
-							break;
-						}
-					}
-				}
+//				if (!rf.isAccept()) {
+//					RecommendationGenerator rgSecond = new RecommendationGenerator(
+//							"data/hdot/hdot_all.owl", "", se.getListOfPaths()
+//									.subList(5, 10), term,
+//							se.getRestrictedBps(), start);
+//
+//					RecommendationFilter rfSecond = new RecommendationFilter(
+//							term, rgSecond.getListOfRecommendations(),
+//							rgSecond.getListOfRecsPossibleInCoreOfHDOT(),
+//							rgSecond.getListImportedNotLeafMatches(),
+//							rgSecond.getListOfInCoreNotLeafMatches());
+//					rfSecond.checkValidRecommendations();
+//
+//					while (!rg.getListOfRecommendations().isEmpty()) {
+//						rf.checkValidRecommendations();
+//						UserInputReader inputReader = new UserInputReader();
+//						inputReader.addUserInputListener(rf);
+//						inputReader.start();
+//
+//						if (rf.isAccept()) {
+//							break;
+//						}
+//					}
+//				}
 				long end = System.currentTimeMillis();
 
 				long milliseconds = (end - start);
