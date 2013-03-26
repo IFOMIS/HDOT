@@ -7,6 +7,7 @@
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
     <!ENTITY hdot_core "http://hdot.googlecode.com/svn/trunk/hdot_core.owl#" >
 ]>
 
@@ -18,7 +19,8 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:hdot_core="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#">
+     xmlns:hdot_core="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#"
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl">
         <owl:versionInfo>HDOT_Pathological Formation Module (hdot_pfm) contains information about pathological formation entities (e.g. neoplasm). Inasmuch as this ontology is developed for the project &amp;apos;p-medicine&amp;apos;, it mainly contains information about three types of neoplasm: breast neoplasm, blood neoplasm and kidney neoplasm. HDOT_PFM imports a small branch of the Human Disease Ontology (DOID), altough its semantics is slightly changed</owl:versionInfo>
         <hdot_core:creator>Luc Schneider</hdot_core:creator>
@@ -57,11 +59,63 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#has_stage -->
+
+    <owl:ObjectProperty rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#has_stage">
+        <rdfs:domain rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+        <rdfs:range rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014 -->
+
+    <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#has_magnitude"/>
+                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_094"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#has_magnitude"/>
+                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_093"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#has_stage"/>
+                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#has_magnitude"/>
+                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_092"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
     
 
 
@@ -78,10 +132,27 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/OGMS_0000061 -->
+
+    <rdf:Description rdf:about="&obo;OGMS_0000061">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/OGMS_0000090 -->
+
+    <rdf:Description rdf:about="&obo;OGMS_0000090">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
+    </rdf:Description>
+    
+
+
     <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001 -->
 
     <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001">
-        <rdfs:label>tumor stage</rdfs:label>
+        <rdfs:label>neoplasm stage</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000028"/>
         <rdfs:comment xml:lang="en">Staging is important for several reasons:
 
@@ -89,8 +160,9 @@ Staging helps the doctor plan the appropriate treatment.
 The stage can be used to estimate the person’s prognosis.
 Knowing the stage is important in identifying clinical trials that may be suitable for a particular patient.
 Staging helps health care providers and researchers exchange information about patients; it also gives them a common terminology for evaluating the results of clinical trials and comparing the results of different trials.</rdfs:comment>
-        <obo:IAO_0000115 xml:lang="en">Tumor stage describes the severity of a person’s cancer based on the extent of the original (primary) tumor and whether or not cancer has spread in the body.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://www.cancer.gov/cancertopics/factsheet/detection/staging</obo:IAO_0000119>
+        <oboInOwl:hasSynonym>tumor stage</oboInOwl:hasSynonym>
+        <obo:IAO_0000115 xml:lang="en">Tumor stage describes the severity of a person’s cancer based on the extent of the original (primary) tumor and whether or not cancer has spread in the body.</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -1204,6 +1276,7 @@ walls)
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000028"/>
         <obo:IAO_0000115 xml:lang="en">Nodal status indicates whether the cancer has spread to other lymph nodes</obo:IAO_0000115>
     </owl:Class>
@@ -1245,6 +1318,95 @@ walls)
                 <owl:someValuesFrom rdf:resource="&xsd;boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_092 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_092">
+        <rdfs:label>neoplasm size</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;PATO_0000117"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="&obo;DOID_1240"/>
+                                    </owl:Class>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000117"/>
+        <oboInOwl:hasSynonym>tumor size</oboInOwl:hasSynonym>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_093 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_093">
+        <rdfs:label>neoplasm volume</rdfs:label>
+        <rdfs:label>tumor volume</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;PATO_0000918"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="&obo;DOID_1240"/>
+                                    </owl:Class>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_094 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_094">
+        <rdfs:label>neoplasm diameter</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;PATO_0001334"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="&obo;DOID_1240"/>
+                                    </owl:Class>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001334"/>
     </owl:Class>
     
 
