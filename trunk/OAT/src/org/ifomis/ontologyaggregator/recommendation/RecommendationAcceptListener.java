@@ -4,5 +4,7 @@ import java.util.EventListener;
 
 public interface RecommendationAcceptListener extends EventListener{
 	 
-	    public void inputRead(RecommendationAcceptEvent recommendationAcceptEvent);
+	    public void readInputAccept(RecommendationAcceptEvent recommendationAcceptEvent);
+	    public void readInputIncludeSubclasses(IncludeSubClassesEvent includeClassesEvent);
+	    
 	 }

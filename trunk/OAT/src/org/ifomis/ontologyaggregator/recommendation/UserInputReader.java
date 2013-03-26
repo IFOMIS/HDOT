@@ -20,7 +20,7 @@ public class UserInputReader {
 	        this.listeners.remove(listener);
 	    }
 	 
-	    public void start() {
+	    public void startListeningAcceptInput() {
 	        Console console = System.console();
 	        System.out.println("console: " + console);
 	        if (console != null) {
@@ -34,7 +34,7 @@ public class UserInputReader {
 	                	continue;
 	                }
 	                if (!d.isEmpty()) {
-	                    notifyListeners(d);
+	                    notifyListenersAboutAcceptInput(d);
 	                    break;
 	                }
 	            } while (d != null);
@@ -42,9 +42,36 @@ public class UserInputReader {
 	    }
 	 
 
-	    private void notifyListeners(String d) {
+	    public void startListeningIncludeSubclassesInput() {
+	        Console console = System.console();
+	        System.out.println("console: " + console);
+	        if (console != null) {
+
+	        	String d = null;
+	            do {
+	                String readLine = console.readLine("Enter \"yes\" to include the subclasses with the integration of the term or \"no\" to reject it: ", (Object[])null);
+	                d = readLine;
+	                System.out.println("input " + d);
+	                if (!(d.equalsIgnoreCase("yes") || d.equalsIgnoreCase("no"))){
+	                	continue;
+	                }
+	                if (!d.isEmpty()) {
+	                    notifyListenersAboutSubClassesInput(d);
+	                    break;
+	                }
+	            } while (d != null);
+	        }
+	    }
+	    
+	    private void notifyListenersAboutSubClassesInput(String d) {
+	    	for (RecommendationAcceptListener subClassesListener: listeners) {
+	        	subClassesListener.readInputIncludeSubclasses(new IncludeSubClassesEvent(this, d));
+	        }			
+		}
+
+		private void notifyListenersAboutAcceptInput(String d) {
 	        for (RecommendationAcceptListener acceptListener: listeners) {
-	        	acceptListener.inputRead(new RecommendationAcceptEvent(this, d));
+	        	acceptListener.readInputAccept(new RecommendationAcceptEvent(this, d));
 	        }
 	    }
 }
