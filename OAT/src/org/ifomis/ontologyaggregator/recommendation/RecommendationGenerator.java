@@ -63,11 +63,6 @@ public class RecommendationGenerator {
 	 */
 	private OWLOntologyManager ontology_manager;
 
-	/**
-	 * the outgoing ontology, where the recommended class is going to be
-	 * inserted
-	 */
-	private String ontoOut;
 
 	/**
 	 * the current hit
@@ -84,10 +79,7 @@ public class RecommendationGenerator {
 	 */
 	private int counterForParents;
 
-	/**
-	 * the data factory for the ontology
-	 */
-	private OWLDataFactory dataFactory;
+	
 
 	/**
 	 * The term that the user searches for.
@@ -143,7 +135,6 @@ public class RecommendationGenerator {
 			URISyntaxException, OntologyServiceException {
 
 		// initialize the fields
-		this.ontoOut = ontoOut;
 		this.start = start;
 		this.ontologyService = ontologyService;
 
@@ -154,9 +145,9 @@ public class RecommendationGenerator {
 
 		// TODO put the imported ontos in external list and read in
 		this.importedOntologies = new ArrayList<String>();
-		importedOntologies
+		this.importedOntologies
 				.add("http://hdot.googlecode.com/svn/trunk/doid_import.owl");
-		importedOntologies
+		this.importedOntologies
 				.add("http://purl.obolibrary.org/obo/bfo.owl");
 
 		// Get hold of an ontology manager
@@ -175,12 +166,12 @@ public class RecommendationGenerator {
 		}
 		// We can always obtain the location where an ontology was loaded from
 		this.iriIn = ontology_manager.getOntologyDocumentIRI(hdot_ontology);
-		this.dataFactory = ontology_manager.getOWLDataFactory();
 
 		log.info("Loaded ontology: " + hdot_ontology);
 		generateRecommendation(listOfPaths);
 
 	}
+
 
 	/**
 	 * Process all five best candidates and generates recommendation for
@@ -638,5 +629,11 @@ public class RecommendationGenerator {
 
 	public List<Recommendation> getListImportedNotLeafMatches() {
 		return listImportedNotLeafMatches;
+	}
+	public OWLOntologyManager getOntology_manager() {
+		return ontology_manager;
+	}
+	public OWLOntology getHdot_ontology() {
+		return hdot_ontology;
 	}
 }

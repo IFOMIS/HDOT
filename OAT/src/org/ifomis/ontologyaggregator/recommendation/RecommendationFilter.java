@@ -2,11 +2,9 @@ package org.ifomis.ontologyaggregator.recommendation;
 
 import java.util.List;
 
-
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.notifications.EmailSender;
 import org.ifomis.ontologyaggregator.recommendation.sort.RecommendationSorter;
-
 
 public class RecommendationFilter implements RecommendationAcceptListener {
 
@@ -18,16 +16,16 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 
 	private List<Recommendation> recommendationsOfImportedNotLeafMatches;
 	private List<Recommendation> inCoreNotLeafs;
-	
+
 	private EmailSender mailSender;
 
 	private String searchedTerm;
 
 	private boolean accept = false;
-	
+
 	private Recommendation acceptedRecommendation;
 
-	private boolean includeSubclasses;
+	private boolean includeSubclasses = false;
 
 	public boolean isIncludeSubclasses() {
 		return includeSubclasses;
@@ -86,7 +84,6 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 		}
 	}
 
-
 	/**
 	 * checks if there are potential recommendations and notifies the curators.
 	 */
@@ -136,7 +133,6 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 				++i;
 			}
 			mailSender.sendMail(subject, mailBuffer.toString());
-
 		}
 		if (!inCoreNotLeafs.isEmpty()) {
 			StringBuffer mailBuffer = new StringBuffer();
@@ -158,37 +154,30 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 		}
 	}
 
-
 	@Override
 	public void readInputAccept(
 			RecommendationAcceptEvent recommendationAcceptEvent) {
 		if (recommendationAcceptEvent.getAccept().equalsIgnoreCase("yes")) {
-			//TODO extend HDOT
 			log.info("the user accepted the recommendation.");
-			accept  = true;
+			accept = true;
+
 			acceptedRecommendation = validRecommendations.get(0);
-			
 		} else {
-			validRecommendations.remove(0);		
+			validRecommendations.remove(0);
 			log.info("the user rejected the recommendation.");
 			accept = false;
-			
 		}
-		
 	}
 
 	@Override
 	public void readInputIncludeSubclasses(
 			IncludeSubClassesEvent includeClassesEvent) {
 		if (includeClassesEvent.getIncludeSubClasses().equalsIgnoreCase("yes")) {
-			//TODO extend HDOT
 			log.info("the user wants to include the subClasses of the term.");
 			this.includeSubclasses = true;
-			
 		} else {
 			log.info("the user does not want to include the subClasses of the term.");
 			this.includeSubclasses = false;
-			
-		}		
+		}
 	}
 }
