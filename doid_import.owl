@@ -20,7 +20,7 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/doid_import.owl">
-        <owl:versionInfo>This ontology is a branch of the Human Disease Ontology (DOID) concerning disease of celluar proliferation</owl:versionInfo>
+        <owl:versionInfo>This ontology is a small branch of the Human Disease Ontology (DOID) concerning disease of celluar proliferation</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -116,20 +116,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/DOID_0050387 -->
-
-    <owl:Class rdf:about="&obo;DOID_0050387">
-        <rdfs:label rdf:datatype="&xsd;string">nonpapillary renal cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4455"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:0050387</oboInOwl:id>
-        <rdfs:comment rdf:datatype="&xsd;string">OMIM mapping confirmed by DO. [SN].</rdfs:comment>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">OMIM:144700</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/DOID_0050523 -->
 
     <owl:Class rdf:about="&obo;DOID_0050523">
@@ -151,18 +137,6 @@
         <rdfs:subClassOf rdf:resource="&obo;DOID_0050686"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">An organ system cancer located_in the respiratory system that is characterized by uncontrolled cellular proliferation in the respiratory tract.</obo:IAO_0000115>
         <oboInOwl:id rdf:datatype="&xsd;string">DOID:0050615</oboInOwl:id>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_0050620 -->
-
-    <owl:Class rdf:about="&obo;DOID_0050620">
-        <rdfs:label rdf:datatype="&xsd;string">infiltrating renal pelvis transitional cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_5974"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:0050620</oboInOwl:id>
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
@@ -2245,7 +2219,7 @@
     <owl:Class rdf:about="&obo;DOID_2154">
         <rdfs:label rdf:datatype="&xsd;string">nephroblastoma</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;DOID_263"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A kidney cancer that affects the kidneys and typically located_in children.</obo:IAO_0000115>
+        <rdfs:comment rdf:datatype="&xsd;string">A kidney cancer that affects the kidneys and typically located_in children.</rdfs:comment>
         <oboInOwl:id rdf:datatype="&xsd;string">DOID:2154</oboInOwl:id>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">DOID:5177</oboInOwl:hasAlternativeId>
         <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">DOID:5180</oboInOwl:hasAlternativeId>
@@ -2267,6 +2241,7 @@
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">childhood renal Wilms&apos; cancer</oboInOwl:hasExactSynonym>
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal Wilms tumor</oboInOwl:hasExactSynonym>
+        <obo:IAO_0000115>A kidney cancer that affects the kidneys and is typically diagnosed in children.</obo:IAO_0000115>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
     
@@ -4519,39 +4494,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/DOID_3674 -->
-
-    <owl:Class rdf:about="&obo;DOID_3674">
-        <rdfs:label rdf:datatype="&xsd;string">kidney rhabdoid cancer</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_3672"/>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_3675"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A embryonal cancer that is located in the kidney.</obo:IAO_0000115>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:3674</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C8715</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0854917</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasRelatedSynonym rdf:datatype="&xsd;string">kidney rhabdoid tumor</oboInOwl:hasRelatedSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal Rhabdoid tumor</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_3675 -->
-
-    <owl:Class rdf:about="&obo;DOID_3675">
-        <rdfs:label rdf:datatype="&xsd;string">childhood kidney neoplasm</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_263"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:3675</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6563</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1333003</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pediatric renal tumor</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/DOID_3737 -->
 
     <owl:Class rdf:about="&obo;DOID_3737">
@@ -5194,28 +5136,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/DOID_4450 -->
-
-    <owl:Class rdf:about="&obo;DOID_4450">
-        <rdfs:label rdf:datatype="&xsd;string">renal cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4451"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4450</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D002292</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C9385</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">RCC</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:254915003</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:41607009</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0007134</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">adenocarcinoma of kidney</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">hypernephroma (disorder)</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal cell carcinoma (morphologic abnormality)</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal cell carcinoma, stage Unspecified</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/DOID_4451 -->
 
     <owl:Class rdf:about="&obo;DOID_4451">
@@ -5227,120 +5147,6 @@
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:254915003</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1378703</oboInOwl:hasDbXref>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">carcinoma of kidney</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_4454 -->
-
-    <owl:Class rdf:about="&obo;DOID_4454">
-        <rdfs:label rdf:datatype="&xsd;string">childhood kidney cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_3675"/>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4450"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4454</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6568</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1333001</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pediatric renal cell carcinoma</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_4455 -->
-
-    <owl:Class rdf:about="&obo;DOID_4455">
-        <rdfs:label rdf:datatype="&xsd;string">hereditary renal cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4450"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4455</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1512420</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_4463 -->
-
-    <owl:Class rdf:about="&obo;DOID_4463">
-        <rdfs:label rdf:datatype="&xsd;string">multilocular clear cell renal cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4450"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4463</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C4524</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:254916002</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0346249</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">cystadenocarcinoma of kidney (disorder)</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal cystadenocarcinoma</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_4464 -->
-
-    <owl:Class rdf:about="&obo;DOID_4464">
-        <rdfs:label rdf:datatype="&xsd;string">collecting duct carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4450"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Collecting duct carcinoma is a renal cell carcinoma described as a rare and aggressive type of renal cell carcinoma. The cancerous cells form irregular tubes inside the tumor. Collecting duct carcinoma is more common among young people and unfortunately is diagnosed in most cases when the cancer has metastasized (spread inside the body).</obo:IAO_0000115>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4464</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D002292</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6194</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C7572</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:128669006</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1266044</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">carcinoma of renal Collecting duct</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal Medullary carcinoma</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal carcinoma, collecting duct type</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_4465 -->
-
-    <owl:Class rdf:about="&obo;DOID_4465">
-        <rdfs:label rdf:datatype="&xsd;string">papillary renal cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4450"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Chromophil carcinoma of kidney</oboInOwl:hasExactSynonym>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4465</oboInOwl:id>
-        <oboInOwl:hasAlternativeId rdf:datatype="&xsd;string">DOID:8063</oboInOwl:hasAlternativeId>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:C535359</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D002292</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6975</oboInOwl:hasDbXref>
-        <rdfs:comment rdf:datatype="&xsd;string">OMIM mapping confirmed by DO. [SN].</rdfs:comment>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">OMIM:605074</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Papillary renal cell carcinoma</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Papillary renal cell carcinoma is a renal cell carcinoma characterized as the second most common type of renal cell carcinoma. The cancerous cells form some projections in a finger shape, called papillae, in the tumor. This type of cancer is more common among African Americans and has a good prognosis if treated with surgery in its early stages.</obo:IAO_0000115>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:4797003</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1306837</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1336078</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">sporadic papillary renal cell carcinoma</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_4467 -->
-
-    <owl:Class rdf:about="&obo;DOID_4467">
-        <rdfs:label rdf:datatype="&xsd;string">renal clear cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4450"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A renal cell carcinoma that is the most common type of renal cell carcinoma. The cancerous cells appear very pale or clear when examined under microscope. This cancer can be effectively treated with surgery if the tumor is confined to the kidney.</obo:IAO_0000115>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Clear cell carcinoma of kidney (disorder)</oboInOwl:hasExactSynonym>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4467</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D002292</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C4033</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:188251003</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:254915003</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:41607009</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0279702</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">conventional (Clear cell) renal cell carcinoma</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">conventional renal cell carcinoma</oboInOwl:hasExactSynonym>
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
@@ -5378,58 +5184,6 @@
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">malignant Mesonephroma</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">mesonephroma</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_4471 -->
-
-    <owl:Class rdf:about="&obo;DOID_4471">
-        <rdfs:label rdf:datatype="&xsd;string">chromophobe adenocarcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4450"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">Chromophobe adenocarcinoma is a renal cell carcinoma described as the third most common type of renal cell carcinoma. The cancerous cells are similar with the clear cells, they appear pale when viewed under microscope, but there are larger and display different features than clear cells. This type of cancer rarely metastasizes, and the tumors can be successfully removed with surgery.</obo:IAO_0000115>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Chromophobe carcinoma (morphologic abnormality)</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Chromophobe carcinoma of kidney</oboInOwl:hasExactSynonym>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4471</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D002292</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C4146</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:128667008</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:1443001</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1266042</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal cell carcinoma, chromophobe cell</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_4472 -->
-
-    <owl:Class rdf:about="&obo;DOID_4472">
-        <rdfs:label rdf:datatype="&xsd;string">mucinous tubular and spindle renal cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4450"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4472</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C39807</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1513719</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_4473 -->
-
-    <owl:Class rdf:about="&obo;DOID_4473">
-        <rdfs:label rdf:datatype="&xsd;string">sarcomatoid renal cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4450"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4473</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D002292</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C27893</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">SNOMEDCT_2010_1_31:128668003</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1266043</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">renal cell carcinoma, spindle cell</oboInOwl:hasExactSynonym>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
     
@@ -5838,22 +5592,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/DOID_4773 -->
-
-    <owl:Class rdf:about="&obo;DOID_4773">
-        <rdfs:label rdf:datatype="&xsd;string">congenital mesoblastic nephroma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_3675"/>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4772"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4773</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D018201</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6569</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1332965</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/DOID_4790 -->
 
     <owl:Class rdf:about="&obo;DOID_4790">
@@ -6181,22 +5919,6 @@
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0334306</oboInOwl:hasDbXref>
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">villous adenocarcinoma (morphologic abnormality)</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_4918 -->
-
-    <owl:Class rdf:about="&obo;DOID_4918">
-        <rdfs:label rdf:datatype="&xsd;string">renal pelvis adenocarcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4919"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:4918</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6143</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1335748</oboInOwl:hasDbXref>
-        <oboInOwl:hasRelatedSynonym rdf:datatype="&xsd;string">adenocarcinoma of renal pelvis</oboInOwl:hasRelatedSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">adenocarcinoma of the kidney Pelvis</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
     
@@ -6699,117 +6421,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/DOID_5176 -->
-
-    <owl:Class rdf:about="&obo;DOID_5176">
-        <rdfs:label rdf:datatype="&xsd;string">renal Wilms&apos; tumor</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:5176</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6951</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Nonanaplastic renal Wilm&apos;s tumor</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1335062</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasRelatedSynonym rdf:datatype="&xsd;string">nonanaplastic renal wilms tumor</oboInOwl:hasRelatedSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_5178 -->
-
-    <owl:Class rdf:about="&obo;DOID_5178">
-        <rdfs:label rdf:datatype="&xsd;string">metachronous kidney Wilms&apos; tumor</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:5178</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C38158</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1334705</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasRelatedSynonym rdf:datatype="&xsd;string">metachronous Wilms tumor of the kidney</oboInOwl:hasRelatedSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_5179 -->
-
-    <owl:Class rdf:about="&obo;DOID_5179">
-        <rdfs:label rdf:datatype="&xsd;string">mixed cell type kidney Wilms&apos; tumor</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:5179</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C9149</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0279611</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">mixed cell type renal Wilms tumor</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_5182 -->
-
-    <owl:Class rdf:about="&obo;DOID_5182">
-        <rdfs:label rdf:datatype="&xsd;string">blastema predominant kidney Wilms&apos; tumor</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Blastema Predominant renal Wilms tumor</oboInOwl:hasExactSynonym>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:5182</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C9147</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0279609</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">blastema predominant kidney adenosarcoma</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_5183 -->
-
-    <owl:Class rdf:about="&obo;DOID_5183">
-        <rdfs:label rdf:datatype="&xsd;string">hereditary Wilms&apos; tumor</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
-        <obo:IAO_0000115 rdf:datatype="&xsd;string">A nephroblastoma that results_in either bilateral disease or a family history of Wilms&apos; tumour.</obo:IAO_0000115>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:5183</oboInOwl:id>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Hereditary Wilms tumor</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C8496</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0677779</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">WT1</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasRelatedSynonym rdf:datatype="&xsd;string">hereditary Wilms&apos; tumor</oboInOwl:hasRelatedSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_5189 -->
-
-    <owl:Class rdf:about="&obo;DOID_5189">
-        <rdfs:label rdf:datatype="&xsd;string">epithelial predominant Wilms&apos; tumor</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:5189</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C9146</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0279608</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">epithelial Predominant renal Wilms tumor</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">epithelial predominant kidney adenosarcoma</oboInOwl:hasExactSynonym>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_5191 -->
-
-    <owl:Class rdf:about="&obo;DOID_5191">
-        <rdfs:label rdf:datatype="&xsd;string">stromal predominant kidney Wilms&apos; tumor</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:5191</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C9148</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Stromal Predominant renal Wilms tumor</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0279610</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/DOID_5241 -->
 
     <owl:Class rdf:about="&obo;DOID_5241">
@@ -7242,22 +6853,6 @@
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">adenocarcinoma with squamous metaplasia (morphologic abnormality)</oboInOwl:hasExactSynonym>
         <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">adenoid squamous cell carcinoma (morphologic abnormality)</oboInOwl:hasExactSynonym>
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_5534 -->
-
-    <owl:Class rdf:about="&obo;DOID_5534">
-        <rdfs:label rdf:datatype="&xsd;string">renal pelvis squamous cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4919"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:5534</oboInOwl:id>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Epidermoid carcinoma of the kidney Pelvis</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C7732</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0238409</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasRelatedSynonym rdf:datatype="&xsd;string">squamous cell carcinoma of renal pelvis</oboInOwl:hasRelatedSynonym>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
     
@@ -7799,36 +7394,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/DOID_5973 -->
-
-    <owl:Class rdf:about="&obo;DOID_5973">
-        <rdfs:label rdf:datatype="&xsd;string">kidney pelvis papillary carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_5974"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:5973</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6148</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Papillary carcinoma of renal Pelvis</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1377909</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_5974 -->
-
-    <owl:Class rdf:about="&obo;DOID_5974">
-        <rdfs:label rdf:datatype="&xsd;string">renal pelvis transitional cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4919"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:5974</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C7355</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0238410</oboInOwl:hasDbXref>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Urothelial cell carcinoma of renal Pelvis</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/DOID_5975 -->
 
     <owl:Class rdf:about="&obo;DOID_5975">
@@ -8012,21 +7577,6 @@
         <oboInOwl:id rdf:datatype="&xsd;string">DOID:6119</oboInOwl:id>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C4528</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1514844</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_6163 -->
-
-    <owl:Class rdf:about="&obo;DOID_6163">
-        <rdfs:label rdf:datatype="&xsd;string">familial renal papillary carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4455"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:6163</oboInOwl:id>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">Hereditary Papillary renal carcinoma</oboInOwl:hasExactSynonym>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C9222</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0879257</oboInOwl:hasDbXref>
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
@@ -8298,34 +7848,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/DOID_6605 -->
-
-    <owl:Class rdf:about="&obo;DOID_6605">
-        <rdfs:label rdf:datatype="&xsd;string">classic variant of chromophobe renal cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4471"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:6605</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C27888</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1333062</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_6606 -->
-
-    <owl:Class rdf:about="&obo;DOID_6606">
-        <rdfs:label rdf:datatype="&xsd;string">eosinophilic variant of chromophobe renal cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4471"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:6606</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C27889</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1333405</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/DOID_6621 -->
 
     <owl:Class rdf:about="&obo;DOID_6621">
@@ -8520,21 +8042,6 @@
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C36086</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1333620</oboInOwl:hasDbXref>
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_6844 -->
-
-    <owl:Class rdf:about="&obo;DOID_6844">
-        <rdfs:label rdf:datatype="&xsd;string">kidney pelvis sarcomatoid transitional cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_0050620"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:6844</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6186</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1335752</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">sarcomatoid transitional cell carcinoma of renal Pelvis</oboInOwl:hasExactSynonym>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
     
@@ -8757,20 +8264,6 @@
         <oboInOwl:id rdf:datatype="&xsd;string">DOID:715</oboInOwl:id>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">MSH:D015458</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C0023492</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_7192 -->
-
-    <owl:Class rdf:about="&obo;DOID_7192">
-        <rdfs:label rdf:datatype="&xsd;string">hereditary conventional renal cell carcinoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4455"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:7192</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C36260</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1333985</oboInOwl:hasDbXref>
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
@@ -9499,34 +8992,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/DOID_8082 -->
-
-    <owl:Class rdf:about="&obo;DOID_8082">
-        <rdfs:label rdf:datatype="&xsd;string">cellular congenital mesoblastic nephroma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4773"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:8082</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C39815</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1516474</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_8083 -->
-
-    <owl:Class rdf:about="&obo;DOID_8083">
-        <rdfs:label rdf:datatype="&xsd;string">classic congenital mesoblastic nephroma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_4773"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:8083</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C39814</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1516475</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/DOID_8130 -->
 
     <owl:Class rdf:about="&obo;DOID_8130">
@@ -9742,22 +9207,6 @@
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6526</oboInOwl:hasDbXref>
         <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1335382</oboInOwl:hasDbXref>
         <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/DOID_8410 -->
-
-    <owl:Class rdf:about="&obo;DOID_8410">
-        <rdfs:label rdf:datatype="&xsd;string">childhood kidney angiomyolipoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_3675"/>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_8411"/>
-        <oboInOwl:id rdf:datatype="&xsd;string">DOID:8410</oboInOwl:id>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">NCI:C6565</oboInOwl:hasDbXref>
-        <oboInOwl:hasDbXref rdf:datatype="&xsd;string">UMLS_CUI:C1333000</oboInOwl:hasDbXref>
-        <oboInOwl:hasOBONamespace rdf:datatype="&xsd;string">disease_ontology</oboInOwl:hasOBONamespace>
-        <oboInOwl:hasExactSynonym rdf:datatype="&xsd;string">pediatric renal Angiomyolipoma</oboInOwl:hasExactSynonym>
         <obo:IAO_0000412 rdf:resource="&obo;doid.owl"/>
     </owl:Class>
     
