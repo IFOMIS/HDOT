@@ -5575,7 +5575,7 @@
 
     <owl:Class rdf:about="&obo;DOID_4772">
         <rdfs:label rdf:datatype="&xsd;string">mesoblastic nephroma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;DOID_263"/>
+        <rdfs:subClassOf rdf:resource="&obo;DOID_4451"/>
         <rdfs:subClassOf rdf:resource="&obo;DOID_688"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A spindle cell neoplasm that is found in the kidney and is usually found before birth by ultrasound or within the first 3 months of life.</obo:IAO_0000115>
         <oboInOwl:id rdf:datatype="&xsd;string">DOID:4772</oboInOwl:id>
