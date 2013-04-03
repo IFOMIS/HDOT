@@ -100,6 +100,12 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#has_magnitude"/>
+                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_092"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#has_magnitude"/>
                 <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_093"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -109,12 +115,52 @@
                 <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/DOID_162 -->
+
+    <rdf:Description rdf:about="&obo;DOID_162">
+        <rdfs:label>cancer</rdfs:label>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/DOID_2154 -->
+
+    <rdf:Description rdf:about="&obo;DOID_2154">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095"/>
+                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#has_magnitude"/>
-                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_092"/>
+                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#has_stage"/>
+                <owl:onClass rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="http://sig.uw.edu/fma#Kidney"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>We follow the SIOP for the following classification of Nephroblastoma. </rdfs:comment>
+    </rdf:Description>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/DOID_4772 -->
+
+    <rdf:Description rdf:about="&obo;DOID_4772">
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095"/>
     </rdf:Description>
     
 
@@ -145,6 +191,16 @@
     <rdf:Description rdf:about="&obo;OGMS_0000090">
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
     </rdf:Description>
+    
+
+
+    <!-- http://sig.uw.edu/fma#Kidney -->
+
+    <owl:Class rdf:about="http://sig.uw.edu/fma#Kidney">
+        <rdfs:label>kidney</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_018"/>
+        <obo:IAO_0000412>http://sig.uw.edu/fma#Kidney</obo:IAO_0000412>
+    </owl:Class>
     
 
 
@@ -1192,8 +1248,9 @@ Staging helps health care providers and researchers exchange information about p
     <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083 -->
 
     <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083">
-        <rdfs:label xml:lang="en">wilms tumor stage SIOP</rdfs:label>
+        <rdfs:label xml:lang="en">wilms tumor stage</rdfs:label>
         <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001"/>
+        <obo:IAO_0000115>Stage of the Wilm&apos;s tumor</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -1229,11 +1286,11 @@ Staging helps health care providers and researchers exchange information about p
     <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_086">
         <rdfs:label xml:lang="en">wilms tumor stage II</rdfs:label>
         <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083"/>
-        <obo:IAO_0000115 xml:lang="en">The tumor extends beyound kidney or penetrates through the renal capsule and/or ®brous pseudocapsule into perirenal fat
-but is completely resected (resection margins `clear&apos;)
-(b) The tumor in®ltrates the renal sinus and/or invades blood and lymphatic vessels outside the renal parenchyma but it is
-completely resected
-(c) The tumor in®ltrates adjacent organs or vena cava but is completely resected</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">a) Viable tumour penetrates through the renal capsule and/or fibrous pseudocapsule into perirenal fat but is completely resected (resection margins “clear”).
+b) Viable tumour infiltrates the soft tissues of the renal sinus.
+c) Viable tumour infiltrates blood and lymphatic vessels of the renal sinus or in the perirenal tissue but it is completely resected.
+d) Viable tumour infiltrates the renal pelvic or ureter’s wall.
+e) Viable tumour infiltrates adjacent organs or vena cava but is completely resected.</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -1411,17 +1468,133 @@ walls)
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095 -->
 
-    <rdf:Description rdf:about="&obo;DOID_162">
-        <rdfs:label>cancer</rdfs:label>
-    </rdf:Description>
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095">
+        <rdfs:label>low risk nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
+        <owl:disjointWith rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096">
+        <rdfs:label>intermediate risk nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
+        <owl:disjointWith rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097">
+        <rdfs:label>high risk nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_098 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_098">
+        <rdfs:label>high risk blastema rich nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_099 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_099">
+        <rdfs:label>diffuse anaplastic nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_100 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_100">
+        <rdfs:label>stroma rich nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_101 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_101">
+        <rdfs:label>regressive type nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_102 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_102">
+        <rdfs:label>mixed nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_103 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_103">
+        <rdfs:label>intermediate risk blastema rich nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_104 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_104">
+        <rdfs:label>focal anaplastic nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_105 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_105">
+        <rdfs:label>epithelia nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_106 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_106">
+        <rdfs:label>cystic partially differentiated nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_107 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_107">
+        <rdfs:label>completely necrotic nephroblastoma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095"/>
+    </owl:Class>
+    
+
+
+    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_108 -->
+
+    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_108">
+        <rdfs:label>metastasis</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;DOID_162"/>
+        <obo:IAO_0000115>A tumor formed by cells that have spread</obo:IAO_0000115>
+        <rdfs:comment>In the context of HDOT, metastasis is the (physical) outcome of a metastatic process ( the spread of a tumor from one part of the body to another).</rdfs:comment>
+    </owl:Class>
 </rdf:RDF>
 
 
