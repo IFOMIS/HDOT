@@ -2,10 +2,7 @@ package org.ifomis.ontologyaggregator.integration;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.apache.abdera.i18n.templates.Template;
 import org.apache.commons.io.FileUtils;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 
@@ -21,8 +18,7 @@ public class HDOTURIGenerator {
 	}
 
 	public String generateURI() throws IOException {
-		Template template = new Template(
-				"http://hdot.googlecode.com/svn/trunk/{hdotModule}#{prefix}_{counter}");
+		
 		String hdotModuleIRI = acceptedRecommendation.getHdotModule()
 				.getOntologyID().getOntologyIRI().toString();
 
@@ -33,13 +29,9 @@ public class HDOTURIGenerator {
 		String counter = "";
 			counter = FileUtils.readFileToString(new File(
 					"data/counterForURIS_" + prefix));
+			
+		String[] arg = { hdotModule, prefix , counter}; 
 
-		Map<String, String> map = new HashMap<>();
-		map.put("hdotModule", hdotModule);
-		map.put("prefix", prefix);
-		map.put("counter", counter);
-
-		return template.expand(map);
+		return String.format( "http://hdot.googlecode.com/svn/trunk/%s#%s_%s", arg ); 
 	}
-
 }
