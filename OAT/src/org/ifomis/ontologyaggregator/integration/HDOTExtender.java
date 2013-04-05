@@ -6,7 +6,6 @@ import java.net.URISyntaxException;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.exception.HdotExtensionException;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
-import org.ifomis.ontologyaggregator.recommendation.RecommendationGenerator;
 import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
@@ -16,16 +15,15 @@ import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.reasoner.ConsoleProgressMonitor;
-import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.reasoner.OWLReasonerConfiguration;
-import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
-import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
-import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
 import uk.ac.ebi.ontocat.OntologyServiceException;
 
+/**
+ * Extends HDOT with the class that is recommended and confirmed by the user.
+ * @author Nikolina
+ *
+ */
 public class HDOTExtender {
 
 	private HDOTURIGenerator uriGenerator;
@@ -33,7 +31,7 @@ public class HDOTExtender {
 	private HDOTVerifier hdotVerifier;
 	private Recommendation acceptedRecommendation;
 	private static final Logger log = Logger
-			.getLogger(RecommendationGenerator.class);
+			.getLogger(HDOTExtender.class);
 	/**
 	 * the data factory for the hdot ontology
 	 */
@@ -68,8 +66,6 @@ public class HDOTExtender {
 		this.hdotVerifier = new HDOTVerifier();
 
 		extendHDOT();
-
-
 	}
 
 	public void extendHDOT() throws OWLOntologyStorageException,
