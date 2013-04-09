@@ -128,39 +128,6 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_001 -->
-
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_001">
-        <rdfs:label xml:lang="en">patient</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;NCBITaxon_9606"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;BFO_0000087"/>
-                        <owl:someValuesFrom rdf:resource="&obo;OMRSE_00000011"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="&obo;NCBITaxon_9606"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002217"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_066"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
-                <owl:onClass rdf:resource="&hdot_core;HDOT_CORE_032"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
     <!-- http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_002 -->
 
     <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_002">
@@ -341,13 +308,6 @@
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002234"/>
-                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_003"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
                 <owl:someValuesFrom rdf:resource="&hdot_core;HDOT_CORE_032"/>
             </owl:Restriction>
@@ -356,6 +316,13 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000155"/>
                 <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_015"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002234"/>
+                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_003"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -534,14 +501,14 @@
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000178"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000101"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_027"/>
+                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_028"/>
+                <owl:someValuesFrom rdf:resource="&obo;OBI_0600020"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_028"/>
-                <owl:someValuesFrom rdf:resource="&obo;OBI_0600020"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000101"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_027"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -781,15 +748,15 @@
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000027"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:onClass rdf:resource="&obo;CHEBI_16670"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_013"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_013"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:onClass rdf:resource="&obo;CHEBI_16670"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -801,8 +768,15 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_062"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_067"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:onClass rdf:resource="&obo;CHEBI_18059"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -819,22 +793,15 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_057"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
                 <owl:onClass rdf:resource="&obo;CHEBI_16646"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:onClass rdf:resource="&obo;CHEBI_18059"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_057"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -846,8 +813,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_067"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_062"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -906,15 +873,15 @@
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001555"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_051"/>
+                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_058"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_058"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;integer"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_051"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -949,14 +916,14 @@
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000146"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_051"/>
+                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_058"/>
+                <owl:someValuesFrom rdf:resource="&xsd;float"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_058"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_051"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1012,12 +979,6 @@
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002218"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_001"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_036"/>
                 <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_002"/>
             </owl:Restriction>
@@ -1033,14 +994,14 @@
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_036"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_068"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_051"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_051"/>
+                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_036"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_068"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1439,45 +1400,8 @@
     <rdf:Description rdf:about="&hdot_core;HDOT_CORE_032">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_050"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_036"/>
-                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_002"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_013"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_028"/>
                 <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_012"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_051"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_001"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_025"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1489,7 +1413,58 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_051"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
                 <owl:someValuesFrom rdf:resource="&obo;OBI_0100066"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_025"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot_core;HDOT_CORE_036"/>
+                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_002"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_050"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_013"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0058 -->
+
+    <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0058">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002217"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_066"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:onClass rdf:resource="&hdot_core;HDOT_CORE_032"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
@@ -1503,21 +1478,9 @@
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000027"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-
-                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_088"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_101"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_089"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_104"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1529,8 +1492,20 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_104"/>
+                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_103"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_089"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_101"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1542,15 +1517,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:onClass rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_103"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="&hdot_core;HDOT_CORE_032"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&hdot_core;HDOT_CORE_032"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
+                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl#HDOT_BSDS_088"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A processed material which derives from an organ and results from a process of dissection or histological sample preparation a portion(formerly an organ section is portion of an organ removed from the context of the organ)</obo:IAO_0000115>
