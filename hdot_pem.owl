@@ -29,7 +29,7 @@
         <hdot:creator xml:lang="en">Ulf Schwarz</hdot:creator>
         <owl:imports rdf:resource="&hdot;doid_import.owl"/>
         <owl:imports rdf:resource="&hdot;hdot_pm.owl"/>
-        <owl:imports rdf:resource="&hdot;www.ifomis.org/hdot/hdot_pfm.owl"/>
+        <owl:imports rdf:resource="&hdot;hdot_pfm.owl"/>
     </owl:Ontology>
     
 
