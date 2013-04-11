@@ -11,18 +11,19 @@
 ]>
 
 
-<rdf:RDF xmlns="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#"
-     xml:base="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl"
+<rdf:RDF
+     xml:base="http://www.ifomis.org/hdot/"
+     xmlns:hdot="http://www.ifomis.org/hdot/"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
-    <owl:Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl">
+    <owl:Ontology rdf:about="http://www.ifomis.org/hdot/hdot_KLt.owl">
         <owl:versionInfo>under development</owl:versionInfo>
         <rdfs:comment>HDOT Kiel Module. This is an HDOT module for testing purposes in p-medicine.</rdfs:comment>
-        <owl:imports rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl"/>
+        <owl:imports rdf:resource="http://www.ifomis.org/hdot/hdot_pfm.owl"/>
     </owl:Ontology>
     
 
@@ -60,9 +61,9 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#found_in -->
+    <!-- http://www.ifomis.org/hdot/found_in -->
 
-    <owl:ObjectProperty rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#found_in"/>
+    <owl:ObjectProperty rdf:about="http://www.ifomis.org/hdot/found_in"/>
     
 
 
@@ -77,9 +78,9 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue -->
+    <!-- http://www.ifomis.org/hdot/hasValue -->
 
-    <owl:DatatypeProperty rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+    <owl:DatatypeProperty rdf:about="http://www.ifomis.org/hdot/hasValue"/>
     
 
 
@@ -94,9 +95,9 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_001 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_001 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_001">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_001">
         <rdfs:label>minimal residual disease</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;DOID_162"/>
         <obo:IAO_0000115>remainder of a neoplasm after primary, potentially curative therapy</obo:IAO_0000115>
@@ -104,14 +105,14 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_003 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_003 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_003">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_003">
         <rdfs:label>gebdatum</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -120,14 +121,14 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_005 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_005 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_005">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_005">
         <rdfs:label>number of myeloid antigen</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -135,14 +136,14 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_006 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_006 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_006">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_006">
         <rdfs:label>immunom value</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -150,49 +151,49 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_007 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_007 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_007">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_007">
         <rdfs:label>chromosomal alteration</rdfs:label>
         <rdfs:label>chromosomal abnormality</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_004"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_CORE_004"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_008 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_008 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_008">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_008">
         <rdfs:label>TEL-AML1</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;CHEBI_36080"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_009 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_009 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_009">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_009">
         <rdfs:label>examination on TEL-AML1</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_008"/>
+                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_008"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_010 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_010 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_010">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_010">
         <rdfs:label>body weight</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
@@ -200,7 +201,7 @@
                     <rdf:Description rdf:about="&obo;PATO_0000128"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
-                        <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010"/>
+                        <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_CORE_010"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -209,9 +210,9 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_012 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_012 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_012">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_012">
         <rdfs:label>body leght</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
@@ -219,7 +220,7 @@
                     <rdf:Description rdf:about="&obo;PATO_0000122"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
-                        <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010"/>
+                        <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_CORE_010"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -228,9 +229,9 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_013 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_013 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_013">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_013">
         <rdfs:label>body height</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
@@ -238,7 +239,7 @@
                     <rdf:Description rdf:about="&obo;PATO_0000119"/>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
-                        <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_010"/>
+                        <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_CORE_010"/>
                     </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
@@ -246,7 +247,7 @@
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000119"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -254,14 +255,14 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_015 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_015 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_015">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_015">
         <rdfs:label>blast 8</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;CL_0000055"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -270,14 +271,14 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_016 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_016 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_016">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_016">
         <rdfs:label>blast 15</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;CL_0000055"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -286,83 +287,83 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_017 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_017 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_017">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_017">
         <rdfs:label>1 leukemic cell among 101 cells</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_001"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_001"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_018 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_018 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_018">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_018">
         <rdfs:label>1 leukemic cell among 102 cells</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_001"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_001"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_019 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_019 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_019">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_019">
         <rdfs:label>1 leukemic cell among 103 cells</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_001"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_001"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_020 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_020 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_020">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_020">
         <rdfs:label>1 leukemic cell among 104 cells</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_001"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_001"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_021 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_021 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_021">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_021">
         <rdfs:label>no leukemic cells</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_001"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_001"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_022 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_022 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_022">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_022">
         <rdfs:label>leukemic cell</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0016"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0016"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_023 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_023 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_023">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_023">
         <rdfs:label>BAL according to EGIL criteria</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_006"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_006"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_024 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_024 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_024">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_024">
         <rdfs:label>my-positive ALL</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_006"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_006"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_025 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_025 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_025">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_025">
         <rdfs:label>no myeloid antigene</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_006"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_006"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
@@ -374,50 +375,50 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_026 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_026 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_026">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_026">
         <rdfs:label>blast 8 value</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000074"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_015"/>
+                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_015"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_027 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_027 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_027">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_027">
         <rdfs:label>blast 8 value not appraisable</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_026"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_026"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_028 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_028 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_028">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_028">
         <rdfs:label>blast 8 value not appraisable, probably POOR-Responder</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_026"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_026"/>
     </owl:Class>
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_029 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_029 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_029">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_KLt_029">
         <rdfs:label>blast 8 value not appraisalbe, probably GOOD-Responder</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_KLTest.owl#HDOT_KLt_026"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_KLt_026"/>
     </owl:Class>
     
 
@@ -426,7 +427,7 @@
 
     <owl:Class rdf:about="&obo;CL_0000055">
         <rdfs:label>blast cell</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_017"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_CORE_017"/>
         <obo:IAO_0000412>http://purl.obolibrary.org/obo/CL_0000055</obo:IAO_0000412>
         <oboInOwl:hasSynonym>non-terminally differentiated cell</oboInOwl:hasSynonym>
         <obo:IAO_0000115>A precursor cell with a limited number of potential fates</obo:IAO_0000115>
@@ -473,7 +474,7 @@
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001995"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>

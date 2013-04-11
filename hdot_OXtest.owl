@@ -11,19 +11,20 @@
 ]>
 
 
-<rdf:RDF xmlns="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#"
-     xml:base="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl"
+<rdf:RDF
+     xml:base="http://www.ifomis.org/hdot/"
+     xmlns:hdot="http://www.ifomis.org/hdot/"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
-    <owl:Ontology rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl">
+    <owl:Ontology rdf:about="http://www.ifomis.org/hdot/hdot_OXtest.owl">
         <owl:versionInfo>under development</owl:versionInfo>
         <oboInOwl:created_by>Emilio M.Sanfilippo</oboInOwl:created_by>
         <rdfs:comment>This is an HDOT owl module for testing a data schema in p-medicine.</rdfs:comment>
-        <owl:imports rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl"/>
+        <owl:imports rdf:resource="http://www.ifomis.org/hdot/hdot_pfm.owl"/>
     </owl:Ontology>
     
 
@@ -61,9 +62,9 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue -->
+    <!-- http://www.ifomis.org/hdot/hasValue -->
 
-    <owl:DatatypeProperty rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+    <owl:DatatypeProperty rdf:about="http://www.ifomis.org/hdot/hasValue"/>
     
 
 
@@ -116,7 +117,7 @@
 
     <owl:Class rdf:about="http://sig.uw.edu/fma#Hormone">
         <rdfs:label xml:lang="en">hormone</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_007"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_CORE_007"/>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Hormone</obo:IAO_0000119>
     </owl:Class>
     
@@ -126,7 +127,7 @@
 
     <owl:Class rdf:about="http://sig.uw.edu/fma#Lymph_node">
         <rdfs:label xml:lang="en">lymph node</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_015"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_CORE_015"/>
         <obo:IAO_0000412>http://sig.uw.edu/fma#Lymph_node</obo:IAO_0000412>
     </owl:Class>
     
@@ -142,14 +143,14 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_001 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_001 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_001">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_001">
         <rdfs:label rdf:datatype="&xsd;int">tupad</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_034"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_CORE_034"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -158,14 +159,14 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_002 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_002 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_002">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_002">
         <rdfs:label>age at primary diagnosis</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -185,47 +186,47 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_003 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_003 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_003">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_003">
         <rdfs:label xml:lang="en">axillary lymph node</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://sig.uw.edu/fma#Lymph_node"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_004 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_004 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_004">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_004">
         <rdfs:label xml:lang="en">axillary lymph node positive for tumour</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000078"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0015"/>
+                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0015"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_005 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_005 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_005">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_005">
         <rdfs:label xml:lang="en">axillary node positive</rdfs:label>
         <rdfs:label xml:lang="en">node positive</rdfs:label>
         <rdfs:label xml:lang="en">sample of axillary node positive</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_007"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_OXtest_007"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;decimal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0014"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">number of axillary lymphnodes excised which have been idenified as positive for tumour</obo:IAO_0000115>
@@ -233,9 +234,9 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_006 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_006 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_006">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_006">
         <rdfs:label xml:lang="en">node category</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000014"/>
         <rdfs:subClassOf>
@@ -246,7 +247,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -255,15 +256,15 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_007 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_007 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_007">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_007">
         <rdfs:label xml:lang="en">node sampled</rdfs:label>
         <rdfs:label xml:lang="en">sample of axillary node</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000671"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -272,15 +273,15 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_008 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_008 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_008">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_008">
         <rdfs:label xml:lang="en">neoplasm size</rdfs:label>
         <rdfs:label xml:lang="en">tumour size</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000117"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;decimal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -305,11 +306,11 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_009 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_009 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_009">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_009">
         <rdfs:label xml:lang="en">adjuvant hormone therapy</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0052"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0052"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
@@ -331,22 +332,22 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_010 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_010 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_010">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_010">
         <rdfs:label xml:lang="en">Adj hormones category</rdfs:label>
         <rdfs:label xml:lang="en">adjuvant hormone category</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
-                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_009"/>
+                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_OXtest_009"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">whether or not the patient receives adjuvant hormone therapy</obo:IAO_0000115>
@@ -354,23 +355,23 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_011 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_011 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_011">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_011">
         <rdfs:label xml:lang="en">adjuvant chemotherapy</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.bioontology.org/ontology/RID/RID39252"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_012 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_012 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_012">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_012">
         <rdfs:label xml:lang="en">adjuvant chemotherapy category</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -379,14 +380,14 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_013 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_013 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_013">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_013">
         <rdfs:label xml:lang="en">grade measurement</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000109"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -406,15 +407,15 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_014 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_014 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_014">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_014">
         <rdfs:label xml:lang="en">relapse of breast cancer</rdfs:label>
         <rdfs:label xml:lang="en">relbrca</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;int"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -423,9 +424,9 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_015 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_015 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_015">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_015">
         <rdfs:label xml:lang="en">ripbrca</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
         <obo:IAO_0000115 xml:lang="en">whether there has been a death attributed breast cancer</obo:IAO_0000115>
@@ -433,9 +434,9 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_016 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_016 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_016">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_016">
         <rdfs:label xml:lang="en">rfsbrca</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
         <obo:IAO_0000115 xml:lang="en">time for first diagnosis to first relapse if event occurred, or te censor otherwise</obo:IAO_0000115>
@@ -443,9 +444,9 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_017 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_017 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_017">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_017">
         <rdfs:label xml:lang="en">osbrca</rdfs:label>
         <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
         <obo:IAO_0000115 xml:lang="en">time for first diagnosis to breast cancer death if event occurred, or to censor otherwise</obo:IAO_0000115>
@@ -453,14 +454,14 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_018 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_OXtest_018 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#HDOT_OXtest_018">
+    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXtest_018">
         <rdfs:label xml:lang="en">histologic examination finding</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000014"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_OXtest.owl#hasValue"/>
+                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
                 <owl:someValuesFrom rdf:resource="&rdfs;Literal"/>
             </owl:Restriction>
         </rdfs:subClassOf>

@@ -2,57 +2,35 @@
 
 
 <!DOCTYPE rdf:RDF [
+    <!ENTITY hdot "http://www.ifomis.org/hdot/" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY obo "http://purl.obolibrary.org/obo/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
-    <!ENTITY hdot_core "http://hdot.googlecode.com/svn/trunk/hdot_core.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#"
-     xml:base="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl"
+<rdf:RDF xmlns="&hdot;www.ifomis.org/hdot/hdot_pfm.owl#"
+     xml:base="&hdot;www.ifomis.org/hdot/hdot_pfm.owl"
      xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:hdot="http://www.ifomis.org/hdot/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:hdot_core="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
-    <owl:Ontology rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl">
+    <owl:Ontology rdf:about="&hdot;www.ifomis.org/hdot/hdot_pfm.owl">
+        <hdot:creator>Emilio M.Sanfilippo</hdot:creator>
+        <hdot:title>The Health Data Ontology Trunk Pathological Formation Module (HDOT_PFM)</hdot:title>
+        <hdot:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</hdot:publisher>
+        <hdot:creator>Ulf Schwarz</hdot:creator>
         <owl:versionInfo>HDOT_Pathological Formation Module (hdot_pfm) contains information about pathological formation entities (e.g. neoplasm). Inasmuch as this ontology is developed for the project &amp;apos;p-medicine&amp;apos;, it mainly contains information about three types of neoplasm: breast neoplasm, blood neoplasm and kidney neoplasm. HDOT_PFM imports a small branch of the Human Disease Ontology (DOID), altough its semantics is slightly changed</owl:versionInfo>
-        <hdot_core:creator>Luc Schneider</hdot_core:creator>
-        <hdot_core:creator>Emilio M.Sanfilippo</hdot_core:creator>
-        <hdot_core:title>The Health Data Ontology Trunk Pathological Formation Module (HDOT_PFM)</hdot_core:title>
-        <hdot_core:creator>Ulf Schwarz</hdot_core:creator>
-        <hdot_core:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</hdot_core:publisher>
-        <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/doid_import.owl"/>
-        <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl"/>
+        <hdot:creator>Luc Schneider</hdot:creator>
+        <owl:imports rdf:resource="&hdot;doid_import.owl"/>
+        <owl:imports rdf:resource="&hdot;hdot_pm.owl"/>
     </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
     
 
 
@@ -67,11 +45,11 @@
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#has_stage -->
+    <!-- http://www.ifomis.org/hdot/has_stage -->
 
-    <owl:ObjectProperty rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#has_stage">
-        <rdfs:domain rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
-        <rdfs:range rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001"/>
+    <owl:ObjectProperty rdf:about="&hdot;has_stage">
+        <rdfs:range rdf:resource="&hdot;HDOT_PFM_001"/>
+        <rdfs:domain rdf:resource="&hdot;HDOT_PM_0014"/>
     </owl:ObjectProperty>
     
 
@@ -84,38 +62,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
-
-
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014 -->
-
-    <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014">
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#has_magnitude"/>
-                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_094"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#has_magnitude"/>
-                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_092"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#has_magnitude"/>
-                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_093"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#has_stage"/>
-                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description>
     
 
 
@@ -133,23 +79,23 @@
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_095"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_096"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_097"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#has_stage"/>
-                <owl:onClass rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="http://sig.uw.edu/fma#Kidney"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="http://sig.uw.edu/fma#Kidney"/>
+                <owl:onProperty rdf:resource="&hdot;has_stage"/>
+                <owl:onClass rdf:resource="&hdot;HDOT_PFM_083"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>We follow the SIOP for the following classification of Nephroblastoma. </rdfs:comment>
@@ -160,7 +106,7 @@
     <!-- http://purl.obolibrary.org/obo/DOID_4772 -->
 
     <rdf:Description rdf:about="&obo;DOID_4772">
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_095"/>
     </rdf:Description>
     
 
@@ -171,7 +117,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002234"/>
-                <owl:someValuesFrom rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0014"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
@@ -198,717 +144,717 @@
 
     <owl:Class rdf:about="http://sig.uw.edu/fma#Kidney">
         <rdfs:label>kidney</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_018"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_018"/>
         <obo:IAO_0000412>http://sig.uw.edu/fma#Kidney</obo:IAO_0000412>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_001 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_001">
         <rdfs:label>neoplasm stage</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000028"/>
+        <oboInOwl:hasSynonym>tumor stage</oboInOwl:hasSynonym>
         <rdfs:comment xml:lang="en">Staging is important for several reasons:
 
 Staging helps the doctor plan the appropriate treatment.
 The stage can be used to estimate the person’s prognosis.
 Knowing the stage is important in identifying clinical trials that may be suitable for a particular patient.
 Staging helps health care providers and researchers exchange information about patients; it also gives them a common terminology for evaluating the results of clinical trials and comparing the results of different trials.</rdfs:comment>
-        <obo:IAO_0000119 xml:lang="en">http://www.cancer.gov/cancertopics/factsheet/detection/staging</obo:IAO_0000119>
-        <oboInOwl:hasSynonym>tumor stage</oboInOwl:hasSynonym>
         <obo:IAO_0000115 xml:lang="en">Tumor stage describes the severity of a person’s cancer based on the extent of the original (primary) tumor and whether or not cancer has spread in the body.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://www.cancer.gov/cancertopics/factsheet/detection/staging</obo:IAO_0000119>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_002 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_002 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_002">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_002">
         <rdfs:label xml:lang="en">mammary carcinoma class</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_001"/>
         <obo:IAO_0000115 xml:lang="en">tumor stage for mammary carcinoma</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_003 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_003 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_003">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_003">
         <rdfs:label xml:lang="en">clinical class TNM</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_006"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_007"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_008"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_006"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_007"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_008"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_002"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_002"/>
         <obo:IAO_0000115 xml:lang="en">Clinical classification (Pretreatment clinical classification), designated TNM (or cTNM). This is based on evidence acquired before treatment. Such evidence arises from physical examination, imaging, endoscopy, biopsy, surgical exploration and other relevant examinations.</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_004 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_004 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_004">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_004">
         <rdfs:label xml:lang="en">pathological class pTNM</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_040"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_041"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_042"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_040"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_041"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_042"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_002"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_002"/>
         <obo:IAO_0000115 xml:lang="en">Pathological classification (Postsurgical histopathological classification), designated pTNM. This is based on the evidence acquired before treatment, supplemented or modified by the additional evidence acquired from surgery and from pathological examination. The pathological assessment of the primary tumour (pT) entails a resection of the primary tumour or biopsy adequate to evaluate the highest pT category. The pathological assessment of the regional lymph nodes (pN) entails removal of nodes adequate to validate the absence of regional lymph node metastasis (pN0) and sufficient to evaluate the highest pN category. The pathological assessment of distant metastasis (pM) entails microscopic examination.</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_005 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_005 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_005">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_005">
         <rdfs:label xml:lang="en">rclass</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_079"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_080"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_081"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_082"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_079"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_080"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_081"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_082"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_002"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_002"/>
         <obo:IAO_0000115 xml:lang="en">residual tumor classification</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_006 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_006 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_006">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_006">
         <rdfs:label xml:lang="en">Tclass</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_022"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_023"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_024"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_025"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_026"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_027"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_028"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_022"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_023"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_024"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_025"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_026"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_027"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_028"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_003"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_003"/>
         <obo:IAO_0000115 xml:lang="en">Primary tumor classification</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_007 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_007 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_007">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_007">
         <rdfs:label xml:lang="en">Nclass</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_012"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_013"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_014"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_015"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_017"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_012"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_013"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_014"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_015"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_017"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_003"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_003"/>
         <obo:IAO_0000115 xml:lang="en">Regional lymph node metastasis classification</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_008 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_008 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_008">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_008">
         <rdfs:label xml:lang="en">Mclass</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_009"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_010"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_011"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_009"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_010"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_011"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_003"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_003"/>
         <obo:IAO_0000115 xml:lang="en">Distant metastasis classification (spread of cancer from one part of the body to another)</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_009 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_009 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_009">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_009">
         <rdfs:label xml:lang="en">MX</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_008"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_008"/>
         <obo:IAO_0000115 xml:lang="en">Presence of distant metastasis cannot be assessed</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_010 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_010 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_010">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_010">
         <rdfs:label xml:lang="en">M1</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_008"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_008"/>
         <obo:IAO_0000115 xml:lang="en">Distant metastasis (includes metastasis to ipsilateral supraventricular lymph node[s])</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_011 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_011 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_011">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_011">
         <rdfs:label xml:lang="en">M0</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_008"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_008"/>
         <obo:IAO_0000115 xml:lang="en">no distant metastasis</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_012 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_012 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_012">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_012">
         <rdfs:label xml:lang="en">NX</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_007"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_007"/>
         <obo:IAO_0000115 xml:lang="en"> Regional lymph nodes cannot be assessed (eg, previously removed)</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_013 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_013 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_013">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_013">
         <rdfs:label xml:lang="en">N3</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_019"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_020"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_021"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_019"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_020"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_021"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_007"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_007"/>
         <obo:IAO_0000115 xml:lang="en">Metastasis to ipsilateral internal mammary lymph node(s)</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_014 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_014 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_014">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_014">
         <rdfs:label xml:lang="en">N2</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_016"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_018"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_016"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_018"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_007"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_007"/>
         <obo:IAO_0000115 xml:lang="en">Metastasis to ipsilateral axillary lymph node(s) fixed to one another or to other structures</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_015 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_015 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_015">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_015">
         <rdfs:label xml:lang="en">N1</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_007"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_007"/>
         <obo:IAO_0000115 xml:lang="en">Metastasis to movable ipsilateral axillary lymph node(s</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_016 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_016 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_016">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_016">
         <rdfs:label xml:lang="en">N2b</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_014"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_014"/>
         <obo:IAO_0000115 xml:lang="en">Metastasis or Metastases to ipsilateral axillary lymph node(s) along the Arteria mammaria interna without clinically identifiable axillary lymph node metastases</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_017 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_017 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_017">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_017">
         <rdfs:label xml:lang="en">N0</rdfs:label>
-        <owl:equivalentClass rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_091"/>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_007"/>
+        <owl:equivalentClass rdf:resource="&hdot;HDOT_PFM_091"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_007"/>
         <obo:IAO_0000115 xml:lang="en"> No regional lymph node metastasis</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_018 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_018 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_018">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_018">
         <rdfs:label xml:lang="en">Metastasis or Metastases to ipsilateral axillary lymph node(s) fixed to one another or to other structures</rdfs:label>
         <rdfs:label xml:lang="en">N2a</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_014"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_014"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_019 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_019 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_019">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_019">
         <rdfs:label xml:lang="en">N3c</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_013"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_013"/>
         <obo:IAO_0000115 xml:lang="en">Metastasis or Metastases in ipsilateral supraclaviculary lymph node(s)</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_020 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_020 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_020">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_020">
         <rdfs:label xml:lang="en">N3b</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_013"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_013"/>
         <obo:IAO_0000115 xml:lang="en">Metastasis or Metastases to ipsilateral lymph node(s) along the Arteria mammaria with axillary lymph node metastases</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_021 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_021 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_021">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_021">
         <rdfs:label xml:lang="en">N3a</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_013"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_013"/>
         <obo:IAO_0000115 xml:lang="en">Metastasis or Metastases to ipsilateral infraclaviculary lymph node(s)</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_022 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_022 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_022">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_022">
         <rdfs:label xml:lang="en">TX</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_006"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_006"/>
         <obo:IAO_0000115 xml:lang="en">Primary tumor cannot be assessed</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_023 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_023 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_023">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_023">
         <rdfs:label xml:lang="en">Tis</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_037"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_038"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_039"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_037"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_038"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_039"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_006"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_006"/>
         <obo:IAO_0000115 xml:lang="en">Carcinoma in situ: Intraductal carcinoma, lobular carcinoma in situ, or Paget’s disease of the nipple with no tumor</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_024 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_024 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_024">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_024">
         <rdfs:label xml:lang="en">T4</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_033"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_034"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_035"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_036"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_033"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_034"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_035"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_036"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_006"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_006"/>
         <obo:IAO_0000115 xml:lang="en"> Tumor of any size with direct extension to chest wall or skin</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_025 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_025 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_025">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_025">
         <rdfs:label xml:lang="en">T3</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_006"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_006"/>
         <obo:IAO_0000115 xml:lang="en">Tumor more than 5 cm in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_026 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_026 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_026">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_026">
         <rdfs:label xml:lang="en">T2</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_006"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_006"/>
         <obo:IAO_0000115 xml:lang="en">Tumor more than 2 cm but not more than 5 cm in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_027 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_027 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_027">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_027">
         <rdfs:label xml:lang="en">T1</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_029"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_030"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_031"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_032"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_029"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_030"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_031"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_032"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_006"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_006"/>
         <obo:IAO_0000115 xml:lang="en">Tumor 2 cm or less in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_028 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_028 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_028">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_028">
         <rdfs:label xml:lang="en">T0</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_006"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_006"/>
         <obo:IAO_0000115 xml:lang="en">No evidence of primary tumor</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_029 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_029 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_029">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_029">
         <rdfs:label xml:lang="en">T1mic</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_027"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_027"/>
         <obo:IAO_0000115 xml:lang="en">Microinvasion 0,1 cm or less in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_030 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_030 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_030">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_030">
         <rdfs:label xml:lang="en">T1c</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_027"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_027"/>
         <obo:IAO_0000115 xml:lang="en">Tumor more than 1 cm but not more than 2 cm in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_031 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_031 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_031">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_031">
         <rdfs:label xml:lang="en">T1b</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_027"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_027"/>
         <obo:IAO_0000115 xml:lang="en">Tumor more than 0.5 cm but not more than 2 cm in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_032 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_032 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_032">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_032">
         <rdfs:label xml:lang="en">T1a</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_027"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_027"/>
         <obo:IAO_0000115 xml:lang="en">Tumor not more than 0.5 cm in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_033 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_033 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_033">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_033">
         <rdfs:label xml:lang="en">T4d</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_024"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_024"/>
         <obo:IAO_0000115 xml:lang="en">Inflammatory carcinoma</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_034 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_034 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_034">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_034">
         <rdfs:label xml:lang="en">T4c</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_024"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_024"/>
         <obo:IAO_0000115 xml:lang="en">Tumor with extension to chest wall and edema (including peau d’orange) or ulceration of the skin or satellite skin nodules confined to same breast</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_035 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_035 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_035">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_035">
         <rdfs:label xml:lang="en">T4b</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_024"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_024"/>
         <obo:IAO_0000115 xml:lang="en">Tumor with edema (including peau d’orange) or ulceration of the skin or satellite skin nodules confined to same breast</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_036 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_036 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_036">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_036">
         <rdfs:label xml:lang="en">T4a</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_024"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_024"/>
         <obo:IAO_0000115 xml:lang="en">Tumor with extension to chest wall</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_037 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_037 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_037">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_037">
         <rdfs:label xml:lang="en">TisPaget</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_023"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_023"/>
         <obo:IAO_0000115 xml:lang="en">Paget’s disease of the nipple with no tumor</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_038 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_038 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_038">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_038">
         <rdfs:label xml:lang="en">TisLCIS</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_023"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_023"/>
         <obo:IAO_0000115 xml:lang="en">lobular carcinoma in situ</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_039 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_039 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_039">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_039">
         <rdfs:label xml:lang="en">TisDCIS</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_023"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_023"/>
         <obo:IAO_0000115 xml:lang="en">Intraductal carcinoma</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_040 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_040 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_040">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_040">
         <rdfs:label xml:lang="en">pTClass</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_053"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_054"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_055"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_056"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_057"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_058"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_059"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_053"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_054"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_055"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_056"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_057"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_058"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_059"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_004"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_004"/>
         <obo:IAO_0000115 xml:lang="en">Regional lymph nodes cannot be assessed (eg, previously removed, or not removed for pathologic study)</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_041 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_041 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_041">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_041">
         <rdfs:label xml:lang="en">pNClass</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_046"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_047"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_048"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_049"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_050"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_051"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_046"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_047"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_048"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_049"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_050"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_051"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_004"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_004"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_042 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_042 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_042">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_042">
         <rdfs:label xml:lang="en">pMclass</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_043"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_044"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_045"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_043"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_044"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_045"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_004"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_004"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_043 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_043 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_043">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_043">
         <rdfs:label xml:lang="en"> Presence of distant metastasis cannot be assessed</rdfs:label>
         <rdfs:label xml:lang="en">pMX</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_042"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_042"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_044 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_044 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_044">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_044">
         <rdfs:label xml:lang="en">Distant metastasis (includes metastasis to ipsilateral supraventricular lymph node[s])</rdfs:label>
         <rdfs:label xml:lang="en">pM1</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_042"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_042"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_045 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_045 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_045">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_045">
         <rdfs:label xml:lang="en">No distant metastasis</rdfs:label>
         <rdfs:label xml:lang="en">pM0</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_042"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_042"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_046 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_046 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_046">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_046">
         <rdfs:label xml:lang="en">pNX</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_041"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_041"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_047 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_047 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_047">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_047">
         <rdfs:label xml:lang="en">pN3</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_065"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_066"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_067"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_065"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_066"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_067"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_041"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_041"/>
         <obo:IAO_0000115 xml:lang="en">Metastasis to ipsilateral internal mammary lymph node(s)</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_048 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_048 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_048">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_048">
         <rdfs:label xml:lang="en">Metastasis to ipsilateral axillary lymph nodes that are fixed to one another or to other structures</rdfs:label>
         <rdfs:label xml:lang="en">pN2</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_063"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_064"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_063"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_064"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_041"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_041"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_049 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_049 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_049">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_049">
         <rdfs:label xml:lang="en">Micrometastasis greater than 0,2 mm but not more than 0,2 cm</rdfs:label>
         <rdfs:label xml:lang="en">pN1mi</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_041"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_041"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_050 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_050 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_050">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_050">
         <rdfs:label xml:lang="en">Metastasis to movable ipsilateral axillary lymph node(s)</rdfs:label>
         <rdfs:label xml:lang="en">pN1</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_060"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_061"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_062"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_060"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_061"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_062"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_041"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_041"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_051 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_051 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_051">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_051">
         <rdfs:label xml:lang="en">pN0</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_041"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_041"/>
         <obo:IAO_0000115 xml:lang="en">No regional lymph node metastasis</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_052 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_052 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_052">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_052">
         <rdfs:label xml:lang="en">pCRStatus</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_051"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_051"/>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_054"/>
-                            <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_059"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PFM_054"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PFM_059"/>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_051"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_051"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot_core;hasBooleanValue"/>
+                <owl:onProperty rdf:resource="&hdot;hasBooleanValue"/>
                 <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -916,360 +862,360 @@ Staging helps health care providers and researchers exchange information about p
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_053 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_053 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_053">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_053">
         <rdfs:label xml:lang="en">pTX</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_040"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_040"/>
         <obo:IAO_0000115 xml:lang="en">Primary tumor cannot be assessed</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_054 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_054 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_054">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_054">
         <rdfs:label xml:lang="en">pTis</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_076"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_077"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_078"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_076"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_077"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_078"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_040"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_040"/>
         <obo:IAO_0000115 xml:lang="en">Carcinoma in situ: Intraductal carcinoma, lobular carcinoma in situ, or Paget’s disease of the nipple with no tumor</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_055 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_055 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_055">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_055">
         <rdfs:label xml:lang="en">pT4</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_072"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_073"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_074"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_075"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_072"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_073"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_074"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_075"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_040"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_040"/>
         <obo:IAO_0000115 xml:lang="en">Tumor of any size with direct extension to chest wall or skin</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_056 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_056 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_056">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_056">
         <rdfs:label xml:lang="en">pT3</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_040"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_040"/>
         <obo:IAO_0000115 xml:lang="en">Tumor more than 5 cm in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_057 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_057 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_057">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_057">
         <rdfs:label xml:lang="en">pT2</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_040"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_040"/>
         <obo:IAO_0000115 xml:lang="en">Tumor more than 2 cm but not more than 5 cm in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_058 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_058 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_058">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_058">
         <rdfs:label xml:lang="en">pT1</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_068"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_069"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_070"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_071"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_068"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_069"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_070"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_071"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_040"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_040"/>
         <obo:IAO_0000115 xml:lang="en">Tumor 2 cm or less in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_059 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_059 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_059">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_059">
         <rdfs:label xml:lang="en">pT0</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_040"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_040"/>
         <obo:IAO_0000115 xml:lang="en">No evidence of primary tumor</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_060 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_060 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_060">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_060">
         <rdfs:label xml:lang="en">pN1c</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_050"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_050"/>
         <obo:IAO_0000115 xml:lang="en">Metastasis to a lymph node 2 cm or more in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_061 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_061 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_061">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_061">
         <rdfs:label xml:lang="en">pN1b</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_050"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_050"/>
         <obo:IAO_0000115 xml:lang="en"> Metastasis to lymph nodes, any larger than 0.2 cm</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_062 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_062 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_062">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_062">
         <rdfs:label xml:lang="en">pN1a</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_050"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_050"/>
         <obo:IAO_0000115 xml:lang="en">Only micrometastasis (none larger than 0.2 cm)</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_063 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_063 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_063">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_063">
         <rdfs:label xml:lang="en">pN2b</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_048"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_048"/>
         <obo:IAO_0000115 xml:lang="en">Metastases to clinically identifiable lymph node(s) along the Arteria mammaria without axillary lymph node metastases</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_064 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_064 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_064">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_064">
         <rdfs:label xml:lang="en">pN2a</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_048"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_048"/>
         <obo:IAO_0000115 xml:lang="en">Metastases in 4 to 9 axillary lymph nodes, at least one metastasis greater than 0,2 cm in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_065 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_065 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_065">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_065">
         <rdfs:label xml:lang="en">pN3c</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_047"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_047"/>
         <obo:IAO_0000115 xml:lang="en">Metastasis or Metastases in ipsilateral supraclaviculary lymph nodes</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_066 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_066 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_066">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_066">
         <rdfs:label xml:lang="en">Metastasis or Metastases in clinically identifiable lymph nodes along the Arteria mammaria interna with at least one axillary lymph node metastasis or lymph node metastases in more than 3 axillary lymph nodes and in lymph nodes along the Arteria mammaria interna, proved by analysis of the sentinel lymph node(s) but not clinically identifiable</rdfs:label>
         <rdfs:label xml:lang="en">pN3b</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_047"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_047"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_067 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_067 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_067">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_067">
         <rdfs:label xml:lang="en">pN3a</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_047"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_047"/>
         <obo:IAO_0000115 xml:lang="en">Metastasis or Metastases in 10 or more ipsilateral axillary lymoh nodes, at least one greater than 0,2 cm or in ipsilateral infraclaviculary lymph nodes.</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_068 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_068 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_068">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_068">
         <rdfs:label xml:lang="en">pT1mic</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_058"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_058"/>
         <obo:IAO_0000115 xml:lang="en">Microinvasion 0,1 cm or less in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_069 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_069 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_069">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_069">
         <rdfs:label xml:lang="en">pT1c</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_058"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_058"/>
         <obo:IAO_0000115 xml:lang="en">Tumor more than 1 cm but not more than 2 cm in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_070 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_070 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_070">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_070">
         <rdfs:label xml:lang="en">pT1b</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_058"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_058"/>
         <obo:IAO_0000115 xml:lang="en">Tumor more than 0.5 cm but not more than 2 cm in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_071 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_071 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_071">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_071">
         <rdfs:label xml:lang="en">pT1a</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_058"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_058"/>
         <obo:IAO_0000115 xml:lang="en">Tumor not more than 0.5 cm in greatest dimension</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_072 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_072 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_072">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_072">
         <rdfs:label xml:lang="en">pT4d</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_055"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_055"/>
         <obo:IAO_0000115 xml:lang="en"> Inflammatory carcinoma</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_073 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_073 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_073">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_073">
         <rdfs:label xml:lang="en">pT4c</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_055"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_055"/>
         <obo:IAO_0000115 xml:lang="en">Tumor with extension to chest wall and edema (including peau d’orange) or ulceration of the skin or satellite skin nodules confined to same breast</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_074 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_074 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_074">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_074">
         <rdfs:label xml:lang="en">pT4b</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_055"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_055"/>
         <obo:IAO_0000115 xml:lang="en">Tumor with edema (including peau d’orange) or ulceration of the skin or satellite skin nodules confined to same breast</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_075 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_075 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_075">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_075">
         <rdfs:label xml:lang="en">pT4a</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_055"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_055"/>
         <obo:IAO_0000115 xml:lang="en"> Tumor with extension to chest wall</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_076 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_076 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_076">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_076">
         <rdfs:label xml:lang="en">pTisPaget</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_054"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_054"/>
         <obo:IAO_0000115 xml:lang="en">Paget’s disease of the nipple with no tumor</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_077 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_077 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_077">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_077">
         <rdfs:label xml:lang="en">pTisLCIS</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_054"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_054"/>
         <obo:IAO_0000115 xml:lang="en"> lobular carcinoma in situ</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_078 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_078 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_078">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_078">
         <rdfs:label xml:lang="en">pTisDCIS</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_054"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_054"/>
         <obo:IAO_0000115 xml:lang="en"> Intraductal carcinoma</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_079 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_079 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_079">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_079">
         <rdfs:label xml:lang="en">RX</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_005"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_005"/>
         <obo:IAO_0000115 xml:lang="en">Residual tumor cannot be assessed</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_080 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_080 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_080">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_080">
         <rdfs:label xml:lang="en">R2</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_005"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_005"/>
         <obo:IAO_0000115 xml:lang="en">Macroscopical residual tumor</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_081 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_081 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_081">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_081">
         <rdfs:label xml:lang="en">R1</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_005"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_005"/>
         <obo:IAO_0000115 xml:lang="en">Microscopical residual tumor</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_082 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_082 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_082">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_082">
         <rdfs:label xml:lang="en">R0</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_005"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_005"/>
         <obo:IAO_0000115 xml:lang="en">No residual tumor</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_083 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_083">
         <rdfs:label xml:lang="en">wilms tumor stage</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_001"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_001"/>
         <obo:IAO_0000115>Stage of the Wilm&apos;s tumor</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_084 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_084 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_084">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_084">
         <rdfs:label xml:lang="en">wilms tumor stage IV</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_083"/>
         <obo:IAO_0000115 xml:lang="en">Haematogenous metastases (lung, liver, bone, brain, etc.) or lymph node metastases outside te abdomino-pelvic region</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_085 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_085 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_085">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_085">
         <rdfs:label xml:lang="en">wilms tumor stage III</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_083"/>
         <obo:IAO_0000115 xml:lang="en">(a) Incomplete excision of the tumor which extends beyond resection margins (gross or microscopical tumor remains postoperatively)
 (b) Any abdominal lymph nodes are involved
 (c) Tumor rupture before or intraoperatively (irrespective of other criteria for staging)
@@ -1281,11 +1227,11 @@ Staging helps health care providers and researchers exchange information about p
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_086 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_086 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_086">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_086">
         <rdfs:label xml:lang="en">wilms tumor stage II</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_083"/>
         <obo:IAO_0000115 xml:lang="en">a) Viable tumour penetrates through the renal capsule and/or fibrous pseudocapsule into perirenal fat but is completely resected (resection margins “clear”).
 b) Viable tumour infiltrates the soft tissues of the renal sinus.
 c) Viable tumour infiltrates blood and lymphatic vessels of the renal sinus or in the perirenal tissue but it is completely resected.
@@ -1295,11 +1241,11 @@ e) Viable tumour infiltrates adjacent organs or vena cava but is completely rese
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_087 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_087 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_087">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_087">
         <rdfs:label xml:lang="en">wilms tumor stage I</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_083"/>
         <obo:IAO_0000115 xml:lang="en">(a) The tumour limited to kidney or surrounded with ®brous pseudocapsule if outside of the normal contours of the kidney, the
 renal capsule or pseudocapsule may be in®ltrated with the tumor but it does not reach the outer surface, and it is completely
 resected (resection margins `clear&apos;)
@@ -1311,25 +1257,25 @@ walls)
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_088 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_088 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_088">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_088">
         <rdfs:label xml:lang="en">wilms tumor stage V</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_083"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_083"/>
         <obo:IAO_0000115 xml:lang="en">Bilateral renal tumors at diagnosis. Each side should be substaged according to the above criteria.</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_089 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_089 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_089">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_089">
         <rdfs:label xml:lang="en">nodal status</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_090"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_091"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_090"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_091"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -1340,23 +1286,23 @@ walls)
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_090 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_090 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_090">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_090">
         <rdfs:label xml:lang="en">nodal status positive</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_013"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_014"/>
-                    <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_015"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_013"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_014"/>
+                    <rdf:Description rdf:about="&hdot;HDOT_PFM_015"/>
                 </owl:unionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_089"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot_core;hasBooleanValue"/>
+                <owl:onProperty rdf:resource="&hdot;hasBooleanValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1364,14 +1310,14 @@ walls)
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_091 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_091 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_091">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_091">
         <rdfs:label xml:lang="en">nodal status negative</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_089"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot_core;hasBooleanValue"/>
+                <owl:onProperty rdf:resource="&hdot;hasBooleanValue"/>
                 <owl:someValuesFrom rdf:resource="&xsd;boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1379,9 +1325,9 @@ walls)
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_092 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_092 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_092">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_092">
         <rdfs:label>neoplasm size</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
@@ -1392,7 +1338,7 @@ walls)
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+                                    <rdf:Description rdf:about="&hdot;HDOT_PM_0014"/>
                                     <owl:Class>
                                         <owl:complementOf rdf:resource="&obo;DOID_1240"/>
                                     </owl:Class>
@@ -1409,11 +1355,11 @@ walls)
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_093 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_093 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_093">
-        <rdfs:label>neoplasm volume</rdfs:label>
+    <owl:Class rdf:about="&hdot;HDOT_PFM_093">
         <rdfs:label>tumor volume</rdfs:label>
+        <rdfs:label>neoplasm volume</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1423,7 +1369,7 @@ walls)
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+                                    <rdf:Description rdf:about="&hdot;HDOT_PM_0014"/>
                                     <owl:Class>
                                         <owl:complementOf rdf:resource="&obo;DOID_1240"/>
                                     </owl:Class>
@@ -1439,9 +1385,9 @@ walls)
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_094 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_094 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_094">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_094">
         <rdfs:label>neoplasm diameter</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
@@ -1452,7 +1398,7 @@ walls)
                         <owl:someValuesFrom>
                             <owl:Class>
                                 <owl:intersectionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+                                    <rdf:Description rdf:about="&hdot;HDOT_PM_0014"/>
                                     <owl:Class>
                                         <owl:complementOf rdf:resource="&obo;DOID_1240"/>
                                     </owl:Class>
@@ -1468,136 +1414,168 @@ walls)
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_095 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_095">
         <rdfs:label>low risk nephroblastoma</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
-        <owl:disjointWith rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097"/>
+        <owl:disjointWith rdf:resource="&hdot;HDOT_PFM_097"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_096 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_096">
         <rdfs:label>intermediate risk nephroblastoma</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
-        <owl:disjointWith rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097"/>
+        <owl:disjointWith rdf:resource="&hdot;HDOT_PFM_097"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_097 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_097">
         <rdfs:label>high risk nephroblastoma</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;DOID_2154"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_098 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_098 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_098">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_098">
         <rdfs:label>high risk blastema rich nephroblastoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_097"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_099 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_099 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_099">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_099">
         <rdfs:label>diffuse anaplastic nephroblastoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_097"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_097"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_100 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_100 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_100">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_100">
         <rdfs:label>stroma rich nephroblastoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_096"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_101 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_101 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_101">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_101">
         <rdfs:label>regressive type nephroblastoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_096"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_102 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_102 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_102">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_102">
         <rdfs:label>mixed nephroblastoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_096"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_103 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_103 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_103">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_103">
         <rdfs:label>intermediate risk blastema rich nephroblastoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_096"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_104 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_104 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_104">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_104">
         <rdfs:label>focal anaplastic nephroblastoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_096"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_105 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_105 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_105">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_105">
         <rdfs:label>epithelia nephroblastoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_096"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_096"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_106 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_106 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_106">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_106">
         <rdfs:label>cystic partially differentiated nephroblastoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_095"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_107 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_107 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_107">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_107">
         <rdfs:label>completely necrotic nephroblastoma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_095"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_095"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_108 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PFM_108 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl#HDOT_PFM_108">
+    <owl:Class rdf:about="&hdot;HDOT_PFM_108">
         <rdfs:label>metastasis</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;DOID_162"/>
         <obo:IAO_0000115>A tumor formed by cells that have spread</obo:IAO_0000115>
         <rdfs:comment>In the context of HDOT, metastasis is the (physical) outcome of a metastatic process ( the spread of a tumor from one part of the body to another).</rdfs:comment>
     </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0014 -->
+
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0014">
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;has_magnitude"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_092"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;has_magnitude"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_093"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;has_stage"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;has_magnitude"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_094"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
 

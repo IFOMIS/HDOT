@@ -2,7 +2,7 @@
 
 
 <!DOCTYPE rdf:RDF [
-    <!ENTITY hdot "http://hdot.googlecode.com/svn/trunk/hdot#" >
+    <!ENTITY hdot "http://www.ifomis.org/hdot/" >
     <!ENTITY bfo "http://www.ifomis.org/bfo/1.1#" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY obo "http://purl.obolibrary.org/obo/" >
@@ -16,8 +16,6 @@
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY mlocc "http://www.ifomis.org/chronious/mlocc#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
-    <!ENTITY obo3 "http://hdot.googlecode.com/svn/trunk/hdot#http://purl.obolibrary.org/obo/" >
-    <!ENTITY obo2 "http://www.ifomis.org/chronious/mlocc#http://purl.obolibrary.org/obo/" >
 ]>
 
 
@@ -32,14 +30,12 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:mlocc="http://www.ifomis.org/chronious/mlocc#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:hdot="http://hdot.googlecode.com/svn/trunk/hdot#"
+     xmlns:hdot="http://www.ifomis.org/hdot/"
      xmlns:ogms="http://purl.obolibary.org/obo/ogms#"
-     xmlns:obo2="http://www.ifomis.org/chronious/mlocc#&obo;"
      xmlns:dc="http://purl.org/dc/elements/1.1/"
-     xmlns:obo3="&hdot;http://purl.obolibrary.org/obo/"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:span="http://www.ifomis.org/bfo/1.1/span#">
-    <Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/hdot">
+    <Ontology rdf:about="http://www.ifomis.org/hdot/hdot.owl">
         <dc:title rdf:datatype="&xsd;string">Health Data Ontology Trunk (HDOT)</dc:title>
         <dc:publisher rdf:datatype="&xsd;string">Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
         <dc:date rdf:datatype="&xsd;string">June 10, 2011</dc:date>
@@ -48,7 +44,6 @@
         <dc:creator rdf:datatype="&xsd;string">Ulf Schwarz</dc:creator>
         <dc:creator>Mathias Brochhausen</dc:creator>
         <versionInfo>1</versionInfo>
-        <versionIRI rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot"/>
         <imports rdf:resource="&obo;iao.owl"/>
         <imports rdf:resource="http://www.ifomis.org/bfo/1.1"/>
     </Ontology>
@@ -608,7 +603,7 @@
 
     <ObjectProperty rdf:about="&mlocc;regulatedBy">
         <rdfs:label>regulated by</rdfs:label>
-        <rdfs:domain rdf:resource="http://www.ifomis.org/chronious/mlocc#&obo;OGMS_0000060"/>
+        <rdfs:domain rdf:resource="&obo;OGMS_0000060"/>
         <inverseOf rdf:resource="&mlocc;regulates"/>
     </ObjectProperty>
     
@@ -618,7 +613,7 @@
 
     <ObjectProperty rdf:about="&mlocc;regulates">
         <rdfs:label>regulates</rdfs:label>
-        <rdfs:range rdf:resource="http://www.ifomis.org/chronious/mlocc#&obo;OGMS_0000060"/>
+        <rdfs:range rdf:resource="&obo;OGMS_0000060"/>
     </ObjectProperty>
     
 
@@ -2418,7 +2413,7 @@
 
     <Class rdf:about="&mlocc;Cognition">
         <rdfs:label>cognition</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/chronious/mlocc#&obo;OGMS_0000060"/>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000060"/>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&ro;has_agent"/>
@@ -7527,7 +7522,7 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot#Canonicality -->
+    <!-- http://www.ifomis.org/hdot/Canonicality -->
 
     <Class rdf:about="&hdot;Canonicality">
         <rdfs:label>canonicality</rdfs:label>
@@ -7547,7 +7542,7 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot#NonPharmacologicalProcedure -->
+    <!-- http://www.ifomis.org/hdot/NonPharmacologicalProcedure -->
 
     <Class rdf:about="&hdot;NonPharmacologicalProcedure">
         <rdfs:label>non-pharmacological procedure</rdfs:label>
@@ -7556,7 +7551,7 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot#Normal -->
+    <!-- http://www.ifomis.org/hdot/Normal -->
 
     <Class rdf:about="&hdot;Normal">
         <rdfs:label>normal</rdfs:label>
@@ -7567,7 +7562,7 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot#PharmacologicalProcedure -->
+    <!-- http://www.ifomis.org/hdot/PharmacologicalProcedure -->
 
     <Class rdf:about="&hdot;PharmacologicalProcedure">
         <rdfs:label>pharmacological procedure</rdfs:label>
@@ -7576,7 +7571,7 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot#TherapeuticProcedure -->
+    <!-- http://www.ifomis.org/hdot/TherapeuticProcedure -->
 
     <Class rdf:about="&hdot;TherapeuticProcedure">
         <rdfs:label>therapeutic procedure</rdfs:label>
@@ -7585,7 +7580,7 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot#Transient -->
+    <!-- http://www.ifomis.org/hdot/Transient -->
 
     <Class rdf:about="&hdot;Transient">
         <rdfs:label>transient</rdfs:label>
@@ -7596,12 +7591,12 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot#http://purl.obolibrary.org/obo/OGMS_0000061 -->
+    <!-- http://purl.obolibrary.org/obo/OGMS_0000061 -->
 
     <Class rdf:about="&hdot;http://purl.obolibrary.org/obo/OGMS_0000061">
         <rdfs:label>pathological bodily process</rdfs:label>
         <rdfs:label>pathological organismal process</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/chronious/mlocc#&obo;OGMS_0000060"/>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000060"/>
         <rdfs:subClassOf>
             <Restriction>
                 <onProperty rdf:resource="&mlocc;hasQuality"/>

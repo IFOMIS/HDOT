@@ -2,58 +2,35 @@
 
 
 <!DOCTYPE rdf:RDF [
+    <!ENTITY hdot "http://www.ifomis.org/hdot/" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY obo "http://purl.obolibrary.org/obo/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
     <!ENTITY oboInOwl "http://www.geneontology.org/formats/oboInOwl#" >
-    <!ENTITY hdot_pm "http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#" >
-    <!ENTITY hdot_core "http://hdot.googlecode.com/svn/trunk/hdot_core.owl#" >
 ]>
 
 
-<rdf:RDF xmlns="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#"
-     xml:base="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl"
+<rdf:RDF xmlns="&hdot;hdot_pem.owl#"
+     xml:base="&hdot;hdot_pem.owl"
      xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:hdot="http://www.ifomis.org/hdot/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
-     xmlns:hdot_pm="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:hdot_core="http://hdot.googlecode.com/svn/trunk/hdot_core.owl#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
-    <owl:Ontology rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl">
-        <hdot_core:creator xml:lang="en">Emilio M.Sanfilippo</hdot_core:creator>
-        <hdot_core:publisher xml:lang="en">Institute for Formal Ontology and Medical Information Science (IFOMIS)</hdot_core:publisher>
-        <hdot_core:creator xml:lang="en">Luc Schneider</hdot_core:creator>
-        <hdot_core:title xml:lang="en">The Heath Data Ontology Trunk Patient Empowerment Module (HDOT_PEM)</hdot_core:title>
-        <hdot_core:creator xml:lang="en">Ulf Schwarz</hdot_core:creator>
-        <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl"/>
-        <owl:imports rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl"/>
+    <owl:Ontology rdf:about="&hdot;hdot_pem.owl">
+        <hdot:creator xml:lang="en">Emilio M.Sanfilippo</hdot:creator>
+        <hdot:publisher xml:lang="en">Institute for Formal Ontology and Medical Information Science (IFOMIS)</hdot:publisher>
+        <hdot:creator xml:lang="en">Luc Schneider</hdot:creator>
+        <hdot:title xml:lang="en">The Heath Data Ontology Trunk Patient Empowerment Module (HDOT_PEM)</hdot:title>
+        <hdot:creator xml:lang="en">Ulf Schwarz</hdot:creator>
+        <owl:imports rdf:resource="&hdot;doid_import.owl"/>
+        <owl:imports rdf:resource="&hdot;hdot_pm.owl"/>
+        <owl:imports rdf:resource="&hdot;www.ifomis.org/hdot/hdot_pfm.owl"/>
     </owl:Ontology>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotation properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
     
 
 
@@ -68,67 +45,10 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_core.owl#HDOT_CORE_039 -->
-
-    <rdf:Description rdf:about="&hdot_core;HDOT_CORE_039">
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Physical ability is the ability to do something efficiently with the body</hdot_pm:patientLanguageDefinition>
-    </rdf:Description>
-    
-
-
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0022 -->
-
-    <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0022">
-        <rdfs:comment xml:lang="en">Being integrated in social life is an important factor to determining the patients&apos; functional response to their illness and its treatment.
-
-A decrease propensity to communicate and interact with other people or decrement of social life may be associated with medical (e.g., pain) and psycho-social factors (e.g., fatigue, depression, low self esteem, distorted body image, financial problems) related to the cancer condition.
-
-p-medicine, D14.2</rdfs:comment>
-        <obo:IAO_0000115 xml:lang="en">Social ability is an ability that facilitates interaction and communication with other members of the society</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Social ability is the ability to create and keep up good relationships</hdot_pm:patientLanguageDefinition>
-        <obo:IAO_0000119 xml:lang="en">p-medicine, Deliverable 14.2, Specification of linguistic schema</obo:IAO_0000119>
-    </rdf:Description>
-    
-
-
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0023 -->
-
-    <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0023">
-        <rdfs:comment xml:lang="en">Impairment in physical abilities decreases the quality of life of the individual, both because of a concrete impossibility to perform an action, and because of the consequences this inability may have on personal emotional state (depression, anxiety).
-
-p-medicine, D 14.2</rdfs:comment>
-        <obo:IAO_0000115 xml:lang="en">Physical ability is the ability to perform some physical acts, that allow the individual to deal with the needs of every-day life</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">p-medicine, Deliverable 14.2, Specification of inguistic schema</obo:IAO_0000119>
-    </rdf:Description>
-    
-
-
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0026 -->
-
-    <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0026">
-        <rdfs:comment xml:lang="en">Often sexual dysfunctions are characterized by both physical and psychological factors.
-
-p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Sexual dysfunction is a condition in which sexual apparatus does not work in a proper way</hdot_pm:patientLanguageDefinition>
-        <obo:IAO_0000115 xml:lang="en">Sexual dysfunction is a dysfunction that refers to difficulties experienced by an individual or a couple during any stage of a normal sexual activity including desire, arousal or orgasm</obo:IAO_0000115>
-        <obo:IAO_0000115 xml:lang="en">Sexual dysfunction is a physical dysfunction of the sexual apparatus </obo:IAO_0000115>
-    </rdf:Description>
-    
-
-
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0029 -->
-
-    <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0029">
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Appetite is a desire to eat caused by a light feeling of empty stomach</hdot_pm:patientLanguageDefinition>
-        <obo:IAO_0000115 xml:lang="en">Appetite is a disposition that specifies the desire for food</obo:IAO_0000115>
-    </rdf:Description>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/GO_0007613 -->
 
     <rdf:Description rdf:about="&obo;GO_0007613">
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Memory is a person ability to store, hold and retrieve information about people, events and situations in general</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Memory is a person ability to store, hold and retrieve information about people, events and situations in general</hdot:patientLanguageDefinition>
     </rdf:Description>
     
 
@@ -136,7 +56,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     <!-- http://purl.obolibrary.org/obo/GO_0019233 -->
 
     <rdf:Description rdf:about="&obo;GO_0019233">
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Pain perception is a sensation of subjective physical sufferance in presence of something that is harming the organism or reducing its well being</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Pain perception is a sensation of subjective physical sufferance in presence of something that is harming the organism or reducing its well being</hdot:patientLanguageDefinition>
     </rdf:Description>
     
 
@@ -218,8 +138,8 @@ In diagnosing the symptoms a trained therapist must take the following into acco
     <owl:Class rdf:about="&obo;MD_0000024">
         <rdfs:label xml:lang="en">pathological mental process</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000061"/>
-        <obo:IAO_0000119>http://purl.obolibrary.org/obo/MD_0000024</obo:IAO_0000119>
         <obo:IAO_0000115 xml:lang="en">A pathological process which is the manifestation of a mental disorder.</obo:IAO_0000115>
+        <obo:IAO_0000119>http://purl.obolibrary.org/obo/MD_0000024</obo:IAO_0000119>
     </owl:Class>
     
 
@@ -230,7 +150,7 @@ In diagnosing the symptoms a trained therapist must take the following into acco
         <rdfs:label xml:lang="en">depression</rdfs:label>
         <rdfs:label xml:lang="en">depression disease</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;DOID_150"/>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Depression is a long lasting mood change, characterized by mild to deep sadness, reduced interest or pleasure in activities, social withdrawal with associated low self-esteem and fatigue</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Depression is a long lasting mood change, characterized by mild to deep sadness, reduced interest or pleasure in activities, social withdrawal with associated low self-esteem and fatigue</hdot:patientLanguageDefinition>
         <obo:IAO_0000115 xml:lang="en">Depression is a mental disease characterized by an all-encompassing low mood accompanied by low self-esteem, and by loss of interest or pleasure in living</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">Depression is defined as a psychophysical condition associated with loss events (e.g., loss through death of a loved one; loss of one&apos;s physical health), in which something or someone that is valued is lost and perceived as hard or impossible to regain.
 
@@ -261,7 +181,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <rdfs:label xml:lang="en">anger</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000001"/>
         <obo:IAO_0000115 xml:lang="en">Anger is a negative emotion, characterised by feelings of unpleasantness and high arousal, in the form of antagonistic feelings and action tendencies. [Source: OCEAS]</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Anger is an emotion a person feels toward a situation or a person that can lead to aggressive or violent behaviors</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Anger is an emotion a person feels toward a situation or a person that can lead to aggressive or violent behaviors</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000009</obo:IAO_0000119>
     </owl:Class>
     
@@ -273,7 +193,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <rdfs:label xml:lang="en">irritation</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000001"/>
         <obo:IAO_0000115 xml:lang="en">An unpleasant emotion closely related to anger but lower in intensity and without the moral dimension of blame and seriousness that is implicated in anger. [Source: OCEAS]</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Irritation is an emotional reaction in which it is difficult for the person to accept situations or events that are usually accepted and it is associated with emotions of anger and annoyance</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Irritation is an emotional reaction in which it is difficult for the person to accept situations or events that are usually accepted and it is associated with emotions of anger and annoyance</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000011</obo:IAO_0000119>
     </owl:Class>
     
@@ -284,7 +204,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     <owl:Class rdf:about="&obo;MFOEM_000016">
         <rdfs:label xml:lang="en">grief</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000001"/>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Grief is an intense long lasting negative emotion caused by a subjective important loss</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Grief is an intense long lasting negative emotion caused by a subjective important loss</hdot:patientLanguageDefinition>
         <obo:IAO_0000115 xml:lang="en">Grief is an intense negative emotion following a bereavement, i.e. the loss of a significant person through that person&apos;s death. [Source: OCEAS]</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000016</obo:IAO_0000119>
     </owl:Class>
@@ -297,7 +217,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <rdfs:label xml:lang="en">fear</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000001"/>
         <obo:IAO_0000115 xml:lang="en">An activated, aversive emotion that motivates attempts to cope with events that provide threats to the survival or well-being of organisms. Characterised by feelings of threat and impending doom, and by an urge to get out of the situation. [Source: OCEAS]</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Fear is a negative emotion felt in presence of threatening and dangerous that motivates the person to fight or to escape.</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Fear is a negative emotion felt in presence of threatening and dangerous that motivates the person to fight or to escape.</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000026</obo:IAO_0000119>
     </owl:Class>
     
@@ -313,7 +233,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <rdfs:comment xml:lang="en">Anxiety can be defined as “an intense emotional response caused by the preconscious recognition that a repressed conflict is about to emerge into consciousness” (Gerrig, Zimbardo, 2002). This emotional state includes feelings of apprehension, tension, nervousness, and worry accompanied by physiological arousal related to future danger events, in which an unpleasant specific future crisis is fairly likely. More specifically, it is a condition of persistent and uncontrollable nervousness, stress, and worry that is triggered by anticipation of future events, memories of past events, or ruminations over day-to-day events, both trivial and major, with disproportionate fears of catastrophic consequences.
 
 p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Anxiety is an emotional state felt in uncertain situations that could lead to negative consequences</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Anxiety is an emotional state felt in uncertain situations that could lead to negative consequences</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000028</obo:IAO_0000119>
     </owl:Class>
     
@@ -325,7 +245,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <rdfs:label xml:lang="en">sadness</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000001"/>
         <obo:IAO_0000115 xml:lang="en">A negative emotion felt when an event is appraised as unpleasant, obstructive to one&apos;s goals and concerns, and one feels unable to cope with it or modify it. [Source: OCEAS]</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Sadness is a negative emotion caused by characterized by a feeling of melancholia and discouragement for something that the person is not able to reach or have</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Sadness is a negative emotion caused by characterized by a feeling of melancholia and discouragement for something that the person is not able to reach or have</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000056</obo:IAO_0000119>
     </owl:Class>
     
@@ -337,7 +257,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <rdfs:label xml:lang="en">feeling weak</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000006"/>
         <obo:IAO_0000115 xml:lang="en">Feeling weak is a cognitive representation that specifically depends on some extended organism and refers to the subjective feeling of weakness, lack of energy and/or capability, faintness, absence of strength</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Feeling weak is a physical and psychological condition in which a person feels that she has no energy to cope with events or to engage in daily activities</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Feeling weak is a physical and psychological condition in which a person feels that she has no energy to cope with events or to engage in daily activities</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000119</obo:IAO_0000119>
     </owl:Class>
     
@@ -349,7 +269,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <rdfs:label xml:lang="en">feeling nervous</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000006"/>
         <obo:IAO_0000115 xml:lang="en">Feeling nervous is a cognitive representation that specifically depends on some extended organism and refers to the subjective feeling of being not at ease, of being anxious or agitated</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Feeling nervous is a condition in which a person feels impatient, tens and anxious, not confortable and calm</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Feeling nervous is a condition in which a person feels impatient, tens and anxious, not confortable and calm</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000124</obo:IAO_0000119>
     </owl:Class>
     
@@ -367,42 +287,50 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_001 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_CORE_039 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_001">
+    <rdf:Description rdf:about="&hdot;HDOT_CORE_039">
+        <hdot:patientLanguageDefinition xml:lang="en">Physical ability is the ability to do something efficiently with the body</hdot:patientLanguageDefinition>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_001 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PEM_001">
         <rdfs:label xml:lang="en">cognitive ability</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot_core;HDOT_CORE_039"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_039"/>
         <obo:IAO_0000115 xml:lang="en">Cognitive ability is an ability which is realized in a cognitive process</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_002 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_002 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_002">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_002">
         <rdfs:label xml:lang="en">ability to make decisions</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_001"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_001"/>
         <obo:IAO_0000115 xml:lang="en">Decision making ability is a cognitive ability by which one is able to make decisions</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_003 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_003 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_003">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_003">
         <rdfs:label xml:lang="en">problem-solving ability</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_002"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_002"/>
         <obo:IAO_0000115 xml:lang="en">A problem-solving ability is an ability by which someone finds solutions for specific problems</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Problem-solving ability is the ability to find a non immediate solution to a specific actual situation</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Problem-solving ability is the ability to find a non immediate solution to a specific actual situation</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_004 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_004 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_004">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_004">
         <rdfs:label xml:lang="en">cancer-related loss of appetite</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_025"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_025"/>
         <rdfs:comment xml:lang="en">Cancer-associated loss or reduction in appetite can result from medical conditions, such as from local effects of a tumour, the host response to the tumour and anticancer therapies.
 
 Loss of appetite may lead to malnutrition, which in turn has consequences such as impairment of immune functions, performance status, muscle function, and quality of life. Furthermore, responses to chemotherapy are decreased, chemotherapy-induced toxicity and complications are more frequent and severe, and survival times are shortened.
@@ -411,17 +339,17 @@ A loss or reduction in appetite may be due also to psychological conditions, suc
 
 p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <obo:IAO_0000115 xml:lang="en">Cancer-related loss of appetite is a loss of appetite that is caused by an instance of cancer occurring in the organism</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Cancer-related loss of appetite is the feeling of full stomach that leads not to eat caused by a cancer in the organism</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Cancer-related loss of appetite is the feeling of full stomach that leads not to eat caused by a cancer in the organism</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_005 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_005 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_005">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_005">
         <rdfs:label xml:lang="en">attention</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MF_0000008"/>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Attention is the ability to concentrate on something for a relative long time</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Attention is the ability to concentrate on something for a relative long time</hdot:patientLanguageDefinition>
         <obo:IAO_0000115 xml:lang="en">The act or process of concentrating, focusing the attention and mental energy on a single object to the exclusion of others.</obo:IAO_0000115>
         <oboInOwl:hasSynonym xml:lang="en">concentration</oboInOwl:hasSynonym>
         <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Attention_Concentration</obo:IAO_0000119>
@@ -429,9 +357,9 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_006 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_006 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_006">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_006">
         <rdfs:label xml:lang="en">appraisal of self-efficacy</rdfs:label>
         <rdfs:label xml:lang="en">self-efficacy belief</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000005"/>
@@ -439,51 +367,51 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
 
 p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <obo:IAO_0000115 xml:lang="en">Self-efficacy appraisal is a cognitive representation which represents a judgment about one’s own ability to complete tasks and reach goals; a sense of control over one’s environment and behaviour</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Self-efficacy belief is the belief to be autonomous and independent from others and to be useful to herself</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Self-efficacy belief is the belief to be autonomous and independent from others and to be useful to herself</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_007 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_007 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_007">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_007">
         <rdfs:label xml:lang="en">body image</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000005"/>
         <obo:IAO_0000115 xml:lang="en">Appraisal of body is a cognitive representation which represents a judgment about one’s own body</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">Body Image is defined as someone’s perceptions, thoughts, and feelings about his or her body. The body is no longer seen in simple biological terms, but an instrument for self-expression in the society, cultural capital, and political resistance. It is a site over which individuals can exert control, in an increasingly complex and uncertain world
 
 p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Body image is how a person perceives her own body</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Body image is how a person perceives her own body</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_008 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_008 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_008">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_008">
         <rdfs:label xml:lang="en">questionnaire part by topic</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0017"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0017"/>
         <obo:IAO_0000115 xml:lang="en">Questionnaire category is the part of a questionnaire where information is collected according to a specific topic</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_009 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_009 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_009">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_009">
         <rdfs:label xml:lang="en">perceived health state topic</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_008"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_008"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0023"/>
-                            <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0028"/>
-                            <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0029"/>
                             <rdf:Description rdf:about="&obo;OGMS_0000085"/>
-                            <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_013"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PEM_013"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PM_0023"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PM_0028"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PM_0029"/>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
@@ -497,11 +425,11 @@ p-medicine, Deliverable 14.2, SPecification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_010 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_010 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_010">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_010">
         <rdfs:label xml:lang="en">psychological aspect topic</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_008"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_008"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
@@ -510,7 +438,7 @@ p-medicine, Deliverable 14.2, SPecification of linguistic schema</rdfs:comment>
                         <owl:unionOf rdf:parseType="Collection">
                             <rdf:Description rdf:about="&obo;MD_0000049"/>
                             <rdf:Description rdf:about="&obo;MFOEM_000028"/>
-                            <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_006"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PEM_006"/>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
@@ -523,20 +451,20 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_011 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_011 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_011">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_011">
         <rdfs:label xml:lang="en">psycho-social aspect topic</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_008"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_008"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
                 <owl:someValuesFrom>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0022"/>
-                            <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0026"/>
-                            <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_007"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PEM_007"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PM_0022"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PM_0026"/>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
@@ -549,11 +477,11 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_012 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_012 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_012">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_012">
         <rdfs:label xml:lang="en">cognitive topic</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_008"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_008"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
@@ -561,9 +489,9 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
                     <owl:Class>
                         <owl:unionOf rdf:parseType="Collection">
                             <rdf:Description rdf:about="&obo;GO_0007613"/>
-                            <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_005"/>
-                            <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_017"/>
-                            <rdf:Description rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_018"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PEM_005"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PEM_017"/>
+                            <rdf:Description rdf:about="&hdot;HDOT_PEM_018"/>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
@@ -576,9 +504,9 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_013 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_013 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_013">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_013">
         <rdfs:label xml:lang="en">GSRH</rdfs:label>
         <rdfs:label xml:lang="en">global self-rated health</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000005"/>
@@ -588,12 +516,12 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_014 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_014 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_014">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_014">
         <rdfs:label xml:lang="en">cancer-related fatigue</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0028"/>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Cancer related fatigue is a mental and/or physical feeling of tiredness and lack of energy that prevents to conduct normal daily activities</hdot_pm:patientLanguageDefinition>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0028"/>
+        <hdot:patientLanguageDefinition xml:lang="en">Cancer related fatigue is a mental and/or physical feeling of tiredness and lack of energy that prevents to conduct normal daily activities</hdot:patientLanguageDefinition>
         <rdfs:comment xml:lang="en">Cancer-related fatigue (CRF) is characterized by feelings of tiredness, weakness, and lack of energy, and is distinct from the “normal” drowsiness experienced by healthy individuals in that it is not relieved by rest or sleep
 
 p-medicine Deliverable D14.2, Specification of linguistic schema</rdfs:comment>
@@ -602,9 +530,9 @@ p-medicine Deliverable D14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_015 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_015 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_015">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_015">
         <rdfs:label xml:lang="en">sensory perception of cancer-related pain</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;GO_0019233"/>
         <obo:IAO_0000115 xml:lang="en">Sensory perception of cancer-related pain is a sensory perception of pain that is caused by an instance of cancer in the organism</obo:IAO_0000115>
@@ -612,13 +540,13 @@ p-medicine Deliverable D14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_016 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_016 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_016">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_016">
         <rdfs:label xml:lang="en">cancer-related depression</rdfs:label>
         <rdfs:label xml:lang="en">cancer-related depression disease</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MD_0000049"/>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Cancer related depression is a long lasting negative mental state, characterized by sad mood and apathy caused by the presence of cancer</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Cancer related depression is a long lasting negative mental state, characterized by sad mood and apathy caused by the presence of cancer</hdot:patientLanguageDefinition>
         <obo:IAO_0000115 xml:lang="en">Cancer-related depression disease is a depression disease that is caused by an occurence of cancer in the organism</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">The importance to take into account depressive symptoms in cancer patients is driven by the awareness that depression can adversely affect a cancer patient in many ways: interfering with cancer treatment, increasing length of hospital stay, reducing ability to care for oneself, impairing quality of life, and possibly reducing overall survival time
 
@@ -627,24 +555,24 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_017 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_017 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_017">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_017">
         <rdfs:label xml:lang="en">rumination</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MF_0000013"/>
         <rdfs:comment xml:lang="en">People with a ruminative response style think repetitively and passively about their negative emotions, focusing on their symptoms and worrying about the meanings of their situation. People who engage in ruminative responses when they are sad, or depressed have higher levels of depressive symptoms over time. Accordingly, a chain of ruminative thoughts may be symptomatic of depression and may be cause of a delay recovery from depression. Moreover, rumination is associated with other negative outcomes, such as negatively biased thinking, poor problem-solving, impaired motivation and inhibition of instrumental behaviour, impaired concentration and cognition.
 
 p-medicine, D.14</rdfs:comment>
         <obo:IAO_0000115 xml:lang="en">Rumination is a cognitive process that refers to the tendency to focus repetitively on the meaning, causes, and consequences of a problem or a negative event.</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Rumination is a person’s tendency to iteratively, constantly and negatively think to his/her problems and emotional sufferance without be able to stop</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Rumination is a person’s tendency to iteratively, constantly and negatively think to his/her problems and emotional sufferance without be able to stop</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">p-medicine, Deliverable 14.2, Specification of linguistic schema</obo:IAO_0000119>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_018 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_018 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_018">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_018">
         <rdfs:label xml:lang="en">cognitive closure</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
         <rdfs:subClassOf>
@@ -655,7 +583,7 @@ p-medicine, D.14</rdfs:comment>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">Cognitive closure describes the desire or &quot;need&quot; some individuals have for information that will allow them to conclude an issue that had previously (for them at least) been clouded in ambiguity and uncertainty.
 </obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Cognitive closure is the condition in which a person looks for an answer whatever it is, that is preferable to uncertainty and ambiguity</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Cognitive closure is the condition in which a person looks for an answer whatever it is, that is preferable to uncertainty and ambiguity</hdot:patientLanguageDefinition>
         <rdfs:comment xml:lang="en">The need for cognitive closure is a dispositional construct, i.e., a personality trait that influences the knowledge acquisition process in rather stable ways across various situations. As construct, it is treated as a latent variable manifested through several aspects, such as desire for predictability, preference for order and structure, discomfort with ambiguity, decisiveness, and close-mindedness.
 
 It is typical of patients that need to reduce the uncertainty. The possible consequence of cognitive closure (closing down the process of thinking-through), is that the individual may become intellectually passive, rather than developing a persistent and tenacious stance toward problem-solving. Thinking through multiple potentially correct answers requires a stick-with-it mentality, that when dealing with cancer might lead some patients to think too much to the negative events of having a cancer (a possible link with rumination, depression, anxiety).
@@ -666,120 +594,120 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_019 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_019 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_019">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_019">
         <rdfs:label xml:lang="en">appraisal of body after surgery</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_007"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_007"/>
         <obo:IAO_0000115 xml:lang="en">Appraisal of body after surgery is someone’s appraisal of her body after a surgical procedure</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_020 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_020 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_020">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_020">
         <rdfs:label xml:lang="en">psychological distress</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MF_0000008"/>
         <obo:IAO_0000115 xml:lang="en">Distress is a cognitive process that refers to the inability of someone to adapt completely to stressors and their resulting stress and shows maladaptive behaviors</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Distress is a condition in which a person has difficulties in coping with a long-lasting stressful and frustrating situation</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Distress is a condition in which a person has difficulties in coping with a long-lasting stressful and frustrating situation</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_021 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_021 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_021">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_021">
         <rdfs:label xml:lang="en">erectile dysfunction</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0026"/>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Erectile dysfunction is a difficulty for the male to have and maintain penis erection during sexual performance</hdot_pm:patientLanguageDefinition>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0026"/>
+        <hdot:patientLanguageDefinition xml:lang="en">Erectile dysfunction is a difficulty for the male to have and maintain penis erection during sexual performance</hdot:patientLanguageDefinition>
         <obo:IAO_0000115 xml:lang="en">Erectile dysfunction is a sexual dysfunction that is characterized by the inability to develop or maintain an erection of the penis during sexual performance</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Erectile_dysfunction</obo:IAO_0000119>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_022 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_022 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_022">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_022">
         <rdfs:label xml:lang="en">retrograde ejaculation</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0026"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0026"/>
         <obo:IAO_0000115 xml:lang="en">Retrograde ejaculation  is a sexual dysfunction that occurs when semen, which would normally be ejaculated via the urethra, is redirected to the urinary bladder</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Retrograde ejaculation is a male condition in which semen goes in the bladder instead to go out from the penis</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Retrograde ejaculation is a male condition in which semen goes in the bladder instead to go out from the penis</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Retrograde_ejaculation</obo:IAO_0000119>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_023 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_023 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_023">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_023">
         <rdfs:label xml:lang="en">delayed ejaculation</rdfs:label>
         <rdfs:label xml:lang="en">inability to ejaculate</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0026"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0026"/>
         <obo:IAO_0000115 xml:lang="en">Delayed ejaculation is a medical condition in which a male cannot ejaculate, either during intercourse or by manual stimulation with a partner.</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Inability to ejaculate is a male difficulty in emitting the semen during otherwise normal sexual activity</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Inability to ejaculate is a male difficulty in emitting the semen during otherwise normal sexual activity</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://www.ncbi.nlm.nih.gov/pubmedhealth/PMH0002678/</obo:IAO_0000119>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_024 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_024 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_024">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_024">
         <rdfs:label xml:lang="en">dyspareunia</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0026"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0026"/>
         <obo:IAO_0000115 xml:lang="en">Dyspareunia is painful sexual intercourse, due to medical or psychological causes. The symptom is significantly more common in women than in men.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Dyspareunia</obo:IAO_0000119>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_025 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_025 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_025">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_025">
         <rdfs:label xml:lang="en">loss of appetite</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000060"/>
         <obo:IAO_0000115 xml:lang="en">Loss of appetite is a bodily process that is the decreased sensation of appetite.</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Loss of appetite is the feeling of full stomach that leads not to eat</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Loss of appetite is the feeling of full stomach that leads not to eat</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_026 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_026 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_026">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_026">
         <rdfs:label xml:lang="en">ability to plan</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_001"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_001"/>
         <obo:IAO_0000115 xml:lang="en">Ability to plan is a cognitive ability that is realized in a planning process</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_027 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_027 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_027">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_027">
         <rdfs:label xml:lang="en">ability to process information</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_001"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_001"/>
         <obo:IAO_0000115 xml:lang="en">Ability to process information is a cognitive process that is realized in a information processing</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_028 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_028 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_028">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_028">
         <rdfs:label xml:lang="en">ability to reason</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_001"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_001"/>
         <obo:IAO_0000115 xml:lang="en">Ability to reason is a cognitive ability that is realized in a cognitive process, specifically in a thinking process</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Ability to reason is the ability to use information to reflect on a problem</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Ability to reason is the ability to use information to reflect on a problem</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_029 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_029 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_029">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_029">
         <rdfs:label xml:lang="en">close mindedness</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
         <rdfs:subClassOf>
@@ -789,14 +717,14 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">Close mindedness is a disposition of some extended organism that is realized in a cognitive process by which someone is intolerant of the beliefs and opinions of other people</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Close mindedness is the inability to consider other possibilities, believes and points of view</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Close mindedness is the inability to consider other possibilities, believes and points of view</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_030 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_030 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_030">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_030">
         <rdfs:label xml:lang="en">information processing</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MF_0000008"/>
         <obo:IAO_0000115 xml:lang="en">Information processing is a cognitive process that describes the acquisition, recording, organization and retrieval of information made by a human being</obo:IAO_0000115>
@@ -804,101 +732,101 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_031 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_031 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_031">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_031">
         <rdfs:label xml:lang="en">ability to interact with others</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot_pm;HDOT_PM_0022"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0022"/>
         <obo:IAO_0000115 xml:lang="en">Ability to interact with others is a social ability that is realized in a process by which one interacts with other people</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_032 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_032 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_032">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_032">
         <rdfs:label xml:lang="en">ability to learn</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_001"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_001"/>
         <obo:IAO_0000115 xml:lang="en">Ability to learn is a cognitive ability that is realized in a learning process</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_033 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_033 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_033">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_033">
         <rdfs:label xml:lang="en">feeling depressed</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000006"/>
         <obo:IAO_0000115 xml:lang="en">Feeling depressed is a cognitive representation that specifically depends on some extended organism who participates in a depressed mood episode</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Feeling depressed is condition in which a person presents a long lasting mood change, characterized by mild to deep sadness, reduced interest or pleasure in activities, social withdrawal with associated low self-esteem and fatigue</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Feeling depressed is condition in which a person presents a long lasting mood change, characterized by mild to deep sadness, reduced interest or pleasure in activities, social withdrawal with associated low self-esteem and fatigue</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_034 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_034 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_034">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_034">
         <rdfs:label xml:lang="en">feeling guilty</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000006"/>
         <obo:IAO_0000115 xml:lang="en">Feeling guilty is a cognitive representation that specifically depends on some extended organism and refers to the subjective emotional feeling to have a sense of personal responsibility</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Feeling guilty is a condition in which a person feels responsible for something bad and adverse that happened after a her choice or action which negative consequences are unintentional</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Feeling guilty is a condition in which a person feels responsible for something bad and adverse that happened after a her choice or action which negative consequences are unintentional</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_035 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_035 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_035">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_035">
         <rdfs:label xml:lang="en">feeling hopeless</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000006"/>
         <obo:IAO_0000115 xml:lang="en">Feeling hopeless is a cognitive representation that specifically depends on some extended organism and refers to a condition of being without hope because there seems to be no possibility of comfort or success</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Feeling hopeless is a condition in which a person feels as she has no possibilities to reach a positive outcome</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Feeling hopeless is a condition in which a person feels as she has no possibilities to reach a positive outcome</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_036 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_036 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_036">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_036">
         <rdfs:label xml:lang="en">feeling helpless</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000006"/>
         <obo:IAO_0000115 xml:lang="en">Feeling helpless is a cognitive representation that specifically depends on some extended organism and refers to the subjective emotional feeling of being without help</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Feeling helpless is a condition in which a person perceives to be without support or protection</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Feeling helpless is a condition in which a person perceives to be without support or protection</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_037 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_037 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_037">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_037">
         <rdfs:label xml:lang="en">feeling stressed</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000006"/>
         <obo:IAO_0000115 xml:lang="en">Feeling stressed is a cognitive representation that specifically depends on some extended organism and refers to the feeling of being tensed resulting from factors that tend to alter an existent equilibrium</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Feeling stressed is a condition in which a person perceives she has no more resources to cope with events and situations</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Feeling stressed is a condition in which a person perceives she has no more resources to cope with events and situations</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_038 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_038 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_038">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_038">
         <rdfs:label xml:lang="en">sensory perception of pain during sexual intercourse</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;GO_0019233"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000055"/>
-                <owl:someValuesFrom rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_024"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PEM_024"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Pain perception during sexual intercourse is a sensation of subjective physical sufferance on sexual apparatus during sexual intercourse</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Pain perception during sexual intercourse is a sensation of subjective physical sufferance on sexual apparatus during sexual intercourse</hdot:patientLanguageDefinition>
         <obo:IAO_0000115 xml:lang="en">Sensory perception of pain during sexual intercourse is a pain that is experienced during sexual intercourses</obo:IAO_0000115>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_039 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_039 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_039">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_039">
         <rdfs:label xml:lang="en">appraisal of physical abilities</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000005"/>
         <obo:IAO_0000115 xml:lang="en">Appraisal of physical abilities is an appraisal that specifies one&apos;s evaluation of her physical abilities</obo:IAO_0000115>
@@ -906,11 +834,11 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_040 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_040 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_040">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_040">
         <rdfs:label xml:lang="en">state anxiety</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000030"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
@@ -921,9 +849,9 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_041 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_041 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_041">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_041">
         <rdfs:label xml:lang="en">emotional support</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000104"/>
         <obo:IAO_0000119 xml:lang="en">http://medical-dictionary.thefreedictionary.com/emotional+support+1</obo:IAO_0000119>
@@ -932,9 +860,9 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_042 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_042 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_042">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_042">
         <rdfs:label xml:lang="en">financial problem</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
         <rdfs:subClassOf>
@@ -954,9 +882,9 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_043 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_043 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_043">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_043">
         <rdfs:label xml:lang="en">personality</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001995"/>
         <obo:IAO_0000115 xml:lang="en">The complex of all the attributes--behavioral, temperamental, emotional and mental--that characterize a unique individual.</obo:IAO_0000115>
@@ -965,27 +893,27 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_044 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_044 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_044">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_044">
         <rdfs:label xml:lang="en">relative global self rated health</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_013"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_013"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_045 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_045 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_045">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_045">
         <rdfs:label xml:lang="en">absolute global self rated health</rdfs:label>
-        <rdfs:subClassOf rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_013"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PEM_013"/>
     </owl:Class>
     
 
 
-    <!-- https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_046 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PEM_046 -->
 
-    <owl:Class rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl#HDOT_PEM_046">
+    <owl:Class rdf:about="&hdot;HDOT_PEM_046">
         <rdfs:label xml:lang="en">trait anxiety</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
         <rdfs:subClassOf>
@@ -994,11 +922,60 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
                 <owl:someValuesFrom rdf:resource="&obo;NCBITaxon_9606"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <hdot_pm:patientLanguageDefinition xml:lang="en"> Trait anxiety is a stable tendency to respond with state anxiety in the anticipation of
-threatening situations</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en"> Trait anxiety is a stable tendency to respond with state anxiety in the anticipation of
+threatening situations</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">&lt;http://en.wikipedia.org/wiki/Trait_anxiety#cite_note-52&gt;</obo:IAO_0000119>
         <obo:IAO_0000115 xml:lang="en">Trait anxiety is a disposition of a person to undergo a state anxiety</obo:IAO_0000115>
     </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0022 -->
+
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0022">
+        <rdfs:comment xml:lang="en">Being integrated in social life is an important factor to determining the patients&apos; functional response to their illness and its treatment.
+
+A decrease propensity to communicate and interact with other people or decrement of social life may be associated with medical (e.g., pain) and psycho-social factors (e.g., fatigue, depression, low self esteem, distorted body image, financial problems) related to the cancer condition.
+
+p-medicine, D14.2</rdfs:comment>
+        <obo:IAO_0000115 xml:lang="en">Social ability is an ability that facilitates interaction and communication with other members of the society</obo:IAO_0000115>
+        <hdot:patientLanguageDefinition xml:lang="en">Social ability is the ability to create and keep up good relationships</hdot:patientLanguageDefinition>
+        <obo:IAO_0000119 xml:lang="en">p-medicine, Deliverable 14.2, Specification of linguistic schema</obo:IAO_0000119>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0023 -->
+
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0023">
+        <rdfs:comment xml:lang="en">Impairment in physical abilities decreases the quality of life of the individual, both because of a concrete impossibility to perform an action, and because of the consequences this inability may have on personal emotional state (depression, anxiety).
+
+p-medicine, D 14.2</rdfs:comment>
+        <obo:IAO_0000115 xml:lang="en">Physical ability is the ability to perform some physical acts, that allow the individual to deal with the needs of every-day life</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">p-medicine, Deliverable 14.2, Specification of inguistic schema</obo:IAO_0000119>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0026 -->
+
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0026">
+        <rdfs:comment xml:lang="en">Often sexual dysfunctions are characterized by both physical and psychological factors.
+
+p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
+        <hdot:patientLanguageDefinition xml:lang="en">Sexual dysfunction is a condition in which sexual apparatus does not work in a proper way</hdot:patientLanguageDefinition>
+        <obo:IAO_0000115 xml:lang="en">Sexual dysfunction is a dysfunction that refers to difficulties experienced by an individual or a couple during any stage of a normal sexual activity including desire, arousal or orgasm</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Sexual dysfunction is a physical dysfunction of the sexual apparatus </obo:IAO_0000115>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0029 -->
+
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0029">
+        <hdot:patientLanguageDefinition xml:lang="en">Appetite is a desire to eat caused by a light feeling of empty stomach</hdot:patientLanguageDefinition>
+        <obo:IAO_0000115 xml:lang="en">Appetite is a disposition that specifies the desire for food</obo:IAO_0000115>
+    </rdf:Description>
     
 
 
@@ -1010,43 +987,43 @@ threatening situations</hdot_pm:patientLanguageDefinition>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0019">
+        <obo:IAO_0000115 xml:lang="en">Questionnaire participant is a role that indicates those people who participate in a survey</obo:IAO_0000115>
+        <hdot:patientLanguageDefinition xml:lang="en">Questionnaire participant is an informed person who volunteers to answer a set of questions</hdot:patientLanguageDefinition>
+    </rdf:Description>
     <rdf:Description rdf:about="&obo;OGMS_0000077">
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Pathological formation is an abnormal grow of tissues in the organism that harms healthy tissues (neoplasm)
+        <hdot:patientLanguageDefinition xml:lang="en">Pathological formation is an abnormal grow of tissues in the organism that harms healthy tissues (neoplasm)
 
-p-medicine, D4.4, Initial release of the patient view and its evaluation</hdot_pm:patientLanguageDefinition>
+p-medicine, D4.4, Initial release of the patient view and its evaluation</hdot:patientLanguageDefinition>
     </rdf:Description>
-    <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0025">
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0032">
+        <hdot:patientLanguageDefinition xml:lang="en">Quality of life is a person’s subjective perception on how his/her life condition is in a specific moment and a specific culture</hdot:patientLanguageDefinition>
+    </rdf:Description>
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0031">
+        <obo:IAO_0000115 xml:lang="en">Anorexia is a disorder that is characterized by the loss of appetite</obo:IAO_0000115>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://purl.bioontology.org/ontology/RID/RID39252">
+        <hdot:patientLanguageDefinition xml:lang="en">Chemotherapy is a chemical therapy used to destroy in a selective manner the pathological appearance</hdot:patientLanguageDefinition>
+        <obo:IAO_0000115 xml:lang="en">Chemotherapy is the therapeutic process of cancer with an antineoplastic drug or with a combination of such drugs into a standardized treatment regimen</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Chemotherapy</obo:IAO_0000119>
+    </rdf:Description>
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0025">
         <obo:IAO_0000115 xml:lang="en">Cognitive dysfunction is a dysfunction of cognitive processes</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Cognitive dysfunction is a reduced ability of learning, thinking and reasoning</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Cognitive dysfunction is a reduced ability of learning, thinking and reasoning</hdot:patientLanguageDefinition>
     </rdf:Description>
-    <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0030">
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0030">
         <obo:IAO_0000115 xml:lang="en">Anemia is a disorder in which the body does not have enough healthy red blood cells</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Anemia is a reduction of red blood cells</hdot_pm:patientLanguageDefinition>
+        <hdot:patientLanguageDefinition xml:lang="en">Anemia is a reduction of red blood cells</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://www.ncbi.nlm.nih.gov/pubmedhealth/PMH0001586/
 
 definition slightly changed according to the structure of the HDOT_CORE</obo:IAO_0000119>
     </rdf:Description>
-    <rdf:Description rdf:about="http://purl.bioontology.org/ontology/RID/RID39252">
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Chemotherapy is a chemical therapy used to destroy in a selective manner the pathological appearance</hdot_pm:patientLanguageDefinition>
-        <obo:IAO_0000115 xml:lang="en">Chemotherapy is the therapeutic process of cancer with an antineoplastic drug or with a combination of such drugs into a standardized treatment regimen</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Chemotherapy</obo:IAO_0000119>
-    </rdf:Description>
-    <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0032">
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Quality of life is a person’s subjective perception on how his/her life condition is in a specific moment and a specific culture</hdot_pm:patientLanguageDefinition>
-    </rdf:Description>
-    <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0031">
-        <obo:IAO_0000115 xml:lang="en">Anorexia is a disorder that is characterized by the loss of appetite</obo:IAO_0000115>
-    </rdf:Description>
-    <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0035">
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Mortality risk is an information about the probability to dye</hdot_pm:patientLanguageDefinition>
-    </rdf:Description>
-    <rdf:Description rdf:about="&hdot_pm;HDOT_PM_0019">
-        <obo:IAO_0000115 xml:lang="en">Questionnaire participant is a role that indicates those people who participate in a survey</obo:IAO_0000115>
-        <hdot_pm:patientLanguageDefinition xml:lang="en">Questionnaire participant is an informed person who volunteers to answer a set of questions</hdot_pm:patientLanguageDefinition>
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0035">
+        <hdot:patientLanguageDefinition xml:lang="en">Mortality risk is an information about the probability to dye</hdot:patientLanguageDefinition>
     </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
 
