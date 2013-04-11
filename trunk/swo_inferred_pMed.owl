@@ -15388,7 +15388,7 @@ or of directed by the organization to do this.</obo:IAO_0000115>
         <edamontology2:subset>bioinformatics</edamontology2:subset>
         <edamontology:synonym>Taxonomic rank</edamontology:synonym>
         <edamontology2:namespace>identifier</edamontology2:namespace>
-        <edamontology2:comment>For a complete list of taxonomic ranks see https://www.phenoscape.org/wiki/Taxonomic_Rank_Vocabulary.</edamontology2:comment>
+        <edamontology2:comment>For a complete list of taxonomic ranks see http://www.phenoscape.org/wiki/Taxonomic_Rank_Vocabulary.</edamontology2:comment>
         <edamontology2:synonym>Taxonomic rank</edamontology2:synonym>
         <edamontology2:subset>edam</edamontology2:subset>
         <edamontology2:subset>data</edamontology2:subset>
@@ -24269,7 +24269,7 @@ or of directed by the organization to do this.</obo:IAO_0000115>
         <edamontology2:def>&quot;A unique identifier for a virus from the RNAVirusDB database.&quot; [http://edamontology.org]</edamontology2:def>
         <edamontology2:subset>bioinformatics</edamontology2:subset>
         <edamontology2:created_in>beta12orEarlier</edamontology2:created_in>
-        <edamontology2:editor_note>Could list (or cross-reference) other taxa here from https://www.phenoscape.org/wiki/Taxonomic_Rank_Vocabulary.</edamontology2:editor_note>
+        <edamontology2:editor_note>Could list (or cross-reference) other taxa here from http://www.phenoscape.org/wiki/Taxonomic_Rank_Vocabulary.</edamontology2:editor_note>
         <edamontology2:subset>edam</edamontology2:subset>
     </owl:Class>
     
@@ -52960,7 +52960,7 @@ users who want to make a new BSgenome data package</obo:IAO_0000115>
 The analysis includes normalization and data preprocessing, detection for differentially expressed genes, cluster analysis and GO analysis. All calculations (except the cluster analysis) are performed in R using functions provided by the BioConductor packages.</obo:IAO_0000115>
         <obo:IAO_0000118 rdf:datatype="&xsd;string">CarmaWEB</obo:IAO_0000118>
         <efo:definition_editor rdf:datatype="&xsd;string">Nandini Badarinarayan</efo:definition_editor>
-        <efo:definition_citation rdf:datatype="&xsd;string">https://carmaweb.genome.tugraz.at/carma/</efo:definition_citation>
+        <efo:definition_citation rdf:datatype="&xsd;string">http://carmaweb.genome.tugraz.at/carma/</efo:definition_citation>
     </owl:Class>
     
 
@@ -54014,7 +54014,7 @@ The analysis includes normalization and data preprocessing, detection for differ
         <rdfs:subClassOf rdf:resource="&swo;SWO_0000001"/>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">Genetic Analyzer is a multi-color fluorescence-based DNA analysis system with 16 capillaries operating in parallel, offers high-quality data and efficient sample processing</obo:IAO_0000115>
         <efo:definition_editor rdf:datatype="&xsd;string">Nandini Badarinarayan</efo:definition_editor>
-        <efo:definition_citation rdf:datatype="&xsd;string">https://products.appliedbiosystems.com/ab/en/US/adirect/ab?cmd=catNavigate2&amp;catID=600530</efo:definition_citation>
+        <efo:definition_citation rdf:datatype="&xsd;string">http://products.appliedbiosystems.com/ab/en/US/adirect/ab?cmd=catNavigate2&amp;catID=600530</efo:definition_citation>
     </owl:Class>
     
 
@@ -60216,7 +60216,7 @@ tiple samples</obo:IAO_0000115>
     <owl:Class rdf:about="&swo;SWO_0000090">
         <rdfs:label xml:lang="en">Gene Expression Atlas at EBI R statistics package</rdfs:label>
         <rdfs:subClassOf rdf:resource="&swo;SWO_0000001"/>
-        <obo:IAO_0000115>R package for producing statistics that populate the Gene Expression Atlas. https://github.com/gxa/gxa/blob/develop/atlas-analytics/src/main/resources/R/analytics.R </obo:IAO_0000115>
+        <obo:IAO_0000115>R package for producing statistics that populate the Gene Expression Atlas. http://github.com/gxa/gxa/blob/develop/atlas-analytics/src/main/resources/R/analytics.R </obo:IAO_0000115>
     </owl:Class>
     
 

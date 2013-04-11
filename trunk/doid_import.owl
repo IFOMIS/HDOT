@@ -2,6 +2,7 @@
 
 
 <!DOCTYPE rdf:RDF [
+    <!ENTITY hdot "http://www.ifomis.org/hdot/" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY obo "http://purl.obolibrary.org/obo/" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
@@ -11,15 +12,16 @@
 ]>
 
 
-<rdf:RDF xmlns="https://hdot.googlecode.com/svn/trunk/DOID_import.owl#"
-     xml:base="https://hdot.googlecode.com/svn/trunk/DOID_import.owl"
+<rdf:RDF
+     xml:base="http://www.ifomis.org/hdot/"
+     xmlns:hdot="http://http://www.ifomis.org/hdot/"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
-    <owl:Ontology rdf:about="http://hdot.googlecode.com/svn/trunk/doid_import.owl">
+    <owl:Ontology rdf:about="http://www.ifomis.org/hdot/doid_import.owl">
         <owl:versionInfo>This ontology is a small branch of the Human Disease Ontology (DOID) concerning disease of celluar proliferation</owl:versionInfo>
     </owl:Ontology>
     
@@ -82,11 +84,11 @@
     
 
 
-    <!-- http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0014 -->
 
-    <owl:Class rdf:about="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014">
+    <owl:Class rdf:about="&hdot;HDOT_PM_0014">
         <rdfs:label>neoplasm</rdfs:label>
-        <obo:IAO_0000412>http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014</obo:IAO_0000412>
+        <obo:IAO_0000412>http://www.ifomis.org/hdot/HDOT_PM_0014</obo:IAO_0000412>
     </owl:Class>
     
 
@@ -282,7 +284,7 @@
 
     <owl:Class rdf:about="&obo;DOID_0060071">
         <rdfs:label rdf:datatype="&xsd;string">pre-malignant neoplasm</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0014"/>
         <oboInOwl:creation_date rdf:datatype="&xsd;string">2011-05-11T12:18:41Z</oboInOwl:creation_date>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease of cellular proliferation that results in abnormal growths in the body, which do not invade or destroy the surrounding tissue but, given enough time, will transform into a cancer.</obo:IAO_0000115>
         <oboInOwl:id rdf:datatype="&xsd;string">DOID:0060071</oboInOwl:id>
@@ -297,7 +299,7 @@
 
     <owl:Class rdf:about="&obo;DOID_0060072">
         <rdfs:label rdf:datatype="&xsd;string">benign neoplasm</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0014"/>
         <oboInOwl:creation_date rdf:datatype="&xsd;string">2011-05-11T12:18:41Z</oboInOwl:creation_date>
         <obo:IAO_0000115 rdf:datatype="&xsd;string">A disease of cellular proliferation that results in abnormal growths in the body which lack the ability to metastasize.</obo:IAO_0000115>
         <oboInOwl:id rdf:datatype="&xsd;string">DOID:0060072</oboInOwl:id>
@@ -1617,7 +1619,7 @@
 
     <owl:Class rdf:about="&obo;DOID_162">
         <rdfs:label>malignant neoplasm</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl#HDOT_PM_0014"/>
+        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0014"/>
         <obo:IAO_0000115 xml:lang="en">A disease of cellular proliferation that is malignant and primary, characterized by uncontrolled cellular proliferation, local cell invasion and metastasis.</obo:IAO_0000115>
     </owl:Class>
     

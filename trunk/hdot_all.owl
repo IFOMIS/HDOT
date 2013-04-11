@@ -9,18 +9,19 @@
 ]>
 
 
-<rdf:RDF xmlns="https://hdot.googlecode.com/svn/trunk/hdot_all.owl#"
-     xml:base="https://hdot.googlecode.com/svn/trunk/hdot_all.owl"
+<rdf:RDF
+     xml:base="http://www.ifomis.org/hdot/"
+     xmlns:hdot="http://www.ifomis.org/hdot/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-    <owl:Ontology rdf:about="https://hdot.googlecode.com/svn/trunk/hdot_all.owl">
+    <owl:Ontology rdf:about="http://www.ifomis.org/hdot/hdot_all.owl">
         <rdfs:comment>HDOT_ALL is an application module that comprises in a single owl file all modules under HDOT for the purposes of the Ontology Aggregator Tool (OAT)</rdfs:comment>
-        <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl"/>
-        <owl:imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot_pm.owl"/>
-        <owl:imports rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pem.owl"/>
-        <owl:imports rdf:resource="https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl"/>
+        <owl:imports rdf:resource="http://www.ifomis.org/hdot/hdot_bsds.owl"/>
+        <owl:imports rdf:resource="http://www.ifomis.org/hdot/hdot_pm.owl"/>
+        <owl:imports rdf:resource="http://www.ifomis.org/hdot/hdot_pem.owl"/>
+        <owl:imports rdf:resource="http://www.ifomis.org/hdot/hdot_pfm.owl"/>
     </owl:Ontology>
     
 

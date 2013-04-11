@@ -55,7 +55,7 @@
         <dc:title rdf:datatype="&xsd;string">Pathological Formation Module</dc:title>
         <dc:creator rdf:datatype="&xsd;string">Sarah Lerch</dc:creator>
         <dc:creator>Ulf Schwarz</dc:creator>
-        <imports rdf:resource="http://hdot.googlecode.com/svn/trunk/hdot"/>
+        <imports rdf:resource="http://www.ifomis.org/hdot/"/>
     </Ontology>
     
 
