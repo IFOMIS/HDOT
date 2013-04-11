@@ -341,7 +341,7 @@
     <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXt_010">
         <rdfs:label xml:lang="en">Adj hormones category</rdfs:label>
         <rdfs:label xml:lang="en">adjuvant hormone category</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
@@ -372,7 +372,7 @@
 
     <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXt_012">
         <rdfs:label xml:lang="en">adjuvant chemotherapy category</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
@@ -418,7 +418,7 @@
     <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXt_014">
         <rdfs:label xml:lang="en">relapse of breast cancer</rdfs:label>
         <rdfs:label xml:lang="en">relbrca</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/hasValue"/>
@@ -434,7 +434,7 @@
 
     <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXt_015">
         <rdfs:label xml:lang="en">ripbrca</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
         <obo:IAO_0000115 xml:lang="en">whether there has been a death attributed breast cancer</obo:IAO_0000115>
     </owl:Class>
     
@@ -444,7 +444,7 @@
 
     <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXt_016">
         <rdfs:label xml:lang="en">rfsbrca</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
         <obo:IAO_0000115 xml:lang="en">time for first diagnosis to first relapse if event occurred, or te censor otherwise</obo:IAO_0000115>
     </owl:Class>
     
@@ -454,7 +454,7 @@
 
     <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_OXt_017">
         <rdfs:label xml:lang="en">osbrca</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://purl.obofoundry.org/obo/IAO_0000030"/>
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
         <obo:IAO_0000115 xml:lang="en">time for first diagnosis to breast cancer death if event occurred, or to censor otherwise</obo:IAO_0000115>
     </owl:Class>
     
