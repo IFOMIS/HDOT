@@ -21,7 +21,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
-    <owl:Ontology rdf:about="&hdot;">
+    <owl:Ontology rdf:about="&hdot;hdot_pfm.owl">
         <hdot:creator>Emilio M.Sanfilippo</hdot:creator>
         <hdot:title>The Health Data Ontology Trunk Pathological Formation Module (HDOT_PFM)</hdot:title>
         <hdot:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</hdot:publisher>
