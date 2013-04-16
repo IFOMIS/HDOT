@@ -25,9 +25,9 @@
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="&hdot;hdot_core.owl">
         <dc:contributor rdf:datatype="&xsd;string">Emilio Sanfilippo</dc:contributor>
-        <title rdf:datatype="&xsd;string">Health Data Ontology Trunc (HDOT) Core</title>
-        <publisher rdf:datatype="&xsd;string">Institute for Formal Ontology and Medical Information Science (IFOMIS)</publisher>
-        <creator rdf:datatype="&xsd;string">Luc Schneider</creator>
+        <dc:title rdf:datatype="&xsd;string">Health Data Ontology Trunc (HDOT) Core</dc:title>
+        <dc:publisher rdf:datatype="&xsd;string">Institute for Formal Ontology and Medical Information Science (IFOMIS)</dc:publisher>
+        <dc:creator rdf:datatype="&xsd;string">Luc Schneider</dc:creator>
         <dc:contributor rdf:datatype="&xsd;string">Ulf Schwarz</dc:contributor>
         <owl:imports rdf:resource="&obo;bfo.owl"/>
     </owl:Ontology>
