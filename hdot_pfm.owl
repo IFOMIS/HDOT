@@ -12,8 +12,8 @@
 ]>
 
 
-<rdf:RDF
-     xml:base="&hdot;"
+<rdf:RDF xmlns="&hdot;hdot_pfm.owl#"
+     xml:base="&hdot;hdot_pfm.owl"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:hdot="http://www.ifomis.org/hdot/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -22,15 +22,37 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
     <owl:Ontology rdf:about="&hdot;hdot_pfm.owl">
-        <hdot:creator>Emilio M.Sanfilippo</hdot:creator>
-        <hdot:title>The Health Data Ontology Trunk Pathological Formation Module (HDOT_PFM)</hdot:title>
         <hdot:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</hdot:publisher>
         <hdot:creator>Ulf Schwarz</hdot:creator>
+        <hdot:title>The Health Data Ontology Trunk Pathological Formation Module (HDOT_PFM)</hdot:title>
+        <hdot:creator>Emilio M.Sanfilippo</hdot:creator>
         <owl:versionInfo>HDOT_Pathological Formation Module (hdot_pfm) contains information about pathological formation entities (e.g. neoplasm). Inasmuch as this ontology is developed for the project &amp;apos;p-medicine&amp;apos;, it mainly contains information about three types of neoplasm: breast neoplasm, blood neoplasm and kidney neoplasm. HDOT_PFM imports a small branch of the Human Disease Ontology (DOID), altough its semantics is slightly changed</owl:versionInfo>
         <hdot:creator>Luc Schneider</hdot:creator>
         <owl:imports rdf:resource="&hdot;doid_import.owl"/>
         <owl:imports rdf:resource="&hdot;hdot_pm.owl"/>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
     
 
 
@@ -87,15 +109,15 @@
         </owl:equivalentClass>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="http://sig.uw.edu/fma#Kidney"/>
+                <owl:onProperty rdf:resource="&hdot;has_stage"/>
+                <owl:onClass rdf:resource="&hdot;HDOT_PFM_083"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;has_stage"/>
-                <owl:onClass rdf:resource="&hdot;HDOT_PFM_083"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="http://sig.uw.edu/fma#Kidney"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>We follow the SIOP for the following classification of Nephroblastoma. </rdfs:comment>
@@ -156,7 +178,6 @@
         <rdfs:label>neoplasm stage</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000028"/>
-        <oboInOwl:hasSynonym>tumor stage</oboInOwl:hasSynonym>
         <rdfs:comment xml:lang="en">Staging is important for several reasons:
 
 Staging helps the doctor plan the appropriate treatment.
@@ -165,6 +186,7 @@ Knowing the stage is important in identifying clinical trials that may be suitab
 Staging helps health care providers and researchers exchange information about patients; it also gives them a common terminology for evaluating the results of clinical trials and comparing the results of different trials.</rdfs:comment>
         <obo:IAO_0000115 xml:lang="en">Tumor stage describes the severity of a person’s cancer based on the extent of the original (primary) tumor and whether or not cancer has spread in the body.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://www.cancer.gov/cancertopics/factsheet/detection/staging</obo:IAO_0000119>
+        <oboInOwl:hasSynonym>tumor stage</oboInOwl:hasSynonym>
     </owl:Class>
     
 
@@ -852,12 +874,6 @@ Staging helps health care providers and researchers exchange information about p
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_051"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasBooleanValue"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1300,12 +1316,6 @@ walls)
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_089"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasBooleanValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;boolean"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1315,12 +1325,6 @@ walls)
     <owl:Class rdf:about="&hdot;HDOT_PFM_091">
         <rdfs:label xml:lang="en">nodal status negative</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_089"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasBooleanValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;boolean"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1358,8 +1362,8 @@ walls)
     <!-- http://www.ifomis.org/hdot/HDOT_PFM_093 -->
 
     <owl:Class rdf:about="&hdot;HDOT_PFM_093">
-        <rdfs:label>tumor volume</rdfs:label>
         <rdfs:label>neoplasm volume</rdfs:label>
+        <rdfs:label>tumor volume</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1538,8 +1542,8 @@ walls)
     <owl:Class rdf:about="&hdot;HDOT_PFM_108">
         <rdfs:label>metastasis</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;DOID_162"/>
-        <obo:IAO_0000115>A tumor formed by cells that have spread</obo:IAO_0000115>
         <rdfs:comment>In the context of HDOT, metastasis is the (physical) outcome of a metastatic process ( the spread of a tumor from one part of the body to another).</rdfs:comment>
+        <obo:IAO_0000115>A tumor formed by cells that have spread</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -1556,14 +1560,14 @@ walls)
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;has_magnitude"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_093"/>
+                <owl:onProperty rdf:resource="&hdot;has_stage"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;has_stage"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_001"/>
+                <owl:onProperty rdf:resource="&hdot;has_magnitude"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_093"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1577,5 +1581,5 @@ walls)
 
 
 
-<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
 
