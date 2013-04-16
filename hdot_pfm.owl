@@ -1554,14 +1554,14 @@ walls)
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;has_magnitude"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_092"/>
+                <owl:onProperty rdf:resource="&hdot;has_stage"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;has_stage"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_001"/>
+                <owl:onProperty rdf:resource="&hdot;has_magnitude"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_092"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
