@@ -71,23 +71,6 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://www.ifomis.org/hdot/hasValue -->
-
-    <owl:DatatypeProperty rdf:about="&hdot;hasValue"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -158,12 +141,6 @@
     <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0000695">
         <rdfs:label>sex</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001995"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000119>http://www.ebi.ac.uk/efo/EFO_0000695</obo:IAO_0000119>
         <obo:IAO_0000115>An organismal quality inhering in a bearer by virtue of the bearer&apos;s ability to undergo sexual reproduction in order to differentiate the individuals or types involved.</obo:IAO_0000115>
     </owl:Class>
@@ -216,12 +193,6 @@
     <owl:Class rdf:about="&hdot;HDOT_KLt_003">
         <rdfs:label>gebdatum</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000011"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115>age at treatment day 1 in days</obo:IAO_0000115>
     </owl:Class>
     
@@ -232,12 +203,6 @@
     <owl:Class rdf:about="&hdot;HDOT_KLt_005">
         <rdfs:label>number of myeloid antigen</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -247,12 +212,6 @@
     <owl:Class rdf:about="&hdot;HDOT_KLt_006">
         <rdfs:label>immunom</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001396"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -285,12 +244,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_KLt_008"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -361,12 +314,6 @@
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000119"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -376,12 +323,6 @@
     <owl:Class rdf:about="&hdot;HDOT_KLt_015">
         <rdfs:label>blast 8</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001396"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115>blasts in peripheral blood day 8</obo:IAO_0000115>
     </owl:Class>
     
@@ -392,12 +333,6 @@
     <owl:Class rdf:about="&hdot;HDOT_KLt_016">
         <rdfs:label>blast 15</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001396"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000115>blasts in BM at day 15</obo:IAO_0000115>
     </owl:Class>
     
@@ -489,12 +424,6 @@
     <owl:Class rdf:about="&hdot;HDOT_KLt_026">
         <rdfs:label>blast 8 value</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000074"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;int"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
