@@ -202,6 +202,15 @@
     
 
 
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_002 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_KLt_002">
+        <rdfs:label>risk of cellular proliferation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000019"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.ifomis.org/hdot/HDOT_KLt_003 -->
 
     <owl:Class rdf:about="&hdot;HDOT_KLt_003">
@@ -236,8 +245,8 @@
     <!-- http://www.ifomis.org/hdot/HDOT_KLt_006 -->
 
     <owl:Class rdf:about="&hdot;HDOT_KLt_006">
-        <rdfs:label>immunom value</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000001"/>
+        <rdfs:label>immunom</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001396"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;hasValue"/>
@@ -262,7 +271,7 @@
 
     <owl:Class rdf:about="&hdot;HDOT_KLt_008">
         <rdfs:label>TEL-AML1</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;CHEBI_36080"/>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001396"/>
     </owl:Class>
     
 
@@ -274,14 +283,14 @@
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasValue"/>
-                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_KLt_008"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_KLt_008"/>
+                <owl:onProperty rdf:resource="&hdot;hasValue"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -307,10 +316,20 @@
     
 
 
+    <!-- http://www.ifomis.org/hdot/HDOT_KLt_011 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_KLt_011">
+        <rdfs:label>date of day 1 protocol M in days after treatment day 1</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000030"/>
+        <oboInOwl:hasSynonym>T1PM_DAT</oboInOwl:hasSynonym>
+    </owl:Class>
+    
+
+
     <!-- http://www.ifomis.org/hdot/HDOT_KLt_012 -->
 
     <owl:Class rdf:about="&hdot;HDOT_KLt_012">
-        <rdfs:label>body leght</rdfs:label>
+        <rdfs:label>body length</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -461,13 +480,6 @@
     <owl:Class rdf:about="&hdot;HDOT_KLt_025">
         <rdfs:label>no myeloid antigene</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_KLt_006"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
-                <owl:onClass rdf:resource="&obo;PR_000001892"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
