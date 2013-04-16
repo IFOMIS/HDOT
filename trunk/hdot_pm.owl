@@ -13,23 +13,23 @@
 ]>
 
 
-<rdf:RDF
-     xml:base="http://www.ifomis.org/hdot/"
-     xmlns:hdot="http://www.ifomis.org/hdot/"
+<rdf:RDF xmlns="&hdot;hdot_pm.owl#"
+     xml:base="&hdot;hdot_pm.owl"
      xmlns:obo="http://purl.obolibrary.org/obo/"
+     xmlns:hdot="http://www.ifomis.org/hdot/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:RID="http://purl.bioontology.org/ontology/RID/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
-    <owl:Ontology rdf:about="http://www.ifomis.org/hdot/hdot_pm.owl">
+    <owl:Ontology rdf:about="&hdot;hdot_pm.owl">
         <hdot:creator>Ulf Schwarz</hdot:creator>
         <hdot:creator>Emilio M. Sanfilippo</hdot:creator>
         <hdot:title xml:lang="en">HDOT p-medicine (HDOT_PM)</hdot:title>
         <hdot:publisher xml:lang="en">Institute for Formal Ontology and Medical Information Science</hdot:publisher>
         <hdot:creator xml:lang="en">Luc Schneider</hdot:creator>
-        <owl:imports rdf:resource="http://www.ifomis.org/hdot/hdot_core.owl"/>
+        <owl:imports rdf:resource="&hdot;hdot_core.owl"/>
     </owl:Ontology>
     
 
@@ -42,7 +42,7 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <owl:AnnotationProperty rdf:about="http://www.ifomis.org/hdot/patientLanguageDefinition"/>
+    <owl:AnnotationProperty rdf:about="&hdot;patientLanguageDefinition"/>
     
 
 
@@ -70,17 +70,17 @@
 
     <!-- http://www.ifomis.org/hdot/has_age -->
 
-    <owl:ObjectProperty rdf:about="http://www.ifomis.org/hdot/has_age">
-        <rdfs:subPropertyOf rdf:resource="http://www.ifomis.org/hdot/has_magnitude"/>
+    <owl:ObjectProperty rdf:about="&hdot;has_age">
         <rdfs:domain rdf:resource="&obo;OGMS_0000087"/>
         <rdfs:range rdf:resource="&obo;PATO_0000011"/>
+        <rdfs:subPropertyOf rdf:resource="&hdot;has_magnitude"/>
     </owl:ObjectProperty>
     
 
 
     <!-- http://www.ifomis.org/hdot/has_magnitude -->
 
-    <owl:ObjectProperty rdf:about="http://www.ifomis.org/hdot/has_magnitude">
+    <owl:ObjectProperty rdf:about="&hdot;has_magnitude">
         <rdfs:domain rdf:resource="&obo;BFO_0000001"/>
         <rdfs:range rdf:resource="&obo;PATO_0002016"/>
     </owl:ObjectProperty>
@@ -89,9 +89,9 @@
 
     <!-- http://www.ifomis.org/hdot/has_pressure -->
 
-    <owl:ObjectProperty rdf:about="http://www.ifomis.org/hdot/has_pressure">
-        <rdfs:subPropertyOf rdf:resource="http://www.ifomis.org/hdot/has_magnitude"/>
+    <owl:ObjectProperty rdf:about="&hdot;has_pressure">
         <rdfs:domain rdf:resource="&obo;BFO_0000004"/>
+        <rdfs:subPropertyOf rdf:resource="&hdot;has_magnitude"/>
     </owl:ObjectProperty>
     
 
@@ -104,872 +104,6 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0001 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0001">
-        <rdfs:label xml:lang="en">portion of blood</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_025"/>
-        <obo:IAO_0000115 xml:lang="en">Portion of body substance which consists of plasma and blood cells.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Portion_of_blood</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0002 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0002">
-        <rdfs:label xml:lang="en">portion of plasma</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_025"/>
-        <obo:IAO_0000115 xml:lang="en">Body substance in liquid state contained in the lumen of arterial and venous trees, blood capillary and the cardiac chambers; constitutes the liquid phase of blood.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Portion_of_plasma</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0003 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0003">
-        <rdfs:label xml:lang="en">serum</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_025"/>
-        <obo:IAO_0000115 xml:lang="en">Body substance derived from plasma by the elimination of fibrinogen.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Serum</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0004 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0004">
-        <rdfs:label xml:lang="en">transudate</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_025"/>
-        <obo:IAO_0000115 xml:lang="en">Body substance in liquid state, which is derived from plasma by passage through the (intact) wall of capillaries without further processing by secretory cells or glands.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Transudate</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0005 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0005">
-        <rdfs:label xml:lang="en">cerebrospinal fluid</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0004"/>
-        <obo:IAO_0000115 xml:lang="en">Transudate contained in the subarachnoid space.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Cerebrospinal_fluid</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0006 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0006">
-        <rdfs:label xml:lang="en">portion of excreted substance</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_025"/>
-        <obo:IAO_0000115 xml:lang="en">Body substance derived from ingested substances that have been modified by one or more organs.</obo:IAO_0000115>
-        <obo:IAO_0000112 xml:lang="en">feces, flatus, urine.</obo:IAO_0000112>
-        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Portion_of_excreted_substance</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0007 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0007">
-        <rdfs:label xml:lang="en">portion of urine</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0006"/>
-        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Portion_of_urine</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0008 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0008">
-        <rdfs:label xml:lang="en">organ region</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_015"/>
-        <obo:IAO_0000115 xml:lang="en">Cardinal organ part which is a fiat subdivision of an organ.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Organ_region</obo:IAO_0000119>
-        <obo:IAO_0000112 xml:lang="en">lingula of left lung, tail of pancreas, artery, trochanter, nodulus of semilunar valve, right side of heart, duodenum, fundus of stomach.</obo:IAO_0000112>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0009 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0009">
-        <rdfs:label xml:lang="en">organ zone</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0008"/>
-        <obo:IAO_0000115 xml:lang="en">Organ region with one or more floating fiat boundaries.</obo:IAO_0000115>
-        <obo:IAO_0000112 xml:lang="en">apical zone of lung, superior pole of kidney, gingiva, apex of prostate, ascending colon proper.</obo:IAO_0000112>
-        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Organ_zone</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0010 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0010">
-        <rdfs:label xml:lang="en">zone of bone organ</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0009"/>
-        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Zone_of_bone_organ</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0011 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0011">
-        <rdfs:label xml:lang="en">bone marrow</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0010"/>
-        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Bone_marrow</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0012 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0012">
-        <rdfs:label xml:lang="en">portion of pathological tissue</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000078"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0013 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0013">
-        <rdfs:label xml:lang="en">portion of tumour tissue</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0012"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0014"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0014 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0014">
-        <rdfs:label xml:lang="en">neoplasm</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000077"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_028"/>
-                <owl:someValuesFrom rdf:resource="&obo;GO_0008283"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0016"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
-                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0012"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115>A benign or malignant tissue growth resulting from uncontrolled cell proliferation.</obo:IAO_0000115>
-        <obo:IAO_0000119>http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Neoplasm</obo:IAO_0000119>
-        <oboInOwl:hasSynonym xml:lang="en">tumour</oboInOwl:hasSynonym>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0015 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0015">
-        <rdfs:label xml:lang="en">pathological cell</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000078"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0016 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0016">
-        <rdfs:label xml:lang="en">tumour cell</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0015"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0014"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0017 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0017">
-        <rdfs:label xml:lang="en">A part of a questionnaire.</rdfs:label>
-        <rdfs:label xml:lang="en">questionnaire part</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000314"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0018 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0018">
-        <rdfs:label xml:lang="en">questionnaire form</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000178"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0019 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0019">
-        <rdfs:label xml:lang="en">questionnaire participant</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OMRSE_00000024"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
-                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0020"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0020 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0020">
-        <rdfs:label xml:lang="en">questionnaire completion</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
-                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0018"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0022 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0022">
-        <rdfs:label xml:lang="en">social ability</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_039"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0023 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0023">
-        <rdfs:label xml:lang="en">physical ability</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_039"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0024 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0024">
-        <rdfs:label xml:lang="en">physical dysfunction</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_004"/>
-        <rdfs:comment xml:lang="en">includes psycho-physical dysfunctions</rdfs:comment>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0025 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0025">
-        <rdfs:label xml:lang="en">cognitive dysfunction</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_004"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0026 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0026">
-        <rdfs:label xml:lang="en">sexual dysfunction</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0024"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0027 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0027">
-        <rdfs:label xml:lang="en">digestive dysfunction</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0024"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0028 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0028">
-        <rdfs:label xml:lang="en">fatigue</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0029 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0029">
-        <rdfs:label xml:lang="en">appetite</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0030 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0030">
-        <rdfs:label xml:lang="en">anemia</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000045"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0031 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0031">
-        <rdfs:label xml:lang="en">anorexia nervosa</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000045"/>
-        <obo:IAO_0000115 xml:lang="en">Anorexia nervosa is an eating disorder characterized by immoderate food restriction and irrational fear of gaining weight, as well as a distorted body self-perception. It typically involves excessive weight loss and is usually found more in females than in males. Anorexia nervosa usually develops during adolescence and early adulthood.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Anorexia_nervosa</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0032 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0032">
-        <rdfs:label xml:lang="en">quality of life</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0001995"/>
-        <obo:IAO_0000115 xml:lang="en">The subjective measurement of an individual&apos;s sense of well-being and ability to enjoy life. The concept holds varying meanings for different people and may evolve over time. For some individuals it implies autonomy, empowerment, capability, and choice; for others, security, social integration, or freedom from stress or illness.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Quality_of_Life</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0033 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0033">
-        <rdfs:label xml:lang="en">mortality rate</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0002003"/>
-        <obo:IAO_0000115 xml:lang="en">Mortality rate is a measure of the number of deaths (in general, or due to a specific cause) in a population, scaled to the size of that population, per unit of time.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Mortality_rate</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0034 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0034">
-        <rdfs:label xml:lang="en">risk-adjusted mortality rate</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0033"/>
-        <obo:IAO_0000115 xml:lang="en">The risk adjusted mortality rate (RAMR) is a mortality rate that is adjusted for predicted risk of death. It is usually utilized to observe and/or compare the performance of certain institution(s) or person(s), e.g., hospitals or surgeons.
-It can be found as:
-RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mortality Rate</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Risk_adjusted_mortality_rate</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0035 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0035">
-        <rdfs:label xml:lang="en">mortality risk</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0002003"/>
-        <obo:IAO_0000115 xml:lang="en">Risk that death will occur</obo:IAO_0000115>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0036 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0036">
-        <rdfs:label xml:lang="en">morbidity rate</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0002003"/>
-        <obo:IAO_0000115 xml:lang="en">In epidemiology and actuarial science, the term morbidity rate can refer to either the incidence rate, or the prevalence of a disease or medical condition. This measure of sickness is contrasted with the mortality rate of a condition, which is the proportion of people dying during a given time interval.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Morbidity</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0037 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0037">
-        <rdfs:label xml:lang="en">incidence rate</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0036"/>
-        <obo:IAO_0000115 xml:lang="en">The incidence rate is the number of new cases per population in a given time period.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Incidence_(epidemiology)</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0038 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0038">
-        <rdfs:label xml:lang="en">prevalence</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0036"/>
-        <obo:IAO_0000115 xml:lang="en">In epidemiology, the prevalence or prevalence proportion is the proportion of a population found to have a condition (typically a disease or a risk factor such as smoking or seat-belt use).</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Prevalence</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0039 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0039">
-        <rdfs:label xml:lang="en">toxicity</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&obo;BFO_0000027"/>
-                            <rdf:Description rdf:about="&obo;BFO_0000030"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">Toxicity is the degree to which a substance can damage an organism. Toxicity can refer to the effect on a whole organism, such as an animal, bacterium, or plant, as well as the effect on a substructure of the organism, such as a cell (cytotoxicity) or an organ such as the liver (hepatotoxicity).</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Toxicity</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0040 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0040">
-        <rdfs:label xml:lang="en">pharmaceutical role</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;CHEBI_33232"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000081"/>
-                <owl:someValuesFrom rdf:resource="&obo;CHEBI_59999"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">A pharmaceutical role is the role of a chemical substance that is used as a pharmaceutical.</obo:IAO_0000115>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0041 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0041">
-        <rdfs:label xml:lang="en">pharmaceutical substance</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;CHEBI_59999"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;BFO_0000087"/>
-                        <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0040"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="&obo;CHEBI_59999"/>
-        <obo:IAO_0000115 xml:lang="en">A chemical substance that has a pharmaceutical role.</obo:IAO_0000115>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0042 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0042">
-        <rdfs:label xml:lang="en">long- or short-acting</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000145"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0041"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">A pharamaceutical substance has the quality of being long- or short-acting depending on whether its effects last for a longer or shorter period.</obo:IAO_0000115>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0043 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0043">
-        <rdfs:label xml:lang="en">long-acting</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0042"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0044 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0044">
-        <rdfs:label xml:lang="en">short-acting</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0042"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0045 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0045">
-        <rdfs:label xml:lang="en">body mass index</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CORE_010"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">A general indicator of the body fat an individual is carrying based upon the ratio of weight to height.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Body_Mass_Index</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0046 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0046">
-        <rdfs:label xml:lang="en">chemical toxicity</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0039"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
-                <owl:someValuesFrom rdf:resource="&obo;CHEBI_59999"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">Chemical toxicants include inorganic substances such as lead, mercury, asbestos, hydrofluoric acid, and chlorine gas, organic compounds such as methyl alcohol, most medications, and poisons from living things.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Toxicity</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0047 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0047">
-        <rdfs:label xml:lang="en">biological toxicity</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0039"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">Biological toxicants include bacteria and viruses that can induce disease in living organisms.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Toxicity</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0048 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0048">
-        <rdfs:label xml:lang="en">physical toxicity</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0039"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:intersectionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&obo;BFO_0000027"/>
-                            <owl:Class>
-                                <owl:complementOf rdf:resource="&obo;OGMS_0000087"/>
-                            </owl:Class>
-                        </owl:intersectionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">Physical toxicants are substances that, due to their physical nature, interfere with biological processes. Examples include coal dust and asbestos fibers, both of which can ultimately be fatal if inhaled.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Toxicity</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0049 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0049">
-        <rdfs:label xml:lang="en">surface size</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
-        <obo:IAO_0000115 xml:lang="en">A 2-D extent quality inhering in a bearer by virtue of the bearer&apos;s amount of 2-dimensional surface it has.</obo:IAO_0000115>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0050 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0050">
-        <rdfs:label xml:lang="en">body surface area</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0049"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CORE_010"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">A measure of the 2-dimensional extent of the body surface (i.e., the skin). Body surface area (BSA) can be calculated by mathematical formula or from a chart that relates height to weight. BSA is often an important factor in dosing.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Body_Surface_Area</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0051 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0051">
-        <rdfs:label xml:lang="en">body temperature</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0000146"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CORE_010"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0052 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0052">
-        <rdfs:label xml:lang="en">pharmacological treatment</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000090"/>
-        <obo:IAO_0000115 xml:lang="en">Treatment of disease through the use of drugs</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Pharmacological_Treatment</obo:IAO_0000119>
-        <oboInOwl:hasSynonym xml:lang="en">pharmacotherapy</oboInOwl:hasSynonym>
-        <oboInOwl:hasSynonym xml:lang="en">treatment with medication</oboInOwl:hasSynonym>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0053 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0053">
-        <rdfs:label xml:lang="en">radiation treatment</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000090"/>
-        <obo:IAO_0000115 xml:lang="en">Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Radiation_Therapy</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0054 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0054">
-        <rdfs:label xml:lang="en">resection</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&RID;RID1560"/>
-        <obo:IAO_0000115 xml:lang="en">The act of cutting out; the surgical removal of part or all of a structure or organ.</obo:IAO_0000115>
-        <oboInOwl:hasSynonym xml:lang="en">excision</oboInOwl:hasSynonym>
-        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Excision</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0055 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0055">
-        <rdfs:label xml:lang="en">amputation</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&RID;RID1560"/>
-        <obo:IAO_0000115 xml:lang="en">The surgical removal of all or part of a limb or other appendage.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Amputation</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0056 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0056">
-        <rdfs:label xml:lang="en">surgical instrument</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;OBI_0000968"/>
-        <obo:IAO_0000115 xml:lang="en">A surgical instrument is an instrument used in a surgical procedure.</obo:IAO_0000115>
-        <rdfs:seeAlso xml:lang="en">http://purl.bioontology.org/ontology/SNOMEDCT/37759000</rdfs:seeAlso>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0057 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0057">
-        <rdfs:label xml:lang="en">surgical function</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_040"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
-                <owl:someValuesFrom rdf:resource="&RID;RID1560"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">A surgical function is a function carried by a surgical instrument and is realized in a surgical procedure.</obo:IAO_0000115>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0058 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0058">
-        <rdfs:label>patient</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;NCBITaxon_9606"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;BFO_0000161"/>
-                        <owl:someValuesFrom rdf:resource="&obo;OMRSE_00000011"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/has_age"/>
-                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0060"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0060 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0060">
-        <rdfs:label>patient age</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;PATO_0000011"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
-                        <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0058"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;hasNumericalValue"/>
-                <owl:someValuesFrom>
-                    <rdfs:Datatype>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&xsd;float"/>
-                            <rdf:Description rdf:about="&xsd;integer"/>
-                        </owl:unionOf>
-                    </rdfs:Datatype>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0063 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0063">
-        <rdfs:label>age at treatment</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0060"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0064 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0064">
-        <rdfs:label>first name</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_034"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0065 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0065">
-        <rdfs:label>last name</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_034"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0066 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0066">
-        <rdfs:label>full name</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_034"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0067 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0067">
-        <rdfs:label>patient last name</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0065"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
-                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0058"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0068 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0068">
-        <rdfs:label>patient first name</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0064"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
-                <owl:someValuesFrom rdf:resource="&obo;IAO_0000313"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_61 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_61">
-        <rdfs:label>patient full name</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0066"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
-                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0058"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_62 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_62">
-        <rdfs:label>patient identifier</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
-    </owl:Class>
     
 
 
@@ -999,7 +133,7 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
 
     <owl:Class rdf:about="&RID;RID39252">
         <rdfs:label xml:lang="en">chemotherapy</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0052"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0052"/>
         <obo:IAO_0000119 xml:lang="en">http://purl.bioontology.org/ontology/RID/RID39252</obo:IAO_0000119>
     </owl:Class>
     
@@ -1181,12 +315,6 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         <rdfs:subClassOf rdf:resource="&obo;MF_0000020"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002218"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
@@ -1195,6 +323,12 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
                 <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1290,7 +424,7 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     <rdf:Description rdf:about="&obo;NCBITaxon_9606">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.ifomis.org/hdot/has_age"/>
+                <owl:onProperty rdf:resource="&hdot;has_age"/>
                 <owl:someValuesFrom rdf:resource="&obo;PATO_0000011"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -1306,7 +440,7 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000084"/>
-                <owl:someValuesFrom rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0018"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0018"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A document with a set of printed or written questions with a choice of answers, devised for the purposes of a survey or statistical study.</obo:IAO_0000115>
@@ -1532,7 +666,7 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
 
     <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004918">
         <rdfs:label>age at diagnosis</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0060"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0060"/>
         <obo:IAO_0000115>The age, measured from some defined time point e.g. birth at which a subject (e.g. a human patient) is diagnosed with some disease e.g. breast cancer.</obo:IAO_0000115>
         <obo:IAO_0000412>http://www.ebi.ac.uk/efo/EFO_0004918</obo:IAO_0000412>
     </owl:Class>
@@ -1543,9 +677,862 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
 
     <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0005056">
         <rdfs:label>age at death</rdfs:label>
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0060"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0060"/>
         <obo:IAO_0000115>age at which death occurs</obo:IAO_0000115>
         <obo:IAO_0000412>http://www.ebi.ac.uk/efo/EFO_0005056</obo:IAO_0000412>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0001 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0001">
+        <rdfs:label xml:lang="en">portion of blood</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_025"/>
+        <obo:IAO_0000115 xml:lang="en">Portion of body substance which consists of plasma and blood cells.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Portion_of_blood</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0002 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0002">
+        <rdfs:label xml:lang="en">portion of plasma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_025"/>
+        <obo:IAO_0000115 xml:lang="en">Body substance in liquid state contained in the lumen of arterial and venous trees, blood capillary and the cardiac chambers; constitutes the liquid phase of blood.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Portion_of_plasma</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0003 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0003">
+        <rdfs:label xml:lang="en">serum</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_025"/>
+        <obo:IAO_0000115 xml:lang="en">Body substance derived from plasma by the elimination of fibrinogen.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Serum</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0004 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0004">
+        <rdfs:label xml:lang="en">transudate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_025"/>
+        <obo:IAO_0000115 xml:lang="en">Body substance in liquid state, which is derived from plasma by passage through the (intact) wall of capillaries without further processing by secretory cells or glands.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Transudate</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0005 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0005">
+        <rdfs:label xml:lang="en">cerebrospinal fluid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0004"/>
+        <obo:IAO_0000115 xml:lang="en">Transudate contained in the subarachnoid space.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Cerebrospinal_fluid</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0006 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0006">
+        <rdfs:label xml:lang="en">portion of excreted substance</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_025"/>
+        <obo:IAO_0000115 xml:lang="en">Body substance derived from ingested substances that have been modified by one or more organs.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">feces, flatus, urine.</obo:IAO_0000112>
+        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Portion_of_excreted_substance</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0007 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0007">
+        <rdfs:label xml:lang="en">portion of urine</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0006"/>
+        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Portion_of_urine</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0008 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0008">
+        <rdfs:label xml:lang="en">organ region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_015"/>
+        <obo:IAO_0000115 xml:lang="en">Cardinal organ part which is a fiat subdivision of an organ.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Organ_region</obo:IAO_0000119>
+        <obo:IAO_0000112 xml:lang="en">lingula of left lung, tail of pancreas, artery, trochanter, nodulus of semilunar valve, right side of heart, duodenum, fundus of stomach.</obo:IAO_0000112>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0009 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0009">
+        <rdfs:label xml:lang="en">organ zone</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0008"/>
+        <obo:IAO_0000115 xml:lang="en">Organ region with one or more floating fiat boundaries.</obo:IAO_0000115>
+        <obo:IAO_0000112 xml:lang="en">apical zone of lung, superior pole of kidney, gingiva, apex of prostate, ascending colon proper.</obo:IAO_0000112>
+        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Organ_zone</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0010 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0010">
+        <rdfs:label xml:lang="en">zone of bone organ</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0009"/>
+        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Zone_of_bone_organ</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0011 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0011">
+        <rdfs:label xml:lang="en">bone marrow</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0010"/>
+        <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Bone_marrow</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0012 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0012">
+        <rdfs:label xml:lang="en">portion of pathological tissue</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000078"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0013 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0013">
+        <rdfs:label xml:lang="en">portion of tumour tissue</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0012"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0014"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0014 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0014">
+        <rdfs:label xml:lang="en">neoplasm</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000077"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0012"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0016"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_028"/>
+                <owl:someValuesFrom rdf:resource="&obo;GO_0008283"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000119>http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Neoplasm</obo:IAO_0000119>
+        <obo:IAO_0000115>A benign or malignant tissue growth resulting from uncontrolled cell proliferation.</obo:IAO_0000115>
+        <oboInOwl:hasSynonym xml:lang="en">tumour</oboInOwl:hasSynonym>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0015 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0015">
+        <rdfs:label xml:lang="en">pathological cell</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000078"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0016 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0016">
+        <rdfs:label xml:lang="en">tumour cell</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0015"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0014"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0017 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0017">
+        <rdfs:label xml:lang="en">A part of a questionnaire.</rdfs:label>
+        <rdfs:label xml:lang="en">questionnaire part</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000314"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0018 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0018">
+        <rdfs:label xml:lang="en">questionnaire form</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000178"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0019 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0019">
+        <rdfs:label xml:lang="en">questionnaire participant</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OMRSE_00000024"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0020"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0020 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0020">
+        <rdfs:label xml:lang="en">questionnaire completion</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0018"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0022 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0022">
+        <rdfs:label xml:lang="en">social ability</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_039"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0023 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0023">
+        <rdfs:label xml:lang="en">physical ability</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_039"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0024 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0024">
+        <rdfs:label xml:lang="en">physical dysfunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_004"/>
+        <rdfs:comment xml:lang="en">includes psycho-physical dysfunctions</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0025 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0025">
+        <rdfs:label xml:lang="en">cognitive dysfunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_004"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0026 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0026">
+        <rdfs:label xml:lang="en">sexual dysfunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0024"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0027 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0027">
+        <rdfs:label xml:lang="en">digestive dysfunction</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0024"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0028 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0028">
+        <rdfs:label xml:lang="en">fatigue</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0029 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0029">
+        <rdfs:label xml:lang="en">appetite</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0030 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0030">
+        <rdfs:label xml:lang="en">anemia</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000045"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0031 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0031">
+        <rdfs:label xml:lang="en">anorexia nervosa</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000045"/>
+        <obo:IAO_0000115 xml:lang="en">Anorexia nervosa is an eating disorder characterized by immoderate food restriction and irrational fear of gaining weight, as well as a distorted body self-perception. It typically involves excessive weight loss and is usually found more in females than in males. Anorexia nervosa usually develops during adolescence and early adulthood.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Anorexia_nervosa</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0032 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0032">
+        <rdfs:label xml:lang="en">quality of life</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001995"/>
+        <obo:IAO_0000115 xml:lang="en">The subjective measurement of an individual&apos;s sense of well-being and ability to enjoy life. The concept holds varying meanings for different people and may evolve over time. For some individuals it implies autonomy, empowerment, capability, and choice; for others, security, social integration, or freedom from stress or illness.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Quality_of_Life</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0033 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0033">
+        <rdfs:label xml:lang="en">mortality rate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002003"/>
+        <obo:IAO_0000115 xml:lang="en">Mortality rate is a measure of the number of deaths (in general, or due to a specific cause) in a population, scaled to the size of that population, per unit of time.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Mortality_rate</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0034 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0034">
+        <rdfs:label xml:lang="en">risk-adjusted mortality rate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0033"/>
+        <obo:IAO_0000115 xml:lang="en">The risk adjusted mortality rate (RAMR) is a mortality rate that is adjusted for predicted risk of death. It is usually utilized to observe and/or compare the performance of certain institution(s) or person(s), e.g., hospitals or surgeons.
+It can be found as:
+RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mortality Rate</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Risk_adjusted_mortality_rate</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0035 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0035">
+        <rdfs:label xml:lang="en">mortality risk</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002003"/>
+        <obo:IAO_0000115 xml:lang="en">Risk that death will occur</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0036 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0036">
+        <rdfs:label xml:lang="en">morbidity rate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002003"/>
+        <obo:IAO_0000115 xml:lang="en">In epidemiology and actuarial science, the term morbidity rate can refer to either the incidence rate, or the prevalence of a disease or medical condition. This measure of sickness is contrasted with the mortality rate of a condition, which is the proportion of people dying during a given time interval.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Morbidity</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0037 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0037">
+        <rdfs:label xml:lang="en">incidence rate</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0036"/>
+        <obo:IAO_0000115 xml:lang="en">The incidence rate is the number of new cases per population in a given time period.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Incidence_(epidemiology)</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0038 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0038">
+        <rdfs:label xml:lang="en">prevalence</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0036"/>
+        <obo:IAO_0000115 xml:lang="en">In epidemiology, the prevalence or prevalence proportion is the proportion of a population found to have a condition (typically a disease or a risk factor such as smoking or seat-belt use).</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Prevalence</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0039 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0039">
+        <rdfs:label xml:lang="en">toxicity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&obo;BFO_0000027"/>
+                            <rdf:Description rdf:about="&obo;BFO_0000030"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">Toxicity is the degree to which a substance can damage an organism. Toxicity can refer to the effect on a whole organism, such as an animal, bacterium, or plant, as well as the effect on a substructure of the organism, such as a cell (cytotoxicity) or an organ such as the liver (hepatotoxicity).</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Toxicity</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0040 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0040">
+        <rdfs:label xml:lang="en">pharmaceutical role</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_33232"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000081"/>
+                <owl:someValuesFrom rdf:resource="&obo;CHEBI_59999"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A pharmaceutical role is the role of a chemical substance that is used as a pharmaceutical.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0041 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0041">
+        <rdfs:label xml:lang="en">pharmaceutical substance</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;CHEBI_59999"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000087"/>
+                        <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0040"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_59999"/>
+        <obo:IAO_0000115 xml:lang="en">A chemical substance that has a pharmaceutical role.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0042 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0042">
+        <rdfs:label xml:lang="en">long- or short-acting</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000145"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0041"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A pharamaceutical substance has the quality of being long- or short-acting depending on whether its effects last for a longer or shorter period.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0043 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0043">
+        <rdfs:label xml:lang="en">long-acting</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0042"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0044 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0044">
+        <rdfs:label xml:lang="en">short-acting</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0042"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0045 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0045">
+        <rdfs:label xml:lang="en">body mass index</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CORE_010"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A general indicator of the body fat an individual is carrying based upon the ratio of weight to height.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Body_Mass_Index</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0046 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0046">
+        <rdfs:label xml:lang="en">chemical toxicity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0039"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
+                <owl:someValuesFrom rdf:resource="&obo;CHEBI_59999"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">Chemical toxicants include inorganic substances such as lead, mercury, asbestos, hydrofluoric acid, and chlorine gas, organic compounds such as methyl alcohol, most medications, and poisons from living things.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Toxicity</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0047 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0047">
+        <rdfs:label xml:lang="en">biological toxicity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0039"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">Biological toxicants include bacteria and viruses that can induce disease in living organisms.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Toxicity</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0048 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0048">
+        <rdfs:label xml:lang="en">physical toxicity</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0039"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000107"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="&obo;BFO_0000027"/>
+                            <owl:Class>
+                                <owl:complementOf rdf:resource="&obo;OGMS_0000087"/>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">Physical toxicants are substances that, due to their physical nature, interfere with biological processes. Examples include coal dust and asbestos fibers, both of which can ultimately be fatal if inhaled.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Toxicity</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0049 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0049">
+        <rdfs:label xml:lang="en">surface size</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
+        <obo:IAO_0000115 xml:lang="en">A 2-D extent quality inhering in a bearer by virtue of the bearer&apos;s amount of 2-dimensional surface it has.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0050 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0050">
+        <rdfs:label xml:lang="en">body surface area</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0049"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CORE_010"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A measure of the 2-dimensional extent of the body surface (i.e., the skin). Body surface area (BSA) can be calculated by mathematical formula or from a chart that relates height to weight. BSA is often an important factor in dosing.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Body_Surface_Area</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0051 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0051">
+        <rdfs:label xml:lang="en">body temperature</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000146"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CORE_010"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0052 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0052">
+        <rdfs:label xml:lang="en">pharmacological treatment</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000090"/>
+        <obo:IAO_0000115 xml:lang="en">Treatment of disease through the use of drugs</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Pharmacological_Treatment</obo:IAO_0000119>
+        <oboInOwl:hasSynonym xml:lang="en">pharmacotherapy</oboInOwl:hasSynonym>
+        <oboInOwl:hasSynonym xml:lang="en">treatment with medication</oboInOwl:hasSynonym>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0053 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0053">
+        <rdfs:label xml:lang="en">radiation treatment</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OGMS_0000090"/>
+        <obo:IAO_0000115 xml:lang="en">Treatment of a disease by means of exposure of the target or the whole body to radiation. Radiation therapy is often used as part of curative therapy and occasionally as a component of palliative treatment for cancer. Other uses include total body irradiation prior to transplantation.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Radiation_Therapy</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0054 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0054">
+        <rdfs:label xml:lang="en">resection</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&RID;RID1560"/>
+        <obo:IAO_0000115 xml:lang="en">The act of cutting out; the surgical removal of part or all of a structure or organ.</obo:IAO_0000115>
+        <oboInOwl:hasSynonym xml:lang="en">excision</oboInOwl:hasSynonym>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Excision</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0055 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0055">
+        <rdfs:label xml:lang="en">amputation</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&RID;RID1560"/>
+        <obo:IAO_0000115 xml:lang="en">The surgical removal of all or part of a limb or other appendage.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Amputation</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0056 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0056">
+        <rdfs:label xml:lang="en">surgical instrument</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;OBI_0000968"/>
+        <obo:IAO_0000115 xml:lang="en">A surgical instrument is an instrument used in a surgical procedure.</obo:IAO_0000115>
+        <rdfs:seeAlso xml:lang="en">http://purl.bioontology.org/ontology/SNOMEDCT/37759000</rdfs:seeAlso>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0057 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0057">
+        <rdfs:label xml:lang="en">surgical function</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_040"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="&RID;RID1560"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A surgical function is a function carried by a surgical instrument and is realized in a surgical procedure.</obo:IAO_0000115>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0058 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0058">
+        <rdfs:label>patient</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;NCBITaxon_9606"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000161"/>
+                        <owl:someValuesFrom rdf:resource="&obo;OMRSE_00000011"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;has_age"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0060"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0060 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0060">
+        <rdfs:label>patient age</rdfs:label>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&obo;PATO_0000011"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
+                        <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0058"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0063 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0063">
+        <rdfs:label>age at treatment</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0060"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0064 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0064">
+        <rdfs:label>first name</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_034"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0065 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0065">
+        <rdfs:label>last name</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_034"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0066 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0066">
+        <rdfs:label>full name</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_034"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0067 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0067">
+        <rdfs:label>patient last name</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0065"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0058"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0068 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0068">
+        <rdfs:label>patient first name</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0064"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="&obo;IAO_0000313"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_61 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_61">
+        <rdfs:label>patient full name</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0066"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0058"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_62 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_62">
+        <rdfs:label>patient identifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
     </owl:Class>
     
 
@@ -1558,11 +1545,11 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <rdf:Description rdf:about="&obo;OGMS_0000086">
-        <rdfs:seeAlso xml:lang="en">http://purl.obolibrary.org/obo/DOID_225</rdfs:seeAlso>
-    </rdf:Description>
     <rdf:Description rdf:about="&hdot;HDOT_CORE_003">
         <rdfs:seeAlso xml:lang="en">http://purl.obolibrary.org/obo/DOID_630</rdfs:seeAlso>
+    </rdf:Description>
+    <rdf:Description rdf:about="&obo;OGMS_0000086">
+        <rdfs:seeAlso xml:lang="en">http://purl.obolibrary.org/obo/DOID_225</rdfs:seeAlso>
     </rdf:Description>
 </rdf:RDF>
 
