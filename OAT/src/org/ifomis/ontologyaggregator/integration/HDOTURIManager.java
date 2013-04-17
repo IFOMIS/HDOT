@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 
 import uk.ac.ebi.ontocat.OntologyServiceException;
@@ -19,25 +18,25 @@ import uk.ac.ebi.ontocat.OntologyServiceException;
  */
 public class HDOTURIManager {
 	
-	boolean keepOriginalURI;
-
-	private String newHdotUri;
+	private boolean keepOriginalURI;
+	private Recommendation acceptedRecommendation;
+	private HDOTURIGenerator uriGenerator;
 
 	public HDOTURIManager(Recommendation acceptedRecommendation,
 			boolean includeSubclasses) throws OntologyServiceException,
 			IOException {
 		List<String> predefinedOntologies = FileUtils.readLines(new File(
 				"data/predefinedListOfOntologies"));
-
+		
 		this.keepOriginalURI = predefinedOntologies
 				.contains(acceptedRecommendation.getHit().getOntology()
-						.getLabel());
-
-		if (!keepOriginalURI) {
-			HDOTURIGenerator uriGenerator = new HDOTURIGenerator(
-					acceptedRecommendation, includeSubclasses);
-			newHdotUri = uriGenerator.generateURI();
-		}
+						.getAbbreviation());
+		
+		this.acceptedRecommendation = acceptedRecommendation;
+		
+		 this.uriGenerator = new HDOTURIGenerator(
+				acceptedRecommendation, includeSubclasses);
+		
 	}
 
 	public boolean keepOriginalURI() {
@@ -45,7 +44,20 @@ public class HDOTURIManager {
 		return this.keepOriginalURI;
 	}
 
-	public String getNewHdotUri() {
+	/**
+	 * Generates new HDOT URI.
+	 * 
+	 * @return the next HDOT URI
+	 * @throws IOException
+	 */
+	public String generateNextHdotUri() throws IOException {
+		String hdotModuleIRI = acceptedRecommendation.getHdotModule()
+				.getOntologyID().getOntologyIRI().toString();
+		
+		String[] hdotModules = hdotModuleIRI.split("/");
+		String hdotModule = hdotModules[hdotModules.length - 1];
+		
+		String newHdotUri = uriGenerator.generateURI(hdotModule);
 		return newHdotUri;
 	}
 }
