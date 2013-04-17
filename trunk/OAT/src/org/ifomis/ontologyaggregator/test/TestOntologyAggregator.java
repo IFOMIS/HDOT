@@ -57,66 +57,16 @@ public class TestOntologyAggregator {
 
 				log.info("\nRECOMMENDATION GENERATION\n");
 
-				// TODO ontoIn
-				RecommendationGenerator rg = new RecommendationGenerator(
-						"data/hdot/hdot_all_copy.owl", "", se.getListOfPaths()
-								.subList(0, 5), term, se.getRestrictedBps(),
-						start);
+				boolean recommendationWasAccepted = processingSearchResults(0,
+						5, se, term, start);
 
-				RecommendationFilter rf = new RecommendationFilter(term,
-						rg.getListOfRecommendations(),
-						rg.getListOfRecsPossibleInCoreOfHDOT(),
-						rg.getListImportedNotLeafMatches(),
-						rg.getListOfInCoreNotLeafMatches());
-
-				// TODO get the value by checking which button was pressed
-				// yes/no
-				while (!rg.getListOfRecommendations().isEmpty()) {
-					rf.checkValidRecommendations();
-
-					UserInputReader inputReader = new UserInputReader();
-					inputReader.addUserInputListener(rf);
-					inputReader.startListeningAcceptInput();
-				
-					
-					if (rf.isAccept()) {
-
-						if (!(rf.getAcceptedRecommendation().getHitChildren() == null)) {
-							inputReader.startListeningIncludeSubclassesInput();
-						}
-						// TODO extend HDOT
-						new HDOTExtender(rf.getAcceptedRecommendation(),
-								rf.isIncludeSubclasses(),
-								rg.getOntology_manager(), rg.getHdot_ontology());
-						break;
+				if (!recommendationWasAccepted) {
+					boolean recommendationWasAcceptedSecondTurn = processingSearchResults(
+							5, 10, se, term, start);
+					if (!recommendationWasAcceptedSecondTurn) {
+						log.info("NO RECOMMENDATION FOUND IN THE TOP 10 HITS");
 					}
 				}
-
-				// if (!rf.isAccept()) {
-				// RecommendationGenerator rgSecond = new
-				// RecommendationGenerator(
-				// "data/hdot/hdot_all.owl", "", se.getListOfPaths()
-				// .subList(5, 10), term,
-				// se.getRestrictedBps(), start);
-				//
-				// RecommendationFilter rfSecond = new RecommendationFilter(
-				// term, rgSecond.getListOfRecommendations(),
-				// rgSecond.getListOfRecsPossibleInCoreOfHDOT(),
-				// rgSecond.getListImportedNotLeafMatches(),
-				// rgSecond.getListOfInCoreNotLeafMatches());
-				// rfSecond.checkValidRecommendations();
-				//
-				// while (!rg.getListOfRecommendations().isEmpty()) {
-				// rf.checkValidRecommendations();
-				// UserInputReader inputReader = new UserInputReader();
-				// inputReader.addUserInputListener(rf);
-				// inputReader.start();
-				//
-				// if (rf.isAccept()) {
-				// break;
-				// }
-				// }
-				// }
 				long end = System.currentTimeMillis();
 
 				long milliseconds = (end - start);
@@ -160,6 +110,44 @@ public class TestOntologyAggregator {
 		} catch (HdotExtensionException e) {
 			e.printStackTrace();
 		}
+	}
+
+	private static boolean processingSearchResults(int i, int j,
+			SearchEngine se, String term, long start) throws IOException,
+			URISyntaxException, OntologyServiceException,
+			OWLOntologyStorageException, HdotExtensionException {
+		RecommendationGenerator rg = new RecommendationGenerator(
+				"data/hdot/hdot_all.owl", "",
+				se.getListOfPaths().subList(i, j), term, se.getRestrictedBps(),
+				start);
+
+		RecommendationFilter rf = new RecommendationFilter(term,
+				rg.getListOfRecommendations(),
+				rg.getListOfRecsPossibleInCoreOfHDOT(),
+				rg.getListImportedNotLeafMatches(),
+				rg.getListOfInCoreNotLeafMatches());
+
+		while (!rg.getListOfRecommendations().isEmpty()) {
+			rf.checkValidRecommendations();
+
+			UserInputReader inputReader = new UserInputReader();
+			inputReader.addUserInputListener(rf);
+			inputReader.startListeningAcceptInput();
+
+			if (rf.isAccept()) {
+
+				if (!(rf.getAcceptedRecommendation().getHitChildren() == null)) {
+					inputReader.startListeningIncludeSubclassesInput();
+				}
+				log.debug("rf.isIncludeSubclasses() "
+						+ rf.isIncludeSubclasses());
+				new HDOTExtender(rf.getAcceptedRecommendation(),
+						rf.isIncludeSubclasses(), rg.getOntology_manager(),
+						rg.getHdot_ontology(), rg.getOntologyService());
+				break;
+			}
+		}
+		return rf.isAccept();
 	}
 
 	private static void usage() {

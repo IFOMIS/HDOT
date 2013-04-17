@@ -8,23 +8,18 @@ import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
-import org.apache.commons.lang.StringUtils;
+
 import org.apache.log4j.Logger;
-import org.ifomis.ontologyaggregator.notifications.EmailSender;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
-import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
@@ -116,6 +111,8 @@ public class RecommendationGenerator {
 	private OntologyService ontologyService;
 
 	private Stack<OntologyTerm> hierarchyOfHit;
+	
+	private OWLOntology[] sortedHdotModules;
 
 	/**
 	 * Creates a RecommendationGenerator and loads the specified input ontology.
@@ -143,10 +140,9 @@ public class RecommendationGenerator {
 		this.listOfInCoreNotLeafMatches = new ArrayList<>();
 		this.listImportedNotLeafMatches = new ArrayList<>();
 
-		// TODO put the imported ontos in external list and read in
 		this.importedOntologies = new ArrayList<String>();
 		this.importedOntologies
-				.add("http://hdot.googlecode.com/svn/trunk/doid_import.owl");
+				.add("http://www.ifomis.org/hdot/doid_import.owl");
 		this.importedOntologies
 				.add("http://purl.obolibrary.org/obo/bfo.owl");
 
@@ -166,16 +162,25 @@ public class RecommendationGenerator {
 		}
 		// We can always obtain the location where an ontology was loaded from
 		this.iriIn = ontology_manager.getOntologyDocumentIRI(hdot_ontology);
-
+		log.info("iriIn: " + iriIn);
 		log.info("Loaded ontology: " + hdot_ontology);
+		Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
+		log.debug("modules: " );
+		for (OWLOntology owlOntology : hdotModules) {
+			log.debug(owlOntology);
+		}
+		// sort modules such that the recommendation will be found in more
+		// specific module
+		sortedHdotModules = new ModuleSorter()
+				.sortHdotModules(hdotModules);
+		
 		generateRecommendation(listOfPaths);
-
 	}
 
 
 	/**
 	 * Process all five best candidates and generates recommendation for
-	 * integration wheever possible.
+	 * integration whenever possible.
 	 * 
 	 * @param listOfPaths
 	 *            list of paths for the best 5 hits
@@ -238,13 +243,6 @@ public class RecommendationGenerator {
 	 */
 	private boolean recommend(Stack<OntologyTerm> path)
 			throws URISyntaxException, IOException, OntologyServiceException {
-
-		Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
-
-		// sort modules such that the first recommendation will be found in more
-		// specific module
-		OWLOntology[] sortedHdotModules = new ModuleSorter()
-				.sortHdotModules(hdotModules);
 
 		OntologyTerm currentCandidate = null;
 		boolean termHasBeenRecommended = false;
@@ -401,13 +399,13 @@ public class RecommendationGenerator {
 		OntologyTerm matchedTerm = null;
 
 		// check if the current class is hdot_core
-		boolean isHdotCore = currentOntology.getOntologyID().getOntologyIRI().toString()
-				.contains("http://hdot.googlecode.com/svn/trunk/hdot_core.owl");
+		boolean isHdotCore = ( currentOntology.getOntologyID().getOntologyIRI().toString()
+				.contains("http://www.ifomis.org/hdot/hdot_core.owl"));
 
 		// iterate over all classes of the ontology and try to find a match of
 		// uri or label
 		for (OWLClass hdotClass : classesInSignature) {
-			// exclude class Nothing in hdot
+			//exclude class Nothing in hdot
 			if (hdotClass.isOWLNothing()) {
 				continue;
 			}
@@ -419,7 +417,6 @@ public class RecommendationGenerator {
 			labelsMatch = false;
 
 			String pureLabelOfHdotClass = retriveRdfsLabel(annotations);
-			// TODO call URI manager if just the labels match.
 
 			// compare concept ids
 			if (currentCandidate.getURI().toString()
@@ -458,9 +455,9 @@ public class RecommendationGenerator {
 				matchedTerm.setLabel(pureLabelOfHdotClass);
 			} else {
 				double similarityOfLabels = DiceCoefficient
-						.diceCoefficientOptimized(currentLabel,
-								pureLabelOfHdotClass);
-				if (similarityOfLabels > 0.90) {
+						.diceCoefficientOptimized(currentLabel.toLowerCase(),
+								pureLabelOfHdotClass.toLowerCase());
+				if (similarityOfLabels > 0.95) {
 
 					log.info("\nLABELS of BioPortal HIT and HDOT CLASS SIMILARITY > 90\n");
 					log.info("pureLabelOfHdotClass: " + pureLabelOfHdotClass);
@@ -500,7 +497,6 @@ public class RecommendationGenerator {
 
 				// if the match is found in hdot core and the matched class is
 				// not a leaf node continue with the next class
-				// TODO treat doid as hdot core put into list
 				if (isHdotCore) {
 					if (!hdotClass.getSubClasses(currentOntology).isEmpty()) {
 
@@ -636,4 +632,8 @@ public class RecommendationGenerator {
 	public OWLOntology getHdot_ontology() {
 		return hdot_ontology;
 	}
+	public OntologyService getOntologyService() {
+		return ontologyService;
+	}
+
 }

@@ -17,22 +17,12 @@ public class HDOTURIGenerator {
 
 	private static final Logger log = Logger
 			.getLogger(HDOTURIGenerator.class);
-	
-	private boolean includeSubclasses;
-	private Recommendation acceptedRecommendation;
 
 	public HDOTURIGenerator(Recommendation acceptedRecommendation,
 			boolean includeSubclasses) {
-		this.includeSubclasses = includeSubclasses;
-		this.acceptedRecommendation = acceptedRecommendation;
 	}
 
-	public String generateURI() throws IOException {
-
-		String hdotModuleIRI = acceptedRecommendation.getHdotModule()
-				.getOntologyID().getOntologyIRI().toString();
-
-		String hdotModule = hdotModuleIRI.split("/")[hdotModuleIRI.length() - 1];
+	public String generateURI(String hdotModule) throws IOException {
 
 		String prefix = hdotModule.split("\\.")[0].toUpperCase();
 
@@ -57,13 +47,11 @@ public class HDOTURIGenerator {
 		}
 		
 		sb.append(intCounter.toString());
-		FileUtils.write(new File("data/counterForURIS_HDOT_PM"),
+		FileUtils.write(new File("data/counterForURIS_" + prefix),
 				sb.toString());
 		log.debug("URI next number updated");
-		
-		//TODO extend with sub classes
-		
-		return String.format("http://hdot.googlecode.com/svn/trunk/%s#%s_%s",
+				
+		return String.format("http://www.ifomis.org/hdot/%s#%s_%s",
 				arg);
 	}
 

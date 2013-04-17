@@ -27,18 +27,6 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 
 	private boolean includeSubclasses = false;
 
-	public boolean isIncludeSubclasses() {
-		return includeSubclasses;
-	}
-
-	public Recommendation getAcceptedRecommendation() {
-		return acceptedRecommendation;
-	}
-
-	public boolean isAccept() {
-		return accept;
-	}
-
 	public RecommendationFilter(String searchedTerm,
 			List<Recommendation> validRecommendations,
 			List<Recommendation> recommendationsInImportedOntologies,
@@ -180,4 +168,17 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 			this.includeSubclasses = false;
 		}
 	}
+	
+	public boolean isIncludeSubclasses() {
+		return includeSubclasses;
+	}
+
+	public Recommendation getAcceptedRecommendation() {
+		return acceptedRecommendation;
+	}
+
+	public boolean isAccept() {
+		return accept;
+	}
+	
 }

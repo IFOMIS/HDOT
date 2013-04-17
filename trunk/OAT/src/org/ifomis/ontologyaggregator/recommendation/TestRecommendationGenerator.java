@@ -73,23 +73,25 @@ public class TestRecommendationGenerator {
 						rg.getListImportedNotLeafMatches(),
 						rg.getListOfInCoreNotLeafMatches());
 
+				rf.checkValidRecommendations();
+				
 				// TODO get the value by checking which button was pressed
 				// yes/no
-				while (!rg.getListOfRecommendations().isEmpty()) {
-					rf.checkValidRecommendations();
-					
-					UserInputReader inputReader = new UserInputReader();
-					inputReader.addUserInputListener(rf);
-					inputReader.startListeningAcceptInput();
-					
-					if (rf.isAccept()) {
-						if(!(rf.getAcceptedRecommendation().getHitChildren().isEmpty())){
-							inputReader.startListeningIncludeSubclassesInput();
-						}
-						
-						break;
-					}
-				}
+//				while (!rg.getListOfRecommendations().isEmpty()) {
+//					rf.checkValidRecommendations();
+//					
+//					UserInputReader inputReader = new UserInputReader();
+//					inputReader.addUserInputListener(rf);
+//					inputReader.startListeningAcceptInput();
+//					
+//					if (rf.isAccept()) {
+//						if(!(rf.getAcceptedRecommendation().getHitChildren().isEmpty())){
+//							inputReader.startListeningIncludeSubclassesInput();
+//						}
+//						
+//						break;
+//					}
+//				}
 
 //				if (!rf.isAccept()) {
 //					RecommendationGenerator rgSecond = new RecommendationGenerator(
