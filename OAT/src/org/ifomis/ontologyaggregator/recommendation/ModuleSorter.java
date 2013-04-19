@@ -34,10 +34,10 @@ public class ModuleSorter {
 
 			for (OWLOntology owlOntology : hdotModules) {
 				String currentId = owlOntology.getOntologyID().getOntologyIRI().toString();
-				System.out.println("sorted ids " + sortedIds);
-				System.out.println("sorted modules " + sortedHdotModules.toString());
-				System.out.println(sortedIds.indexOf(currentId));
-				System.out.println("current id " + currentId);
+//				System.out.println("sorted ids " + sortedIds);
+//				System.out.println("sorted modules " + sortedHdotModules.toString());
+//				System.out.println(sortedIds.indexOf(currentId));
+//				System.out.println("current id " + currentId);
 				sortedHdotModules[sortedIds.indexOf(currentId)] = owlOntology;
 			}
 			// System.out.println("Sorted HDOT modules:");

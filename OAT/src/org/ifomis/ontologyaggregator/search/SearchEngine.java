@@ -17,7 +17,6 @@ import uk.ac.ebi.ontocat.OntologyService;
 import uk.ac.ebi.ontocat.OntologyServiceException;
 import uk.ac.ebi.ontocat.OntologyTerm;
 import uk.ac.ebi.ontocat.bioportal.BioportalOntologyService;
-import uk.ac.ebi.ontocat.bioportal.xmlbeans.ConceptBean;
 import uk.ac.ebi.ontocat.virtual.CompositeServiceNoThreads;
 import uk.ac.ebi.ontocat.virtual.SortedSubsetDecorator;
 
@@ -148,15 +147,14 @@ public class SearchEngine {
 			int similarityScore = ot.getContext().getSimilarityScore();
 			if (similarityScore > 90) {
 
-				sb1.append("\n*****************");
-				sb1.append("\nSimilatity score of searched term and hit is greater than 90%.");
-				sb1.append("\nOntology of concept given for root path extraction = ");
+				sb1.append("\n\t\tSimilatity score of searched term and hit is greater than 90%.");
+				sb1.append("\n\t\tOntology of concept given for root path extraction = ");
 				sb1.append(ot.getOntology().getLabel());
-				sb1.append("\naccession of the given concept = ");
+				sb1.append("\n\t\taccession of the given concept = ");
 				sb1.append(ot.getAccession());
-				sb1.append("\nlabel of the given concept = ");
+				sb1.append("\n\t\tlabel of the given concept = ");
 				sb1.append(ot.getAccession());
-				sb1.append(";\n This term is going to be processed further.");
+				sb1.append(";\n\t\tThe term is going to be processed further.");
 
 				log.info(sb1.toString());
 
@@ -184,7 +182,7 @@ public class SearchEngine {
 					}
 				}
 			}
-			log.debug("_____________________________________________");
+			log.debug("__________________________________________________________________________________________");
 		}
 		log.info("skos:prefLabels= " + pathExtractor.getCounterForPrefLabels());
 		log.info("rdfs:labels= " + pathExtractor.getCounterForLabels());

@@ -208,7 +208,7 @@ public class RecommendationGenerator {
 			}
 
 			log.info("Length of path to root is: " + path.size());
-			log.info("__________________________________");
+			log.debug("____________________________________________________________________");
 			counterForParents = 0;
 			if (!path.isEmpty()) {
 				this.currentHit = path.peek();

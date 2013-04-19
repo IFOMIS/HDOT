@@ -24,8 +24,8 @@ public class URINumberResetter {
 					"data/counterForURIS_HDOT_CORE"), "045");
 			FileUtils.writeStringToFile(new File(
 					"data/counterForURIS_HDOT_BSDS"), "104");
+			System.out.println("URI numbers are  reset.");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
