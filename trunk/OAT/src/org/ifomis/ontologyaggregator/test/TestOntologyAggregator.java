@@ -16,6 +16,7 @@ import org.ifomis.ontologyaggregator.recommendation.RecommendationGenerator;
 import org.ifomis.ontologyaggregator.recommendation.TestRecommendationGenerator;
 import org.ifomis.ontologyaggregator.recommendation.UserInputReader;
 import org.ifomis.ontologyaggregator.search.SearchEngine;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 import uk.ac.ebi.ontocat.OntologyServiceException;
@@ -32,7 +33,7 @@ public class TestOntologyAggregator {
 
 		String fileWithOntologies, fileWithTerms;
 
-		if (args.length < 1) {
+		if (args.length < 2) {
 			usage();
 			System.exit(0);
 		} else {
@@ -58,11 +59,11 @@ public class TestOntologyAggregator {
 				log.info("\nRECOMMENDATION GENERATION\n");
 
 				boolean recommendationWasAccepted = processingSearchResults(0,
-						5, se, term, start);
+						5, se, term, start, args[1]);
 
 				if (!recommendationWasAccepted) {
 					boolean recommendationWasAcceptedSecondTurn = processingSearchResults(
-							5, 10, se, term, start);
+							5, 10, se, term, start, args[1]);
 					if (!recommendationWasAcceptedSecondTurn) {
 						log.info("NO RECOMMENDATION FOUND IN THE TOP 10 HITS");
 					}
@@ -109,13 +110,15 @@ public class TestOntologyAggregator {
 			e.printStackTrace();
 		} catch (HdotExtensionException e) {
 			e.printStackTrace();
+		} catch (OWLOntologyCreationException e) {
+			e.printStackTrace();
 		}
 	}
 
 	private static boolean processingSearchResults(int i, int j,
-			SearchEngine se, String term, long start) throws IOException,
+			SearchEngine se, String term, long start, String userID) throws IOException,
 			URISyntaxException, OntologyServiceException,
-			OWLOntologyStorageException, HdotExtensionException {
+			OWLOntologyStorageException, HdotExtensionException, OWLOntologyCreationException {
 		RecommendationGenerator rg = new RecommendationGenerator(
 				"data/hdot/hdot_all.owl", "",
 				se.getListOfPaths().subList(i, j), term, se.getRestrictedBps(),
@@ -143,7 +146,7 @@ public class TestOntologyAggregator {
 						+ rf.isIncludeSubclasses());
 				new HDOTExtender(rf.getAcceptedRecommendation(),
 						rf.isIncludeSubclasses(), rg.getOntology_manager(),
-						rg.getHdot_ontology(), rg.getOntologyService());
+						rg.getHdot_ontology(), rg.getOntologyService(), userID);
 				break;
 			}
 		}
@@ -152,6 +155,6 @@ public class TestOntologyAggregator {
 
 	private static void usage() {
 		System.out
-				.println("usage: java -jar OntologyAggregator.jar <term1;term2...>\nyou can specify one or more terms\nnote: terms that have more than one word have to be written in quotes, e.g. \"bone marrow\"");
+				.println("usage: java -jar OntologyAggregator.jar <term1;term2...> <userID>\nyou can specify one or more terms\nnote: terms that have more than one word have to be written in quotes, e.g. \"bone marrow\"");
 	}
 }

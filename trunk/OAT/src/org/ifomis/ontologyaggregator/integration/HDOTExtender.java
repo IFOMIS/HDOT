@@ -1,19 +1,25 @@
 package org.ifomis.ontologyaggregator.integration;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.exception.HdotExtensionException;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
+import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.AddAxiom;
+import org.semanticweb.owlapi.model.AddImport;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLImportsDeclaration;
 import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
@@ -30,7 +36,6 @@ import uk.ac.ebi.ontocat.OntologyTerm;
  */
 public class HDOTExtender {
 
-	
 	/**
 	 * The URI manager that decides if the original URI should be kept or new
 	 * should be generated.
@@ -54,20 +59,9 @@ public class HDOTExtender {
 	private OWLDataFactory dataFactory;
 
 	/**
-	 * the outgoing ontology, where the recommended class is going to be
-	 * inserted
-	 */
-	private IRI ontoOut;
-	
-	/**
 	 * The ontology manager
 	 */
 	private OWLOntologyManager ontology_manager;
-
-	/**
-	 * The HDOT ontology
-	 */
-	private OWLOntology hdot_ontology;
 
 	/**
 	 * The path to the modules.
@@ -85,39 +79,50 @@ public class HDOTExtender {
 	 */
 	private OWLClass theAcceptedHit;
 
+	private OWLOntology newModule;
+
+	private String nameOfNewModule;
+
 	public HDOTExtender(Recommendation accceptedRecommendation,
 			boolean includeSubclasses, OWLOntologyManager ontology_manager,
-			OWLOntology hdot_ontology, OntologyService ontologyService)
-			throws OntologyServiceException, IOException,
+			OWLOntology hdot_ontology, OntologyService ontologyService,
+			String userID) throws OntologyServiceException, IOException,
 			OWLOntologyStorageException, URISyntaxException,
-			HdotExtensionException {
+			HdotExtensionException, OWLOntologyCreationException {
 
-		this.ontology_manager = ontology_manager;
-		this.hdot_ontology = hdot_ontology;
+		// initialize fields
+		this.ontology_manager = OWLManager.createOWLOntologyManager();
+		this.dataFactory = this.ontology_manager.getOWLDataFactory();
 		this.acceptedRecommendation = accceptedRecommendation;
+		this.nameOfNewModule = "hdot_module_user" + userID + ".owl";
+		this.uriManager = new HDOTURIManager(accceptedRecommendation,
+				includeSubclasses);
+		this.hdotVerifier = new HDOTVerifier();
+
+		log.debug("extracted documentIRI:"
+				+ ontology_manager.getOntologyDocumentIRI(hdot_ontology)
+						.toString());
 
 		// extract the path to the physical documents from the ontology iri
 		String[] partsOfPath = ontology_manager
 				.getOntologyDocumentIRI(hdot_ontology).toString().split("/");
 
 		for (int i = 0; i < partsOfPath.length - 1; i++) {
-			this.pathToModules +=  partsOfPath[i] + "/";
+			this.pathToModules += partsOfPath[i] + "/";
+
 		}
-		log.debug("path to hdot ontology " + this.pathToModules);
 
-		this.dataFactory = ontology_manager.getOWLDataFactory();
+		initNewModule(accceptedRecommendation);
 
-		this.uriManager = new HDOTURIManager(accceptedRecommendation,
-				includeSubclasses);
-
-		this.hdotVerifier = new HDOTVerifier();
-
+		// extends HDOT with the actual hit
 		extendHDOT(
 				acceptedRecommendation.getHit(),
 				dataFactory.getOWLClass(IRI.create(acceptedRecommendation
 						.getMatchedClass().getURI().toString())),
 				acceptedRecommendation.getHitDefinition(), true);
 
+		// in case the user want extends HDOT with the subclasses of the actual
+		// hit
 		if (includeSubclasses) {
 
 			List<OntologyTerm> subClasses = accceptedRecommendation
@@ -130,6 +135,45 @@ public class HDOTExtender {
 						false);
 			}
 		}
+	}
+
+	private void initNewModule(Recommendation accceptedRecommendation)
+			throws OWLOntologyCreationException, URISyntaxException {
+		boolean found = false;
+		log.debug("path to hdot ontology " + this.pathToModules);
+
+		File directory = new File(new URI(pathToModules));
+
+		for (File f : directory.listFiles()) {
+			if (f.getName().equals(this.nameOfNewModule)) {
+				found = true;
+				break;
+			}
+		}
+		if (found) {
+			log.debug("MODULE EXISTS");
+
+			this.newModule = this.ontology_manager
+					.loadOntologyFromOntologyDocument(new File(new URI(
+							this.pathToModules + this.nameOfNewModule)));
+		} else {
+			log.debug("MODULE DOES NOT EXIST");
+
+			IRI ontologyIRI = IRI.create("http://www.ifomis.org/hdot/"
+					+ this.nameOfNewModule);
+
+			// Now create the ontology - we use the ontology IRI (not the
+			// physical
+			// IRI)
+			this.newModule = this.ontology_manager.createOntology(ontologyIRI);
+		}
+		OWLImportsDeclaration importDeclaraton = this.dataFactory
+				.getOWLImportsDeclaration(accceptedRecommendation
+						.getHdotModule().getOntologyID().getOntologyIRI());
+
+		this.ontology_manager.applyChange(new AddImport(newModule,
+				importDeclaraton));
+
 	}
 
 	/**
@@ -176,7 +220,7 @@ public class HDOTExtender {
 		integrateOriginalId(newClass);
 		log.debug("original id is integrated");
 
-		if (hdotVerifier.verifyOntology(hdot_ontology)) {
+		if (hdotVerifier.verifyOntology(newModule)) {
 			log.debug("extended ontology is verified");
 
 			saveOntology();
@@ -217,10 +261,12 @@ public class HDOTExtender {
 		OWLAxiom axiom = dataFactory.getOWLSubClassOfAxiom(hitForIntegration,
 				parent);
 
-		AddAxiom addAxiom = new AddAxiom(
-				acceptedRecommendation.getHdotModule(), axiom);
+		AddAxiom addAxiom = new AddAxiom(newModule, axiom);
 
 		ontology_manager.applyChange(addAxiom);
+		log.debug("axioms after class insertion: "
+				+ newModule.getAxioms().toString());
+
 	}
 
 	/**
@@ -232,13 +278,15 @@ public class HDOTExtender {
 		OWLAnnotation commentAnno = dataFactory.getOWLAnnotation(
 				dataFactory
 						.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL
-								.getIRI()), dataFactory.getOWLLiteral(
-						newClass.getLabel().toLowerCase(), "en"));
+								.getIRI()), dataFactory.getOWLLiteral(newClass
+						.getLabel().toLowerCase(), "en"));
 
 		OWLAxiom ax = dataFactory.getOWLAnnotationAssertionAxiom(
 				hitForIntegration.getIRI(), commentAnno);
-		ontology_manager.applyChange(new AddAxiom(acceptedRecommendation
-				.getHdotModule(), ax));
+		ontology_manager.applyChange(new AddAxiom(newModule, ax));
+		log.debug("axioms after label insertion : "
+				+ newModule.getAxioms().toString());
+
 	}
 
 	/**
@@ -257,9 +305,12 @@ public class HDOTExtender {
 
 			OWLAxiom ax = dataFactory.getOWLAnnotationAssertionAxiom(
 					hitForIntegration.getIRI(), defAnno);
-			ontology_manager.applyChange(new AddAxiom(acceptedRecommendation
-					.getHdotModule(), ax));
+			ontology_manager.applyChange(new AddAxiom(newModule, ax));
 		}
+
+		log.debug("axioms after integrate definitions: "
+				+ newModule.getAxioms().toString());
+
 	}
 
 	/**
@@ -275,8 +326,11 @@ public class HDOTExtender {
 
 		OWLAxiom ax = dataFactory.getOWLAnnotationAssertionAxiom(
 				hitForIntegration.getIRI(), sourceAnno);
-		ontology_manager.applyChange(new AddAxiom(acceptedRecommendation
-				.getHdotModule(), ax));
+		ontology_manager.applyChange(new AddAxiom(newModule, ax));
+
+		log.debug("axioms after integrate original ids: "
+				+ newModule.getAxioms().toString());
+
 	}
 
 	/**
@@ -292,15 +346,10 @@ public class HDOTExtender {
 			URISyntaxException {
 
 		// finally the ontology can be stored
+		ontology_manager.saveOntology(newModule,
+				IRI.create(this.pathToModules + this.nameOfNewModule));
 
-		String[] iriTokens = acceptedRecommendation.getHdotModule()
-				.getOntologyID().getOntologyIRI().toString().split("/");
-		String moduleAccession = iriTokens[iriTokens.length - 1];
-		this.ontology_manager.saveOntology(
-				acceptedRecommendation.getHdotModule(),
-				IRI.create(pathToModules + moduleAccession));
-
-		log.info("The extended ontology is saved in: " + pathToModules
-				+ moduleAccession);
+		log.info("The extended HDOT module is saved in: " + this.pathToModules
+				+ this.nameOfNewModule);
 	}
 }
