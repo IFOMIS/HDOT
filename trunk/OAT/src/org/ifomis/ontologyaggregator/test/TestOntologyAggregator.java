@@ -55,12 +55,12 @@ public class TestOntologyAggregator {
 			for (int i = 0; i < se.getTermsList().size(); i++) {
 				String term = se.getTermsList().get(i);
 				se.searchTermInBioPortal(term);
-
+			
 				log.info("\nRECOMMENDATION GENERATION\n");
 
 				boolean recommendationWasAccepted = processingSearchResults(0,
 						5, se, term, start, args[1]);
-
+			
 				if (!recommendationWasAccepted) {
 					boolean recommendationWasAcceptedSecondTurn = processingSearchResults(
 							5, 10, se, term, start, args[1]);
@@ -149,7 +149,10 @@ public class TestOntologyAggregator {
 						rg.getHdot_ontology(), rg.getOntologyService(), userID);
 				break;
 			}
+			
 		}
+		
+		
 		return rf.isAccept();
 	}
 

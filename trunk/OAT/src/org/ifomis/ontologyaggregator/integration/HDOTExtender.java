@@ -241,6 +241,10 @@ public class HDOTExtender {
 	private void integrateClass(OntologyTerm newClass, OWLClass parent,
 			String newHdotURI, boolean isTheActualHit) {
 
+		log.debug("class for integration: " + newClass);
+		log.debug("parent of class for integration: " + parent);
+		
+		
 		if (newHdotURI.isEmpty()) {
 			hitForIntegration = dataFactory.getOWLClass(IRI.create(newClass
 					.getURI().toString()));
@@ -264,8 +268,8 @@ public class HDOTExtender {
 		AddAxiom addAxiom = new AddAxiom(newModule, axiom);
 
 		ontology_manager.applyChange(addAxiom);
-		log.debug("axioms after class insertion: "
-				+ newModule.getAxioms().toString());
+//		log.debug("axioms after class insertion: "
+//				+ newModule.getAxioms().toString());
 
 	}
 
@@ -284,8 +288,8 @@ public class HDOTExtender {
 		OWLAxiom ax = dataFactory.getOWLAnnotationAssertionAxiom(
 				hitForIntegration.getIRI(), commentAnno);
 		ontology_manager.applyChange(new AddAxiom(newModule, ax));
-		log.debug("axioms after label insertion : "
-				+ newModule.getAxioms().toString());
+//		log.debug("axioms after label insertion : "
+//				+ newModule.getAxioms().toString());
 
 	}
 
@@ -308,8 +312,8 @@ public class HDOTExtender {
 			ontology_manager.applyChange(new AddAxiom(newModule, ax));
 		}
 
-		log.debug("axioms after integrate definitions: "
-				+ newModule.getAxioms().toString());
+//		log.debug("axioms after integrate definitions: "
+//				+ newModule.getAxioms().toString());
 
 	}
 
@@ -328,8 +332,8 @@ public class HDOTExtender {
 				hitForIntegration.getIRI(), sourceAnno);
 		ontology_manager.applyChange(new AddAxiom(newModule, ax));
 
-		log.debug("axioms after integrate original ids: "
-				+ newModule.getAxioms().toString());
+//		log.debug("axioms after integrate original ids: "
+//				+ newModule.getAxioms().toString());
 
 	}
 
