@@ -63,7 +63,7 @@ public class TestRecommendationGenerator {
 
 				// TODO ontoIn
 				RecommendationGenerator rg = new RecommendationGenerator(
-						"data/hdot/hdot_all.owl", "", se.getListOfPaths()
+						"data/hdot/hdot_all.owl", se.getListOfPaths()
 								.subList(0, 5), term, se.getRestrictedBps(),
 						start);
 

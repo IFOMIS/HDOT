@@ -126,7 +126,7 @@ public class RecommendationGenerator {
 	 * @throws URISyntaxException
 	 * @throws OntologyServiceException
 	 */
-	public RecommendationGenerator(String ontoIn, String ontoOut,
+	public RecommendationGenerator(String ontoIn,
 			List<Stack<OntologyTerm>> listOfPaths, String searchedTerm,
 			OntologyService ontologyService, long start) throws IOException,
 			URISyntaxException, OntologyServiceException {
@@ -154,14 +154,15 @@ public class RecommendationGenerator {
 
 		try {
 			// Now load the local copy of hdot that include all modules
-			this.hdot_ontology = ontology_manager
-					.loadOntologyFromOntologyDocument(file);
+//			this.hdot_ontology = ontology_manager
+//					.loadOntologyFromOntologyDocument(file);
+			this.hdot_ontology = ontology_manager.loadOntologyFromOntologyDocument(IRI.create(file));
 
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
 		}
 		// We can always obtain the location where an ontology was loaded from
-		this.iriIn = ontology_manager.getOntologyDocumentIRI(hdot_ontology);
+//		this.iriIn = ontology_manager.getOntologyDocumentIRI(hdot_ontology);
 		log.info("iriIn: " + iriIn);
 		log.info("Loaded ontology: " + hdot_ontology);
 		Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
@@ -422,9 +423,9 @@ public class RecommendationGenerator {
 			if (currentCandidate.getURI().toString()
 					.equals(hdotClass.toStringID())) {
 				log.info("\nCONCEPT IDs of BioPortal HIT and HDOT CLASS MATCH\n");
-				// log.info("id of current candidate: "
+				// log.debug("id of current candidate: "
 				// + currentCandidate.getURI().toString());
-				// log.info("id of hdot class: " + hdotClass.toStringID());
+				// log.debug("id of hdot class: " + hdotClass.toStringID());
 				conceptIdsMatch = true;
 				// if we find a match then we will retrieve this concept
 				matchedTerm = new OntologyTerm();
@@ -459,7 +460,7 @@ public class RecommendationGenerator {
 								pureLabelOfHdotClass.toLowerCase());
 				if (similarityOfLabels > 0.95) {
 
-					log.info("\nLABELS of BioPortal HIT and HDOT CLASS SIMILARITY > 90\n");
+					log.info("\nLABELS of BioPortal HIT and HDOT CLASS SIMILARITY > 95\n");
 					log.info("pureLabelOfHdotClass: " + pureLabelOfHdotClass);
 
 					log.info("label of currentCandidate: "
