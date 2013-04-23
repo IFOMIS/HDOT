@@ -120,7 +120,7 @@ public class TestOntologyAggregator {
 			URISyntaxException, OntologyServiceException,
 			OWLOntologyStorageException, HdotExtensionException, OWLOntologyCreationException {
 		RecommendationGenerator rg = new RecommendationGenerator(
-				"data/hdot/hdot_all.owl", "",
+				"data/hdot/hdot_all.owl",
 				se.getListOfPaths().subList(i, j), term, se.getRestrictedBps(),
 				start);
 
