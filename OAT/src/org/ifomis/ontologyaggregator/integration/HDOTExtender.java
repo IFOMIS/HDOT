@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
+import java.util.Set;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.exception.HdotExtensionException;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
@@ -129,13 +131,27 @@ public class HDOTExtender {
 					.getHitChildren();
 
 			for (OntologyTerm subClass : subClasses) {
+				//TODO ensure that the classes are not already contained in hdot
+//				ensureNotAlreadyContainedInHDOT(subClass);
+				
+				
 				List<String> definitionsOfSubClass = ontologyService
 						.getDefinitions(subClass);
 				extendHDOT(subClass, theAcceptedHit, definitionsOfSubClass,
 						false);
 			}
 		}
+		createNewModuleAndUpdateHdotAll();
 	}
+
+//	private void ensureNotAlreadyContainedInHDOT(OntologyTerm subClass) throws OWLOntologyCreationException {
+//		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+//		manager.loadOntologyFromOntologyDocument(new File("data/hdot/hdot_all.owl"));
+//		Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
+//		for (OWLOntology owlOntology : hdotModules) {
+//			if(owlOntology.getClassesInSignature())
+//		}
+//	}
 
 	private void initNewModule(Recommendation accceptedRecommendation)
 			throws OWLOntologyCreationException, URISyntaxException {
@@ -193,11 +209,12 @@ public class HDOTExtender {
 	 * @throws URISyntaxException
 	 * @throws HdotExtensionException
 	 * @throws IOException
+	 * @throws OWLOntologyCreationException 
 	 */
 	public void extendHDOT(OntologyTerm newClass, OWLClass parent,
 			List<String> definitions, boolean isTheActualHit)
 			throws OWLOntologyStorageException, URISyntaxException,
-			HdotExtensionException, IOException {
+			HdotExtensionException, IOException, OWLOntologyCreationException {
 
 		String newHdotURI = "";
 		if (!uriManager.keepOriginalURI()) {
@@ -223,7 +240,6 @@ public class HDOTExtender {
 		if (hdotVerifier.verifyOntology(newModule)) {
 			log.debug("extended ontology is verified");
 
-			saveOntology();
 		} else {
 			throw new HdotExtensionException(
 					"HDOT cannot be extended due to inconsistency");
@@ -345,14 +361,34 @@ public class HDOTExtender {
 	 * @throws OWLOntologyStorageException
 	 *             occurs if the ontology can not be stored
 	 * @throws URISyntaxException
+	 * @throws OWLOntologyCreationException 
+	 * @throws IOException 
 	 */
-	private void saveOntology() throws OWLOntologyStorageException,
-			URISyntaxException {
+	private void createNewModuleAndUpdateHdotAll() throws OWLOntologyStorageException,
+			URISyntaxException, OWLOntologyCreationException, IOException {
 
 		// finally the ontology can be stored
 		ontology_manager.saveOntology(newModule,
 				IRI.create(this.pathToModules + this.nameOfNewModule));
+		
+		ontology_manager.removeOntology(newModule);
+		
+		 OWLOntology hdot_all = this.ontology_manager.loadOntologyFromOntologyDocument(new File("data/hdot/hdot_all.owl"));
+		//import the new module in hdot_all.owl and save it
+		
+		OWLImportsDeclaration importDeclaraton = this.dataFactory
+				.getOWLImportsDeclaration(newModule.getOntologyID().getOntologyIRI());
 
+		this.ontology_manager.applyChange(new AddImport(hdot_all,
+				importDeclaraton));
+		
+		ontology_manager.saveOntology(hdot_all);
+//		ontology_manager.saveOntology(hdot_all, IRI.create("https://code.google.com/p/hdot/source/browse/trunk/hdot_module_user2.owl"));
+		//add the new module to the list of sorted ids of the hdot modules
+		List<String> orderOfModules = FileUtils.readLines(new File("data/sortedHdotModuleIds"));
+		orderOfModules.add(0, newModule.getOntologyID().getOntologyIRI().toString());
+		FileUtils.writeLines(new File("data/sortedHdotModuleIds"), orderOfModules);
+		
 		log.info("The extended HDOT module is saved in: " + this.pathToModules
 				+ this.nameOfNewModule);
 	}
