@@ -386,8 +386,13 @@ public class HDOTExtender {
 //		ontology_manager.saveOntology(hdot_all, IRI.create("https://code.google.com/p/hdot/source/browse/trunk/hdot_module_user2.owl"));
 		//add the new module to the list of sorted ids of the hdot modules
 		List<String> orderOfModules = FileUtils.readLines(new File("data/sortedHdotModuleIds"));
-		orderOfModules.add(0, newModule.getOntologyID().getOntologyIRI().toString());
-		FileUtils.writeLines(new File("data/sortedHdotModuleIds"), orderOfModules);
+		String newModuleIRI = newModule.getOntologyID().getOntologyIRI().toString();
+		
+		//add the module id if the module does not exist
+		if (!orderOfModules.contains(newModuleIRI)){
+			orderOfModules.add(0,newModuleIRI);
+			FileUtils.writeLines(new File("data/sortedHdotModuleIds"), orderOfModules);
+		}
 		
 		log.info("The extended HDOT module is saved in: " + this.pathToModules
 				+ this.nameOfNewModule);
