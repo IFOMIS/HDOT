@@ -59,13 +59,15 @@ public class TestOntologyAggregator {
 				log.info("\nRECOMMENDATION GENERATION\n");
 
 				boolean recommendationWasAccepted = processingSearchResults(0,
-						5, se, term, start, args[1]);
+						5, true, se, term, start, args[1]);
 			
 				if (!recommendationWasAccepted) {
+					log.info("search for further recommendations ...");
+					
 					boolean recommendationWasAcceptedSecondTurn = processingSearchResults(
-							5, 10, se, term, start, args[1]);
+							5, 10, false, se, term, start, args[1]);
 					if (!recommendationWasAcceptedSecondTurn) {
-						log.info("NO RECOMMENDATION FOUND IN THE TOP 10 HITS");
+						log.info("NO RECOMMENDATION FOUND IN THE TOP 5-10 HITS");
 					}
 				}
 				long end = System.currentTimeMillis();
@@ -116,13 +118,13 @@ public class TestOntologyAggregator {
 	}
 
 	private static boolean processingSearchResults(int i, int j,
-			SearchEngine se, String term, long start, String userID) throws IOException,
+			boolean isTopFive, SearchEngine se, String term, long start, String userID) throws IOException,
 			URISyntaxException, OntologyServiceException,
 			OWLOntologyStorageException, HdotExtensionException, OWLOntologyCreationException {
 		RecommendationGenerator rg = new RecommendationGenerator(
 				"data/hdot/hdot_all.owl",
 				se.getListOfPaths().subList(i, j), term, se.getRestrictedBps(),
-				start);
+				start, isTopFive);
 
 		RecommendationFilter rf = new RecommendationFilter(term,
 				rg.getListOfRecommendations(),
@@ -152,6 +154,8 @@ public class TestOntologyAggregator {
 			
 		}
 		
+		//TODO to xml method for the recommendation output ???
+		//TODO BioPortal categories
 		
 		return rf.isAccept();
 	}
