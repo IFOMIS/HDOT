@@ -65,7 +65,7 @@ public class TestRecommendationGenerator {
 				RecommendationGenerator rg = new RecommendationGenerator(
 						"data/hdot/hdot_all.owl", se.getListOfPaths()
 								.subList(0, 5), term, se.getRestrictedBps(),
-						start);
+						start, true);
 
 				RecommendationFilter rf = new RecommendationFilter(term,
 						rg.getListOfRecommendations(),

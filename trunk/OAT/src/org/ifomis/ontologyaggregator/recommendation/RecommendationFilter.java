@@ -45,8 +45,6 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 
 		if (!validRecommendations.isEmpty()) {
 
-			log.info("THERE WERE RECOMMENDATIONS GENERATED");
-
 			if (validRecommendations.size() == 1) {
 				log.info("SINGLE RECOMMENDATION");
 

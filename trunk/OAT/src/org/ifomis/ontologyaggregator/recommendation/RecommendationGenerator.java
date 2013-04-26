@@ -114,6 +114,8 @@ public class RecommendationGenerator {
 	
 	private OWLOntology[] sortedHdotModules;
 
+	private boolean isTopFive;
+
 	/**
 	 * Creates a RecommendationGenerator and loads the specified input ontology.
 	 * 
@@ -128,13 +130,14 @@ public class RecommendationGenerator {
 	 */
 	public RecommendationGenerator(String ontoIn,
 			List<Stack<OntologyTerm>> listOfPaths, String searchedTerm,
-			OntologyService ontologyService, long start) throws IOException,
+			OntologyService ontologyService, long start, boolean isTopFive) throws IOException,
 			URISyntaxException, OntologyServiceException {
 
 		// initialize the fields
 		this.start = start;
 		this.ontologyService = ontologyService;
-
+		this.isTopFive = isTopFive;
+		
 		this.listOfRecommendations = new ArrayList<>();
 		this.listOfRecsPossibleInCoreOfHDOT = new ArrayList<>();
 		this.listOfInCoreNotLeafMatches = new ArrayList<>();
@@ -163,7 +166,8 @@ public class RecommendationGenerator {
 		}
 		// We can always obtain the location where an ontology was loaded from
 //		this.iriIn = ontology_manager.getOntologyDocumentIRI(hdot_ontology);
-		log.info("iriIn: " + iriIn);
+//		log.info("iriIn: " + iriIn);
+
 		log.info("Loaded ontology: " + hdot_ontology);
 		Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
 		log.debug("modules: " );
@@ -192,8 +196,12 @@ public class RecommendationGenerator {
 	private void generateRecommendation(List<Stack<OntologyTerm>> listOfPaths)
 			throws URISyntaxException, IOException, OntologyServiceException {
 
-		hitsCounter = 0;
-		recommendationCounter = 0;
+		//init depending if first or second run
+		if(isTopFive){
+			hitsCounter = 0;
+		}else{
+		hitsCounter = 5;
+		}recommendationCounter = 0;
 
 		// iterate over paths of the 5-best hits
 		for (Stack<OntologyTerm> path : listOfPaths) {
@@ -228,7 +236,7 @@ public class RecommendationGenerator {
 		if (recommendationCounter == 0) {
 			log.info("NO SUITABLE RECOMMENDATION WAS FOUND!\n");
 		} else {
-			log.info(recommendationCounter + " recommendations were generated");
+			log.info(recommendationCounter + " RECOMMENDATIONS WERE GENERATED");
 		}
 	}
 
@@ -319,7 +327,7 @@ public class RecommendationGenerator {
 		}
 		Recommendation recommendation = new Recommendation(hitsCounter,
 				currentHit, conceptIdsMatch, labelsMatch, searchedTerm,
-				hierarchyOfHdotClass, hierarchyOfHit, hdotModule,
+				hierarchyOfHdotClass, hierarchyOfHit, hdot_ontology ,hdotModule,
 				counterForParents, matchedConcept, definitions, synonyms,
 				childrenOfHit);
 
@@ -508,7 +516,7 @@ public class RecommendationGenerator {
 								hitsCounter, currentHit, conceptIdsMatch,
 								labelsMatch, searchedTerm,
 								hierarchyOfHdotClass, hierarchyOfHit,
-								currentOntology, counterForParents,
+								hdot_ontology, currentOntology, counterForParents,
 								matchedTerm, definitions, synonyms,
 								childrenOfHit));
 						log.debug("search for further matches ...\n");
@@ -530,7 +538,7 @@ public class RecommendationGenerator {
 								hitsCounter, currentHit, conceptIdsMatch,
 								labelsMatch, searchedTerm,
 								hierarchyOfHdotClass, hierarchyOfHit,
-								currentOntology, counterForParents,
+								hdot_ontology, currentOntology, counterForParents,
 								matchedTerm, definitions, synonyms,
 								childrenOfHit));
 						matchedTerm = null;

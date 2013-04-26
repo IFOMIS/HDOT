@@ -32,9 +32,9 @@ public class Recommendation {
 	private OntologyTerm matchedClass;
 	private List<String> hitSynonyms;
 	private List<OntologyTerm> hitChildren;
-	
 
 	private Stack<OntologyTerm> hitHierarchy;
+	private OWLOntology hdot_all;
 
 	public Stack<OntologyTerm> getHitHierarchy() {
 		return hitHierarchy;
@@ -42,9 +42,10 @@ public class Recommendation {
 
 	public Recommendation(int hitNo, OntologyTerm hit, boolean idsMatched,
 			boolean labelsMatched, String searchedTerm,
-			List<OWLClass> hierarchy, Stack<OntologyTerm> hierarchyOfHit, OWLOntology hdotModule, int parentNo,
-			OntologyTerm matchedClass, List<String> definitions,
-			List<String> synonyms, List<OntologyTerm> childrenOfHit) {
+			List<OWLClass> hierarchy, Stack<OntologyTerm> hierarchyOfHit,
+			OWLOntology hdot_all, OWLOntology hdotModule, int parentNo, OntologyTerm matchedClass,
+			List<String> definitions, List<String> synonyms,
+			List<OntologyTerm> childrenOfHit) {
 
 		this.hitNo = hitNo;
 		this.hit = hit;
@@ -52,6 +53,7 @@ public class Recommendation {
 		this.labelsMatched = labelsMatched;
 		this.searchedTerm = searchedTerm;
 		this.hdotHierarchy = hierarchy;
+		this.hdot_all = hdot_all;
 		this.hdotModule = hdotModule;
 		this.parentNoOfHit = parentNo;
 		this.matchedClass = matchedClass;
@@ -59,28 +61,48 @@ public class Recommendation {
 		this.hitSynonyms = synonyms;
 		this.hitChildren = childrenOfHit;
 		this.hitHierarchy = hierarchyOfHit;
+		
 	}
 
 	@Override
 	public String toString() {
 		StringBuffer messageBuffer = new StringBuffer();
+		messageBuffer.append("\n==================================RECOMMENDATION:===============================");
+		messageBuffer.append("==========================================================================");
 
-		messageBuffer.append("searched term:" + this.searchedTerm);
+		messageBuffer.append("\nsearched term:" + this.searchedTerm);
 		messageBuffer.append("\nhit No:" + hitNo);
-		messageBuffer.append("\nRECOMMENDATION:");
-		messageBuffer.append("\n\thierarchy of the HDOT class:");
+		messageBuffer.append("\n\tthe hit hieratchy:");
+		for (OntologyTerm parent : hitHierarchy) {
+			messageBuffer.append("\n\t\t");
+			messageBuffer.append(parent.getURI().toString());
+			messageBuffer.append("\t");
+			messageBuffer.append(parent.getLabel());
+		}
+		
+		messageBuffer.append("\n\n\tthe HDOT class hierarchy:");
 
 		for (int i = hdotHierarchy.size() - 1; i >= 0; i--) {
 			OWLClass entryOfHierarchy = hdotHierarchy.get(i);
 			messageBuffer.append("\n\t\t");
-			messageBuffer.append(entryOfHierarchy.toString());
-
-			String label = retriveRdfsLabel(entryOfHierarchy
-					.getAnnotations(hdotModule));
+			messageBuffer.append(entryOfHierarchy.getIRI().toString());
+			
+			String label = "";
+			//get the labels of the parents to display them
+			for (OWLOntology currOnto : hdot_all.getImports()) {
+				if(!entryOfHierarchy.getAnnotations(currOnto).isEmpty()){
+					label = retriveRdfsLabel(entryOfHierarchy.getAnnotations(currOnto));
+					break;
+				}
+			}
 			messageBuffer.append("\t");
 			messageBuffer.append(label);
-
+			
 		}
+		messageBuffer.append(matchedClass.getURI().toString());
+		messageBuffer.append("\t");
+		messageBuffer.append(matchedClass.getLabel());
+		
 		messageBuffer.append("\n\n\t\tparent No:" + (this.parentNoOfHit));
 		messageBuffer.append("  of the current hit matched the concept:\n\t\t");
 		messageBuffer.append(matchedClass.getURI().toString());
@@ -88,41 +110,46 @@ public class Recommendation {
 		messageBuffer.append(matchedClass.getLabel());
 
 		messageBuffer
-				.append("\n\n\t\tDo you want to integrate the following term under the hierarchy displayed above:\n\t\t");
+				.append("\n\n\t\tDo you want to integrate the following concept under the HDOT hierarchy displayed above:\n");
+		
+		messageBuffer.append("\n\t\t........................................................................................\n");
+		messageBuffer.append("\t\t");
 		messageBuffer.append(hit.getURI().toString());
 		messageBuffer.append("\t");
 		messageBuffer.append(hit.getLabel());
 
-		messageBuffer.append("\n\n\tdefinotion(s):\n\t\t");
+		messageBuffer.append("\n\n\t\t\tdefinotion(s):\n\t\t");
 
 		for (String def : hitDefinitions) {
+			messageBuffer.append("\t\t");
 			messageBuffer.append(def);
-			messageBuffer.append("\n\t\t");
+			messageBuffer.append("\n\n\t\t");
 		}
 
-		messageBuffer.append("\n\tsynonyms:\n\t\t");
+		messageBuffer.append("\n\t\t\tsynonyms:\n\t\t");
 
 		for (String syn : hitSynonyms) {
+			messageBuffer.append("\t\t\t\t");
 			messageBuffer.append(syn);
-			messageBuffer.append("\n\t\t");
+			messageBuffer.append("\n\t\t\t\t");
 		}
 
-		messageBuffer.append("\n\tsubClasses:\n\t\t");
+		messageBuffer.append("\n\t\t\tsubClasses:\n\t\t");
 		if (hitChildren != null) {
 			for (OntologyTerm child : hitChildren) {
-				messageBuffer.append(child);
+				messageBuffer.append("\n\t\t\t\t");
+				messageBuffer.append(child.getURI().toString());
+				messageBuffer.append("\t");
+				messageBuffer.append(child.getLabel());
 			}
 		}
-		messageBuffer.append("\n\tthe hieratchy of the hit:\n\t\t");
-		for (OntologyTerm parent : hitHierarchy) {
-			messageBuffer.append("\n\t\t");
-			messageBuffer.append(parent.getURI());
-			messageBuffer.append("\t");
-			messageBuffer.append(parent.getLabel());
-		}
+		messageBuffer.append("\n\t\t........................................................................................");
+
 		messageBuffer
 				.append("\n\n\t\tThe hdot module where the match was found is: ");
-		messageBuffer.append(hdotModule);
+		messageBuffer.append(hdotModule.getOntologyID().getOntologyIRI());
+		messageBuffer.append("\n==========================================================================");
+		messageBuffer.append("==========================================================================");
 
 		return messageBuffer.toString();
 	}
@@ -191,6 +218,7 @@ public class Recommendation {
 	public OntologyTerm getMatchedClass() {
 		return matchedClass;
 	}
+
 	public List<OntologyTerm> getHitChildren() {
 		return hitChildren;
 	}
