@@ -498,24 +498,6 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- http://www.ifomis.org/hdot/HDOT_CP_004 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_CP_004">
-        <rdfs:label xml:lang="en">cancer-related loss of appetite</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CP_025"/>
-        <rdfs:comment xml:lang="en">Cancer-associated loss or reduction in appetite can result from medical conditions, such as from local effects of a tumour, the host response to the tumour and anticancer therapies.
-
-Loss of appetite may lead to malnutrition, which in turn has consequences such as impairment of immune functions, performance status, muscle function, and quality of life. Furthermore, responses to chemotherapy are decreased, chemotherapy-induced toxicity and complications are more frequent and severe, and survival times are shortened.
-
-A loss or reduction in appetite may be due also to psychological conditions, such as emotional or mental symptoms. More specifically, depression, anxiety, fatigue and malaise can lead to decreased appetite or other changes in eating habits, that also significantly impact on patient well-being and recovery.
-
-p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
-        <obo:IAO_0000115 xml:lang="en">Cancer-related loss of appetite is a loss of appetite that is caused by an instance of cancer occurring in the organism</obo:IAO_0000115>
-        <hdot:patientLanguageDefinition xml:lang="en">Cancer-related loss of appetite is the feeling of full stomach that leads not to eat caused by a cancer in the organism</hdot:patientLanguageDefinition>
-    </owl:Class>
-    
-
-
     <!-- http://www.ifomis.org/hdot/HDOT_CP_005 -->
 
     <owl:Class rdf:about="&hdot;HDOT_CP_005">
@@ -631,44 +613,6 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- http://www.ifomis.org/hdot/HDOT_CP_014 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_CP_014">
-        <rdfs:label xml:lang="en">cancer-related fatigue</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
-        <hdot:patientLanguageDefinition xml:lang="en">Cancer related fatigue is a mental and/or physical feeling of tiredness and lack of energy that prevents to conduct normal daily activities</hdot:patientLanguageDefinition>
-        <rdfs:comment xml:lang="en">Cancer-related fatigue (CRF) is characterized by feelings of tiredness, weakness, and lack of energy, and is distinct from the “normal” drowsiness experienced by healthy individuals in that it is not relieved by rest or sleep
-
-p-medicine Deliverable D14.2, Specification of linguistic schema</rdfs:comment>
-        <obo:IAO_0000115 xml:lang="en">Cancer-related fatigue is a disposition that occurs in an organism due to an instance of cancer</obo:IAO_0000115>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_CP_015 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_CP_015">
-        <rdfs:label xml:lang="en">sensory perception of cancer-related pain</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
-        <obo:IAO_0000115 xml:lang="en">Sensory perception of cancer-related pain is a sensory perception of pain that is caused by an instance of cancer in the organism</obo:IAO_0000115>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_CP_016 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_CP_016">
-        <rdfs:label xml:lang="en">cancer-related depression</rdfs:label>
-        <rdfs:label xml:lang="en">cancer-related depression disease</rdfs:label>
-        <hdot:patientLanguageDefinition xml:lang="en">Cancer related depression is a long lasting negative mental state, characterized by sad mood and apathy caused by the presence of cancer</hdot:patientLanguageDefinition>
-        <obo:IAO_0000115 xml:lang="en">Cancer-related depression disease is a depression disease that is caused by an occurence of cancer in the organism</obo:IAO_0000115>
-        <rdfs:comment xml:lang="en">The importance to take into account depressive symptoms in cancer patients is driven by the awareness that depression can adversely affect a cancer patient in many ways: interfering with cancer treatment, increasing length of hospital stay, reducing ability to care for oneself, impairing quality of life, and possibly reducing overall survival time
-
-p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
-    </owl:Class>
-    
-
-
     <!-- http://www.ifomis.org/hdot/HDOT_CP_017 -->
 
     <owl:Class rdf:about="&hdot;HDOT_CP_017">
@@ -719,64 +663,6 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&obo;MF_0000008"/>
         <obo:IAO_0000115 xml:lang="en">Distress is a cognitive process that refers to the inability of someone to adapt completely to stressors and their resulting stress and shows maladaptive behaviors</obo:IAO_0000115>
         <hdot:patientLanguageDefinition xml:lang="en">Distress is a condition in which a person has difficulties in coping with a long-lasting stressful and frustrating situation</hdot:patientLanguageDefinition>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_CP_021 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_CP_021">
-        <rdfs:label xml:lang="en">erectile dysfunction</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
-        <hdot:patientLanguageDefinition xml:lang="en">Erectile dysfunction is a difficulty for the male to have and maintain penis erection during sexual performance</hdot:patientLanguageDefinition>
-        <obo:IAO_0000115 xml:lang="en">Erectile dysfunction is a sexual dysfunction that is characterized by the inability to develop or maintain an erection of the penis during sexual performance</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Erectile_dysfunction</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_CP_022 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_CP_022">
-        <rdfs:label xml:lang="en">retrograde ejaculation</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
-        <obo:IAO_0000115 xml:lang="en">Retrograde ejaculation  is a sexual dysfunction that occurs when semen, which would normally be ejaculated via the urethra, is redirected to the urinary bladder</obo:IAO_0000115>
-        <hdot:patientLanguageDefinition xml:lang="en">Retrograde ejaculation is a male condition in which semen goes in the bladder instead to go out from the penis</hdot:patientLanguageDefinition>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Retrograde_ejaculation</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_CP_023 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_CP_023">
-        <rdfs:label xml:lang="en">delayed ejaculation</rdfs:label>
-        <rdfs:label xml:lang="en">inability to ejaculate</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
-        <obo:IAO_0000115 xml:lang="en">Delayed ejaculation is a medical condition in which a male cannot ejaculate, either during intercourse or by manual stimulation with a partner.</obo:IAO_0000115>
-        <hdot:patientLanguageDefinition xml:lang="en">Inability to ejaculate is a male difficulty in emitting the semen during otherwise normal sexual activity</hdot:patientLanguageDefinition>
-        <obo:IAO_0000119 xml:lang="en">http://www.ncbi.nlm.nih.gov/pubmedhealth/PMH0002678/</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_CP_024 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_CP_024">
-        <rdfs:label xml:lang="en">dyspareunia</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
-        <obo:IAO_0000115 xml:lang="en">Dyspareunia is painful sexual intercourse, due to medical or psychological causes. The symptom is significantly more common in women than in men.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://en.wikipedia.org/wiki/Dyspareunia</obo:IAO_0000119>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_CP_025 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_CP_025">
-        <rdfs:label xml:lang="en">loss of appetite</rdfs:label>
-        <obo:IAO_0000115 xml:lang="en">Loss of appetite is a bodily process that is the decreased sensation of appetite.</obo:IAO_0000115>
-        <hdot:patientLanguageDefinition xml:lang="en">Loss of appetite is the feeling of full stomach that leads not to eat</hdot:patientLanguageDefinition>
     </owl:Class>
     
 
@@ -908,23 +794,6 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     
 
 
-    <!-- http://www.ifomis.org/hdot/HDOT_CP_038 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_CP_038">
-        <rdfs:label xml:lang="en">sensory perception of pain during sexual intercourse</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000055"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CP_024"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <hdot:patientLanguageDefinition xml:lang="en">Pain perception during sexual intercourse is a sensation of subjective physical sufferance on sexual apparatus during sexual intercourse</hdot:patientLanguageDefinition>
-        <obo:IAO_0000115 xml:lang="en">Sensory perception of pain during sexual intercourse is a pain that is experienced during sexual intercourses</obo:IAO_0000115>
-    </owl:Class>
-    
-
-
     <!-- http://www.ifomis.org/hdot/HDOT_CP_039 -->
 
     <owl:Class rdf:about="&hdot;HDOT_CP_039">
@@ -952,27 +821,6 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000104"/>
         <obo:IAO_0000119 xml:lang="en">http://medical-dictionary.thefreedictionary.com/emotional+support+1</obo:IAO_0000119>
         <obo:IAO_0000115 xml:lang="en">the sensitive, understanding approach that helps patients accept and deal with their illnesses; communicate their anxieties and fears; derive comfort from a gentle, sympathetic, caring person; and increase their ability to care for themselves.</obo:IAO_0000115>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_CP_042 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_CP_042">
-        <rdfs:label xml:lang="en">financial problem</rdfs:label>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom>
-                    <owl:Class>
-                        <owl:unionOf rdf:parseType="Collection">
-                            <rdf:Description rdf:about="&obo;OGMS_0000084"/>
-                            <rdf:Description rdf:about="&obo;OGMS_0000087"/>
-                        </owl:unionOf>
-                    </owl:Class>
-                </owl:someValuesFrom>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
