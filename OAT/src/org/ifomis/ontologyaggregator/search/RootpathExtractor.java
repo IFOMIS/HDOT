@@ -5,8 +5,13 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Stack;
+import java.util.Vector;
+
+import javax.swing.RootPaneContainer;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -15,8 +20,8 @@ import org.ncbo.stanford.sparql.examples.SimpleTest;
 import uk.ac.ebi.ontocat.OntologyTerm;
 
 /**
- * Extracts the path to root for a hit in a given ontology found in the BioPortal
- * using a SPARQL query.
+ * Extracts the path to root for a hit in a given ontology found in the
+ * BioPortal using a SPARQL query.
  * 
  * @author Nikolina
  * 
@@ -49,10 +54,17 @@ public class RootpathExtractor {
 	 */
 	private StringBuffer sbSuccess;
 
+	private Stack<OntologyTerm> path = new Stack<>();
+	private Set<OntologyTerm> onPath = new HashSet<>();
+
+	private int counterForHitsThatDoNotHaveAnyPath = 0;
 	private int counterForPrefLabels = 0;
 	private int counterForLabels = 0;
 	private List<Stack<OntologyTerm>> listOfPaths;
-	
+
+	private String ontologyAbbreviation;
+
+	private List<String> listOfQueries;
 
 	public RootpathExtractor(String currentTerm, String date) {
 		this.searchedTerm = currentTerm;
@@ -60,154 +72,192 @@ public class RootpathExtractor {
 		sbFailed = new StringBuffer();
 		sbSuccess = new StringBuffer();
 
+		listOfQueries = new ArrayList<>();
+	}
+
+	public List<Stack<OntologyTerm>> computeAllPaths(
+			String ontologyAbbreviation, OntologyTerm ot) throws Exception {
+
+		// counterForHitsThatDoNotHaveAnyPath = 0;
+		listOfPaths = new ArrayList<>();
+
+		this.ontologyAbbreviation = ontologyAbbreviation.toUpperCase();
+
+		enumerate(ot);
+		writePathToRootIntoFile(this.ontologyAbbreviation, ot);
+
+		if (listOfPaths.isEmpty()) {
+			++counterForHitsThatDoNotHaveAnyPath;
+		}
+		log.info("# of paths: " + listOfPaths.size());
+
+		return listOfPaths;
+	}
+
+	private void enumerate(OntologyTerm ot) throws Exception {
+		path.push(ot);
+		onPath.add(ot);
+
+		// log.debug("conceptFullID: " + ot.getURI().toString());
+
+		String response = executeSparqlQuery(ot.getURI().toString());
+
+		String[] parents = parseSparqlResponse(response);
+		if (parents.length == 0) {
+			// log.info(path);
+
+			Stack<OntologyTerm> deepCopyOfPath = getDeepReverseCopy(path);
+			// log.info("path.peek(): " + deepCopyOfPath.peek());
+			if (!(deepCopyOfPath.size() == 1)) {
+				// log.debug("!!!!!soll nicht leer sein!!!!!!!!!!!!!! " +
+				// deepCopyOfPath );
+
+				listOfPaths.add(deepCopyOfPath);
+			} else {
+				// log.debug("!!!!!!!soll leer sein!!!!!!!!!!!! " +
+				// deepCopyOfPath );
+
+				++counterForEmptyResonses;
+			}
+		}
+		for (String parent : parents) {
+//			log.debug("parent" + parent);
+			// exclude exceptions
+			// if(parent.contains("hit complexity limit")){
+			// continue;
+			// }
+			String[] parentTokens = parent.split("\t");
+
+			String parentURI = parentTokens[0].substring(1,
+					parentTokens[0].length() - 1);
+//			log.debug("parentURI" + parentURI);
+
+			OntologyTerm otParent = generateOntologyTerm(parentTokens, ot);
+
+			if (!onPath.contains(parentURI)) {
+
+				enumerate(otParent);
+			}
+		}
+		path.pop();
+		onPath.remove(ot);
 	}
 
 	/**
-	 * Construct and execute a query for the sparql endpoint of BioPortal that
-	 * queries for the path from the given ontology term to the root.
+	 * Copies the given path.
 	 * 
-	 * @param ontologyAbbreviation
-	 *            the ontology where the term was found
+	 * @param path
+	 *            the path to be copied
+	 * @return a deep copy of the given path
+	 */
+	private Stack<OntologyTerm> getDeepReverseCopy(Stack<OntologyTerm> path) {
+		Stack<OntologyTerm> deepCopy = new Stack<>();
+
+		for (int i = path.size() - 1; i >= 0; i--) {
+			deepCopy.push(path.elementAt(i));
+		}
+
+		return deepCopy;
+	}
+
+	/**
+	 * Generates an @link{OntologyTerm} from the given array.
+	 * 
+	 * @param parentTokens
+	 *            an array that contains the values of the response returned by
+	 *            sparql
 	 * @param ot
-	 *            the hit
+	 *            the actual hit needed to get the ontology accession
+	 * @return an @link{OntologyTerm}
 	 * @throws URISyntaxException
 	 */
-	public Stack<OntologyTerm> querySparql(String ontologyAbbreviation,
+	private OntologyTerm generateOntologyTerm(String[] parentTokens,
 			OntologyTerm ot) throws URISyntaxException {
-		List<String> parentLabels = new ArrayList<String>();
-		List<OntologyTerm> path = new ArrayList<OntologyTerm>();
+		OntologyTerm concept = new OntologyTerm();
 
+		String label = "";
+		String prefLabel = "";
+
+		switch (parentTokens.length) {
+		case 2:
+			label = parentTokens[1];
+			++counterForLabels;
+			break;
+		case 3:
+			label = parentTokens[1];
+			prefLabel = parentTokens[2];
+			++counterForPrefLabels;
+			++counterForLabels;
+			if (label.isEmpty()) {
+				--counterForLabels;
+			}
+			break;
+		default:
+			break;
+		}
+
+		String labelToBeSet = "";
+
+		if (!label.isEmpty()) {
+			labelToBeSet = label.split("\"")[1];
+		} else if (!prefLabel.isEmpty()) {
+			labelToBeSet = prefLabel.split("\"")[1];
+		}
+//		log.debug("!!!! string for generatng URI: !!!"
+//				+ parentTokens[0].substring(1, parentTokens[0].length() - 1));
+
+		concept.setURI(new URI(parentTokens[0].substring(1,
+				parentTokens[0].length() - 1)));
+		concept.setLabel(labelToBeSet);
+		concept.setOntologyAccession(ot.getOntologyAccession());
+
+		return concept;
+	}
+
+	private String[] parseSparqlResponse(String response) {
+		String[] lines = response.split("\n");
+		String[] linesWOHeader = new String[lines.length - 1];
+
+		// start by 1 since line 0 contains always the names of the
+		// variables
+		for (int i = 1; i < lines.length; i++) {
+			linesWOHeader[i - 1] = lines[i];
+		}
+		//TODO fileter out parent with equal URIs
+		return linesWOHeader;
+	}
+
+	private String executeSparqlQuery(String parent) throws Exception {
 		String sparqlService = "http://sparql.bioontology.org/sparql";
 		String apikey = "063917f3-04c3-4f7c-8773-7187081c1b11";
 
-		// capitalize the ontology abbreviation such that it works
-		ontologyAbbreviation = ontologyAbbreviation.toUpperCase();
+		// Accept formats can be: "text/plain", "application/json",
+		// "application/rdfxml", "text/csv", text/tab-separated-values
 
-		// insert the concept into the path
-		path.add(ot);
+		SimpleTest test = new SimpleTest(sparqlService, apikey);
 
-		String conceptFullId = ot.getURI().toString();
-		String parent = conceptFullId;
-		String label = "";
-		String prefLabel = "";
-		String response = "";
-		String query = "";
-		List<String> listOfqueries = new ArrayList<String>();
+		// for the first time the parent is the term we are looking for
+		// set LIMIT to 100 since sometimes the limit (40) causes problems
+		String query = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"
+				+ "SELECT * WHERE { "
+				+ "GRAPH <http://bioportal.bioontology.org/ontologies/"
+				+ ontologyAbbreviation
+				+ "> { "
+				+ "<"
+				+ parent
+				+ "> rdfs:subClassOf ?parent."
+				+ "OPTIONAL {?parent rdfs:label ?label}. OPTIONAL {?parent skos:prefLabel ?prefLabel}.}"
+				+ "FILTER (!isBlank(?parent))"
+//				+ "FILTER (str(?label) = lcase(?label))"
+				+ "} LIMIT 100";
 
-		while (!parent.equals("")) {
+		String response = test.executeQuery(query, "text/tab-separated-values");
+		// log.debug("response:\n " + response);
+		listOfQueries.add(query);
 
-			// for the first time the parent is the term we are looking for
-			// set LIMIT to 100 since sometimes the limit (40) causes problems
-			response = "";
-			label = "";
-			prefLabel = "";
-			
-			query = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-					+ "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"
-					+ "SELECT * WHERE { "
-					+ "GRAPH <http://bioportal.bioontology.org/ontologies/"
-					+ ontologyAbbreviation
-					+ "> { "
-					+ "<"
-					+ parent
-					+ "> rdfs:subClassOf ?parent."
-					+ "OPTIONAL {?parent rdfs:label ?label}. OPTIONAL {?parent skos:prefLabel ?prefLabel}.}} LIMIT 100";
-
-			listOfqueries.add(query);
-			// log.debug("query:"+ query);
-
-			SimpleTest test = new SimpleTest(sparqlService, apikey);
-
-			// Accept formats can be: "text/plain", "application/json",
-			// "application/rdfxml", "text/csv", text/tab-separated-values
-			try {
-				response = test
-						.executeQuery(query, "text/tab-separated-values");
-//				log.debug("response:\n " + response);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			// parse response
-			String[] lines = response.split("\n");
-			
-			//the first line is always the name of the variables to be returned
-			if (lines.length == 1) {
-				// no results
-				parent = "";
-				break;
-//			} else if (lines.length == 1) {
-			} else {
-				//TODO parse all paths to root
-				// take always the last returned parent
-				
-				String line = lines[lines.length - 1];
-
-				String[] lineTokens = line.split("\t");
-				// in the first column we receive the parent of the
-				// searched concept
-				parent = lineTokens[0].substring(1, lineTokens[0].length() - 1);
-				// log.debug("parent in else: " + parent);
-
-				switch (lineTokens.length) {
-				case 2:
-					label = lineTokens[1];
-					++counterForLabels;
-					break;
-				case 3:
-					label = lineTokens[1];
-					prefLabel = lineTokens[2];
-					++counterForPrefLabels;
-					++counterForLabels;
-					if (label.isEmpty()) {
-						--counterForLabels;
-					}
-					break;
-				default:
-					break;
-				}
-
-				// before leaving the loop put the entry into the list
-				// String entry = parent + "\t" + label;
-				// parentLabels.add(entry);
-				parentLabels.add(line);
-
-				OntologyTerm concept = new OntologyTerm();
-//				log.debug("URI of parent:" + parent);
-//				log.debug("label: " + label);
-//				log.debug("prefLabel: " + prefLabel);
-				
-				String labelToBeSet = "";
-				
-				if(!label.isEmpty()){
-					 labelToBeSet = label.split("\"")[1];
-				}else if(!prefLabel.isEmpty()) {
-					labelToBeSet = prefLabel.split("\"")[1];
-				}
-//				log.debug("lableToBeSet: " + labelToBeSet);	
-				concept.setURI(new URI(parent));
-				concept.setLabel(labelToBeSet);
-				concept.setOntologyAccession(ot.getOntologyAccession());
-				path.add(concept);
-			}
-		}
-		// write the output into a file
-		try {
-			writePathToRootIntoFile(ontologyAbbreviation, ot, parentLabels,
-					listOfqueries);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		// store the path into a stack and return it
-		Stack<OntologyTerm> stack = new Stack<OntologyTerm>();
-		for (int i = path.size() - 1; i >= 0; i--) {
-			OntologyTerm ontoTerm = path.get(i);
-			stack.push(ontoTerm);
-		}
-		return stack;
+		return response;
 	}
-
-
 
 	/**
 	 * Writes the extracted path and the executed queries into text files.
@@ -216,7 +266,7 @@ public class RootpathExtractor {
 	 *            the ontology where the term was found
 	 * @param ot
 	 *            the hit
-	 * @param parentLabels
+	 * @param listOfPaths
 	 *            list that contains the parents of the hit with their labels
 	 *            separates by \t
 	 * @param listOfQueries
@@ -224,11 +274,11 @@ public class RootpathExtractor {
 	 * @throws IOException
 	 */
 	private void writePathToRootIntoFile(String ontologyAbbreviation,
-			OntologyTerm ot, List<String> parentLabels,
-			List<String> listOfQueries) throws IOException {
+			OntologyTerm ot) throws IOException {
 
 		File outFile = new File("sparql/" + this.date + "_" + searchedTerm
-				+ "/" + ontologyAbbreviation + "-" + ot.getLabel().replace("/", "_or_"));
+				+ "/" + ontologyAbbreviation + "-"
+				+ ot.getLabel().replace("/", "_or_"));
 
 		new File("sparql/queries/" + this.date + "_" + searchedTerm).mkdir();
 
@@ -238,7 +288,7 @@ public class RootpathExtractor {
 				+ searchedTerm + "/" + ontologyAbbreviation + "-"
 				+ ot.getLabel());
 		FileUtils.writeLines(outQueryFile, listOfQueries, "\n");
-		FileUtils.writeLines(outFile, parentLabels);
+		FileUtils.writeLines(outFile, listOfPaths);
 
 		if (outFile.length() == 0) {
 			log.info("for the term: " + ot.toString());
@@ -270,12 +320,26 @@ public class RootpathExtractor {
 		this.counterForEmptyResonses = 0;
 	}
 
+	public int getCounterForHitsThatDoNotHaveAnyPath() {
+		return counterForHitsThatDoNotHaveAnyPath;
+	}
+
+	public void setCounterForHitsThatDoNotHaveAnyPath(int i) {
+		this.counterForHitsThatDoNotHaveAnyPath = 0;
+	}
+
 	public int getCounterForPrefLabels() {
 		return counterForPrefLabels;
 	}
 
 	public int getCounterForLabels() {
 		return counterForLabels;
+	}
+
+	public static void main(String[] args) throws Exception {
+		RootpathExtractor rpe = new RootpathExtractor("blood", "");
+		rpe.computeAllPaths("RCD", new OntologyTerm("", "", "Blood", new URI(
+				"http://purl.bioontology.org/ontology/RCD/X79cn")));
 	}
 
 }

@@ -54,7 +54,9 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 				// sort recommendations and pick the first one
 				RecommendationSorter recommendationSorter = new RecommendationSorter();
 				recommendationSorter.sortRecommendations(validRecommendations);
-
+				
+				log.info(validRecommendations.size() + " RECOMMENDATIONS WERE GENERATED");
+				
 				log.info(validRecommendations.get(0).toString());
 
 				// int i = 0;

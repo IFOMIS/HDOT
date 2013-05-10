@@ -54,7 +54,7 @@ public class SearchEngine {
 	/**
 	 * Stores the stacks that keep the paths to root for the searched terms.
 	 */
-	private List<Stack<OntologyTerm>> listOfPaths;
+	private List<List<Stack<OntologyTerm>>> listOfPaths;
 
 	/**
 	 * the current term for which we run the search
@@ -88,14 +88,12 @@ public class SearchEngine {
 	 * sorting of the ontologies.
 	 * 
 	 * @return list of stacks that store the root paths of the first 5 hits
-	 * 
-	 * @throws OntologyServiceException
-	 * @throws IOException
-	 * @throws URISyntaxException
+	 * @throws Exception 
 	 */
-	public List<Stack<OntologyTerm>> searchTermInBioPortal(String term)
-			throws OntologyServiceException, IOException, URISyntaxException {
+	public List<List<Stack<OntologyTerm>>> searchTermInBioPortal(String term)
+			throws Exception {
 
+		
 		OntologyService bps = CompositeServiceNoThreads
 				.getService(new BioportalOntologyService());
 
@@ -123,7 +121,7 @@ public class SearchEngine {
 		log.info(listWithHits.size() + " hits for the searched term: " + term);
 		FileUtils.writeLines(new File("data/listsWithHits/" + searchedTerm
 				+ "_listOfHits.txt"), listWithHits);
-		listOfPaths = new ArrayList<Stack<OntologyTerm>>();
+		listOfPaths = new ArrayList<>();
 
 		int counterForQueriesRootPath = 0;
 		int totalCounterForQueriesRootPath = 0;
@@ -160,24 +158,38 @@ public class SearchEngine {
 
 				++counterForQueriesRootPath;
 				++totalCounterForQueriesRootPath;
-
-				Stack<OntologyTerm> stackPath = pathExtractor.querySparql(ot
+				
+//				log.debug("THE DESCRIPTION OF THE ONTOLOGY:");
+//
+//				log.debug(ot.getOntology().getDescription());
+			
+				List<Stack<OntologyTerm>> listOfAllPathsForOt = pathExtractor.computeAllPaths(ot
 						.getOntology().getAbbreviation(), ot);
 
-				listOfPaths.add(stackPath);
-
+				listOfPaths.add(listOfAllPathsForOt);
+				log.info(ot.getURI() + "\t" + ot.getLabel());
+				
+				log.info("getCounterForHitsThatDoNotHaveAnyPath: " + pathExtractor.getCounterForHitsThatDoNotHaveAnyPath());
+				log.info("counterForQueriesRootPath " + counterForQueriesRootPath);
+				
+				//TODO go until 10
 				if (counterForQueriesRootPath == threshold) {
+					
 					int emptyResponces = pathExtractor
-							.getCounterForEmptyResonses();
+							.getCounterForHitsThatDoNotHaveAnyPath();
 					totalEmptyResponces += emptyResponces;
 					if (emptyResponces > 0) {
+						log.debug("do not have any path: " + emptyResponces);
+						
 						threshold = emptyResponces;
 						// set the counter for empty responses to 0 otherwise to
 						// many queries are sent
-						pathExtractor.setCounterForEmptyResonses(0);
+						pathExtractor.setCounterForHitsThatDoNotHaveAnyPath(0);
 						counterForQueriesRootPath = 0;
 						continue;
 					} else {
+						log.debug("all hits hava at least one path.");
+						
 						break;
 					}
 				}
@@ -201,7 +213,7 @@ public class SearchEngine {
 		return listOfPaths;
 	}
 
-	public List<Stack<OntologyTerm>> getListOfPaths() {
+	public List<List<Stack<OntologyTerm>>> getListOfPaths() {
 		return this.listOfPaths;
 	}
 

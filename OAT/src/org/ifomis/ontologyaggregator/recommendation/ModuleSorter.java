@@ -37,7 +37,7 @@ public class ModuleSorter {
 //				System.out.println("sorted ids " + sortedIds);
 //				System.out.println("sorted modules " + sortedHdotModules.toString());
 //				System.out.println(sortedIds.indexOf(currentId));
-//				System.out.println("current id " + currentId);
+				System.out.println("current id " + currentId);
 				sortedHdotModules[sortedIds.indexOf(currentId)] = owlOntology;
 			}
 			// System.out.println("Sorted HDOT modules:");

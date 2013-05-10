@@ -55,55 +55,33 @@ public class TestOntologyAggregator {
 			for (int i = 0; i < se.getTermsList().size(); i++) {
 				String term = se.getTermsList().get(i);
 				se.searchTermInBioPortal(term);
-			
+				if (se.getListOfPaths().size() == 0) {
+					log.info("list of paths with hits is empty");
+					terminate(start, term, true);
+				}
 				log.info("\nRECOMMENDATION GENERATION\n");
 
-				boolean recommendationWasAccepted = processingSearchResults(0,
-						5, true, se, term, start, args[1]);
-			
+				RecommendationGenerator rg = new RecommendationGenerator(
+						"data/hdot/hdot_all.owl", term, se.getRestrictedBps(),
+						start);
+
+				boolean recommendationWasAccepted = processingSearchResults(
+						true, se, term, start, args[1], rg);
+
 				if (!recommendationWasAccepted) {
 					log.info("search for further recommendations ...");
-					
+
 					boolean recommendationWasAcceptedSecondTurn = processingSearchResults(
-							5, 10, false, se, term, start, args[1]);
+							false, se, term, start, args[1], rg);
+
 					if (!recommendationWasAcceptedSecondTurn) {
 						log.info("NO RECOMMENDATION FOUND IN THE TOP 5-10 HITS");
 					}
 				}
-				long end = System.currentTimeMillis();
-
-				long milliseconds = (end - start);
-
-				long seconds = (milliseconds / 1000);
-
-				long mins = seconds / 60;
-				long restsecs = seconds % 60;
-
-				log.info("Execution time was " + (end - start) + " ms.");
-				log.info("Execution time was " + mins + ":" + restsecs
-						+ " sec.");
-
-				File logSearchFile = new File("log/loggingSearchEngine.html");
-
-				File logRecommendFile = new File(
-						"log/loggingRecommendationGeneration.html");
-				DateFormat dateFormat = new SimpleDateFormat(
-						"yyyy-MM-dd-HH:mm:ss");
-				String date = dateFormat.format(new Date());
-
-				logSearchFile.renameTo(new File("log/" + date + "_" + term
-						+ "_loggingSearchEngine.html"));
-
-				logRecommendFile.renameTo(new File("log/" + date + "_" + term
-						+ "_loggingRecommendationGeneration.html"));
-
-				log.info("Done.");
-				System.out.println("Log messages written in: log/" + date + "_"
-						+ term + "_loggingSearchEngine.html and " + date + "_"
-						+ term + "_loggingRecommendationGeneration.html");
+				terminate(start, term, false);
 			}
-		} catch (IOException e1) {
-			e1.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
 		} catch (OntologyServiceException e) {
 			e.printStackTrace();
 		} catch (URISyntaxException e) {
@@ -114,17 +92,90 @@ public class TestOntologyAggregator {
 			e.printStackTrace();
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
-	private static boolean processingSearchResults(int i, int j,
-			boolean isTopFive, SearchEngine se, String term, long start, String userID) throws IOException,
-			URISyntaxException, OntologyServiceException,
-			OWLOntologyStorageException, HdotExtensionException, OWLOntologyCreationException {
-		RecommendationGenerator rg = new RecommendationGenerator(
-				"data/hdot/hdot_all.owl",
-				se.getListOfPaths().subList(i, j), term, se.getRestrictedBps(),
-				start, isTopFive);
+	private static void terminate(long start, String term, boolean shouldExit) {
+		long end = System.currentTimeMillis();
+
+		long milliseconds = (end - start);
+
+		long seconds = (milliseconds / 1000);
+
+		long mins = seconds / 60;
+		long restsecs = seconds % 60;
+
+		log.info("Execution time was " + (end - start) + " ms.");
+		log.info("Execution time was " + mins + ":" + restsecs
+				+ " sec.");
+
+		File logSearchFile = new File("log/loggingSearchEngine.html");
+
+		File logRecommendFile = new File(
+				"log/loggingRecommendationGeneration.html");
+		DateFormat dateFormat = new SimpleDateFormat(
+				"yyyy-MM-dd-HH:mm:ss");
+		String date = dateFormat.format(new Date());
+
+		logSearchFile.renameTo(new File("log/" + date + "_" + term
+				+ "_loggingSearchEngine.html"));
+
+		logRecommendFile.renameTo(new File("log/" + date + "_" + term
+				+ "_loggingRecommendationGeneration.html"));
+
+		log.info("Done.");
+		System.out.println("Log messages written in: log/" + date + "_"
+				+ term + "_loggingSearchEngine.html and " + date + "_"
+				+ term + "_loggingRecommendationGeneration.html");	
+		
+		if(shouldExit){
+			System.exit(0);
+		}
+	}
+
+	private static boolean processingSearchResults(boolean isTopFive,
+			SearchEngine se, String term, long start, String userID,
+			RecommendationGenerator rg) throws IOException, URISyntaxException,
+			OntologyServiceException, OWLOntologyStorageException,
+			HdotExtensionException, OWLOntologyCreationException {
+		
+		int sizeOfresultList = se.getListOfPaths().size();
+		log.debug("in process results size of list with Paths: " + sizeOfresultList);
+		
+		int startIndex = 0;
+		int endIndex = 0;
+
+		if (isTopFive) {
+			
+			// change only the end index but check the length of the result list
+			if (sizeOfresultList < 5) {
+				endIndex = sizeOfresultList - 1;
+			} else {
+				endIndex = 5;
+			}
+		} else {
+			// change both indexes but again check the length of the result list
+
+			if (sizeOfresultList < 10) {
+				if (sizeOfresultList <= 5) {
+					// well there were less than 5 results
+					terminate(start, term, true);
+				} else {
+					// there were more than 5 but less than 10
+					startIndex = 5;
+					endIndex = sizeOfresultList - 1;
+				}
+
+			} else {
+				// there were more than 10 results
+				startIndex = 5;
+				endIndex = 10;
+			}
+		}
+		rg.generateRecommendation(
+				se.getListOfPaths().subList(startIndex, endIndex), isTopFive);
 
 		RecommendationFilter rf = new RecommendationFilter(term,
 				rg.getListOfRecommendations(),
@@ -133,6 +184,7 @@ public class TestOntologyAggregator {
 				rg.getListOfInCoreNotLeafMatches());
 
 		while (!rg.getListOfRecommendations().isEmpty()) {
+
 			rf.checkValidRecommendations();
 
 			UserInputReader inputReader = new UserInputReader();
@@ -151,12 +203,8 @@ public class TestOntologyAggregator {
 						rg.getHdot_ontology(), rg.getOntologyService(), userID);
 				break;
 			}
-			
 		}
-		
-		//TODO to xml method for the recommendation output ???
-		//TODO BioPortal categories
-		
+		// TODO BioPortal categories
 		return rf.isAccept();
 	}
 
