@@ -59,6 +59,9 @@ public class TestSearchEngine {
 			e.printStackTrace();
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		long end = System.currentTimeMillis();
 

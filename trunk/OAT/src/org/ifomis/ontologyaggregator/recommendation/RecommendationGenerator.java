@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
-
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
@@ -58,7 +57,6 @@ public class RecommendationGenerator {
 	 */
 	private OWLOntologyManager ontology_manager;
 
-
 	/**
 	 * the current hit
 	 */
@@ -73,8 +71,6 @@ public class RecommendationGenerator {
 	 * global counter for parents
 	 */
 	private int counterForParents;
-
-	
 
 	/**
 	 * The term that the user searches for.
@@ -111,7 +107,7 @@ public class RecommendationGenerator {
 	private OntologyService ontologyService;
 
 	private Stack<OntologyTerm> hierarchyOfHit;
-	
+
 	private OWLOntology[] sortedHdotModules;
 
 	private boolean isTopFive;
@@ -128,16 +124,14 @@ public class RecommendationGenerator {
 	 * @throws URISyntaxException
 	 * @throws OntologyServiceException
 	 */
-	public RecommendationGenerator(String ontoIn,
-			List<Stack<OntologyTerm>> listOfPaths, String searchedTerm,
-			OntologyService ontologyService, long start, boolean isTopFive) throws IOException,
+	public RecommendationGenerator(String ontoIn, String searchedTerm,
+			OntologyService ontologyService, long start) throws IOException,
 			URISyntaxException, OntologyServiceException {
 
 		// initialize the fields
 		this.start = start;
 		this.ontologyService = ontologyService;
-		this.isTopFive = isTopFive;
-		
+
 		this.listOfRecommendations = new ArrayList<>();
 		this.listOfRecsPossibleInCoreOfHDOT = new ArrayList<>();
 		this.listOfInCoreNotLeafMatches = new ArrayList<>();
@@ -146,8 +140,7 @@ public class RecommendationGenerator {
 		this.importedOntologies = new ArrayList<String>();
 		this.importedOntologies
 				.add("http://www.ifomis.org/hdot/doid_import.owl");
-		this.importedOntologies
-				.add("http://purl.obolibrary.org/obo/bfo.owl");
+		this.importedOntologies.add("http://purl.obolibrary.org/obo/bfo.owl");
 
 		// Get hold of an ontology manager
 		this.ontology_manager = OWLManager.createOWLOntologyManager();
@@ -157,31 +150,37 @@ public class RecommendationGenerator {
 
 		try {
 			// Now load the local copy of hdot that include all modules
-//			this.hdot_ontology = ontology_manager
-//					.loadOntologyFromOntologyDocument(file);
-			this.hdot_ontology = ontology_manager.loadOntologyFromOntologyDocument(IRI.create(file));
+			// this.hdot_ontology = ontology_manager
+			// .loadOntologyFromOntologyDocument(file);
+			this.hdot_ontology = ontology_manager
+					.loadOntologyFromOntologyDocument(IRI.create(file));
 
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
 		}
 		// We can always obtain the location where an ontology was loaded from
-//		this.iriIn = ontology_manager.getOntologyDocumentIRI(hdot_ontology);
-//		log.info("iriIn: " + iriIn);
+		// this.iriIn = ontology_manager.getOntologyDocumentIRI(hdot_ontology);
+		// log.info("iriIn: " + iriIn);
 
 		log.info("Loaded ontology: " + hdot_ontology);
 		Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
-		log.debug("modules: " );
-		for (OWLOntology owlOntology : hdotModules) {
-			log.debug(owlOntology);
-		}
+		// log.debug("modules: ");
+		// for (OWLOntology owlOntology : hdotModules) {
+		// log.debug(owlOntology);
+		// }
 		// sort modules such that the recommendation will be found in more
 		// specific module
-		sortedHdotModules = new ModuleSorter()
-				.sortHdotModules(hdotModules);
-		
-		generateRecommendation(listOfPaths);
-	}
+		sortedHdotModules = new ModuleSorter().sortHdotModules(hdotModules);
 
+		// generateRecommendation(listOfPathsOfAllHits);
+
+		if (recommendationCounter == 0) {
+			log.info("NO SUITABLE RECOMMENDATION WAS FOUND!\n");
+		} else {
+			log.info(recommendationCounter
+					+ " RECOMMENDATION(S) WERE GENERATED");
+		}
+	}
 
 	/**
 	 * Process all five best candidates and generates recommendation for
@@ -193,50 +192,54 @@ public class RecommendationGenerator {
 	 * @throws IOException
 	 * @throws OntologyServiceException
 	 */
-	private void generateRecommendation(List<Stack<OntologyTerm>> listOfPaths)
-			throws URISyntaxException, IOException, OntologyServiceException {
+	public void generateRecommendation(
+			List<List<Stack<OntologyTerm>>> listOfPathsOfAllHits,
+			boolean isTopFive) throws URISyntaxException, IOException,
+			OntologyServiceException {
 
-		//init depending if first or second run
-		if(isTopFive){
+		// init depending if first or second run
+		if (isTopFive) {
 			hitsCounter = 0;
-		}else{
-		hitsCounter = 5;
-		}recommendationCounter = 0;
-
-		// iterate over paths of the 5-best hits
-		for (Stack<OntologyTerm> path : listOfPaths) {
-			++hitsCounter;
-			hierarchyOfHit = (Stack<OntologyTerm>) path.clone();
-
-			log.info("\n*******hit Nr:" + hitsCounter + "******\n");
-			// the path response was empty
-			if (path.size() == 1) {
-				log.info(path.peek());
-				log.info("SPARQL response for the root path was empty");
-				continue;
-			}
-
-			log.info("Length of path to root is: " + path.size());
-			log.debug("____________________________________________________________________");
-			counterForParents = 0;
-			if (!path.isEmpty()) {
-				this.currentHit = path.peek();
-				// log.info("current hit=" + this.currentHit);
-			} else {
-				log.debug("path was empty");
-				continue;
-			}
-
-			if (recommend(path)) {
-				// if term has been recommended do not search further
-				// return;
-				++recommendationCounter;
-			}
-		}
-		if (recommendationCounter == 0) {
-			log.info("NO SUITABLE RECOMMENDATION WAS FOUND!\n");
 		} else {
-			log.info(recommendationCounter + " RECOMMENDATIONS WERE GENERATED");
+			hitsCounter = 5;
+		}
+		recommendationCounter = 0;
+
+		for (List<Stack<OntologyTerm>> listOfPaths : listOfPathsOfAllHits) {
+			++hitsCounter;
+			for (Stack<OntologyTerm> path : listOfPaths) {
+
+				hierarchyOfHit = (Stack<OntologyTerm>) path.clone();
+
+				log.info("\n*******hit Nr:" + hitsCounter + "******\n");
+
+				// the path response was empty
+				if (path.size() == 1) {
+					// log.info(path.peek());
+					log.info("SPARQL response for the root path was empty");
+					continue;
+				}
+
+				log.info("Length of current path to root is: " + path.size());
+				log.debug("____________________________________________________________________");
+				counterForParents = 0;
+
+				if (!path.isEmpty()) {
+					this.currentHit = path.peek();
+					// log.info("current hit=" + this.currentHit);
+				} else {
+					log.debug("path was empty");
+					continue;
+				}
+
+				if (recommend(path)) {
+					++recommendationCounter;
+					// if term has been recommended do not examine the other
+					// paths
+					break;
+				}
+			}
+			
 		}
 	}
 
@@ -265,17 +268,18 @@ public class RecommendationGenerator {
 				OWLOntology hdotModule = sortedHdotModules[j];
 
 				currentCandidate = path.peek();
+
 				// exclude owl:Thing
 				if (currentCandidate.getURI().toString()
 						.equals("http://www.w3.org/2002/07/owl#Thing")) {
 					break;
 				}
 
-				log.info("currentCandidate: "
+				log.debug("currentCandidate: "
 						+ currentCandidate.getURI().toString() + "\t"
 						+ currentCandidate.getLabel());
 
-				log.info("Module: " + hdotModule.getOntologyID());
+				log.debug("Module: " + hdotModule.getOntologyID());
 
 				OntologyTerm matchedConcept = findMatch(currentCandidate,
 						hdotModule);
@@ -284,12 +288,13 @@ public class RecommendationGenerator {
 					if (buildRecommendaton(hdotModule, matchedConcept,
 							termHasBeenRecommended)) {
 						// return true in order to terminate
+						path.clear();
 						return true;
 					}
 				} else {
 					log.info("no match found");
 				}
-				log.info("__________________________________");
+				log.debug("____________________________________________________________________");
 			}
 			// after we checked in all modules pop the current candidate and
 			// continue with the next in the next iteration
@@ -321,15 +326,16 @@ public class RecommendationGenerator {
 		List<OntologyTerm> childrenOfHit = ontologyService
 				.getChildren(this.currentHit);
 
-		if (importedOntologies.contains(hdotModule.getOntologyID().getOntologyIRI().toString())) {
+		if (importedOntologies.contains(hdotModule.getOntologyID()
+				.getOntologyIRI().toString())) {
 			log.info("RECOMMENDATION POSSIBLE ONLY IN CORE OF HDOT");
 			onlyInCore = true;
 		}
 		Recommendation recommendation = new Recommendation(hitsCounter,
 				currentHit, conceptIdsMatch, labelsMatch, searchedTerm,
-				hierarchyOfHdotClass, hierarchyOfHit, hdot_ontology ,hdotModule,
-				counterForParents, matchedConcept, definitions, synonyms,
-				childrenOfHit);
+				hierarchyOfHdotClass, hierarchyOfHit, hdot_ontology,
+				hdotModule, counterForParents, matchedConcept, definitions,
+				synonyms, childrenOfHit);
 
 		if (onlyInCore) {
 			termHasBeenRecommended = false;
@@ -349,6 +355,7 @@ public class RecommendationGenerator {
 	 * @return true if the match is the found concept
 	 */
 	private void isMatchedClassTheSearchedTerm(OntologyTerm matchedConcept) {
+
 		if (counterForParents == 0) {
 			log.error("OAT SHOULD NOT BE EVOKED! Since:");
 			log.error("The concept: " + matchedConcept + " already exists.");
@@ -408,13 +415,14 @@ public class RecommendationGenerator {
 		OntologyTerm matchedTerm = null;
 
 		// check if the current class is hdot_core
-		boolean isHdotCore = ( currentOntology.getOntologyID().getOntologyIRI().toString()
+		boolean isHdotCore = (currentOntology.getOntologyID().getOntologyIRI()
+				.toString()
 				.contains("http://www.ifomis.org/hdot/hdot_core.owl"));
 
 		// iterate over all classes of the ontology and try to find a match of
 		// uri or label
 		for (OWLClass hdotClass : classesInSignature) {
-			//exclude class Nothing in hdot
+			// exclude class Nothing in hdot
 			if (hdotClass.isOWLNothing()) {
 				continue;
 			}
@@ -435,6 +443,7 @@ public class RecommendationGenerator {
 				// + currentCandidate.getURI().toString());
 				// log.debug("id of hdot class: " + hdotClass.toStringID());
 				conceptIdsMatch = true;
+
 				// if we find a match then we will retrieve this concept
 				matchedTerm = new OntologyTerm();
 				matchedTerm.setAccession(hdotClass.toStringID());
@@ -516,9 +525,9 @@ public class RecommendationGenerator {
 								hitsCounter, currentHit, conceptIdsMatch,
 								labelsMatch, searchedTerm,
 								hierarchyOfHdotClass, hierarchyOfHit,
-								hdot_ontology, currentOntology, counterForParents,
-								matchedTerm, definitions, synonyms,
-								childrenOfHit));
+								hdot_ontology, currentOntology,
+								counterForParents, matchedTerm, definitions,
+								synonyms, childrenOfHit));
 						log.debug("search for further matches ...\n");
 
 						matchedTerm = null;
@@ -538,9 +547,9 @@ public class RecommendationGenerator {
 								hitsCounter, currentHit, conceptIdsMatch,
 								labelsMatch, searchedTerm,
 								hierarchyOfHdotClass, hierarchyOfHit,
-								hdot_ontology, currentOntology, counterForParents,
-								matchedTerm, definitions, synonyms,
-								childrenOfHit));
+								hdot_ontology, currentOntology,
+								counterForParents, matchedTerm, definitions,
+								synonyms, childrenOfHit));
 						matchedTerm = null;
 						continue;
 					}
@@ -635,12 +644,15 @@ public class RecommendationGenerator {
 	public List<Recommendation> getListImportedNotLeafMatches() {
 		return listImportedNotLeafMatches;
 	}
+
 	public OWLOntologyManager getOntology_manager() {
 		return ontology_manager;
 	}
+
 	public OWLOntology getHdot_ontology() {
 		return hdot_ontology;
 	}
+
 	public OntologyService getOntologyService() {
 		return ontologyService;
 	}

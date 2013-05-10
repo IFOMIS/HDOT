@@ -63,9 +63,8 @@ public class TestRecommendationGenerator {
 
 				// TODO ontoIn
 				RecommendationGenerator rg = new RecommendationGenerator(
-						"data/hdot/hdot_all.owl", se.getListOfPaths()
-								.subList(0, 5), term, se.getRestrictedBps(),
-						start, true);
+						"data/hdot/hdot_all.owl", term, se.getRestrictedBps(),
+						start);
 
 				RecommendationFilter rf = new RecommendationFilter(term,
 						rg.getListOfRecommendations(),
@@ -154,6 +153,9 @@ public class TestRecommendationGenerator {
 		} catch (OntologyServiceException e) {
 			e.printStackTrace();
 		} catch (URISyntaxException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

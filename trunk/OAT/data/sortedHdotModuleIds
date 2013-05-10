@@ -1,8 +1,9 @@
-https://hdot.googlecode.com/svn/trunk/hdot_pem.owl
-https://hdot.googlecode.com/svn/trunk/hdot_pfm.owl
-http://hdot.googlecode.com/svn/trunk/hdot_bsds.owl
-http://hdot.googlecode.com/svn/trunk/hdot_pm.owl
-http://hdot.googlecode.com/svn/trunk/hdot_core.owl
-http://hdot.googlecode.com/svn/trunk/doid_import.owl
+http://www.ifomis.org/hdot/hdot_pem.owl
+http://www.ifomis.org/hdot/hdot_pfm.owl
+http://www.ifomis.org/hdot/hdot_bsds.owl
+http://www.ifomis.org/hdot/hdot_pm.owl
+http://www.ifomis.org/hdot/hdot_core.owl
+http://www.ifomis.org/hdot/doid_import.owl
 http://purl.obolibrary.org/obo/bfo.owl
-https://hdot.googlecode.com/svn/trunk/hdot_all.owl
+http://www.ifomis.org/hdot/hdot_all.owl
+http://www.ifomis.org/hdot/
