@@ -102,8 +102,8 @@ public class RootpathExtractor {
 
 		String response = executeSparqlQuery(ot.getURI().toString());
 
-		String[] parents = parseSparqlResponse(response);
-		if (parents.length == 0) {
+		 List<String> parents = parseSparqlResponse(response);
+		if (parents.size() == 0) {
 			// log.info(path);
 
 			Stack<OntologyTerm> deepCopyOfPath = getDeepReverseCopy(path);
@@ -121,7 +121,7 @@ public class RootpathExtractor {
 			}
 		}
 		for (String parent : parents) {
-//			log.debug("parent" + parent);
+			// log.debug("parent" + parent);
 			// exclude exceptions
 			// if(parent.contains("hit complexity limit")){
 			// continue;
@@ -130,7 +130,7 @@ public class RootpathExtractor {
 
 			String parentURI = parentTokens[0].substring(1,
 					parentTokens[0].length() - 1);
-//			log.debug("parentURI" + parentURI);
+			// log.debug("parentURI" + parentURI);
 
 			OntologyTerm otParent = generateOntologyTerm(parentTokens, ot);
 
@@ -175,36 +175,36 @@ public class RootpathExtractor {
 			OntologyTerm ot) throws URISyntaxException {
 		OntologyTerm concept = new OntologyTerm();
 
-		String label = "";
-		String prefLabel = "";
+		 String label = "";
+		 String prefLabel = "";
+		
+		 switch (parentTokens.length) {
+		 case 2:
+		 label = parentTokens[1];
+		 ++counterForLabels;
+		 break;
+		 case 3:
+		 label = parentTokens[1];
+		 prefLabel = parentTokens[2];
+		 ++counterForPrefLabels;
+		 ++counterForLabels;
+		 if (label.isEmpty()) {
+		 --counterForLabels;
+		 }
+		 break;
+		 default:
+		 break;
+		 }
 
-		switch (parentTokens.length) {
-		case 2:
-			label = parentTokens[1];
-			++counterForLabels;
-			break;
-		case 3:
-			label = parentTokens[1];
-			prefLabel = parentTokens[2];
-			++counterForPrefLabels;
-			++counterForLabels;
-			if (label.isEmpty()) {
-				--counterForLabels;
-			}
-			break;
-		default:
-			break;
-		}
-
-		String labelToBeSet = "";
-
-		if (!label.isEmpty()) {
-			labelToBeSet = label.split("\"")[1];
-		} else if (!prefLabel.isEmpty()) {
-			labelToBeSet = prefLabel.split("\"")[1];
-		}
-//		log.debug("!!!! string for generatng URI: !!!"
-//				+ parentTokens[0].substring(1, parentTokens[0].length() - 1));
+		 String labelToBeSet = "";
+//		String labelToBeSet = parentTokens[1];
+		 if (!label.isEmpty()) {
+		 labelToBeSet = label.split("\"")[1];
+		 } else if (!prefLabel.isEmpty()) {
+		 labelToBeSet = prefLabel.split("\"")[1];
+		 }
+//		 log.debug("!!!! string for generatng URI: !!!"
+//		 + parentTokens[0].substring(1, parentTokens[0].length() - 1));
 
 		concept.setURI(new URI(parentTokens[0].substring(1,
 				parentTokens[0].length() - 1)));
@@ -214,16 +214,23 @@ public class RootpathExtractor {
 		return concept;
 	}
 
-	private String[] parseSparqlResponse(String response) {
+	private List<String> parseSparqlResponse(String response) {
+		Set<String> parentURIs = new HashSet<>();
+		
 		String[] lines = response.split("\n");
-		String[] linesWOHeader = new String[lines.length - 1];
+		List<String> linesWOHeader = new ArrayList<>();
 
 		// start by 1 since line 0 contains always the names of the
 		// variables
 		for (int i = 1; i < lines.length; i++) {
-			linesWOHeader[i - 1] = lines[i];
+			String parentUri = lines[i].split("\t")[0];
+			
+			if(!parentURIs.contains(parentUri)){
+				linesWOHeader.add(lines[i]);
+			}
+			parentURIs.add(parentUri);
 		}
-		//TODO fileter out parent with equal URIs
+		// TODO filter out parent with equal URIs
 		return linesWOHeader;
 	}
 
@@ -238,20 +245,33 @@ public class RootpathExtractor {
 
 		// for the first time the parent is the term we are looking for
 		// set LIMIT to 100 since sometimes the limit (40) causes problems
-		String query = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-				+ "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"
-				+ "SELECT * WHERE { "
-				+ "GRAPH <http://bioportal.bioontology.org/ontologies/"
-				+ ontologyAbbreviation
-				+ "> { "
-				+ "<"
-				+ parent
-				+ "> rdfs:subClassOf ?parent."
-				+ "OPTIONAL {?parent rdfs:label ?label}. OPTIONAL {?parent skos:prefLabel ?prefLabel}.}"
-				+ "FILTER (!isBlank(?parent))"
-//				+ "FILTER (str(?label) = lcase(?label))"
-				+ "} LIMIT 100";
+		 String query =
+		 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+		 + "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"
+		 + "SELECT * WHERE { "
+		 + "GRAPH <http://bioportal.bioontology.org/ontologies/"
+		 + ontologyAbbreviation
+		 + "> { "
+		 + "<"
+		 + parent
+		 + "> rdfs:subClassOf ?parent."
+		 +
+		 "OPTIONAL {?parent rdfs:label ?label}. OPTIONAL {?parent skos:prefLabel ?prefLabel}.}"
+		 + "FILTER (!isBlank(?parent))"
+		 // + "FILTER (str(?label) = lcase(?label))"
+		 + "} LIMIT 100";
 
+//		String query = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"
+//				+ "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"
+//				+ "SELECT DISTINCT ?parent, ?label WHERE {"
+//				+ "GRAPH <http://bioportal.bioontology.org/ontologies/"
+//				+ this.ontologyAbbreviation
+//				+ "> { <"
+//				+ parent
+//				+ "> rdfs:subClassOf ?parent."
+//				+ "OPTIONAL { ?parent ?p ?o. }"
+//				+ "BIND (lcase(str(?o)) AS ?label)"
+//				+ "FILTER (!isBlank(?parent) && ?p IN (rdfs:label, skos:prefLabel)) }}";
 		String response = test.executeQuery(query, "text/tab-separated-values");
 		// log.debug("response:\n " + response);
 		listOfQueries.add(query);
