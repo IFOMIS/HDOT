@@ -66,6 +66,7 @@ public class RootpathExtractor {
 
 	private List<String> listOfQueries;
 
+
 	public RootpathExtractor(String currentTerm, String date) {
 		this.searchedTerm = currentTerm;
 		this.date = date;
@@ -90,7 +91,6 @@ public class RootpathExtractor {
 			++counterForHitsThatDoNotHaveAnyPath;
 		}
 		log.info("# of paths: " + listOfPaths.size());
-
 		return listOfPaths;
 	}
 
@@ -230,7 +230,6 @@ public class RootpathExtractor {
 			}
 			parentURIs.add(parentUri);
 		}
-		// TODO filter out parent with equal URIs
 		return linesWOHeader;
 	}
 

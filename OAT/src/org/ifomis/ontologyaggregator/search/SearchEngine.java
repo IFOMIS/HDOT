@@ -2,7 +2,6 @@ package org.ifomis.ontologyaggregator.search;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
 import uk.ac.ebi.ontocat.OntologyService;
-import uk.ac.ebi.ontocat.OntologyServiceException;
 import uk.ac.ebi.ontocat.OntologyTerm;
 import uk.ac.ebi.ontocat.bioportal.BioportalOntologyService;
 import uk.ac.ebi.ontocat.virtual.CompositeServiceNoThreads;
@@ -172,7 +170,6 @@ public class SearchEngine {
 				log.info("getCounterForHitsThatDoNotHaveAnyPath: " + pathExtractor.getCounterForHitsThatDoNotHaveAnyPath());
 				log.info("counterForQueriesRootPath " + counterForQueriesRootPath);
 				
-				//TODO go until 10
 				if (counterForQueriesRootPath == threshold) {
 					
 					int emptyResponces = pathExtractor
@@ -208,8 +205,9 @@ public class SearchEngine {
 				+ "_fail"), pathExtractor.getSbFailed().toString());
 		FileUtils.write(new File("sparql/success/" + this.date + "_" + term
 				+ "_success"), pathExtractor.getSbSuccess().toString());
-		// FileUtils.writeLines(new File("data/testPath"), listOfPaths);
 
+		log.info("explored paths in total: " + listOfPaths.size());
+		
 		return listOfPaths;
 	}
 

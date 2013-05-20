@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.notifications.EmailSender;
 import org.ifomis.ontologyaggregator.recommendation.sort.RecommendationSorter;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 public class RecommendationFilter implements RecommendationAcceptListener {
 
@@ -41,14 +43,15 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 		this.mailSender = new EmailSender();
 	}
 
-	public void checkValidRecommendations() {
+	public void checkValidRecommendations() throws OWLOntologyCreationException, OWLOntologyStorageException {
 
 		if (!validRecommendations.isEmpty()) {
 
 			if (validRecommendations.size() == 1) {
 				log.info("SINGLE RECOMMENDATION");
-
+				validRecommendations.get(0).exportChildrenToOWLFile();
 				log.info(validRecommendations.get(0).toString());
+				
 
 			} else {
 				// sort recommendations and pick the first one

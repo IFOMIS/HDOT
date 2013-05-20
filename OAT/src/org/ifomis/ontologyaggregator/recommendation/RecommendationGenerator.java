@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
@@ -137,10 +138,7 @@ public class RecommendationGenerator {
 		this.listOfInCoreNotLeafMatches = new ArrayList<>();
 		this.listImportedNotLeafMatches = new ArrayList<>();
 
-		this.importedOntologies = new ArrayList<String>();
-		this.importedOntologies
-				.add("http://www.ifomis.org/hdot/doid_import.owl");
-		this.importedOntologies.add("http://purl.obolibrary.org/obo/bfo.owl");
+		this.importedOntologies = FileUtils.readLines(new File ("data/imported_ontologies"));
 
 		// Get hold of an ontology manager
 		this.ontology_manager = OWLManager.createOWLOntologyManager();
@@ -404,10 +402,11 @@ public class RecommendationGenerator {
 	 * @return the concept where the term will be integrated under
 	 * @throws URISyntaxException
 	 * @throws OntologyServiceException
+	 * @throws IOException 
 	 */
 	private OntologyTerm findMatch(OntologyTerm currentCandidate,
 			OWLOntology currentOntology) throws URISyntaxException,
-			OntologyServiceException {
+			OntologyServiceException, IOException {
 
 		Set<OWLClass> classesInSignature = currentOntology
 				.getClassesInSignature();
@@ -417,7 +416,7 @@ public class RecommendationGenerator {
 		// check if the current class is hdot_core
 		boolean isHdotCore = (currentOntology.getOntologyID().getOntologyIRI()
 				.toString()
-				.contains("http://www.ifomis.org/hdot/hdot_core.owl"));
+				.contains(FileUtils.readFileToString(new File("data/core_module_of_the_ontology"))));
 
 		// iterate over all classes of the ontology and try to find a match of
 		// uri or label

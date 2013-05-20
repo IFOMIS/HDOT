@@ -107,8 +107,8 @@ public class TestOntologyAggregator {
 		long mins = seconds / 60;
 		long restsecs = seconds % 60;
 
-		log.info("Execution time was " + (end - start) + " ms.");
-		log.info("Execution time was " + mins + ":" + restsecs
+		log.info("Execution time was (in ms)  " + (end - start) + " ms.");
+		log.info("Execution time was (in min) " + mins + ":" + restsecs
 				+ " sec.");
 
 		File logSearchFile = new File("log/loggingSearchEngine.html");
@@ -176,7 +176,13 @@ public class TestOntologyAggregator {
 		}
 		rg.generateRecommendation(
 				se.getListOfPaths().subList(startIndex, endIndex), isTopFive);
+		
+		if(isTopFive){
+			log.info("# of valid recommendations under top 5 " + rg.getListOfRecommendations().size() );
+		}else{
+			log.info("# of valid recommendations top 5-10 " + rg.getListOfRecommendations().size() );
 
+		}
 		RecommendationFilter rf = new RecommendationFilter(term,
 				rg.getListOfRecommendations(),
 				rg.getListOfRecsPossibleInCoreOfHDOT(),
