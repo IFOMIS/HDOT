@@ -581,7 +581,7 @@
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">The specific actions or reactions of an organism in response to external or internal stimuli. Patterned activity of a whole organism in a manner dependent upon some combination of that organism&apos;s internal state and external conditions.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The specific actions or reactions of an organism in response to external or internal stimuli. Patterned activity of a whole organism in a manner dependent upon some combination of that organism&#39;s internal state and external conditions.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/GO_0007610</obo:IAO_0000119>
     </owl:Class>
     
@@ -848,14 +848,14 @@
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000031"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
-                <owl:someValuesFrom rdf:resource="&obo;BFO_0000001"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_050"/>
+                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_050"/>
-                <owl:cardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:cardinality>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="&obo;BFO_0000001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000112 xml:lang="en">Examples of information content entites include journal articles, data, graphical layouts, and graphs</obo:IAO_0000112>
@@ -1224,7 +1224,7 @@
     <owl:Class rdf:about="&obo;IAO_0000577">
         <rdfs:label xml:lang="en">CRID symbol</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000028"/>
-        <obo:IAO_0000115 xml:lang="en">A symbol that is part_of a CRID and that is sufficient to look up a record from the CRID&apos;s registry.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A symbol that is part_of a CRID and that is sufficient to look up a record from the CRID&#39;s registry.</obo:IAO_0000115>
         <obo:IAO_0000112 xml:lang="en">PMID:12345, 12345 in a database column which has header &quot;pubmedID&quot;</obo:IAO_0000112>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/IAO_0000577</obo:IAO_0000119>
     </owl:Class>
@@ -1345,7 +1345,7 @@ PMID:12345</obo:IAO_0000112>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A mental process that creates, modifies or has as participant some cognitive representation.</obo:IAO_0000115>
-        <rdfs:seeAlso xml:lang="en">GO:0050890, cognition, defined as  `The operation of the mind by which an organism becomes aware of objects of thought or perception; it includes the mental activities associated with thinking, learning, and memory.&apos; </rdfs:seeAlso>
+        <rdfs:seeAlso xml:lang="en">GO:0050890, cognition, defined as  `The operation of the mind by which an organism becomes aware of objects of thought or perception; it includes the mental activities associated with thinking, learning, and memory.&#39; </rdfs:seeAlso>
         <obo:IAO_0000119>http://purl.obolibrary.org/obo/MF_0000008</obo:IAO_0000119>
     </owl:Class>
     
@@ -1377,14 +1377,14 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000060"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
-                <owl:someValuesFrom rdf:resource="&obo;MF_0000003"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000055"/>
+                <owl:someValuesFrom rdf:resource="&obo;MF_0000001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000055"/>
-                <owl:someValuesFrom rdf:resource="&obo;MF_0000001"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
+                <owl:someValuesFrom rdf:resource="&obo;MF_0000003"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A bodily process which brings into being, sustains or modifies a cognitive representation or a beahvior inducing state.</obo:IAO_0000115>
@@ -1592,7 +1592,7 @@ PMID:12345</obo:IAO_0000112>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">A series of statements representing health-relevant qualities of a patient and of a patient&apos;s family.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A series of statements representing health-relevant qualities of a patient and of a patient&#39;s family.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000015</obo:IAO_0000119>
     </owl:Class>
     
@@ -1699,11 +1699,6 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:label xml:lang="en">sign</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000028"/>
         <rdfs:subClassOf>
-            <owl:Class>
-                <owl:complementOf rdf:resource="&obo;OGMS_0000020"/>
-            </owl:Class>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
                 <owl:someValuesFrom>
@@ -1718,6 +1713,11 @@ PMID:12345</obo:IAO_0000112>
                     </owl:Class>
                 </owl:someValuesFrom>
             </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="&obo;OGMS_0000020"/>
+            </owl:Class>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">(HDOT_CORE) A quality of a patient, a material entity that is part of a patient, any one of which is observed in a physical examination and is deemed by the clinician to be of clinical significance.</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">In contrast to the definition provided in OGMS, we assume that signs are qualities of continuants only. However, a sign may of course be the outcome of an occurrent.</rdfs:comment>
@@ -1759,7 +1759,7 @@ PMID:12345</obo:IAO_0000112>
                 </owl:someValuesFrom>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">(HDOT_CORE) &apos;disease phenotype&apos; has to be a subclass of &apos;clinical phenotype&apos; according to the definition provided in OGMS.</rdfs:comment>
+        <rdfs:comment xml:lang="en">(HDOT_CORE) &#39;disease phenotype&#39; has to be a subclass of &#39;clinical phenotype&#39; according to the definition provided in OGMS.</rdfs:comment>
         <obo:IAO_0000115 xml:lang="en">A clinically abnormal phenotype that is characteristic of a single disease.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000028</obo:IAO_0000119>
     </owl:Class>
@@ -1788,7 +1788,7 @@ PMID:12345</obo:IAO_0000112>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">A disposition in an organism that constitutes an increased risk of the organism&apos;s subsequently developing the disease X.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A disposition in an organism that constitutes an increased risk of the organism&#39;s subsequently developing the disease X.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000030</obo:IAO_0000119>
     </owl:Class>
     
@@ -1801,8 +1801,8 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000016"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000061"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000113"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000045"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1813,8 +1813,8 @@ PMID:12345</obo:IAO_0000112>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000113"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000045"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000061"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A disposition (i) to undergo pathological processes that (ii) exists in an organism because of one or more disorders in that organism.</obo:IAO_0000115>
@@ -1852,7 +1852,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000033">
         <rdfs:label xml:lang="en">genetic predisposition to disease of type X</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000030"/>
-        <obo:IAO_0000115 xml:lang="en">A predisposition to disease of type X whose physical basis is a constitutional abnormality in an organism&apos;s genome. This abnormality is the physical basis for the increased risk of acquiring the disease X.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A predisposition to disease of type X whose physical basis is a constitutional abnormality in an organism&#39;s genome. This abnormality is the physical basis for the increased risk of acquiring the disease X.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000033</obo:IAO_0000119>
     </owl:Class>
     
@@ -1993,7 +1993,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000046">
         <rdfs:label xml:lang="en">epigenetic disorder</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000045"/>
-        <obo:IAO_0000115 xml:lang="en">A disorder whose etiology involves (1) a modification to the patient&apos;s genomic DNA which leads to alterations in the normal expression pattern of the genome, but is (2) not a change in the nucleotide sequence.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A disorder whose etiology involves (1) a modification to the patient&#39;s genomic DNA which leads to alterations in the normal expression pattern of the genome, but is (2) not a change in the nucleotide sequence.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000046</obo:IAO_0000119>
     </owl:Class>
     
@@ -2004,7 +2004,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000047">
         <rdfs:label xml:lang="en">genetic disorder</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000045"/>
-        <obo:IAO_0000115 xml:lang="en">A disorder whose etiology involves an abnormality in the nucleotide sequence of an organism&apos;s genome.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A disorder whose etiology involves an abnormality in the nucleotide sequence of an organism&#39;s genome.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000047</obo:IAO_0000119>
     </owl:Class>
     
@@ -2119,18 +2119,6 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000182"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000138"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000118"/>
                 <owl:allValuesFrom>
                     <owl:Class>
@@ -2143,6 +2131,18 @@ PMID:12345</obo:IAO_0000112>
                         </owl:intersectionOf>
                     </owl:Class>
                 </owl:allValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000138"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000092"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000167"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">The totality of all processes through which a given disease instance is realized.</obo:IAO_0000115>
@@ -2479,7 +2479,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000095">
         <rdfs:label xml:lang="en">inflammation process</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000060"/>
-        <obo:IAO_0000115 xml:lang="en">A process which is a response by an organism&apos;s tissues that is generally identified by swelling or localized pain.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A process which is a response by an organism&#39;s tissues that is generally identified by swelling or localized pain.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000095</obo:IAO_0000119>
     </owl:Class>
     
@@ -2563,7 +2563,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;OGMS_0000102">
         <rdfs:label xml:lang="en">injury</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_026"/>
-        <rdfs:comment xml:lang="en">(Editor&apos;s note) At the scale of organism (as opposed to the cellular scale or the population scale), an injury is typically the result of a catastrophic event. Consider the implications of making &apos;injury&apos; a subtype of &apos;disorder&apos;.</rdfs:comment>
+        <rdfs:comment xml:lang="en">(Editor&#39;s note) At the scale of organism (as opposed to the cellular scale or the population scale), an injury is typically the result of a catastrophic event. Consider the implications of making &#39;injury&#39; a subtype of &#39;disorder&#39;.</rdfs:comment>
         <obo:IAO_0000115 xml:lang="en">A part of an organism that has undergone a change in structural integrity and has a higher chance of dysfunction or causing dysfunction in another structure.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/OGMS_0000102</obo:IAO_0000119>
     </owl:Class>
@@ -2827,12 +2827,6 @@ PMID:12345</obo:IAO_0000112>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000023"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
-                <owl:someValuesFrom rdf:resource="&obo;OBI_0000011"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000081"/>
                 <owl:someValuesFrom>
                     <owl:Class>
@@ -2842,6 +2836,12 @@ PMID:12345</obo:IAO_0000112>
                         </owl:unionOf>
                     </owl:Class>
                 </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000054"/>
+                <owl:someValuesFrom rdf:resource="&obo;OBI_0000011"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">(HDOT_CORE) &quot;organismal social role&quot; and &quot;organization social role&quot; have been deleted, as their future status is uncertain according to the curators of OMRSE. Since &quot;integrated delivery network&quot; and &quot;physician practice&quot; seem to be useful, we have moved them to &quot;health care provides role&quot; and renamed them as &quot;X role&quot;.</rdfs:comment>
@@ -2867,7 +2867,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;PATO_0000051">
         <rdfs:label xml:lang="en">morphological quality</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001018"/>
-        <obo:IAO_0000115 xml:lang="en">A quality of a single physical entity inhering in the bearer by virtue of the bearer&apos;s size or shape or structure.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A quality of a single physical entity inhering in the bearer by virtue of the bearer&#39;s size or shape or structure.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0000051</obo:IAO_0000119>
     </owl:Class>
     
@@ -2878,7 +2878,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;PATO_0000141">
         <rdfs:label xml:lang="en">physical structure</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000051"/>
-        <obo:IAO_0000115 xml:lang="en">A morphology quality inhering in a bearer by virtue of the bearer&apos;s relative position, shape, arrangements and connectivity of an organism&apos;s various parts; the pattern underlying its form.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A morphology quality inhering in a bearer by virtue of the bearer&#39;s relative position, shape, arrangements and connectivity of an organism&#39;s various parts; the pattern underlying its form.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0000141</obo:IAO_0000119>
     </owl:Class>
     
@@ -2907,7 +2907,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;PATO_0001193">
         <rdfs:label xml:lang="en">lateral to</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001631"/>
-        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&apos;s being located toward the side relative to another entity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&#39;s being located toward the side relative to another entity.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0001193</obo:IAO_0000119>
     </owl:Class>
     
@@ -2918,7 +2918,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;PATO_0001196">
         <rdfs:label xml:lang="en">ventral to</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001631"/>
-        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&apos;s being located toward the abdomen of an organism relative to another entity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&#39;s being located toward the abdomen of an organism relative to another entity.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0001196</obo:IAO_0000119>
     </owl:Class>
     
@@ -2929,7 +2929,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;PATO_0001233">
         <rdfs:label xml:lang="en">dorsal to</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001631"/>
-        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&apos;s being located toward the back or upper surface of an organism relative to another entity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&#39;s being located toward the back or upper surface of an organism relative to another entity.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0001233</obo:IAO_0000119>
     </owl:Class>
     
@@ -2986,7 +2986,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;PATO_0001631">
         <rdfs:label xml:lang="en">relational spatial quality</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000145"/>
-        <obo:IAO_0000115 xml:lang="en">A quality of related physical entities inhering in a bearer by virtue of the bearer&apos;s pertaining to or involving or having the nature of space in relation to another entity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A quality of related physical entities inhering in a bearer by virtue of the bearer&#39;s pertaining to or involving or having the nature of space in relation to another entity.</obo:IAO_0000115>
         <obo:IAO_0000119>http://purl.obolibrary.org/obo/PATO_0001631</obo:IAO_0000119>
     </owl:Class>
     
@@ -2997,7 +2997,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;PATO_0001632">
         <rdfs:label xml:lang="en">anterior to</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001631"/>
-        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&apos;s being located toward the front of an organism relative to another entity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&#39;s being located toward the front of an organism relative to another entity.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0001632</obo:IAO_0000119>
     </owl:Class>
     
@@ -3008,7 +3008,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;PATO_0001792">
         <rdfs:label xml:lang="en">left side of</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001631"/>
-        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&apos;s being located on left side of from the a another entity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&#39;s being located on left side of from the a another entity.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0001792</obo:IAO_0000119>
     </owl:Class>
     
@@ -3019,7 +3019,7 @@ PMID:12345</obo:IAO_0000112>
     <owl:Class rdf:about="&obo;PATO_0001793">
         <rdfs:label xml:lang="en">right side of</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001631"/>
-        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&apos;s being located on right side of a another entity.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A spatial quality inhering in a bearer by virtue of the bearer&#39;s being located on right side of a another entity.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0001793</obo:IAO_0000119>
     </owl:Class>
     
@@ -3213,7 +3213,7 @@ PMID:12345</obo:IAO_0000112>
                 <owl:complementOf rdf:resource="&hdot;HDOT_CORE_024"/>
             </owl:Class>
         </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">Material anatomical entity which is generated by coordinated expression of the organism&apos;s own genes that guide its morphogenesis; has inherent 3D shape; its parts are connected and spatially related to one another in patterns determined by coordinated gene expression.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Material anatomical entity which is generated by coordinated expression of the organism&#39;s own genes that guide its morphogenesis; has inherent 3D shape; its parts are connected and spatially related to one another in patterns determined by coordinated gene expression.</obo:IAO_0000115>
         <obo:IAO_0000112 xml:lang="en">heart, right ventricle, mitral valve, myocardium, endothelium, lymphocyte, fibroblast, thorax, cardiovascular system, hemoglobin, T cell receptor.</obo:IAO_0000112>
         <obo:IAO_0000119 xml:lang="en">http://ontology.buffalo.edu/bio/OBR.pdf</obo:IAO_0000119>
         <obo:IAO_0000119 xml:lang="en">http://sig.uw.edu/fma#Anatomical_structure</obo:IAO_0000119>
@@ -3669,7 +3669,7 @@ PMID:12345</obo:IAO_0000112>
                 <owl:someValuesFrom rdf:resource="&obo;OBI_0000011"/>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <obo:IAO_0000115 xml:lang="en">Function performed by a device; corresponds to Searle&apos;s &quot;causal-agentive function&quot;. The realization of an instrumental function is always some planned process.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Function performed by a device; corresponds to Searle&#39;s &quot;causal-agentive function&quot;. The realization of an instrumental function is always some planned process.</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -3687,7 +3687,7 @@ PMID:12345</obo:IAO_0000112>
 
     <owl:Class rdf:about="&hdot;HDOT_CORE_042">
         <rdfs:label>date of death</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000011"/>
     </owl:Class>
     
 
@@ -3696,7 +3696,7 @@ PMID:12345</obo:IAO_0000112>
 
     <owl:Class rdf:about="&hdot;HDOT_CORE_043">
         <rdfs:label>date of birth</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000011"/>
     </owl:Class>
     
 
@@ -3752,5 +3752,5 @@ PMID:12345</obo:IAO_0000112>
 
 
 
-<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
 
