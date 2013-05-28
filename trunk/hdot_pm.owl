@@ -326,7 +326,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -338,13 +338,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">An emotion process is a complex mental process that is a synchronized aggregate of constituent mental processes including an appraisal process as part, and which gives rise to an action tendency.</obo:IAO_0000115>
@@ -426,19 +426,6 @@
         <obo:IAO_0000115 xml:lang="en">An emotional action tendency is a disposition to behaviour that inheres in an organism by virtue of the physical changes brought about by an emotion process.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000007</obo:IAO_0000119>
     </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/NCBITaxon_9606 -->
-
-    <rdf:Description rdf:about="&obo;NCBITaxon_9606">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;has_age"/>
-                <owl:someValuesFrom rdf:resource="&obo;PATO_0000011"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description>
     
 
 
@@ -676,7 +663,7 @@
 
     <owl:Class rdf:about="&efo;EFO_0004918">
         <rdfs:label>age at diagnosis</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0060"/>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000011"/>
         <obo:IAO_0000115>The age, measured from some defined time point e.g. birth at which a subject (e.g. a human patient) is diagnosed with some disease e.g. breast cancer.</obo:IAO_0000115>
         <obo:IAO_0000412>http://www.ebi.ac.uk/efo/EFO_0004918</obo:IAO_0000412>
     </owl:Class>
@@ -687,7 +674,7 @@
 
     <owl:Class rdf:about="&efo;EFO_0005056">
         <rdfs:label>age at death</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0060"/>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000011"/>
         <obo:IAO_0000115>age at which death occurs</obo:IAO_0000115>
         <obo:IAO_0000412>http://www.ebi.ac.uk/efo/EFO_0005056</obo:IAO_0000412>
     </owl:Class>
@@ -846,6 +833,12 @@
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000077"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_028"/>
+                <owl:someValuesFrom rdf:resource="&obo;GO_0008283"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0012"/>
             </owl:Restriction>
@@ -854,12 +847,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0016"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_028"/>
-                <owl:someValuesFrom rdf:resource="&obo;GO_0008283"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119>http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Neoplasm</obo:IAO_0000119>
@@ -1428,31 +1415,6 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;has_age"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0060"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0060 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_PM_0060">
-        <rdfs:label>patient age</rdfs:label>
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="&obo;PATO_0000011"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="&obo;BFO_0000052"/>
-                        <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0058"/>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
     </owl:Class>
     
 
@@ -1461,7 +1423,7 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
 
     <owl:Class rdf:about="&hdot;HDOT_PM_0063">
         <rdfs:label>age at treatment</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0060"/>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000011"/>
     </owl:Class>
     
 
