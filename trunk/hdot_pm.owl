@@ -2,6 +2,7 @@
 
 
 <!DOCTYPE rdf:RDF [
+    <!ENTITY efo "http://www.ebi.ac.uk/efo/" >
     <!ENTITY hdot "http://www.ifomis.org/hdot/" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY obo "http://purl.obolibrary.org/obo/" >
@@ -18,6 +19,7 @@
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:hdot="http://www.ifomis.org/hdot/"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:efo="http://www.ebi.ac.uk/efo/"
      xmlns:RID="http://purl.bioontology.org/ontology/RID/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
@@ -65,6 +67,14 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/BFO_0000101 -->
+
+    <rdf:Description rdf:about="&obo;BFO_0000101">
+        <rdfs:subPropertyOf rdf:resource="&obo;BFO_0000157"/>
+    </rdf:Description>
     
 
 
@@ -144,7 +154,7 @@
     <owl:Class rdf:about="&obo;CHEBI_16646">
         <rdfs:label xml:lang="en">carbohydrate</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;CHEBI_50860"/>
-        <obo:IAO_0000115 xml:lang="en">The generic term &apos;carbohydrate&apos; includes monosaccharides, oligosaccharides and polysaccharides as well as substances derived from monosaccharides by reduction of the carbonyl group (alditols), by oxidation of one or more hydroxy groups to afford the corresponding aldehydes, ketones, or carboxylic acids, or by replacement of one or more hydroxy group(s) by a hydrogen atom. Cyclitols are generally not regarded as carbohydrates.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The generic term &#39;carbohydrate&#39; includes monosaccharides, oligosaccharides and polysaccharides as well as substances derived from monosaccharides by reduction of the carbonyl group (alditols), by oxidation of one or more hydroxy groups to afford the corresponding aldehydes, ketones, or carboxylic acids, or by replacement of one or more hydroxy group(s) by a hydrogen atom. Cyclitols are generally not regarded as carbohydrates.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/CHEBI_16646</obo:IAO_0000119>
     </owl:Class>
     
@@ -166,7 +176,7 @@
     <owl:Class rdf:about="&obo;CHEBI_18059">
         <rdfs:label xml:lang="en">lipid</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;CHEBI_50860"/>
-        <obo:IAO_0000115 xml:lang="en">&apos;Lipids&apos; is a loosely defined term for substances of biological origin that are soluble in nonpolar solvents. They consist of saponifiable lipids, such as glycerides (fats and oils) and phospholipids, as well as nonsaponifiable lipids, principally steroids.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">&#39;Lipids&#39; is a loosely defined term for substances of biological origin that are soluble in nonpolar solvents. They consist of saponifiable lipids, such as glycerides (fats and oils) and phospholipids, as well as nonsaponifiable lipids, principally steroids.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/CHEBI_18059</obo:IAO_0000119>
     </owl:Class>
     
@@ -315,6 +325,12 @@
         <rdfs:subClassOf rdf:resource="&obo;MF_0000020"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;RO_0002218"/>
                 <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
@@ -323,12 +339,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
                 <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -482,7 +492,7 @@
         <rdfs:label>shape</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
         <obo:IAO_0000412>http://purl.obolibrary.org/obo/PATO_0000052</obo:IAO_0000412>
-        <obo:IAO_0000115>A morphological quality inhering in a bearer by virtue of the bearer&apos;s ratios of distances between its features (points, edges, surfaces and also holes etc).</obo:IAO_0000115>
+        <obo:IAO_0000115>A morphological quality inhering in a bearer by virtue of the bearer&#39;s ratios of distances between its features (points, edges, surfaces and also holes etc).</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -493,7 +503,7 @@
         <rdfs:label>size</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
         <obo:IAO_0000412>http://purl.obolibrary.org/obo/PATO_0000117</obo:IAO_0000412>
-        <obo:IAO_0000115>A morphology quality inhering in a bearer by virtue of the bearer&apos;s physical magnitude.</obo:IAO_0000115>
+        <obo:IAO_0000115>A morphology quality inhering in a bearer by virtue of the bearer&#39;s physical magnitude.</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -503,7 +513,7 @@
     <owl:Class rdf:about="&obo;PATO_0000119">
         <rdfs:label>height</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001708"/>
-        <obo:IAO_0000115>A 1-D extent quality inhering in a bearer by virtue of the bearer&apos;s vertical dimension of extension</obo:IAO_0000115>
+        <obo:IAO_0000115>A 1-D extent quality inhering in a bearer by virtue of the bearer&#39;s vertical dimension of extension</obo:IAO_0000115>
         <obo:IAO_0000412>http://purl.obolibrary.org/obo/PATO_0000119</obo:IAO_0000412>
     </owl:Class>
     
@@ -525,7 +535,7 @@
     <owl:Class rdf:about="&obo;PATO_0000125">
         <rdfs:label xml:lang="en">mass</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
-        <obo:IAO_0000115 xml:lang="en">A physical quality that inheres in a bearer by virtue of the proportion of the bearer&apos;s amount of matter.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A physical quality that inheres in a bearer by virtue of the proportion of the bearer&#39;s amount of matter.</obo:IAO_0000115>
         <obo:IAO_0000119>http://purl.obolibrary.org/obo/PATO_0000125</obo:IAO_0000119>
     </owl:Class>
     
@@ -558,7 +568,7 @@
     <owl:Class rdf:about="&obo;PATO_0000918">
         <rdfs:label xml:lang="en">volume</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
-        <obo:IAO_0000115 xml:lang="en">A 3-D extent quality inhering in a bearer by virtue of the bearer&apos;s amount of 3-dimensional space it occupies.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A 3-D extent quality inhering in a bearer by virtue of the bearer&#39;s amount of 3-dimensional space it occupies.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0000918</obo:IAO_0000119>
     </owl:Class>
     
@@ -580,7 +590,7 @@
     <owl:Class rdf:about="&obo;PATO_0001019">
         <rdfs:label xml:lang="en">density</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
-        <obo:IAO_0000115 xml:lang="en">A physical quality which inheres in a bearer by virtue of some influence is exerted by the bearer&apos;s mass per unit size.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A physical quality which inheres in a bearer by virtue of some influence is exerted by the bearer&#39;s mass per unit size.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0001019</obo:IAO_0000119>
     </owl:Class>
     
@@ -591,7 +601,7 @@
     <owl:Class rdf:about="&obo;PATO_0001025">
         <rdfs:label xml:lang="en">pressure</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
-        <obo:IAO_0000115 xml:lang="en">A physical quality that inheres in a bearer by virtue of the bearer&apos;s amount of force per unit area it exerts.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A physical quality that inheres in a bearer by virtue of the bearer&#39;s amount of force per unit area it exerts.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/PATO_0001025</obo:IAO_0000119>
     </owl:Class>
     
@@ -603,7 +613,7 @@
         <rdfs:label>area</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001709"/>
         <obo:IAO_0000412>http://purl.obolibrary.org/obo/PATO_0001323</obo:IAO_0000412>
-        <obo:IAO_0000115>A 2-D extent quality inhering in a bearer by virtue of the bearer&apos;s two dimensional extent.</obo:IAO_0000115>
+        <obo:IAO_0000115>A 2-D extent quality inhering in a bearer by virtue of the bearer&#39;s two dimensional extent.</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -635,7 +645,7 @@
         <rdfs:label>1-D size</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000117"/>
         <obo:IAO_0000412>http://purl.obolibrary.org/obo/PATO_0001708</obo:IAO_0000412>
-        <obo:IAO_0000115>A size quality inhering in an bearer by virtue of the bearer&apos;s extension in one dimension</obo:IAO_0000115>
+        <obo:IAO_0000115>A size quality inhering in an bearer by virtue of the bearer&#39;s extension in one dimension</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -646,7 +656,7 @@
         <rdfs:label>2-D size</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000117"/>
         <obo:IAO_0000412>http://purl.obolibrary.org/obo/PATO_0001709</obo:IAO_0000412>
-        <obo:IAO_0000115>A size quality inhering in an bearer by virtue of the bearer&apos;s extension in two dimensions.</obo:IAO_0000115>
+        <obo:IAO_0000115>A size quality inhering in an bearer by virtue of the bearer&#39;s extension in two dimensions.</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -656,7 +666,7 @@
     <owl:Class rdf:about="&obo;PATO_0001710">
         <rdfs:label>3-D size</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000117"/>
-        <obo:IAO_0000115>A size quality inhering in an bearer by virtue of the bearer&apos;s extension in three dimensions.</obo:IAO_0000115>
+        <obo:IAO_0000115>A size quality inhering in an bearer by virtue of the bearer&#39;s extension in three dimensions.</obo:IAO_0000115>
         <obo:IAO_0000412>http://purl.obolibrary.org/obo/PATO_0001710</obo:IAO_0000412>
     </owl:Class>
     
@@ -664,7 +674,7 @@
 
     <!-- http://www.ebi.ac.uk/efo/EFO_0004918 -->
 
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0004918">
+    <owl:Class rdf:about="&efo;EFO_0004918">
         <rdfs:label>age at diagnosis</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0060"/>
         <obo:IAO_0000115>The age, measured from some defined time point e.g. birth at which a subject (e.g. a human patient) is diagnosed with some disease e.g. breast cancer.</obo:IAO_0000115>
@@ -675,7 +685,7 @@
 
     <!-- http://www.ebi.ac.uk/efo/EFO_0005056 -->
 
-    <owl:Class rdf:about="http://www.ebi.ac.uk/efo/EFO_0005056">
+    <owl:Class rdf:about="&efo;EFO_0005056">
         <rdfs:label>age at death</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0060"/>
         <obo:IAO_0000115>age at which death occurs</obo:IAO_0000115>
@@ -1042,7 +1052,7 @@
     <owl:Class rdf:about="&hdot;HDOT_PM_0032">
         <rdfs:label xml:lang="en">quality of life</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001995"/>
-        <obo:IAO_0000115 xml:lang="en">The subjective measurement of an individual&apos;s sense of well-being and ability to enjoy life. The concept holds varying meanings for different people and may evolve over time. For some individuals it implies autonomy, empowerment, capability, and choice; for others, security, social integration, or freedom from stress or illness.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The subjective measurement of an individual&#39;s sense of well-being and ability to enjoy life. The concept holds varying meanings for different people and may evolve over time. For some individuals it implies autonomy, empowerment, capability, and choice; for others, security, social integration, or freedom from stress or illness.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Quality_of_Life</obo:IAO_0000119>
     </owl:Class>
     
@@ -1292,7 +1302,7 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     <owl:Class rdf:about="&hdot;HDOT_PM_0049">
         <rdfs:label xml:lang="en">surface size</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0002016"/>
-        <obo:IAO_0000115 xml:lang="en">A 2-D extent quality inhering in a bearer by virtue of the bearer&apos;s amount of 2-dimensional surface it has.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A 2-D extent quality inhering in a bearer by virtue of the bearer&#39;s amount of 2-dimensional surface it has.</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -1555,5 +1565,5 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
 
 
 
-<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
 
