@@ -210,7 +210,6 @@ public class TestOntologyAggregator {
 				break;
 			}
 		}
-		// TODO BioPortal categories
 		return rf.isAccept();
 	}
 

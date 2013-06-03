@@ -31,6 +31,7 @@ public class ComparatorDefinitions implements Comparator<Recommendation>{
 		}
 		
 		// TODO compare semantically
+		//check the def of the upper classes 
 		Integer lengthOfDef1 = (Integer) defR1.get(0).length();
 		return lengthOfDef1.compareTo((Integer) defR2.get(0).length());
 	}

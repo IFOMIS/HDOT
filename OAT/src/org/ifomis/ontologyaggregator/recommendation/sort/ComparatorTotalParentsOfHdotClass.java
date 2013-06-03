@@ -5,7 +5,7 @@ import java.util.Comparator;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 
 
-public class ComparatorNoParentsOfHdotClass implements Comparator<Recommendation>{
+public class ComparatorTotalParentsOfHdotClass implements Comparator<Recommendation>{
 
 	@Override
 	public int compare(Recommendation r1, Recommendation r2) {

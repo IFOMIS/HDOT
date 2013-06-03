@@ -72,13 +72,13 @@ public class SearchEngine {
 
 		ontologiesList = FileUtils.readLines(fileOntologies);
 
-		log.info("List of ontologies imported from file: " + fileWithOntologies);
+		log.debug("List of ontologies imported from file: " + fileWithOntologies);
 
 		File fileTerms = new File(fileWithTerms);
 
 		setTermsList(FileUtils.readLines(fileTerms));
 
-		log.info("List of terms imported from file: " + fileWithTerms);
+		log.debug("List of terms imported from file: " + fileWithTerms);
 	}
 
 	/**
