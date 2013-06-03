@@ -13,8 +13,9 @@ public class RecommendationSorter {
 		ComparatorChain comparatorChain = new ComparatorChain();
 		comparatorChain.addComparator(new ComparatorPredefinedListOfOntologies());
 		comparatorChain.addComparator(new ComparatorDefinitions());
-		comparatorChain.addComparator(new ComparatorNoParentsOfHdotClass());
-		comparatorChain.addComparator(new ComparatorNoOfMatchedParent());
+		comparatorChain.addComparator(new ComparatorTotalParentsOfHdotClass());
+		comparatorChain.addComparator(new ComparatorPositionOfMatchedParent());
+		comparatorChain.addComparator(new ComparatorTotalMatchedParents());
 		Collections.sort(validRecommendations, comparatorChain);
 
 	}

@@ -9,7 +9,9 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
@@ -113,6 +115,10 @@ public class RecommendationGenerator {
 
 	private boolean isTopFive;
 
+	private List<List<Stack<OntologyTerm>>> listOfPathsOfAllHits;
+
+	private int numMatchedParents;
+
 	/**
 	 * Creates a RecommendationGenerator and loads the specified input ontology.
 	 * 
@@ -138,7 +144,8 @@ public class RecommendationGenerator {
 		this.listOfInCoreNotLeafMatches = new ArrayList<>();
 		this.listImportedNotLeafMatches = new ArrayList<>();
 
-		this.importedOntologies = FileUtils.readLines(new File ("data/imported_ontologies"));
+		this.importedOntologies = FileUtils.readLines(new File(
+				"data/imported_ontologies"));
 
 		// Get hold of an ontology manager
 		this.ontology_manager = OWLManager.createOWLOntologyManager();
@@ -148,36 +155,21 @@ public class RecommendationGenerator {
 
 		try {
 			// Now load the local copy of hdot that include all modules
-			// this.hdot_ontology = ontology_manager
-			// .loadOntologyFromOntologyDocument(file);
+
 			this.hdot_ontology = ontology_manager
 					.loadOntologyFromOntologyDocument(IRI.create(file));
 
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
 		}
-		// We can always obtain the location where an ontology was loaded from
-		// this.iriIn = ontology_manager.getOntologyDocumentIRI(hdot_ontology);
-		// log.info("iriIn: " + iriIn);
 
 		log.info("Loaded ontology: " + hdot_ontology);
 		Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
-		// log.debug("modules: ");
-		// for (OWLOntology owlOntology : hdotModules) {
-		// log.debug(owlOntology);
-		// }
-		// sort modules such that the recommendation will be found in more
-		// specific module
+
 		sortedHdotModules = new ModuleSorter().sortHdotModules(hdotModules);
 
 		// generateRecommendation(listOfPathsOfAllHits);
 
-		if (recommendationCounter == 0) {
-			log.info("NO SUITABLE RECOMMENDATION WAS FOUND!\n");
-		} else {
-			log.info(recommendationCounter
-					+ " RECOMMENDATION(S) WERE GENERATED");
-		}
 	}
 
 	/**
@@ -203,8 +195,11 @@ public class RecommendationGenerator {
 		}
 		recommendationCounter = 0;
 
+		// loop over hits
 		for (List<Stack<OntologyTerm>> listOfPaths : listOfPathsOfAllHits) {
 			++hitsCounter;
+
+			// loop over elements of the path
 			for (Stack<OntologyTerm> path : listOfPaths) {
 
 				hierarchyOfHit = (Stack<OntologyTerm>) path.clone();
@@ -218,26 +213,35 @@ public class RecommendationGenerator {
 					continue;
 				}
 
-				log.info("Length of current path to root is: " + path.size());
+				log.info("The length of the current path to root is: "
+						+ path.size());
 				log.debug("____________________________________________________________________");
 				counterForParents = 0;
 
 				if (!path.isEmpty()) {
 					this.currentHit = path.peek();
 					// log.info("current hit=" + this.currentHit);
+
+					if (recommend(path)) {
+						++recommendationCounter;
+						// if term has been recommended do not examine next
+						// concepts
+						break;
+					}
+
 				} else {
 					log.debug("path was empty");
 					continue;
 				}
 
-				if (recommend(path)) {
-					++recommendationCounter;
-					// if term has been recommended do not examine the other
-					// paths
-					break;
-				}
 			}
-			
+
+		}
+		if (recommendationCounter == 0) {
+			log.info("NO SUITABLE RECOMMENDATION WAS FOUND!\n");
+		} else {
+			log.info(recommendationCounter
+					+ " RECOMMENDATION(S) WERE GENERATED");
 		}
 	}
 
@@ -283,14 +287,13 @@ public class RecommendationGenerator {
 						hdotModule);
 
 				if (matchedConcept != null) {
-					if (buildRecommendaton(hdotModule, matchedConcept,
-							termHasBeenRecommended)) {
-						// return true in order to terminate
-						path.clear();
-						return true;
-					}
+					// return true in order to terminate
+					
+					path.clear();
+					return true;
+
 				} else {
-					log.info("no match found");
+					log.debug("no match found");
 				}
 				log.debug("____________________________________________________________________");
 			}
@@ -303,7 +306,7 @@ public class RecommendationGenerator {
 	}
 
 	/**
-	 * Builds the recommendation and prints it out on the console.
+	 * Builds the recommendation and adds it to the corresponding list.
 	 * 
 	 * @param hdotModule
 	 *            the module where the match was found
@@ -313,38 +316,25 @@ public class RecommendationGenerator {
 	 * @return true if termHasBeenRecommended
 	 * @throws OntologyServiceException
 	 */
-	private boolean buildRecommendaton(OWLOntology hdotModule,
-			OntologyTerm matchedConcept, boolean termHasBeenRecommended)
-			throws OntologyServiceException {
+	private Recommendation buildRecommendaton(OWLOntology hdotModule,
+			OntologyTerm matchedConcept) throws OntologyServiceException {
 
-		boolean onlyInCore = false;
 		List<String> definitions = ontologyService
 				.getDefinitions(this.currentHit);
 		List<String> synonyms = ontologyService.getSynonyms(this.currentHit);
-		List<OntologyTerm> childrenOfHit = ontologyService
-				.getChildren(this.currentHit);
+		List<OntologyTerm> childrenOfHit = ontologyService.getChildren(
+				this.currentHit.getOntologyAccession(),
+				this.currentHit.getAccession());
 
-		if (importedOntologies.contains(hdotModule.getOntologyID()
-				.getOntologyIRI().toString())) {
-			log.info("RECOMMENDATION POSSIBLE ONLY IN CORE OF HDOT");
-			onlyInCore = true;
-		}
 		Recommendation recommendation = new Recommendation(hitsCounter,
 				currentHit, conceptIdsMatch, labelsMatch, searchedTerm,
 				hierarchyOfHdotClass, hierarchyOfHit, hdot_ontology,
 				hdotModule, counterForParents, matchedConcept, definitions,
-				synonyms, childrenOfHit);
+				synonyms, childrenOfHit, numMatchedParents);
 
-		if (onlyInCore) {
-			termHasBeenRecommended = false;
-			listOfRecsPossibleInCoreOfHDOT.add(recommendation);
+		// log.info(recommendation.toString());
 
-		} else {
-			termHasBeenRecommended = true;
-			listOfRecommendations.add(recommendation);
-			// log.info(recommendation.toString());
-		}
-		return termHasBeenRecommended;
+		return recommendation;
 	}
 
 	/**
@@ -402,21 +392,17 @@ public class RecommendationGenerator {
 	 * @return the concept where the term will be integrated under
 	 * @throws URISyntaxException
 	 * @throws OntologyServiceException
-	 * @throws IOException 
+	 * @throws IOException
 	 */
 	private OntologyTerm findMatch(OntologyTerm currentCandidate,
 			OWLOntology currentOntology) throws URISyntaxException,
 			OntologyServiceException, IOException {
 
+		numMatchedParents = 0;
 		Set<OWLClass> classesInSignature = currentOntology
 				.getClassesInSignature();
 
 		OntologyTerm matchedTerm = null;
-
-		// check if the current class is hdot_core
-		boolean isHdotCore = (currentOntology.getOntologyID().getOntologyIRI()
-				.toString()
-				.contains(FileUtils.readFileToString(new File("data/core_module_of_the_ontology"))));
 
 		// iterate over all classes of the ontology and try to find a match of
 		// uri or label
@@ -429,19 +415,22 @@ public class RecommendationGenerator {
 					.getAnnotations(currentOntology);
 
 			hierarchyOfHdotClass = new ArrayList<OWLClass>();
+
 			conceptIdsMatch = false;
 			labelsMatch = false;
 
 			String pureLabelOfHdotClass = retriveRdfsLabel(annotations);
 
 			// compare concept ids
-			if (currentCandidate.getURI().toString()
-					.equals(hdotClass.toStringID())) {
+			conceptIdsMatch = compareIds(currentCandidate.getURI().toString(),
+					hdotClass.toStringID());
+
+			if (conceptIdsMatch) {
 				log.info("\nCONCEPT IDs of BioPortal HIT and HDOT CLASS MATCH\n");
 				// log.debug("id of current candidate: "
 				// + currentCandidate.getURI().toString());
 				// log.debug("id of hdot class: " + hdotClass.toStringID());
-				conceptIdsMatch = true;
+				// conceptIdsMatch = true;
 
 				// if we find a match then we will retrieve this concept
 				matchedTerm = new OntologyTerm();
@@ -449,20 +438,19 @@ public class RecommendationGenerator {
 			}
 
 			// compare labels
-			String currentLabel = currentCandidate.getLabel();
-			if (currentLabel.isEmpty()) {
+			if (currentCandidate.getLabel().isEmpty()) {
 				continue;
 			}
+			labelsMatch = compareLabels(currentCandidate.getLabel().trim(),
+					pureLabelOfHdotClass.trim());
 
-			if (currentLabel.trim().equalsIgnoreCase(
-					pureLabelOfHdotClass.trim())) {
+			if (labelsMatch) {
 
-				labelsMatch = true;
 				log.info("\nLABELS of BioPortal HIT and HDOT CLASS MATCH\n");
-				log.info("pureLabelOfHdotClass: " + pureLabelOfHdotClass);
-
-				log.info("label of currentCandidate: "
-						+ currentCandidate.getLabel());
+				// log.info("pureLabelOfHdotClass: " + pureLabelOfHdotClass);
+				//
+				// log.info("label of currentCandidate: "
+				// + currentCandidate.getLabel());
 				if (conceptIdsMatch) {
 					log.info("\nIDs and LABELS MATCH");
 				}
@@ -470,89 +458,39 @@ public class RecommendationGenerator {
 					matchedTerm = new OntologyTerm();
 				}
 				matchedTerm.setLabel(pureLabelOfHdotClass);
-			} else {
-				double similarityOfLabels = DiceCoefficient
-						.diceCoefficientOptimized(currentLabel.toLowerCase(),
-								pureLabelOfHdotClass.toLowerCase());
-				if (similarityOfLabels > 0.95) {
 
-					log.info("\nLABELS of BioPortal HIT and HDOT CLASS SIMILARITY > 95\n");
-					log.info("pureLabelOfHdotClass: " + pureLabelOfHdotClass);
-
-					log.info("label of currentCandidate: "
-							+ currentCandidate.getLabel());
-					log.info("similarity of labels: " + similarityOfLabels);
-
-					if (conceptIdsMatch) {
-						log.info("\nIDs MATCH and LABELS SIMILAR");
-					}
-					if (matchedTerm == null) {
-						matchedTerm = new OntologyTerm();
-					}
-					matchedTerm.setLabel(pureLabelOfHdotClass);
-				}
 			}
 			// check after the comparison if a match was found
 			// to collect the hierarchy and set the accessions
 			if (matchedTerm != null) {
+				
 				matchedTerm.setURI(new URI(hdotClass.toStringID()));
 				matchedTerm.setLabel(pureLabelOfHdotClass);
 				matchedTerm.setOntologyAccession(currentOntology
 						.getOntologyID().getOntologyIRI().toString());
 
-				List<String> definitions = ontologyService
-						.getDefinitions(this.currentHit);
-				List<String> synonyms = ontologyService
-						.getSynonyms(this.currentHit);
-				List<OntologyTerm> childrenOfHit = ontologyService.getChildren(
-						this.currentHit.getOntologyAccession(),
-						this.currentHit.getAccession());
-
+				log.info("concept from path of hit: "
+						+ currentCandidate.getURI().toString() + "\t"
+						+ currentCandidate.getLabel());
+				log.info("matched concept from hdot: "
+						+ matchedTerm.getURI().toString() + "\t"
+						+ matchedTerm.getLabel());
+				
 				isMatchedClassTheSearchedTerm(matchedTerm);
 
 				extractHierarchyOfMatchedTerm(currentOntology, hdotClass);
 
-				// if the match is found in hdot core and the matched class is
-				// not a leaf node continue with the next class
-				if (isHdotCore) {
-					if (!hdotClass.getSubClasses(currentOntology).isEmpty()) {
+				countMatchingParents();
 
-						log.debug("THE MATCHED CLASS WAS FOUND IN HDOT_CORE BUT IT IS NOT A LEAF NODE");
-
-						// listOfInCoreNotLeafMatches.add(notification);
-						listOfInCoreNotLeafMatches.add(new Recommendation(
-								hitsCounter, currentHit, conceptIdsMatch,
-								labelsMatch, searchedTerm,
-								hierarchyOfHdotClass, hierarchyOfHit,
-								hdot_ontology, currentOntology,
-								counterForParents, matchedTerm, definitions,
-								synonyms, childrenOfHit));
-						log.debug("search for further matches ...\n");
-
-						matchedTerm = null;
-						continue;
-					}
+				if (!(extensionConditionsAreSatisfied(currentOntology,
+						hdotClass, matchedTerm))) {
+					matchedTerm = null;
+					continue;
+				} else {
+					listOfRecommendations.add(buildRecommendaton(
+							currentOntology, matchedTerm));
 				}
 
-				if (hdotClass.getSuperClasses(currentOntology).size() == 0) {
-					log.debug("THE MATCHED CLASS IS IMPORTED IN THIS MODULE");
-
-					if (!(hdotClass.getSubClasses(ontology_manager
-							.getOntologies()).isEmpty())) {
-						log.debug("BUT IT IS NOT A LEAF NODE");
-						log.debug("search for further matches ...\n");
-
-						listImportedNotLeafMatches.add(new Recommendation(
-								hitsCounter, currentHit, conceptIdsMatch,
-								labelsMatch, searchedTerm,
-								hierarchyOfHdotClass, hierarchyOfHit,
-								hdot_ontology, currentOntology,
-								counterForParents, matchedTerm, definitions,
-								synonyms, childrenOfHit));
-						matchedTerm = null;
-						continue;
-					}
-				}
 				// in case a match was found quit the loop for the classes
 				// possibly we can collect the matches in order to have them for
 				// further recommendations
@@ -561,6 +499,128 @@ public class RecommendationGenerator {
 			// otherwise search further
 		}
 		return matchedTerm;
+	}
+
+	private boolean extensionConditionsAreSatisfied(
+			OWLOntology currentOntology, OWLClass hdotClass,
+			OntologyTerm matchedTerm) throws IOException,
+			OntologyServiceException {
+
+		boolean result = true;
+
+		// check if the current class is hdot_core
+		boolean isHdotCore = (currentOntology.getOntologyID().getOntologyIRI()
+				.toString().contains(FileUtils.readFileToString(new File(
+				"data/core_module_of_the_ontology"))));
+
+		Recommendation recommendation = buildRecommendaton(currentOntology,
+				matchedTerm);
+
+		// if the match is found in hdot core and the matched class is
+		// not a leaf node continue with the next class
+		if (isHdotCore) {
+			if (!hdotClass.getSubClasses(currentOntology).isEmpty()) {
+
+				log.debug("THE MATCHED CLASS WAS FOUND IN HDOT_CORE BUT IT IS NOT A LEAF NODE");
+
+				// listOfInCoreNotLeafMatches.add(notification);
+				listOfInCoreNotLeafMatches.add(recommendation);
+				log.debug("search for further matches ...\n");
+
+				result = false;
+			}
+		}
+
+		if (hdotClass.getSuperClasses(currentOntology).size() == 0) {
+			log.debug("THE MATCHED CLASS IS IMPORTED IN THIS MODULE");
+
+			if (!(hdotClass.getSubClasses(ontology_manager.getOntologies())
+					.isEmpty())) {
+				log.debug("BUT IT IS NOT A LEAF NODE");
+				log.debug("search for further matches ...\n");
+
+				listImportedNotLeafMatches.add(recommendation);
+				result = false;
+			}
+		}
+
+		if (importedOntologies.contains(currentOntology.getOntologyID()
+				.getOntologyIRI().toString())) {
+			log.info("RECOMMENDATION POSSIBLE ONLY IN CORE OF HDOT");
+			listOfRecsPossibleInCoreOfHDOT.add(recommendation);
+			result = false;
+		}
+
+		return result;
+	}
+
+	private void countMatchingParents() throws IOException {
+
+		Map<String, String> urisTOLabels = new HashMap<>();
+
+		
+		for (OntologyTerm ontologyTerm : hierarchyOfHit) {
+			urisTOLabels.put(ontologyTerm.getURI().toString(), ontologyTerm
+					.getLabel().toLowerCase());
+		}
+
+		for (OWLClass classInHierarchy : hierarchyOfHdotClass) {
+			String uri = classInHierarchy.toStringID();
+			// String label =
+			// retriveRdfsLabel(classInHierarchy.getAnnotations(currentOntology));
+			String label = "";
+			// get the labels of the parents to display them
+			for (OWLOntology currOnto : hdot_ontology.getImports()) {
+				if (!classInHierarchy.getAnnotations(currOnto).isEmpty()) {
+					label = retriveRdfsLabel(classInHierarchy
+							.getAnnotations(currOnto));
+					break;
+				}
+			}
+			label = label.toLowerCase();
+			log.info(label);
+			log.info(urisTOLabels.containsValue(label));
+			
+			if (urisTOLabels.containsKey(uri)
+					|| (!(label.isEmpty()) && urisTOLabels.containsValue(label))) {
+				numMatchedParents++;
+				log.info("***********+++++++++++");
+				
+				log.info(uri);
+			}
+		}
+		// log.debug("number of matching parents: " + numMatchedParents);
+	}
+
+	private boolean compareLabels(String currentLabel,
+			String pureLabelOfHdotClass) {
+
+		if (currentLabel.isEmpty() || pureLabelOfHdotClass.isEmpty()) {
+			return false;
+		}
+		boolean result = false;
+		if (currentLabel.trim().equalsIgnoreCase(pureLabelOfHdotClass.trim())) {
+			result = true;
+
+		} else {
+			double similarityOfLabels = DiceCoefficient
+					.diceCoefficientOptimized(currentLabel.toLowerCase(),
+							pureLabelOfHdotClass.toLowerCase());
+			if (similarityOfLabels > 0.95) {
+
+				log.info("\nLABELS of BioPortal HIT and HDOT CLASS SIMILARITY > 95\n");
+				// log.info("pureLabelOfHdotClass: " + pureLabelOfHdotClass);
+				//
+				// log.info("label of currentCandidate: " + currentLabel);
+				log.info("similarity of labels: " + similarityOfLabels);
+				result = true;
+			}
+		}
+		return result;
+	}
+
+	private boolean compareIds(String id1, String id2) {
+		return id1.equals(id2);
 	}
 
 	/**

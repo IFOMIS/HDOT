@@ -6,13 +6,13 @@ import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 
 
 /**
- * Compares two @link{Recommendation}s wrt the number of the parent that matched
- * hdot class. Lower number is preferred.
+ * Compares two @link{Recommendation}s wrt the position of the parent that matched
+ * the hdot class. Lower number is preferred.
  * 
  * @author Nikolina
  * 
  */
-public class ComparatorNoOfMatchedParent implements Comparator<Recommendation> {
+public class ComparatorPositionOfMatchedParent implements Comparator<Recommendation> {
 
 	@Override
 	public int compare(Recommendation r1, Recommendation r2) {

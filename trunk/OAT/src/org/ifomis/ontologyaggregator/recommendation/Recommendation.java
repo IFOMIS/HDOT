@@ -38,6 +38,7 @@ public class Recommendation {
 	private List<OWLClass> hdotHierarchy;
 	private OWLOntology hdotModule;
 	private int parentNoOfHit;
+	private int matchedParents;
 	private OntologyTerm matchedClass;
 	private List<String> hitSynonyms;
 	private List<OntologyTerm> hitChildren;
@@ -54,8 +55,9 @@ public class Recommendation {
 			List<OWLClass> hierarchy, Stack<OntologyTerm> hierarchyOfHit,
 			OWLOntology hdot_all, OWLOntology hdotModule, int parentNo,
 			OntologyTerm matchedClass, List<String> definitions,
-			List<String> synonyms, List<OntologyTerm> childrenOfHit) {
+			List<String> synonyms, List<OntologyTerm> childrenOfHit, int matchedParents) {
 
+		this.matchedParents = matchedParents;
 		this.hitNo = hitNo;
 		this.hit = hit;
 		this.idsMatched = idsMatched;
@@ -83,6 +85,7 @@ public class Recommendation {
 
 		messageBuffer.append("\nsearched term:" + this.searchedTerm);
 		messageBuffer.append("\nhit No:" + hitNo);
+		messageBuffer.append("\nnumber of matched parents:" + this.matchedParents);
 		messageBuffer.append("\n\tthe hit hieratchy:");
 		for (OntologyTerm parent : hitHierarchy) {
 			messageBuffer.append("\n\t\t");
@@ -111,6 +114,7 @@ public class Recommendation {
 			messageBuffer.append(label);
 
 		}
+		messageBuffer.append("\n\t\t");
 		messageBuffer.append(matchedClass.getURI().toString());
 		messageBuffer.append("\t");
 		messageBuffer.append(matchedClass.getLabel());
@@ -239,6 +243,10 @@ public class Recommendation {
 		return hitChildren;
 	}
 
+	public int getMatchedParents() {
+		return matchedParents;
+	}
+	
 	public void exportChildrenToOWLFile() throws OWLOntologyCreationException,
 			OWLOntologyStorageException {
 		OWLOntologyManager ontology_manager = OWLManager

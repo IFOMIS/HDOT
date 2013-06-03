@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -28,6 +29,7 @@ import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import uk.ac.ebi.ontocat.OntologyService;
 import uk.ac.ebi.ontocat.OntologyServiceException;
 import uk.ac.ebi.ontocat.OntologyTerm;
+import uk.ac.ebi.ontocat.bioportal.xmlbeans.OntologyBean;
 
 /**
  * Extends HDOT with the class that is recommended and confirmed by the user.
@@ -211,11 +213,12 @@ public class HDOTExtender {
 	 * @throws HdotExtensionException
 	 * @throws IOException
 	 * @throws OWLOntologyCreationException
+	 * @throws OntologyServiceException 
 	 */
 	public void extendHDOT(OntologyTerm newClass, OWLClass parent,
 			List<String> definitions, boolean isTheActualHit)
 			throws OWLOntologyStorageException, URISyntaxException,
-			HdotExtensionException, IOException, OWLOntologyCreationException {
+			HdotExtensionException, IOException, OWLOntologyCreationException, OntologyServiceException {
 
 		String newHdotURI = "";
 		if (!uriManager.keepOriginalURI()) {
@@ -225,7 +228,21 @@ public class HDOTExtender {
 
 		}
 		// add new class wrt accepted recommendation
-
+		OntologyBean o1 = (OntologyBean) newClass.getOntology();
+		log.info("*************METAANNO*************");
+		log.info(o1.getMetaAnnotation());
+		log.info("--");
+		log.info(o1.getDescription());
+		log.info("--");
+		log.info(o1.getDocumentation());
+		log.info("--");
+		log.info(o1.getMetricsBean());
+		log.info("--");
+		ArrayList<Integer> groupIds = o1.getGroupIds();
+		for (Integer integer : groupIds) {
+			log.info(integer);
+		}
+		log.info("***********************************");
 		integrateClass(newClass, parent, newHdotURI, isTheActualHit);
 		log.debug("class is integrated");
 

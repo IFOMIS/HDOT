@@ -22,7 +22,7 @@ public class ComparatorOBOFoundry implements Comparator<OntologyBean> {
 		return ObjectUtils.compare(o1.getGroupIds().contains(6001),
 				o2.getGroupIds().contains(6001));
 		
-		
+			
 //		boolean o1InOBO = o1.getGroupIds().contains(6001);
 //		boolean o2InOBO = o2.getGroupIds().contains(6001);
 //		// System.out.println("IN OBO Comparator");
