@@ -398,7 +398,7 @@ public class RecommendationGenerator {
 			OWLOntology currentOntology) throws URISyntaxException,
 			OntologyServiceException, IOException {
 
-		numMatchedParents = 0;
+		numMatchedParents = 1;
 		Set<OWLClass> classesInSignature = currentOntology
 				.getClassesInSignature();
 
