@@ -332,7 +332,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -344,7 +344,11 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+<<<<<<< .mine
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
+=======
                 <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
+>>>>>>> .r171
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">An emotion process is a complex mental process that is a synchronized aggregate of constituent mental processes including an appraisal process as part, and which gives rise to an action tendency.</obo:IAO_0000115>
@@ -448,6 +452,27 @@
     
 
 
+<<<<<<< .mine
+    <!-- http://purl.obolibrary.org/obo/OGMS_0000087 -->
+
+    <rdf:Description rdf:about="&obo;OGMS_0000087">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;has_age"/>
+                <owl:someValuesFrom rdf:resource="&obo;PATO_0000011"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000087"/>
+                <owl:someValuesFrom rdf:resource="&obo;OMRSE_00000007"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+=======
     <!-- http://purl.obolibrary.org/obo/OGMS_0000087 -->
 
     <rdf:Description rdf:about="&obo;OGMS_0000087">
@@ -467,6 +492,7 @@
     
 
 
+>>>>>>> .r171
     <!-- http://purl.obolibrary.org/obo/OGMS_0000090 -->
 
     <rdf:Description rdf:about="&obo;OGMS_0000090">
@@ -846,6 +872,8 @@
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000077"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+<<<<<<< .mine
+=======
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_028"/>
                 <owl:someValuesFrom rdf:resource="&obo;GO_0008283"/>
             </owl:Restriction>
@@ -858,8 +886,15 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+>>>>>>> .r171
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0016"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0012"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119>http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Neoplasm</obo:IAO_0000119>
@@ -1420,6 +1455,12 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_62"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&obo;BFO_0000019"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
