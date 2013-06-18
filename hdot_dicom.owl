@@ -65,6 +65,19 @@
     
 
 
+    <!-- http://www.ifomis.org/hdot/HDOT_CORE_041 -->
+
+    <rdf:Description rdf:about="&hdot;HDOT_CORE_041">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
+                <owl:someValuesFrom rdf:resource="&obo;NCBITaxon_9606"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
     <!-- http://www.ifomis.org/hdot/HDOT_DICOM_0001 -->
 
     <owl:Class rdf:about="&hdot;HDOT_DICOM_0001">
@@ -434,6 +447,31 @@
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000038"/>
         <obo:IAO_0000412>DICOM 0008,0030</obo:IAO_0000412>
     </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0058 -->
+
+    <rdf:Description rdf:about="&hdot;HDOT_PM_0058">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_DICOM_0014"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_DICOM_0013"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0060 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0060"/>
 </rdf:RDF>
 
 
