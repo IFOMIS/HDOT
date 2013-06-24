@@ -31,6 +31,8 @@ public class HDOTURIManager {
 		this.keepOriginalURI = predefinedOntologies
 				.contains(acceptedRecommendation.getHit().getOntology()
 						.getAbbreviation());
+		System.out.println("???***" + acceptedRecommendation.getHit().getOntology()
+						.getAbbreviation());
 		
 		this.acceptedRecommendation = acceptedRecommendation;
 		

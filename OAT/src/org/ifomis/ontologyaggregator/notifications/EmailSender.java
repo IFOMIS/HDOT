@@ -7,7 +7,7 @@ import org.apache.commons.mail.SimpleEmail;
 
 /**
  * The EmailSender notifies the ontology curators about difficulties with the
- * recommendation.
+ * recommendation generation.
  * 
  * @author Nikolina
  * 
@@ -37,5 +37,9 @@ public class EmailSender {
 		} catch (EmailException e) {
 			e.printStackTrace();
 		}
+	}
+	public static void main(String[] args) {
+		EmailSender sender = new EmailSender();
+		sender.sendMail("test", "this is a test mail");
 	}
 }

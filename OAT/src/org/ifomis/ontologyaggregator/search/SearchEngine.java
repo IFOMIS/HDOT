@@ -11,6 +11,7 @@ import java.util.Stack;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.ifomis.ontologyaggregator.notifications.EmailSender;
 
 import uk.ac.ebi.ontocat.OntologyService;
 import uk.ac.ebi.ontocat.OntologyTerm;
@@ -60,6 +61,7 @@ public class SearchEngine {
 	private String searchedTerm;
 
 	private OntologyService restrictedBps;
+	private EmailSender mailSender;
 
 	public OntologyService getRestrictedBps() {
 		return restrictedBps;
@@ -70,9 +72,11 @@ public class SearchEngine {
 
 		File fileOntologies = new File(fileWithOntologies);
 
-		ontologiesList = FileUtils.readLines(fileOntologies);
+		this.ontologiesList = FileUtils.readLines(fileOntologies);
+		this.mailSender = new EmailSender();
 
-		log.debug("List of ontologies imported from file: " + fileWithOntologies);
+		log.debug("List of ontologies imported from file: "
+				+ fileWithOntologies);
 
 		File fileTerms = new File(fileWithTerms);
 
@@ -86,18 +90,17 @@ public class SearchEngine {
 	 * sorting of the ontologies.
 	 * 
 	 * @return list of stacks that store the root paths of the first 5 hits
-	 * @throws Exception 
+	 * @throws Exception
 	 */
 	public List<List<Stack<OntologyTerm>>> searchTermInBioPortal(String term)
 			throws Exception {
 
-		
 		OntologyService bps = CompositeServiceNoThreads
 				.getService(new BioportalOntologyService());
 
 		// create a restricted BioPortal ontology service that searches in the
 		// ontologies specified in the given list and considers their order
-		 restrictedBps = SortedSubsetDecorator.getService(bps,
+		restrictedBps = SortedSubsetDecorator.getService(bps,
 				this.ontologiesList);
 
 		log.debug("Ontology service according to predefined list of ontologies is created");
@@ -113,6 +116,11 @@ public class SearchEngine {
 		if (listWithHits == null) {
 			log.info("No results for " + term);
 			// continue;
+			mailSender.sendMail("NO RESULTS RETRIEVED FROM BioPortal",
+					"BioPortal has not retrived results for the term "
+							+ searchedTerm
+							+ "\n possibly the server is not responding");
+	
 			System.exit(0);
 		}
 
@@ -156,28 +164,30 @@ public class SearchEngine {
 
 				++counterForQueriesRootPath;
 				++totalCounterForQueriesRootPath;
-				
-//				log.debug("THE DESCRIPTION OF THE ONTOLOGY:");
-//
-//				log.debug(ot.getOntology().getDescription());
-			
-				List<Stack<OntologyTerm>> listOfAllPathsForOt = pathExtractor.computeAllPaths(ot
-						.getOntology().getAbbreviation(), ot);
+
+				// log.debug("THE DESCRIPTION OF THE ONTOLOGY:");
+				//
+				// log.debug(ot.getOntology().getDescription());
+
+				List<Stack<OntologyTerm>> listOfAllPathsForOt = pathExtractor
+						.computeAllPaths(ot.getOntology().getAbbreviation(), ot);
 
 				listOfPaths.add(listOfAllPathsForOt);
 				log.info(ot.getURI() + "\t" + ot.getLabel());
-				
-				log.info("getCounterForHitsThatDoNotHaveAnyPath: " + pathExtractor.getCounterForHitsThatDoNotHaveAnyPath());
-				log.info("counterForQueriesRootPath " + counterForQueriesRootPath);
-				
+
+				log.info("getCounterForHitsThatDoNotHaveAnyPath: "
+						+ pathExtractor.getCounterForHitsThatDoNotHaveAnyPath());
+				log.info("counterForQueriesRootPath "
+						+ counterForQueriesRootPath);
+
 				if (counterForQueriesRootPath == threshold) {
-					
+
 					int emptyResponces = pathExtractor
 							.getCounterForHitsThatDoNotHaveAnyPath();
 					totalEmptyResponces += emptyResponces;
 					if (emptyResponces > 0) {
 						log.debug("do not have any path: " + emptyResponces);
-						
+
 						threshold = emptyResponces;
 						// set the counter for empty responses to 0 otherwise to
 						// many queries are sent
@@ -186,7 +196,7 @@ public class SearchEngine {
 						continue;
 					} else {
 						log.debug("all hits hava at least one path.");
-						
+
 						break;
 					}
 				}
@@ -207,7 +217,7 @@ public class SearchEngine {
 				+ "_success"), pathExtractor.getSbSuccess().toString());
 
 		log.info("explored paths in total: " + listOfPaths.size());
-		
+
 		return listOfPaths;
 	}
 

@@ -213,12 +213,13 @@ public class HDOTExtender {
 	 * @throws HdotExtensionException
 	 * @throws IOException
 	 * @throws OWLOntologyCreationException
-	 * @throws OntologyServiceException 
+	 * @throws OntologyServiceException
 	 */
 	public void extendHDOT(OntologyTerm newClass, OWLClass parent,
 			List<String> definitions, boolean isTheActualHit)
 			throws OWLOntologyStorageException, URISyntaxException,
-			HdotExtensionException, IOException, OWLOntologyCreationException, OntologyServiceException {
+			HdotExtensionException, IOException, OWLOntologyCreationException,
+			OntologyServiceException {
 
 		String newHdotURI = "";
 		if (!uriManager.keepOriginalURI()) {
@@ -371,7 +372,8 @@ public class HDOTExtender {
 	}
 
 	/**
-	 * Saves the ontology administrated by the ontology manager.
+	 * Saves the ontology administrated by the ontology manager. This method
+	 * should be used when the user is an expert.
 	 * 
 	 * @param ontoOut
 	 *            the name of the file where the ontology is stored

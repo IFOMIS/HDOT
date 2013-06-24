@@ -43,23 +43,29 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 		this.mailSender = new EmailSender();
 	}
 
-	public void checkValidRecommendations() throws OWLOntologyCreationException, OWLOntologyStorageException {
+	public void checkValidRecommendations()
+			throws OWLOntologyCreationException, OWLOntologyStorageException {
 
 		if (!validRecommendations.isEmpty()) {
 
 			if (validRecommendations.size() == 1) {
 				log.info("SINGLE RECOMMENDATION");
-				validRecommendations.get(0).exportChildrenToOWLFile();
-				log.info(validRecommendations.get(0).toString());
-				
+
+				Recommendation recommendation = validRecommendations.get(0);
+
+				log.info(recommendation.toString());
+				if (!(recommendation.getHitChildren() == null)) {
+					recommendation.exportChildrenToOWLFile();
+				}
 
 			} else {
 				// sort recommendations and pick the first one
 				RecommendationSorter recommendationSorter = new RecommendationSorter();
 				recommendationSorter.sortRecommendations(validRecommendations);
-				
-				log.info(validRecommendations.size() + " RECOMMENDATIONS WERE GENERATED");
-				
+
+				log.info(validRecommendations.size()
+						+ " RECOMMENDATIONS WERE GENERATED");
+
 				log.info(validRecommendations.get(0).toString());
 
 				// int i = 0;
@@ -78,7 +84,7 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 	/**
 	 * checks if there are potential recommendations and notifies the curators.
 	 */
-	private void checkPotentialRecommendations() {
+	public void checkPotentialRecommendations() {
 		if (recommendationsInImportedOntologies.isEmpty()
 				&& recommendationsOfImportedNotLeafMatches.isEmpty()
 				&& inCoreNotLeafs.isEmpty()) {
@@ -171,7 +177,7 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 			this.includeSubclasses = false;
 		}
 	}
-	
+
 	public boolean isIncludeSubclasses() {
 		return includeSubclasses;
 	}
@@ -183,5 +189,5 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 	public boolean isAccept() {
 		return accept;
 	}
-	
+
 }

@@ -7,6 +7,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.apache.axis.transport.jms.TopicConnector;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.exception.HdotExtensionException;
@@ -115,8 +116,7 @@ public class TestOntologyAggregator {
 
 		File logRecommendFile = new File(
 				"log/loggingRecommendationGeneration.html");
-		DateFormat dateFormat = new SimpleDateFormat(
-				"yyyy-MM-dd-HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
 		String date = dateFormat.format(new Date());
 
 		logSearchFile.renameTo(new File("log/" + date + "_" + term
@@ -126,11 +126,11 @@ public class TestOntologyAggregator {
 				+ "_loggingRecommendationGeneration.html"));
 
 		log.info("Done.");
-		System.out.println("Log messages written in: log/" + date + "_"
-				+ term + "_loggingSearchEngine.html and " + date + "_"
-				+ term + "_loggingRecommendationGeneration.html");	
-		
-		if(shouldExit){
+		System.out.println("Log messages written in: log/" + date + "_" + term
+				+ "_loggingSearchEngine.html and " + date + "_" + term
+				+ "_loggingRecommendationGeneration.html");
+
+		if (shouldExit) {
 			System.exit(0);
 		}
 	}
@@ -140,15 +140,71 @@ public class TestOntologyAggregator {
 			RecommendationGenerator rg) throws IOException, URISyntaxException,
 			OntologyServiceException, OWLOntologyStorageException,
 			HdotExtensionException, OWLOntologyCreationException {
-		
+
 		int sizeOfresultList = se.getListOfPaths().size();
-		log.debug("in process results size of list with Paths: " + sizeOfresultList);
-		
-		int startIndex = 0;
-		int endIndex = 0;
+		log.debug("in process results size of list with Paths: "
+				+ sizeOfresultList);
+		int[] indexes = computeIndexes(isTopFive, sizeOfresultList, term, start);
+		int startIndex = indexes[0];
+		int endIndex = indexes[1];
+
+		rg.generateRecommendation(
+				se.getListOfPaths().subList(startIndex, endIndex), isTopFive);
 
 		if (isTopFive) {
+			log.info("# of valid recommendations under top 5 "
+					+ rg.getListOfRecommendations().size());
 			
+			if (rg.getListOfRecommendations().isEmpty()) {
+				computeIndexes(false, sizeOfresultList, term, start);
+				int sIndex = indexes[0];
+				int eIndex = indexes[1];
+				rg.generateRecommendation(se.getListOfPaths().subList(sIndex, eIndex), false);
+			}
+		} else {
+			log.info("# of valid recommendations top 5-10 "
+					+ rg.getListOfRecommendations().size());
+
+		}
+		RecommendationFilter rf = new RecommendationFilter(term,
+				rg.getListOfRecommendations(),
+				rg.getListOfRecsPossibleInCoreOfHDOT(),
+				rg.getListImportedNotLeafMatches(),
+				rg.getListOfInCoreNotLeafMatches());
+
+
+			while (!rg.getListOfRecommendations().isEmpty()) {
+
+				rf.checkValidRecommendations();
+
+				UserInputReader inputReader = new UserInputReader();
+				inputReader.addUserInputListener(rf);
+				inputReader.startListeningAcceptInput();
+
+				if (rf.isAccept()) {
+
+					if (!(rf.getAcceptedRecommendation().getHitChildren() == null)) {
+						inputReader.startListeningIncludeSubclassesInput();
+					}
+					log.debug("rf.isIncludeSubclasses() "
+							+ rf.isIncludeSubclasses());
+					new HDOTExtender(rf.getAcceptedRecommendation(),
+							rf.isIncludeSubclasses(), rg.getOntology_manager(),
+							rg.getHdot_ontology(), rg.getOntologyService(),
+							userID);
+					break;
+				}
+			}
+		
+		return rf.isAccept();
+	}
+
+	private static int[] computeIndexes(boolean isTopFive, int sizeOfresultList, String term, long start) {
+		int startIndex = 0;
+		int endIndex = 0;
+		int[] result = new int[2];
+		if (isTopFive) {
+
 			// change only the end index but check the length of the result list
 			if (sizeOfresultList < 5) {
 				endIndex = sizeOfresultList - 1;
@@ -158,6 +214,7 @@ public class TestOntologyAggregator {
 		} else {
 			// change both indexes but again check the length of the result list
 
+			
 			if (sizeOfresultList < 10) {
 				if (sizeOfresultList <= 5) {
 					// well there were less than 5 results
@@ -173,44 +230,10 @@ public class TestOntologyAggregator {
 				startIndex = 5;
 				endIndex = 10;
 			}
-		}
-		rg.generateRecommendation(
-				se.getListOfPaths().subList(startIndex, endIndex), isTopFive);
-		
-		if(isTopFive){
-			log.info("# of valid recommendations under top 5 " + rg.getListOfRecommendations().size() );
-		}else{
-			log.info("# of valid recommendations top 5-10 " + rg.getListOfRecommendations().size() );
-
-		}
-		RecommendationFilter rf = new RecommendationFilter(term,
-				rg.getListOfRecommendations(),
-				rg.getListOfRecsPossibleInCoreOfHDOT(),
-				rg.getListImportedNotLeafMatches(),
-				rg.getListOfInCoreNotLeafMatches());
-
-		while (!rg.getListOfRecommendations().isEmpty()) {
-
-			rf.checkValidRecommendations();
-
-			UserInputReader inputReader = new UserInputReader();
-			inputReader.addUserInputListener(rf);
-			inputReader.startListeningAcceptInput();
-
-			if (rf.isAccept()) {
-
-				if (!(rf.getAcceptedRecommendation().getHitChildren() == null)) {
-					inputReader.startListeningIncludeSubclassesInput();
-				}
-				log.debug("rf.isIncludeSubclasses() "
-						+ rf.isIncludeSubclasses());
-				new HDOTExtender(rf.getAcceptedRecommendation(),
-						rf.isIncludeSubclasses(), rg.getOntology_manager(),
-						rg.getHdot_ontology(), rg.getOntologyService(), userID);
-				break;
-			}
-		}
-		return rf.isAccept();
+		}	
+		result[0] = startIndex;
+		result[1] = endIndex;
+		return result;
 	}
 
 	private static void usage() {
