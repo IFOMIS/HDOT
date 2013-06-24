@@ -15,8 +15,11 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
+import javax.sql.rowset.serial.SerialArray;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.ifomis.ontologyaggregator.notifications.EmailSender;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
@@ -119,6 +122,8 @@ public class RecommendationGenerator {
 
 	private int numMatchedParents;
 
+	private EmailSender mailSender;
+
 	/**
 	 * Creates a RecommendationGenerator and loads the specified input ontology.
 	 * 
@@ -143,6 +148,7 @@ public class RecommendationGenerator {
 		this.listOfRecsPossibleInCoreOfHDOT = new ArrayList<>();
 		this.listOfInCoreNotLeafMatches = new ArrayList<>();
 		this.listImportedNotLeafMatches = new ArrayList<>();
+		this.mailSender = new EmailSender();
 
 		this.importedOntologies = FileUtils.readLines(new File(
 				"data/imported_ontologies"));
@@ -239,6 +245,13 @@ public class RecommendationGenerator {
 		}
 		if (recommendationCounter == 0) {
 			log.info("NO SUITABLE RECOMMENDATION WAS FOUND!\n");
+			
+//			mailSender
+//					.sendMail(
+//							"NO SUITABLE RECOMMENDATION WAS FOUND!",
+//							"Neither valid nor potentail recommendations were generated for the serched term "
+//									+ searchedTerm
+//									+ " because no match of a parent with HDOT class was recognized. ");
 		} else {
 			log.info(recommendationCounter
 					+ " RECOMMENDATION(S) WERE GENERATED");
@@ -288,7 +301,7 @@ public class RecommendationGenerator {
 
 				if (matchedConcept != null) {
 					// return true in order to terminate
-					
+
 					path.clear();
 					return true;
 
@@ -347,6 +360,7 @@ public class RecommendationGenerator {
 		if (counterForParents == 0) {
 			log.error("OAT SHOULD NOT BE EVOKED! Since:");
 			log.error("The concept: " + matchedConcept + " already exists.");
+			
 			long end = System.currentTimeMillis();
 
 			long milliseconds = (end - start);
@@ -463,7 +477,7 @@ public class RecommendationGenerator {
 			// check after the comparison if a match was found
 			// to collect the hierarchy and set the accessions
 			if (matchedTerm != null) {
-				
+
 				matchedTerm.setURI(new URI(hdotClass.toStringID()));
 				matchedTerm.setLabel(pureLabelOfHdotClass);
 				matchedTerm.setOntologyAccession(currentOntology
@@ -475,7 +489,7 @@ public class RecommendationGenerator {
 				log.info("matched concept from hdot: "
 						+ matchedTerm.getURI().toString() + "\t"
 						+ matchedTerm.getLabel());
-				
+
 				isMatchedClassTheSearchedTerm(matchedTerm);
 
 				extractHierarchyOfMatchedTerm(currentOntology, hdotClass);
@@ -558,7 +572,6 @@ public class RecommendationGenerator {
 
 		Map<String, String> urisTOLabels = new HashMap<>();
 
-		
 		for (OntologyTerm ontologyTerm : hierarchyOfHit) {
 			urisTOLabels.put(ontologyTerm.getURI().toString(), ontologyTerm
 					.getLabel().toLowerCase());
@@ -580,12 +593,12 @@ public class RecommendationGenerator {
 			label = label.toLowerCase();
 			log.info(label);
 			log.info(urisTOLabels.containsValue(label));
-			
+
 			if (urisTOLabels.containsKey(uri)
 					|| (!(label.isEmpty()) && urisTOLabels.containsValue(label))) {
 				numMatchedParents++;
 				log.info("***********+++++++++++");
-				
+
 				log.info(uri);
 			}
 		}
