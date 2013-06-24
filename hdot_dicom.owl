@@ -334,7 +334,7 @@
 
     <owl:Class rdf:about="&hdot;HDOT_DICOM_0024">
         <rdfs:label>patient age DICOM</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0060"/>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000011"/>
         <obo:IAO_0000412>DICOM 0010,1010</obo:IAO_0000412>
     </owl:Class>
     
@@ -466,12 +466,6 @@
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0060 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_PM_0060"/>
 </rdf:RDF>
 
 
