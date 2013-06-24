@@ -591,8 +591,7 @@ public class RecommendationGenerator {
 				}
 			}
 			label = label.toLowerCase();
-			log.info(label);
-			log.info(urisTOLabels.containsValue(label));
+
 
 			if (urisTOLabels.containsKey(uri)
 					|| (!(label.isEmpty()) && urisTOLabels.containsValue(label))) {
