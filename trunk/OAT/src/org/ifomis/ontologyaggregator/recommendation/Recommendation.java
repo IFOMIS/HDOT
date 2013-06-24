@@ -86,7 +86,7 @@ public class Recommendation {
 		messageBuffer.append("\nsearched term:" + this.searchedTerm);
 		messageBuffer.append("\nhit No:" + hitNo);
 		messageBuffer.append("\nnumber of matched parents:" + this.matchedParents);
-		messageBuffer.append("\n\tthe hit hieratchy:");
+		messageBuffer.append("\n\tthe hit hierarchy:");
 		for (OntologyTerm parent : hitHierarchy) {
 			messageBuffer.append("\n\t\t");
 			messageBuffer.append(parent.getURI().toString());
