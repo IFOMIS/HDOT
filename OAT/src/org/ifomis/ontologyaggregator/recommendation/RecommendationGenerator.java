@@ -1,6 +1,7 @@
 package org.ifomis.ontologyaggregator.recommendation;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
@@ -12,14 +13,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import java.util.Set;
 import java.util.Stack;
 
-import javax.sql.rowset.serial.SerialArray;
-
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
-import org.ifomis.ontologyaggregator.notifications.EmailSender;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
@@ -48,10 +47,6 @@ public class RecommendationGenerator {
 	File statisticsFile = new File("data/statistics");
 	FileWriter statistcsWriter = new FileWriter(statisticsFile, true);
 
-	/**
-	 * The @link{IRI} of the input ontology.
-	 */
-	private IRI iriIn;
 
 	/**
 	 * The hdot ontology where the term is going to be inserted as a class.
@@ -116,13 +111,10 @@ public class RecommendationGenerator {
 
 	private OWLOntology[] sortedHdotModules;
 
-	private boolean isTopFive;
-
-	private List<List<Stack<OntologyTerm>>> listOfPathsOfAllHits;
-
 	private int numMatchedParents;
+	
+	private Properties properties;
 
-	private EmailSender mailSender;
 
 	/**
 	 * Creates a RecommendationGenerator and loads the specified input ontology.
@@ -148,11 +140,13 @@ public class RecommendationGenerator {
 		this.listOfRecsPossibleInCoreOfHDOT = new ArrayList<>();
 		this.listOfInCoreNotLeafMatches = new ArrayList<>();
 		this.listImportedNotLeafMatches = new ArrayList<>();
-		this.mailSender = new EmailSender();
+		this.properties = new Properties();
+		properties.load(new FileInputStream("config/aggregator.properties"));
 
 		this.importedOntologies = FileUtils.readLines(new File(
-				"data/imported_ontologies"));
+				properties.getProperty("fileImportedOntologiesURIs")));
 
+				
 		// Get hold of an ontology manager
 		this.ontology_manager = OWLManager.createOWLOntologyManager();
 		this.searchedTerm = searchedTerm;
@@ -210,14 +204,16 @@ public class RecommendationGenerator {
 
 				hierarchyOfHit = (Stack<OntologyTerm>) path.clone();
 
-				log.info("\n*******hit Nr:" + hitsCounter + "******\n");
 
 				// the path response was empty
-				if (path.size() == 1) {
+				if (path.size() <= 1) {
 					// log.info(path.peek());
 					log.info("SPARQL response for the root path was empty");
 					continue;
 				}
+				
+				log.info("\n*******hit Nr:" + hitsCounter + "******\n");
+
 
 				log.info("The length of the current path to root is: "
 						+ path.size());
@@ -239,9 +235,7 @@ public class RecommendationGenerator {
 					log.debug("path was empty");
 					continue;
 				}
-
 			}
-
 		}
 		if (recommendationCounter == 0) {
 			log.info("NO SUITABLE RECOMMENDATION WAS FOUND!\n");
@@ -525,7 +519,7 @@ public class RecommendationGenerator {
 		// check if the current class is hdot_core
 		boolean isHdotCore = (currentOntology.getOntologyID().getOntologyIRI()
 				.toString().contains(FileUtils.readFileToString(new File(
-				"data/core_module_of_the_ontology"))));
+				properties.getProperty("fileCoreModule")))));
 
 		Recommendation recommendation = buildRecommendaton(currentOntology,
 				matchedTerm);
@@ -596,9 +590,6 @@ public class RecommendationGenerator {
 			if (urisTOLabels.containsKey(uri)
 					|| (!(label.isEmpty()) && urisTOLabels.containsValue(label))) {
 				numMatchedParents++;
-				log.info("***********+++++++++++");
-
-				log.info(uri);
 			}
 		}
 		// log.debug("number of matching parents: " + numMatchedParents);

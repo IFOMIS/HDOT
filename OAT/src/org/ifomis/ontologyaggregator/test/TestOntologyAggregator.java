@@ -1,20 +1,20 @@
 package org.ifomis.ontologyaggregator.test;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 
-import org.apache.axis.transport.jms.TopicConnector;
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.exception.HdotExtensionException;
 import org.ifomis.ontologyaggregator.integration.HDOTExtender;
 import org.ifomis.ontologyaggregator.recommendation.RecommendationFilter;
 import org.ifomis.ontologyaggregator.recommendation.RecommendationGenerator;
-import org.ifomis.ontologyaggregator.recommendation.TestRecommendationGenerator;
 import org.ifomis.ontologyaggregator.recommendation.UserInputReader;
 import org.ifomis.ontologyaggregator.search.SearchEngine;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -24,37 +24,36 @@ import uk.ac.ebi.ontocat.OntologyServiceException;
 
 public class TestOntologyAggregator {
 	private static final Logger log = Logger
-			.getLogger(TestRecommendationGenerator.class);
+			.getLogger(TestOntologyAggregator.class);
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		long start = System.currentTimeMillis();
-
-		String fileWithOntologies, fileWithTerms;
-
-		if (args.length < 2) {
-			usage();
-			System.exit(0);
-		} else {
-			String terms = args[0].replace(";", "\n");
-			terms = terms.replace("_", " ");
-			try {
-				FileUtils.write(new File("data/TermList.txt"), terms);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		fileWithOntologies = "data/listOfOntoIds.txt";
-		fileWithTerms = "data/TermList.txt";
+		Properties properties = new Properties();
 
 		try {
+			properties.load(new FileInputStream("config/aggregator.properties"));
+			
+			String fileWithOntologies, terms = "";
 
-			SearchEngine se = new SearchEngine(fileWithOntologies,
-					fileWithTerms);
-			for (int i = 0; i < se.getTermsList().size(); i++) {
-				String term = se.getTermsList().get(i);
+			if (args.length < 2) {
+				usage();
+				System.exit(0);
+			} else {
+				 terms = args[0].replace("_", " ");
+				 properties.setProperty("searchedTerms", terms);
+		    	 properties.store(new FileOutputStream("config/aggregator.properties"), null);
+			}
+			
+			String[] termList = terms.split(";");
+			
+			fileWithOntologies = properties.getProperty("fileOntologiesOrder");
+
+			SearchEngine se = new SearchEngine(fileWithOntologies);
+			for (int i = 0; i < termList.length; i++) {
+				String term = termList[i];
 				se.searchTermInBioPortal(term);
 				if (se.getListOfPaths().size() == 0) {
 					log.info("list of paths with hits is empty");
@@ -63,7 +62,7 @@ public class TestOntologyAggregator {
 				log.info("\nRECOMMENDATION GENERATION\n");
 
 				RecommendationGenerator rg = new RecommendationGenerator(
-						"data/hdot/hdot_all.owl", term, se.getRestrictedBps(),
+						properties.getProperty("fileOntology"), term, se.getRestrictedBps(),
 						start);
 
 				boolean recommendationWasAccepted = processingSearchResults(
@@ -152,17 +151,18 @@ public class TestOntologyAggregator {
 				se.getListOfPaths().subList(startIndex, endIndex), isTopFive);
 
 		if (isTopFive) {
-			log.info("# of valid recommendations under top 5 "
+			log.info("number of valid recommendations under top 5 "
 					+ rg.getListOfRecommendations().size());
-			
+
 			if (rg.getListOfRecommendations().isEmpty()) {
 				computeIndexes(false, sizeOfresultList, term, start);
 				int sIndex = indexes[0];
 				int eIndex = indexes[1];
-				rg.generateRecommendation(se.getListOfPaths().subList(sIndex, eIndex), false);
+				rg.generateRecommendation(
+						se.getListOfPaths().subList(sIndex, eIndex), false);
 			}
 		} else {
-			log.info("# of valid recommendations top 5-10 "
+			log.info("number of valid recommendations top 5-10 "
 					+ rg.getListOfRecommendations().size());
 
 		}
@@ -172,34 +172,33 @@ public class TestOntologyAggregator {
 				rg.getListImportedNotLeafMatches(),
 				rg.getListOfInCoreNotLeafMatches());
 
+		while (!rg.getListOfRecommendations().isEmpty()) {
 
-			while (!rg.getListOfRecommendations().isEmpty()) {
+			rf.checkValidRecommendations();
 
-				rf.checkValidRecommendations();
+			UserInputReader inputReader = new UserInputReader();
+			inputReader.addUserInputListener(rf);
+			inputReader.startListeningAcceptInput();
 
-				UserInputReader inputReader = new UserInputReader();
-				inputReader.addUserInputListener(rf);
-				inputReader.startListeningAcceptInput();
+			if (rf.isAccept()) {
 
-				if (rf.isAccept()) {
-
-					if (!(rf.getAcceptedRecommendation().getHitChildren() == null)) {
-						inputReader.startListeningIncludeSubclassesInput();
-					}
-					log.debug("rf.isIncludeSubclasses() "
-							+ rf.isIncludeSubclasses());
-					new HDOTExtender(rf.getAcceptedRecommendation(),
-							rf.isIncludeSubclasses(), rg.getOntology_manager(),
-							rg.getHdot_ontology(), rg.getOntologyService(),
-							userID);
-					break;
+				if (!(rf.getAcceptedRecommendation().getHitChildren() == null)) {
+					inputReader.startListeningIncludeSubclassesInput();
 				}
+				log.debug("rf.isIncludeSubclasses() "
+						+ rf.isIncludeSubclasses());
+				new HDOTExtender(rf.getAcceptedRecommendation(),
+						rf.isIncludeSubclasses(), rg.getOntology_manager(),
+						rg.getHdot_ontology(), rg.getOntologyService(), userID);
+				break;
 			}
-		
+		}
+
 		return rf.isAccept();
 	}
 
-	private static int[] computeIndexes(boolean isTopFive, int sizeOfresultList, String term, long start) {
+	private static int[] computeIndexes(boolean isTopFive,
+			int sizeOfresultList, String term, long start) {
 		int startIndex = 0;
 		int endIndex = 0;
 		int[] result = new int[2];
@@ -214,7 +213,6 @@ public class TestOntologyAggregator {
 		} else {
 			// change both indexes but again check the length of the result list
 
-			
 			if (sizeOfresultList < 10) {
 				if (sizeOfresultList <= 5) {
 					// well there were less than 5 results
@@ -230,7 +228,7 @@ public class TestOntologyAggregator {
 				startIndex = 5;
 				endIndex = 10;
 			}
-		}	
+		}
 		result[0] = startIndex;
 		result[1] = endIndex;
 		return result;

@@ -1,9 +1,10 @@
 package org.ifomis.ontologyaggregator.integration;
 
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Properties;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 
@@ -24,10 +25,13 @@ public class HDOTURIGenerator {
 
 	public String generateURI(String hdotModule) throws IOException {
 
+		Properties properties = new Properties();
+		properties.load(new FileInputStream("config/aggregator.properties"));
+
 		String prefix = hdotModule.split("\\.")[0].toUpperCase();
 
-		String counter = FileUtils.readFileToString(new File("data/counterForURIS_"
-				+ prefix));
+		String counter = properties.getProperty("data/counterForURIS_"
+				+ prefix);
 		log.debug("URI next number read");
 		
 		String[] arg = { hdotModule, prefix, counter };
@@ -47,8 +51,9 @@ public class HDOTURIGenerator {
 		}
 		
 		sb.append(intCounter.toString());
-		FileUtils.write(new File("data/counterForURIS_" + prefix),
-				sb.toString());
+		properties.setProperty("data/counterForURIS_" + prefix, sb.toString());
+		properties.store(new FileOutputStream("config/aggregator.properties"), null);
+
 		log.debug("URI next number updated");
 				
 		return String.format("http://www.ifomis.org/hdot/%s#%s_%s",
