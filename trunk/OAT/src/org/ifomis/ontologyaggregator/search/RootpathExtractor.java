@@ -9,9 +9,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
-import java.util.Vector;
-
-import javax.swing.RootPaneContainer;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -66,7 +63,6 @@ public class RootpathExtractor {
 
 	private List<String> listOfQueries;
 
-
 	public RootpathExtractor(String currentTerm, String date) {
 		this.searchedTerm = currentTerm;
 		this.date = date;
@@ -90,7 +86,9 @@ public class RootpathExtractor {
 		if (listOfPaths.isEmpty()) {
 			++counterForHitsThatDoNotHaveAnyPath;
 		}
-		log.info("# of paths: " + listOfPaths.size());
+		log.info("\t\tnumber of extracted paths: " + listOfPaths.size());
+		log.info("---------------------------------------------------------------------");
+
 		return listOfPaths;
 	}
 
@@ -102,9 +100,9 @@ public class RootpathExtractor {
 
 		String response = executeSparqlQuery(ot.getURI().toString());
 
-		 List<String> parents = parseSparqlResponse(response);
+		List<String> parents = parseSparqlResponse(response);
 		if (parents.size() == 0) {
-			// log.info(path);
+			 log.info("path" + path);
 
 			Stack<OntologyTerm> deepCopyOfPath = getDeepReverseCopy(path);
 			// log.info("path.peek(): " + deepCopyOfPath.peek());
@@ -114,8 +112,8 @@ public class RootpathExtractor {
 
 				listOfPaths.add(deepCopyOfPath);
 			} else {
-				// log.debug("!!!!!!!soll leer sein!!!!!!!!!!!! " +
-				// deepCopyOfPath );
+//				 log.debug("!!!!!!!soll leer sein!!!!!!!!!!!! " +
+//				 deepCopyOfPath );
 
 				++counterForEmptyResonses;
 			}
@@ -175,36 +173,36 @@ public class RootpathExtractor {
 			OntologyTerm ot) throws URISyntaxException {
 		OntologyTerm concept = new OntologyTerm();
 
-		 String label = "";
-		 String prefLabel = "";
-		
-		 switch (parentTokens.length) {
-		 case 2:
-		 label = parentTokens[1];
-		 ++counterForLabels;
-		 break;
-		 case 3:
-		 label = parentTokens[1];
-		 prefLabel = parentTokens[2];
-		 ++counterForPrefLabels;
-		 ++counterForLabels;
-		 if (label.isEmpty()) {
-		 --counterForLabels;
-		 }
-		 break;
-		 default:
-		 break;
-		 }
+		String label = "";
+		String prefLabel = "";
 
-		 String labelToBeSet = "";
-//		String labelToBeSet = parentTokens[1];
-		 if (!label.isEmpty()) {
-		 labelToBeSet = label.split("\"")[1];
-		 } else if (!prefLabel.isEmpty()) {
-		 labelToBeSet = prefLabel.split("\"")[1];
-		 }
-//		 log.debug("!!!! string for generatng URI: !!!"
-//		 + parentTokens[0].substring(1, parentTokens[0].length() - 1));
+		switch (parentTokens.length) {
+		case 2:
+			label = parentTokens[1];
+			++counterForLabels;
+			break;
+		case 3:
+			label = parentTokens[1];
+			prefLabel = parentTokens[2];
+			++counterForPrefLabels;
+			++counterForLabels;
+			if (label.isEmpty()) {
+				--counterForLabels;
+			}
+			break;
+		default:
+			break;
+		}
+
+		String labelToBeSet = "";
+		// String labelToBeSet = parentTokens[1];
+		if (!label.isEmpty()) {
+			labelToBeSet = label.split("\"")[1];
+		} else if (!prefLabel.isEmpty()) {
+			labelToBeSet = prefLabel.split("\"")[1];
+		}
+		// log.debug("!!!! string for generatng URI: !!!"
+		// + parentTokens[0].substring(1, parentTokens[0].length() - 1));
 
 		concept.setURI(new URI(parentTokens[0].substring(1,
 				parentTokens[0].length() - 1)));
@@ -216,7 +214,7 @@ public class RootpathExtractor {
 
 	private List<String> parseSparqlResponse(String response) {
 		Set<String> parentURIs = new HashSet<>();
-		
+
 		String[] lines = response.split("\n");
 		List<String> linesWOHeader = new ArrayList<>();
 
@@ -224,8 +222,8 @@ public class RootpathExtractor {
 		// variables
 		for (int i = 1; i < lines.length; i++) {
 			String parentUri = lines[i].split("\t")[0];
-			
-			if(!parentURIs.contains(parentUri)){
+
+			if (!parentURIs.contains(parentUri)) {
 				linesWOHeader.add(lines[i]);
 			}
 			parentURIs.add(parentUri);
@@ -244,33 +242,32 @@ public class RootpathExtractor {
 
 		// for the first time the parent is the term we are looking for
 		// set LIMIT to 100 since sometimes the limit (40) causes problems
-		 String query =
-		 "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
-		 + "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"
-		 + "SELECT * WHERE { "
-		 + "GRAPH <http://bioportal.bioontology.org/ontologies/"
-		 + ontologyAbbreviation
-		 + "> { "
-		 + "<"
-		 + parent
-		 + "> rdfs:subClassOf ?parent."
-		 +
-		 "OPTIONAL {?parent rdfs:label ?label}. OPTIONAL {?parent skos:prefLabel ?prefLabel}.}"
-		 + "FILTER (!isBlank(?parent))"
-		 // + "FILTER (str(?label) = lcase(?label))"
-		 + "} LIMIT 100";
+		String query = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#> "
+				+ "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"
+				+ "SELECT * WHERE { "
+				+ "GRAPH <http://bioportal.bioontology.org/ontologies/"
+				+ ontologyAbbreviation
+				+ "> { "
+				+ "<"
+				+ parent
+				+ "> rdfs:subClassOf ?parent."
+				+ "OPTIONAL {?parent rdfs:label ?label}. OPTIONAL {?parent skos:prefLabel ?prefLabel}.}"
+				+ "FILTER (!isBlank(?parent))"
+				// + "FILTER (str(?label) = lcase(?label))"
+				+ "} LIMIT 100";
 
-//		String query = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"
-//				+ "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"
-//				+ "SELECT DISTINCT ?parent, ?label WHERE {"
-//				+ "GRAPH <http://bioportal.bioontology.org/ontologies/"
-//				+ this.ontologyAbbreviation
-//				+ "> { <"
-//				+ parent
-//				+ "> rdfs:subClassOf ?parent."
-//				+ "OPTIONAL { ?parent ?p ?o. }"
-//				+ "BIND (lcase(str(?o)) AS ?label)"
-//				+ "FILTER (!isBlank(?parent) && ?p IN (rdfs:label, skos:prefLabel)) }}";
+		// String query = "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>"
+		// + "PREFIX skos: <http://www.w3.org/2004/02/skos/core#>"
+		// + "SELECT DISTINCT ?parent, ?label WHERE {"
+		// + "GRAPH <http://bioportal.bioontology.org/ontologies/"
+		// + this.ontologyAbbreviation
+		// + "> { <"
+		// + parent
+		// + "> rdfs:subClassOf ?parent."
+		// + "OPTIONAL { ?parent ?p ?o. }"
+		// + "BIND (lcase(str(?o)) AS ?label)"
+		// +
+		// "FILTER (!isBlank(?parent) && ?p IN (rdfs:label, skos:prefLabel)) }}";
 		String response = test.executeQuery(query, "text/tab-separated-values");
 		// log.debug("response:\n " + response);
 		listOfQueries.add(query);
@@ -310,17 +307,17 @@ public class RootpathExtractor {
 		FileUtils.writeLines(outFile, listOfPaths);
 
 		if (outFile.length() == 0) {
-			log.info("for the term: " + ot.toString());
-			log.info("SPARQL response is empty");
+			log.info("\t\tfor the term: " + ot.toString());
+			log.info("\t\tSPARQL response is empty");
 
-			++counterForEmptyResonses;
+//			++counterForEmptyResonses;
 			this.sbFailed.append(ontologyAbbreviation + "\t" + ot.getURI()
 					+ "\n");
 		} else {
 			this.sbSuccess.append(ontologyAbbreviation + "\t" + ot.getURI()
 					+ "\n");
 		}
-		log.debug("Output of query written in " + outFile);
+		log.debug("Output of query is written in " + outFile);
 	}
 
 	public int getCounterForEmptyResonses() {

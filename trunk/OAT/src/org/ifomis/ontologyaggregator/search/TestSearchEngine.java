@@ -1,11 +1,14 @@
 package org.ifomis.ontologyaggregator.search;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Properties;
 
 import org.apache.log4j.Logger;
 
@@ -21,26 +24,35 @@ public class TestSearchEngine {
 
 		long start = System.currentTimeMillis();
 
-		String fileWithOntologies, fileWithTerms;
+		String fileWithOntologies, terms = "";
 
 		log.info("Start searching ...");
-		
-		//check if the input args are specified otherwise take the default values.
-		if (args.length < 2) {
-			fileWithOntologies = "data/listOfOntoIds.txt";
-			fileWithTerms = "data/TermList.txt";
-		} else {
-			fileWithOntologies = args[0];
-			fileWithTerms = args[1];
-		}
+		Properties properties = new Properties();
+
 		try {
-			SearchEngine se = new SearchEngine(fileWithOntologies,
-					fileWithTerms);
-			for (int i = 0; i < se.getTermsList().size(); i++) {
-				String term = se.getTermsList().get(i);
+			properties.load(new FileInputStream("config/aggregator.properties"));
+			// check if the input args are specified otherwise take the default
+			// values.
+			if (args.length < 2) {
+				fileWithOntologies = properties
+						.getProperty("fileOntologiesOrder");
+			} else {
+				fileWithOntologies = args[0];
+				 terms = args[0].replace("_", " ");
+
+				 properties.setProperty("searchedTerms", terms);
+		    	 properties.store(new FileOutputStream("config/aggregator.properties"), null);
+
+			}
+			String[] termList = terms.split(";");
+			
+			fileWithOntologies = properties.getProperty("fileOntologiesOrder");
+
+			SearchEngine se = new SearchEngine(fileWithOntologies);
+			for (int i = 0; i < termList.length; i++) {
+				String term = termList[i];
 				se.searchTermInBioPortal(term);
 			}
-			
 
 			File logFile = new File("log/loggingSearchEngine.html");
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
@@ -60,7 +72,6 @@ public class TestSearchEngine {
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		long end = System.currentTimeMillis();
@@ -71,7 +82,7 @@ public class TestSearchEngine {
 
 		long mins = seconds / 60;
 		long restsecs = seconds % 60;
-		
+
 		log.info("Execution time was " + (end - start) + " ms.");
 		log.info("Execution time was " + mins + ":" + restsecs + " sec.");
 	}

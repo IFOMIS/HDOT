@@ -1,8 +1,10 @@
 package org.ifomis.ontologyaggregator.integration;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
@@ -25,15 +27,19 @@ public class HDOTURIManager {
 	public HDOTURIManager(Recommendation acceptedRecommendation,
 			boolean includeSubclasses) throws OntologyServiceException,
 			IOException {
+		Properties properties = new Properties();
+		properties.load(new FileInputStream("config/aggregator.properties"));
+		
+				
 		List<String> predefinedOntologies = FileUtils.readLines(new File(
-				"data/predefinedListOfOntologies"));
+				properties.getProperty("predefinedOntologies")));
 		
 		this.keepOriginalURI = predefinedOntologies
 				.contains(acceptedRecommendation.getHit().getOntology()
 						.getAbbreviation());
-		System.out.println("???***" + acceptedRecommendation.getHit().getOntology()
-						.getAbbreviation());
-		
+//		System.out.println("???***" + acceptedRecommendation.getHit().getOntology()
+//						.getAbbreviation());
+//		
 		this.acceptedRecommendation = acceptedRecommendation;
 		
 		 this.uriGenerator = new HDOTURIGenerator(

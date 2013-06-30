@@ -1,9 +1,10 @@
 package org.ifomis.ontologyaggregator.integration;
 
-import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Properties;
 
-import org.apache.commons.io.FileUtils;
 
 public class URINumberResetter {
 
@@ -11,19 +12,18 @@ public class URINumberResetter {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+    	Properties properties = new Properties();
+
 		try {
-			FileUtils.writeStringToFile(
-					new File("data/counterForURIS_HDOT_PEM"), "046");
+    		properties.load(new FileInputStream("config/aggregator.properties"));
 
-			FileUtils.writeStringToFile(
-					new File("data/counterForURIS_HDOT_PFM"), "108");
-
-			FileUtils.writeStringToFile(
-					new File("data/counterForURIS_HDOT_PM"), "0068");
-			FileUtils.writeStringToFile(new File(
-					"data/counterForURIS_HDOT_CORE"), "045");
-			FileUtils.writeStringToFile(new File(
-					"data/counterForURIS_HDOT_BSDS"), "104");
+    		properties.setProperty("counterForURIS_HDOT_PEM", "046");
+    		properties.setProperty("counterForURIS_HDOT_PFM", "108");
+    		properties.setProperty("counterForURIS_HDOT_PM", "0068");
+    		properties.setProperty("counterForURIS_HDOT_CORE", "045");
+    		properties.setProperty("counterForURIS_HDOT_BSDS", "104");
+    		properties.store(new FileOutputStream("src/aggregator.properties"), null);
+    		
 			System.out.println("URI numbers are  reset.");
 		} catch (IOException e) {
 			e.printStackTrace();

@@ -1,8 +1,10 @@
 package org.ifomis.ontologyaggregator.recommendation;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
@@ -28,16 +30,19 @@ public class ModuleSorter {
 			throws IOException {
 
 		OWLOntology[] sortedHdotModules = new OWLOntology[hdotModules.size()];
+		Properties properties = new Properties();
+		properties.load(new FileInputStream("config/aggregator.properties"));
+
 		try {
 			List<String> sortedIds = FileUtils.readLines(new File(
-					"data/sortedHdotModuleIds"));
+					properties.getProperty("fileSortingHdotModulesURIs")));
 
 			for (OWLOntology owlOntology : hdotModules) {
 				String currentId = owlOntology.getOntologyID().getOntologyIRI().toString();
 //				System.out.println("sorted ids " + sortedIds);
 //				System.out.println("sorted modules " + sortedHdotModules.toString());
 //				System.out.println(sortedIds.indexOf(currentId));
-				System.out.println("current id " + currentId);
+//				System.out.println("current id " + currentId);
 				sortedHdotModules[sortedIds.indexOf(currentId)] = owlOntology;
 			}
 			// System.out.println("Sorted HDOT modules:");

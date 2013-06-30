@@ -1,12 +1,14 @@
 package org.ifomis.ontologyaggregator.search;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 import java.util.Stack;
 
 import org.apache.commons.io.FileUtils;
@@ -33,11 +35,6 @@ public class SearchEngine {
 	 */
 	private List<String> ontologiesList;
 
-	/**
-	 * list of terms
-	 */
-	private List<String> termsList;
-
 	private static final Logger log = Logger.getLogger(SearchEngine.class);
 
 	/**
@@ -62,28 +59,25 @@ public class SearchEngine {
 
 	private OntologyService restrictedBps;
 	private EmailSender mailSender;
-
+	private Properties properties;
 	public OntologyService getRestrictedBps() {
 		return restrictedBps;
 	}
 
-	public SearchEngine(String fileWithOntologies, String fileWithTerms)
+	public SearchEngine(String fileWithOntologies)
 			throws IOException {
 
 		File fileOntologies = new File(fileWithOntologies);
 
 		this.ontologiesList = FileUtils.readLines(fileOntologies);
 		this.mailSender = new EmailSender();
+		this.properties = new Properties();
+		properties.load(new FileInputStream("config/aggregator.properties"));
 
 		log.debug("List of ontologies imported from file: "
 				+ fileWithOntologies);
 
-		File fileTerms = new File(fileWithTerms);
-
-		setTermsList(FileUtils.readLines(fileTerms));
-
-		log.debug("List of terms imported from file: " + fileWithTerms);
-	}
+		}
 
 	/**
 	 * Searches the given term in BioPortal. The the ontologyList specifies the
@@ -117,9 +111,9 @@ public class SearchEngine {
 			log.info("No results for " + term);
 			// continue;
 			mailSender.sendMail("NO RESULTS RETRIEVED FROM BioPortal",
-					"BioPortal has not retrived results for the term "
+					"BioPortal has retrived no results for the term\" "
 							+ searchedTerm
-							+ "\n possibly the server is not responding");
+							+ "\"\n or the server is not responding");
 	
 			System.exit(0);
 		}
@@ -175,10 +169,10 @@ public class SearchEngine {
 				listOfPaths.add(listOfAllPathsForOt);
 				log.info(ot.getURI() + "\t" + ot.getLabel());
 
-				log.info("getCounterForHitsThatDoNotHaveAnyPath: "
-						+ pathExtractor.getCounterForHitsThatDoNotHaveAnyPath());
-				log.info("counterForQueriesRootPath "
-						+ counterForQueriesRootPath);
+//				log.info("getCounterForHitsThatDoNotHaveAnyPath: "
+//						+ pathExtractor.getCounterForHitsThatDoNotHaveAnyPath());
+//				log.info("counterForQueriesRootPath "
+//						+ counterForQueriesRootPath);
 
 				if (counterForQueriesRootPath == threshold) {
 
@@ -195,7 +189,7 @@ public class SearchEngine {
 						counterForQueriesRootPath = 0;
 						continue;
 					} else {
-						log.debug("all hits hava at least one path.");
+						log.debug("all hits have at least one path.");
 
 						break;
 					}
@@ -227,13 +221,5 @@ public class SearchEngine {
 
 	public String getCurrentTerm() {
 		return searchedTerm;
-	}
-
-	public List<String> getTermsList() {
-		return termsList;
-	}
-
-	public void setTermsList(List<String> termsList) {
-		this.termsList = termsList;
 	}
 }

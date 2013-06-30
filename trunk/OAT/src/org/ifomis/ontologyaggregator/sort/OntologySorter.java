@@ -107,7 +107,7 @@ public class OntologySorter {
 		}
 		// write the accessions in a file since it is needed for the search
 		// engine
-		FileUtils.writeLines(new File("data/test/listOfOntoIds.txt"),
+		FileUtils.writeLines(new File("data/test/listOfOntoIds"),
 				listOfAccessions);
 
 		// write the sorted ontologies in a file so that they can be viewed

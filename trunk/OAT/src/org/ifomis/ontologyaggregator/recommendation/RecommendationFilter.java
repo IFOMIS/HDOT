@@ -1,5 +1,7 @@
 package org.ifomis.ontologyaggregator.recommendation;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -44,7 +46,7 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 	}
 
 	public void checkValidRecommendations()
-			throws OWLOntologyCreationException, OWLOntologyStorageException {
+			throws OWLOntologyCreationException, OWLOntologyStorageException, FileNotFoundException, IOException {
 
 		if (!validRecommendations.isEmpty()) {
 
@@ -83,8 +85,10 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 
 	/**
 	 * checks if there are potential recommendations and notifies the curators.
+	 * @throws IOException 
+	 * @throws FileNotFoundException 
 	 */
-	public void checkPotentialRecommendations() {
+	public void checkPotentialRecommendations() throws FileNotFoundException, IOException {
 		if (recommendationsInImportedOntologies.isEmpty()
 				&& recommendationsOfImportedNotLeafMatches.isEmpty()
 				&& inCoreNotLeafs.isEmpty()) {
@@ -189,5 +193,4 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 	public boolean isAccept() {
 		return accept;
 	}
-
 }
