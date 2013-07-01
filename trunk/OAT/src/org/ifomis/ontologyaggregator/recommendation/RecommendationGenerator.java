@@ -192,7 +192,7 @@ public class RecommendationGenerator {
 			hitsCounter = 5;
 		}
 		recommendationCounter = 0;
-
+		
 		// loop over hits
 		for (List<Stack<OntologyTerm>> listOfPaths : listOfPathsOfAllHits) {
 			++hitsCounter;
@@ -204,15 +204,13 @@ public class RecommendationGenerator {
 
 
 				// the path response was empty
-				if (path.size() <= 1) {
-					// log.info(path.peek());
-					log.info("SPARQL response for the root path was empty");
-					continue;
-				}
+//				if (path.size() <= 1) {
+//					// log.info(path.peek());
+//					log.info("SPARQL response for the root path was empty");
+//					continue;
+//				}
 				
-				log.info("\n*******hit Nr:" + hitsCounter + "******\n");
-
-
+				log.info("\n*********************hit Nr:" + hitsCounter + "*********************");
 				log.info("The length of the current path to root is: "
 						+ path.size());
 				log.debug("____________________________________________________________________");
@@ -232,6 +230,8 @@ public class RecommendationGenerator {
 					log.debug("path was empty");
 					continue;
 				}
+				log.info("\n***************************************************************");
+
 			}
 		}
 		if (recommendationCounter == 0) {
@@ -431,7 +431,7 @@ public class RecommendationGenerator {
 					hdotClass.toStringID());
 
 			if (conceptIdsMatch) {
-				log.info("\nCONCEPT IDs of BioPortal HIT and HDOT CLASS MATCH\n");
+				log.info("\tCONCEPT IDs of BioPortal HIT and HDOT CLASS MATCH");
 				// log.debug("id of current candidate: "
 				// + currentCandidate.getURI().toString());
 				// log.debug("id of hdot class: " + hdotClass.toStringID());
@@ -451,13 +451,13 @@ public class RecommendationGenerator {
 
 			if (labelsMatch) {
 
-				log.info("\nLABELS of BioPortal HIT and HDOT CLASS MATCH\n");
+				log.info("\tLABELS of BioPortal HIT and HDOT CLASS MATCH");
 				// log.info("pureLabelOfHdotClass: " + pureLabelOfHdotClass);
 				//
 				// log.info("label of currentCandidate: "
 				// + currentCandidate.getLabel());
 				if (conceptIdsMatch) {
-					log.info("\nIDs and LABELS MATCH");
+					log.info("\tIDs and LABELS MATCH");
 				}
 				if (matchedTerm == null) {
 					matchedTerm = new OntologyTerm();
@@ -474,10 +474,10 @@ public class RecommendationGenerator {
 				matchedTerm.setOntologyAccession(currentOntology
 						.getOntologyID().getOntologyIRI().toString());
 
-				log.info("concept from path of hit: "
+				log.info("parent of the current hit: "
 						+ currentCandidate.getURI().toString() + "\t"
 						+ currentCandidate.getLabel());
-				log.info("matched concept from hdot: "
+				log.info("matched class of hdot: "
 						+ matchedTerm.getURI().toString() + "\t"
 						+ matchedTerm.getLabel());
 

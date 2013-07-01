@@ -142,15 +142,15 @@ public class SearchEngine {
 
 			int similarityScore = ot.getContext().getSimilarityScore();
 			if (similarityScore > 90) {
+				sb1.append(";\n\t\tThe term will be processed further.");
 
 				sb1.append("\n\t\tSimilatity score of searched term and hit is greater than 90%.");
-				sb1.append("\n\t\tOntology of concept given for root path extraction = ");
+				sb1.append("\n\t\tSource Ontology = ");
 				sb1.append(ot.getOntology().getLabel());
-				sb1.append("\n\t\taccession of the given concept = ");
+				sb1.append("\n\t\taccession of the hit = ");
 				sb1.append(ot.getAccession());
-				sb1.append("\n\t\tlabel of the given concept = ");
-				sb1.append(ot.getAccession());
-				sb1.append(";\n\t\tThe term is going to be processed further.");
+				sb1.append("\n\t\tlabel of the hit = ");
+				sb1.append(ot.getLabel());
 
 				log.info(sb1.toString());
 
@@ -165,7 +165,7 @@ public class SearchEngine {
 						.computeAllPaths(ot.getOntology().getAbbreviation(), ot);
 
 				listOfPaths.add(listOfAllPathsForOt);
-				log.info(ot.getURI() + "\t" + ot.getLabel());
+//				log.info(ot.getURI() + "\t" + ot.getLabel());
 
 //				log.info("getCounterForHitsThatDoNotHaveAnyPath: "
 //						+ pathExtractor.getCounterForHitsThatDoNotHaveAnyPath());
