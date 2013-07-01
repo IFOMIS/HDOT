@@ -31,6 +31,7 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.util.CommonBaseIRIMapper;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 
 import uk.ac.ebi.ontocat.OntologyService;
@@ -166,10 +167,12 @@ public class RecommendationGenerator {
 
 		log.info("Loaded ontology: " + hdot_ontology);
 		// Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
-
-		ontology_manager.addIRIMapper(new SimpleIRIMapper(IRI
-				.create("http://hdot.googlecode.com/svn/trunk/hdot_module_15.owl"), IRI
-				.create("file:data/hdot/hdot_module_15.owl")));
+		CommonBaseIRIMapper mapper = new CommonBaseIRIMapper(
+				IRI.create("http://hdot.googlecode.com/svn/trunk/"));
+		mapper.addMapping(
+				IRI.create("http://hdot.googlecode.com/svn/trunk/hdot_module_15.owl"),
+				"data/hdot/hdot_module_15.owl");
+		ontology_manager.addIRIMapper(mapper);
 		List<OWLOntology> hdotModules = ontology_manager
 				.getSortedImportsClosure(hdot_ontology);
 		// for (Iterator iterator = hdotModules.iterator(); iterator.hasNext();)
