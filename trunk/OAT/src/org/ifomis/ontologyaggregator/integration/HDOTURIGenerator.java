@@ -34,8 +34,6 @@ public class HDOTURIGenerator {
 				+ prefix);
 		log.debug("URI next number read");
 		
-		String[] arg = { hdotModule, prefix, counter };
-
 		int lengthOfCounter = counter.length();
 		
 		Integer intCounter = Integer.parseInt(counter);
@@ -57,7 +55,7 @@ public class HDOTURIGenerator {
 		log.debug("URI next number updated");
 				
 		return String.format("http://www.ifomis.org/hdot/%s#%s_%s",
-				arg);
+				 hdotModule, prefix, counter);
 	}
 
 }

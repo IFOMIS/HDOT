@@ -102,7 +102,7 @@ public class RootpathExtractor {
 
 		List<String> parents = parseSparqlResponse(response);
 		if (parents.size() == 0) {
-			 log.info("path" + path);
+//			 log.info("path" + path);
 
 			Stack<OntologyTerm> deepCopyOfPath = getDeepReverseCopy(path);
 			// log.info("path.peek(): " + deepCopyOfPath.peek());
