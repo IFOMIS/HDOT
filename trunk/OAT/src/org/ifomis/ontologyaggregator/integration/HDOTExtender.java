@@ -1,11 +1,13 @@
 package org.ifomis.ontologyaggregator.integration;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -387,6 +389,10 @@ public class HDOTExtender {
 			throws OWLOntologyStorageException, URISyntaxException,
 			OWLOntologyCreationException, IOException {
 
+		Properties properties = new Properties();
+
+		
+		properties.load(new FileInputStream("config/aggregator.properties"));
 		// finally the ontology can be stored
 		ontology_manager.saveOntology(newModule,
 				IRI.create(this.pathToModules + this.nameOfNewModule));
@@ -394,7 +400,7 @@ public class HDOTExtender {
 		ontology_manager.removeOntology(newModule);
 
 		List<String> orderOfModules = FileUtils.readLines(new File(
-				"data/sortedHdotModuleIds"));
+				properties.getProperty("fileSortingHdotModulesURIs")));
 		String newModuleIRI = newModule.getOntologyID().getOntologyIRI()
 				.toString();
 
@@ -403,7 +409,7 @@ public class HDOTExtender {
 		if (!orderOfModules.contains(newModuleIRI)) {
 			OWLOntology hdot_all = this.ontology_manager
 					.loadOntologyFromOntologyDocument(new File(
-							"data/hdot/hdot_all.owl"));
+							properties.getProperty("fileOntology")));
 			// import the new module in hdot_all.owl and save it
 
 			OWLImportsDeclaration importDeclaraton = this.dataFactory
@@ -419,7 +425,7 @@ public class HDOTExtender {
 			// add the new module to the list of sorted ids of the hdot modules
 
 			orderOfModules.add(0, newModuleIRI);
-			FileUtils.writeLines(new File("data/sortedHdotModuleIds"),
+			FileUtils.writeLines(new File(properties.getProperty("fileSortingHdotModulesURIs")),
 					orderOfModules);
 		}
 		log.info("The extended HDOT module is saved in: " + this.pathToModules
