@@ -166,20 +166,10 @@ public class RecommendationGenerator {
 		}
 
 		log.info("Loaded ontology: " + hdot_ontology);
-		// Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
-//		CommonBaseIRIMapper mapper = new CommonBaseIRIMapper(
-//				IRI.create("http://www.ifomis.org/hdot/hdot_module"));
-//		mapper.addMapping(
-//				IRI.create("http://hdot.googlecode.com/svn/trunk/hdot_module_15.owl"),
-//				"data/hdot/hdot_module_15.owl");
-//		ontology_manager.addIRIMapper(mapper);
+	
 		List<OWLOntology> hdotModules = ontology_manager
 				.getSortedImportsClosure(hdot_ontology);
-		// for (Iterator iterator = hdotModules.iterator(); iterator.hasNext();)
-		// {
-		// OWLOntology owlOntology = (OWLOntology) iterator.next();
-		// // log.info(owlOntology.getOntologyID());
-		// }
+		
 		sortedHdotModules = new ModuleSorter().sortHdotModules(hdotModules);
 
 		// generateRecommendation(listOfPathsOfAllHits);
@@ -484,6 +474,7 @@ public class RecommendationGenerator {
 			// check after the comparison if a match was found
 			// to collect the hierarchy and set the accessions
 			if (matchedTerm != null) {
+				log.info("_________________________________________________");
 
 				matchedTerm.setURI(new URI(hdotClass.toStringID()));
 				matchedTerm.setLabel(pureLabelOfHdotClass);
@@ -511,7 +502,6 @@ public class RecommendationGenerator {
 					listOfRecommendations.add(buildRecommendaton(
 							currentOntology, matchedTerm));
 				}
-				log.info("_________________________________________________");
 
 				// in case a match was found quit the loop for the classes
 				// possibly we can collect the matches in order to have them for
