@@ -28,37 +28,37 @@ public class EmailSender {
 	 * @throws FileNotFoundException 
 	 */
 	public void sendMail(String subject, String notification) throws FileNotFoundException, IOException {
-
-		Properties properties = new Properties();
-
-
-    	properties.load(new FileInputStream("config/aggregator.properties"));
-
-    	String[] curators = properties.getProperty("curatorsMailAddresses").split(";");
-
-    	Email email = new SimpleEmail();
-    	
-    	email.setHostName("smtp.googlemail.com");
-		email.setSmtpPort(465);
-
-		email.setAuthenticator(new DefaultAuthenticator("ontology.aggregator",
-				"solution12"));
-		email.setSSLOnConnect(true);
-
-		try {
-			email.setFrom("ontology.aggregator@gmail.com");
-			email.setSubject(subject);
-			email.setMsg(notification);
-			for (int i = 0; i < curators.length; i++) {
-				System.out.println("email send to " + curators[i]);
-				email.addTo(curators[i]);
-				email.send();
-			}
-//			email.addTo("nikolina.koleva19@yahoo.de");
-
-		} catch (EmailException e) {
-			e.printStackTrace();
-		}
+//TODO find out why it works on the local machine but not on the remote server
+//		Properties properties = new Properties();
+//
+//
+//    	properties.load(new FileInputStream("config/aggregator.properties"));
+//
+//    	String[] curators = properties.getProperty("curatorsMailAddresses").split(";");
+//
+//    	Email email = new SimpleEmail();
+//    	
+//    	email.setHostName("smtp.googlemail.com");
+//		email.setSmtpPort(465);
+//
+//		email.setAuthenticator(new DefaultAuthenticator("ontology.aggregator",
+//				"solution12"));
+//		email.setSSLOnConnect(true);
+//
+//		try {
+//			email.setFrom("ontology.aggregator@gmail.com");
+//			email.setSubject(subject);
+//			email.setMsg(notification);
+//			for (int i = 0; i < curators.length; i++) {
+//				System.out.println("email send to " + curators[i]);
+//				email.addTo(curators[i]);
+//				email.send();
+//			}
+////			email.addTo("nikolina.koleva19@yahoo.de");
+//
+//		} catch (EmailException e) {
+//			e.printStackTrace();
+//		}
 	}
 	public static void main(String[] args) {
 		EmailSender sender = new EmailSender();
