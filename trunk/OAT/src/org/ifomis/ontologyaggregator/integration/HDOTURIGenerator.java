@@ -26,11 +26,11 @@ public class HDOTURIGenerator {
 	public String generateURI(String hdotModule) throws IOException {
 
 		Properties properties = new Properties();
-		properties.load(new FileInputStream("config/aggregator.properties"));
+		properties.load(new FileInputStream("data/counter.properties"));
 
 		String prefix = hdotModule.split("\\.")[0].toUpperCase();
 
-		String counter = properties.getProperty("data/counterForURIS_"
+		String counter = properties.getProperty("counterForURIS_"
 				+ prefix);
 		log.debug("URI next number read");
 		
@@ -49,8 +49,8 @@ public class HDOTURIGenerator {
 		}
 		
 		sb.append(intCounter.toString());
-		properties.setProperty("data/counterForURIS_" + prefix, sb.toString());
-		properties.store(new FileOutputStream("config/aggregator.properties"), null);
+		properties.setProperty("counterForURIS_" + prefix, sb.toString());
+		properties.store(new FileOutputStream("data/counter.properties"), null);
 
 		log.debug("URI next number updated");
 				
