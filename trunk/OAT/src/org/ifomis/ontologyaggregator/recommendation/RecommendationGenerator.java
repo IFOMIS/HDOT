@@ -209,8 +209,7 @@ public class RecommendationGenerator {
 //					log.info("SPARQL response for the root path was empty");
 //					continue;
 //				}
-				
-				log.info("\n*********************hit Nr:" + hitsCounter + "*********************");
+				log.info("\n***************************hit Nr:" + hitsCounter + "***************************");
 				log.info("The length of the current path to root is: "
 						+ path.size());
 				log.debug("____________________________________________________________________");
@@ -403,6 +402,7 @@ public class RecommendationGenerator {
 			OWLOntology currentOntology) throws URISyntaxException,
 			OntologyServiceException, IOException {
 
+		log.info("_________________________________________________");
 		numMatchedParents = 1;
 		Set<OWLClass> classesInSignature = currentOntology
 				.getClassesInSignature();
@@ -474,10 +474,10 @@ public class RecommendationGenerator {
 				matchedTerm.setOntologyAccession(currentOntology
 						.getOntologyID().getOntologyIRI().toString());
 
-				log.info("parent of the current hit: "
+				log.info("\tparent of the current hit: "
 						+ currentCandidate.getURI().toString() + "\t"
 						+ currentCandidate.getLabel());
-				log.info("matched class of hdot: "
+				log.info("\tmatched class of hdot: "
 						+ matchedTerm.getURI().toString() + "\t"
 						+ matchedTerm.getLabel());
 

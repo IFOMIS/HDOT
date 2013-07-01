@@ -104,7 +104,7 @@ public class RootpathExtractor {
 		
 		//there are no parents retrieved by the last SPARQL query
 		if (parents.size() == 0) {
-			 log.info("path" + path);
+//			 log.info("path" + path);
 
 			Stack<OntologyTerm> deepCopyOfPath = getDeepReverseCopy(path);
 			// log.info("path.peek(): " + deepCopyOfPath.peek());
