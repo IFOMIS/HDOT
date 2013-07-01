@@ -150,14 +150,12 @@ public class RecommendationGenerator {
 		// Get hold of an ontology manager
 		this.ontology_manager = OWLManager.createOWLOntologyManager();
 		this.searchedTerm = searchedTerm;
-
-		File file = new File(ontoIn);
-
+        
 		try {
 			// Now load the local copy of hdot that include all modules
 
 			this.hdot_ontology = ontology_manager
-					.loadOntologyFromOntologyDocument(IRI.create(file));
+					.loadOntologyFromOntologyDocument(IRI.create(ontoIn));
 
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
