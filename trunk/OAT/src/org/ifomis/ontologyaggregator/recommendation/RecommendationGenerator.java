@@ -402,7 +402,6 @@ public class RecommendationGenerator {
 			OWLOntology currentOntology) throws URISyntaxException,
 			OntologyServiceException, IOException {
 
-		log.info("_________________________________________________");
 		numMatchedParents = 1;
 		Set<OWLClass> classesInSignature = currentOntology
 				.getClassesInSignature();
@@ -495,12 +494,14 @@ public class RecommendationGenerator {
 					listOfRecommendations.add(buildRecommendaton(
 							currentOntology, matchedTerm));
 				}
+				log.info("_________________________________________________");
 
 				// in case a match was found quit the loop for the classes
 				// possibly we can collect the matches in order to have them for
 				// further recommendations
 				break;
 			}
+
 			// otherwise search further
 		}
 		return matchedTerm;
