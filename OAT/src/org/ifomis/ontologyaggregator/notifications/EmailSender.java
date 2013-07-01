@@ -39,7 +39,9 @@ public class EmailSender {
     	Email email = new SimpleEmail();
     	
     	email.setHostName("smtp.googlemail.com");
-		email.setSmtpPort(465);
+//		email.setSmtpPort(465);
+		email.setSmtpPort(587);
+
 		email.setAuthenticator(new DefaultAuthenticator("ontology.aggregator",
 				"solution12"));
 		email.setSSLOnConnect(true);
