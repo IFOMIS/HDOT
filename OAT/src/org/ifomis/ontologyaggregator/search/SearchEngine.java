@@ -142,16 +142,14 @@ public class SearchEngine {
 
 			int similarityScore = ot.getContext().getSimilarityScore();
 			if (similarityScore > 90) {
-				sb1.append("\t\tThe term will be processed further.");
-
-				sb1.append("\n\t\tSimilatity score of searched term and hit is greater than 90%.");
-				sb1.append("\n\t\tSource Ontology = ");
-				sb1.append(ot.getOntology().getLabel());
-				sb1.append("\n\t\taccession of the hit = ");
-				sb1.append(ot.getAccession());
+				
+				sb1.append("\n\t\tURI of the hit = ");
+				sb1.append(ot.getURI());
 				sb1.append("\n\t\tlabel of the hit = ");
 				sb1.append(ot.getLabel());
-
+				sb1.append("\n\t\tSource Ontology = ");
+				sb1.append(ot.getOntology().getLabel());
+				sb1.append("\n\t\tThe term will be processed further, since the similatity score of searched term and hit is greater than 90%.");
 				log.info(sb1.toString());
 
 				++counterForQueriesRootPath;

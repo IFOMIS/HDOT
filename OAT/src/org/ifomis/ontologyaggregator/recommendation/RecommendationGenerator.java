@@ -11,6 +11,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -155,15 +156,19 @@ public class RecommendationGenerator {
 			// Now load the local copy of hdot that include all modules
 
 			this.hdot_ontology = ontology_manager
-					.loadOntologyFromOntologyDocument(IRI.create(ontoIn));
+					.loadOntologyFromOntologyDocument(IRI.create(new File(ontoIn)));
 
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
 		}
 
 		log.info("Loaded ontology: " + hdot_ontology);
-		Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
-
+//		Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
+		List<OWLOntology> hdotModules = ontology_manager.getSortedImportsClosure(hdot_ontology);
+		for (Iterator iterator = hdotModules.iterator(); iterator.hasNext();) {
+			OWLOntology owlOntology = (OWLOntology) iterator.next();
+//			log.info(owlOntology.getOntologyID());
+		}
 		sortedHdotModules = new ModuleSorter().sortHdotModules(hdotModules);
 
 		// generateRecommendation(listOfPathsOfAllHits);
@@ -204,11 +209,11 @@ public class RecommendationGenerator {
 
 
 				// the path response was empty
-//				if (path.size() <= 1) {
-//					// log.info(path.peek());
-//					log.info("SPARQL response for the root path was empty");
-//					continue;
-//				}
+				if (path.size() <= 1) {
+					// log.info(path.peek());
+					log.info("SPARQL response for the root path was empty");
+					continue;
+				}
 				log.info("\n***************************hit Nr:" + hitsCounter + "***************************");
 				log.info("The length of the current path to root is: "
 						+ path.size());

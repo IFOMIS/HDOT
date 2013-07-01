@@ -26,7 +26,7 @@ public class ModuleSorter {
 	 * @return array with sorted HDOT modules
 	 * @throws IOException
 	 */
-	public OWLOntology[] sortHdotModules(Set<OWLOntology> hdotModules)
+	public OWLOntology[] sortHdotModules(List<OWLOntology> hdotModules)
 			throws IOException {
 
 		OWLOntology[] sortedHdotModules = new OWLOntology[hdotModules.size()];
