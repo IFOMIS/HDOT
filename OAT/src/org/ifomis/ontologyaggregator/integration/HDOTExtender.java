@@ -394,9 +394,10 @@ public class HDOTExtender {
 		
 		properties.load(new FileInputStream("config/aggregator.properties"));
 		// finally the ontology can be stored
+//		ontology_manager.saveOntology(newModule,
+//				IRI.create(this.pathToModules + this.nameOfNewModule));
 		ontology_manager.saveOntology(newModule,
-				IRI.create(this.pathToModules + this.nameOfNewModule));
-
+				IRI.create("data/hdot/user_modules/" + this.nameOfNewModule));
 		ontology_manager.removeOntology(newModule);
 
 		List<String> orderOfModules = FileUtils.readLines(new File(
