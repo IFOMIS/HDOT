@@ -18,6 +18,8 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.Stack;
 
+import javax.management.relation.InvalidRelationIdException;
+
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -27,7 +29,9 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.util.SimpleIRIMapper;
 
 import uk.ac.ebi.ontocat.OntologyService;
 import uk.ac.ebi.ontocat.OntologyServiceException;
@@ -47,7 +51,6 @@ public class RecommendationGenerator {
 
 	File statisticsFile = new File("data/statistics");
 	FileWriter statistcsWriter = new FileWriter(statisticsFile, true);
-
 
 	/**
 	 * The hdot ontology where the term is going to be inserted as a class.
@@ -113,9 +116,8 @@ public class RecommendationGenerator {
 	private OWLOntology[] sortedHdotModules;
 
 	private int numMatchedParents;
-	
-	private Properties properties;
 
+	private Properties properties;
 
 	/**
 	 * Creates a RecommendationGenerator and loads the specified input ontology.
@@ -144,31 +146,37 @@ public class RecommendationGenerator {
 		this.properties = new Properties();
 		properties.load(new FileInputStream("config/aggregator.properties"));
 
-		this.importedOntologies = FileUtils.readLines(new File(
-				properties.getProperty("fileImportedOntologiesURIs")));
+		this.importedOntologies = FileUtils.readLines(new File(properties
+				.getProperty("fileImportedOntologiesURIs")));
 
-				
 		// Get hold of an ontology manager
 		this.ontology_manager = OWLManager.createOWLOntologyManager();
 		this.searchedTerm = searchedTerm;
-        
+
 		try {
 			// Now load the local copy of hdot that include all modules
 
 			this.hdot_ontology = ontology_manager
-					.loadOntologyFromOntologyDocument(IRI.create(new File(ontoIn)));
+					.loadOntologyFromOntologyDocument(IRI.create(new File(
+							ontoIn)));
 
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
 		}
 
 		log.info("Loaded ontology: " + hdot_ontology);
-//		Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
-		List<OWLOntology> hdotModules = ontology_manager.getSortedImportsClosure(hdot_ontology);
-		for (Iterator iterator = hdotModules.iterator(); iterator.hasNext();) {
-			OWLOntology owlOntology = (OWLOntology) iterator.next();
-//			log.info(owlOntology.getOntologyID());
-		}
+		// Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
+
+		ontology_manager.addIRIMapper(new SimpleIRIMapper(IRI
+				.create("http://www.ifomis.org/hdot/hdot_module_15.owl"), IRI
+				.create("file:data/hdot/hdot_module_15.owl")));
+		List<OWLOntology> hdotModules = ontology_manager
+				.getSortedImportsClosure(hdot_ontology);
+		// for (Iterator iterator = hdotModules.iterator(); iterator.hasNext();)
+		// {
+		// OWLOntology owlOntology = (OWLOntology) iterator.next();
+		// // log.info(owlOntology.getOntologyID());
+		// }
 		sortedHdotModules = new ModuleSorter().sortHdotModules(hdotModules);
 
 		// generateRecommendation(listOfPathsOfAllHits);
@@ -197,7 +205,7 @@ public class RecommendationGenerator {
 			hitsCounter = 5;
 		}
 		recommendationCounter = 0;
-		
+
 		// loop over hits
 		for (List<Stack<OntologyTerm>> listOfPaths : listOfPathsOfAllHits) {
 			++hitsCounter;
@@ -207,14 +215,14 @@ public class RecommendationGenerator {
 
 				hierarchyOfHit = (Stack<OntologyTerm>) path.clone();
 
-
 				// the path response was empty
 				if (path.size() <= 1) {
 					// log.info(path.peek());
 					log.info("SPARQL response for the root path was empty");
 					continue;
 				}
-				log.info("\n***************************hit Nr:" + hitsCounter + "***************************");
+				log.info("\n***************************hit Nr:" + hitsCounter
+						+ "***************************");
 				log.info("The length of the current path to root is: "
 						+ path.size());
 				log.debug("____________________________________________________________________");
@@ -240,13 +248,14 @@ public class RecommendationGenerator {
 		}
 		if (recommendationCounter == 0) {
 			log.info("NO SUITABLE RECOMMENDATION WAS FOUND!\n");
-			
-//			mailSender
-//					.sendMail(
-//							"NO SUITABLE RECOMMENDATION WAS FOUND!",
-//							"Neither valid nor potentail recommendations were generated for the serched term "
-//									+ searchedTerm
-//									+ " because no match of a parent with HDOT class was recognized. ");
+
+			// mailSender
+			// .sendMail(
+			// "NO SUITABLE RECOMMENDATION WAS FOUND!",
+			// "Neither valid nor potentail recommendations were generated for the serched term "
+			// + searchedTerm
+			// +
+			// " because no match of a parent with HDOT class was recognized. ");
 		} else {
 			log.info(recommendationCounter
 					+ " RECOMMENDATION(S) WERE GENERATED");
@@ -355,7 +364,7 @@ public class RecommendationGenerator {
 		if (counterForParents == 0) {
 			log.error("OAT SHOULD NOT BE EVOKED! Since:");
 			log.error("The concept: " + matchedConcept + " already exists.");
-			
+
 			long end = System.currentTimeMillis();
 
 			long milliseconds = (end - start);
@@ -588,7 +597,6 @@ public class RecommendationGenerator {
 				}
 			}
 			label = label.toLowerCase();
-
 
 			if (urisTOLabels.containsKey(uri)
 					|| (!(label.isEmpty()) && urisTOLabels.containsValue(label))) {
