@@ -44,6 +44,7 @@ public class TestOntologyAggregator {
 			} else {
 				 terms = args[0].replace("_", " ");
 				 properties.setProperty("searchedTerms", terms);
+				 properties.setProperty("userID", args[1]);
 		    	 properties.store(new FileOutputStream("config/aggregator.properties"), null);
 			}
 			

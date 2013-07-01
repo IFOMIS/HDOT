@@ -100,6 +100,7 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 									+ "\" but there was no suitable recommendation found.");
 		}
 		if (!recommendationsInImportedOntologies.isEmpty()) {
+			
 			String subject = searchedTerm
 					+ " INTEGRATION POSSIBLE IN IMPORTED ONTOLOGY";
 			log.info(subject);
@@ -140,7 +141,7 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 			String subject = searchedTerm
 					+ " THE MATCHED CLASS WAS FOUND IN HDOT_CORE BUT IT IS NOT A LEAF NODE";
 			log.info(subject);
-
+			log.info("????");
 			int i = 1;
 			for (Recommendation recommendation : inCoreNotLeafs) {
 				log.info("potential recomendation No " + i + ":\n"
