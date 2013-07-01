@@ -46,7 +46,8 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 	}
 
 	public void checkValidRecommendations()
-			throws OWLOntologyCreationException, OWLOntologyStorageException, FileNotFoundException, IOException {
+			throws OWLOntologyCreationException, OWLOntologyStorageException,
+			FileNotFoundException, IOException {
 
 		if (!validRecommendations.isEmpty()) {
 
@@ -77,18 +78,17 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 				// log.info(rec.toString());
 				// }
 			}
-		} else {
-			log.info("no valid recommendations were generated");
-			checkPotentialRecommendations();
 		}
 	}
 
 	/**
 	 * checks if there are potential recommendations and notifies the curators.
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 * 
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
-	public void checkPotentialRecommendations() throws FileNotFoundException, IOException {
+	public void checkPotentialRecommendations() throws FileNotFoundException,
+			IOException {
 		if (recommendationsInImportedOntologies.isEmpty()
 				&& recommendationsOfImportedNotLeafMatches.isEmpty()
 				&& inCoreNotLeafs.isEmpty()) {
@@ -100,7 +100,7 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 									+ "\" but there was no suitable recommendation found.");
 		}
 		if (!recommendationsInImportedOntologies.isEmpty()) {
-			
+
 			String subject = searchedTerm
 					+ " INTEGRATION POSSIBLE IN IMPORTED ONTOLOGY";
 			log.info(subject);
@@ -141,7 +141,6 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 			String subject = searchedTerm
 					+ " THE MATCHED CLASS WAS FOUND IN HDOT_CORE BUT IT IS NOT A LEAF NODE";
 			log.info(subject);
-			log.info("????");
 			int i = 1;
 			for (Recommendation recommendation : inCoreNotLeafs) {
 				log.info("potential recomendation No " + i + ":\n"
@@ -165,6 +164,14 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 
 			acceptedRecommendation = validRecommendations.get(0);
 		} else {
+			try {
+				mailSender.sendMail("THE USER REJECTED THE RECOMMENDATION",
+						validRecommendations.get(0).toString());
+			} catch (FileNotFoundException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 			validRecommendations.remove(0);
 			log.info("the user rejected the recommendation.");
 			accept = false;
