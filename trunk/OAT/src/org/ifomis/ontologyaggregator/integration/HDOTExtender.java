@@ -407,7 +407,7 @@ public class HDOTExtender {
 		// add the module id and import the new module if it does not already
 		// exist
 		if (!orderOfModules.contains(newModuleIRI)) {
-			OWLOntology hdot_all = this.ontology_manager
+			OWLOntology hdot_container = this.ontology_manager
 					.loadOntologyFromOntologyDocument(new File(
 							properties.getProperty("fileOntology")));
 			// import the new module in hdot_all.owl and save it
@@ -416,10 +416,10 @@ public class HDOTExtender {
 					.getOWLImportsDeclaration(newModule.getOntologyID()
 							.getOntologyIRI());
 
-			this.ontology_manager.applyChange(new AddImport(hdot_all,
+			this.ontology_manager.applyChange(new AddImport(hdot_container,
 					importDeclaraton));
 
-			ontology_manager.saveOntology(hdot_all);
+			ontology_manager.saveOntology(hdot_container);
 			// ontology_manager.saveOntology(hdot_all,
 			// IRI.create("https://code.google.com/p/hdot/source/browse/trunk/hdot_module_user2.owl"));
 			// add the new module to the list of sorted ids of the hdot modules

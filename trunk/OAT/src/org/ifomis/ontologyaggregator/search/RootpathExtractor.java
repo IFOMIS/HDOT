@@ -108,7 +108,7 @@ public class RootpathExtractor {
 
 			Stack<OntologyTerm> deepCopyOfPath = getDeepReverseCopy(path);
 			// log.info("path.peek(): " + deepCopyOfPath.peek());
-			if (!(deepCopyOfPath.size() <= 1)) {
+			if (!(deepCopyOfPath.size() == 1)) {
 				// log.debug("!!!!!soll nicht leer sein!!!!!!!!!!!!!! " +
 				// deepCopyOfPath );
 
@@ -117,7 +117,7 @@ public class RootpathExtractor {
 //				 log.debug("!!!!!!!soll leer sein!!!!!!!!!!!! " +
 //				 deepCopyOfPath );
 
-				++counterForEmptyResonses;
+//				++counterForEmptyResonses;
 			}
 		}
 		for (String parent : parents) {
@@ -312,7 +312,7 @@ public class RootpathExtractor {
 			log.info("\t\tfor the term: " + ot.toString());
 			log.info("\t\tSPARQL response is empty");
 
-//			++counterForEmptyResonses;
+			++counterForEmptyResonses;
 			this.sbFailed.append(ontologyAbbreviation + "\t" + ot.getURI()
 					+ "\n");
 		} else {
