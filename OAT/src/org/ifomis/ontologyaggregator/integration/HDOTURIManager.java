@@ -32,7 +32,7 @@ public class HDOTURIManager {
 		
 				
 		List<String> predefinedOntologies = FileUtils.readLines(new File(
-				properties.getProperty("predefinedOntologies")));
+				properties.getProperty("filePredefinedOntolodies")));
 		
 		this.keepOriginalURI = predefinedOntologies
 				.contains(acceptedRecommendation.getHit().getOntology()
