@@ -168,7 +168,7 @@ public class RecommendationGenerator {
 		// Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
 
 		ontology_manager.addIRIMapper(new SimpleIRIMapper(IRI
-				.create("http://www.ifomis.org/hdot/hdot_module_15.owl"), IRI
+				.create("http://hdot.googlecode.com/svn/trunk/hdot_module_15.owl"), IRI
 				.create("file:data/hdot/hdot_module_15.owl")));
 		List<OWLOntology> hdotModules = ontology_manager
 				.getSortedImportsClosure(hdot_ontology);
