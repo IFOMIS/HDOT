@@ -3,6 +3,7 @@ package org.ifomis.ontologyaggregator.integration;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.Writer;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.exception.HdotExtensionException;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.io.OWLOntologyDocumentTarget;
 import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.AddImport;
 import org.semanticweb.owlapi.model.IRI;
@@ -397,7 +399,7 @@ public class HDOTExtender {
 //		ontology_manager.saveOntology(newModule,
 //				IRI.create(this.pathToModules + this.nameOfNewModule));
 		ontology_manager.saveOntology(newModule,
-				IRI.create("data/hdot/user_modules/" + this.nameOfNewModule));
+				IRI.create("file:///svr/oat/data/hdot/user_modules/" + this.nameOfNewModule));
 		ontology_manager.removeOntology(newModule);
 
 		List<String> orderOfModules = FileUtils.readLines(new File(
