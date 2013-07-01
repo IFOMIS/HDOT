@@ -108,8 +108,10 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 			StringBuffer mailBuffer = new StringBuffer();
 
 			int i = 1;
+			log.info("recomendation(s) in imported ontologies:");
+
 			for (Recommendation recommendation : recommendationsInImportedOntologies) {
-				log.info("recomendation in imported ontologies:\n"
+				log.info("potential recomendation No " + i + ":\n"
 						+ recommendation.toString());
 				mailBuffer.append("----------------------------------------\n");
 				mailBuffer.append("potential recommendation No " + i + ":\n");
@@ -126,9 +128,11 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 					+ " THE MATCHED CLASS IS IMPORTED IN THIS MODULE BUT IT IS NOT A LEAF NODE";
 			log.info(subject);
 			int i = 1;
+			log.info("recomendation(s) in imported classes that are not leaf nodes:");
 
 			for (Recommendation recommendation : recommendationsOfImportedNotLeafMatches) {
-				log.info(recommendation.toString());
+				log.info("potential recomendation No " + i + ":\n"
+						+ recommendation.toString());
 				mailBuffer.append("----------------------------------------\n");
 				mailBuffer.append("potential recommendation No " + i + ":\n");
 				mailBuffer.append(recommendation.toString());
@@ -141,6 +145,8 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 			String subject = searchedTerm
 					+ " THE MATCHED CLASS WAS FOUND IN HDOT_CORE BUT IT IS NOT A LEAF NODE";
 			log.info(subject);
+			log.info("recomendation(s) in HDOT_CORE but not leaf node:");
+
 			int i = 1;
 			for (Recommendation recommendation : inCoreNotLeafs) {
 				log.info("potential recomendation No " + i + ":\n"

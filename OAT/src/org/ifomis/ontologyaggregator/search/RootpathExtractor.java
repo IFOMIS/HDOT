@@ -101,12 +101,14 @@ public class RootpathExtractor {
 		String response = executeSparqlQuery(ot.getURI().toString());
 
 		List<String> parents = parseSparqlResponse(response);
+		
+		//there are no parents retrieved by the last SPARQL query
 		if (parents.size() == 0) {
-//			 log.info("path" + path);
+			 log.info("path" + path);
 
 			Stack<OntologyTerm> deepCopyOfPath = getDeepReverseCopy(path);
 			// log.info("path.peek(): " + deepCopyOfPath.peek());
-			if (!(deepCopyOfPath.size() == 1)) {
+			if (!(deepCopyOfPath.size() <= 1)) {
 				// log.debug("!!!!!soll nicht leer sein!!!!!!!!!!!!!! " +
 				// deepCopyOfPath );
 
