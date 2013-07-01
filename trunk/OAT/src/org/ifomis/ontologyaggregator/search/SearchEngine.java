@@ -142,7 +142,7 @@ public class SearchEngine {
 
 			int similarityScore = ot.getContext().getSimilarityScore();
 			if (similarityScore > 90) {
-				sb1.append(";\n\t\tThe term will be processed further.");
+				sb1.append("\t\tThe term will be processed further.");
 
 				sb1.append("\n\t\tSimilatity score of searched term and hit is greater than 90%.");
 				sb1.append("\n\t\tSource Ontology = ");
