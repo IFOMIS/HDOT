@@ -228,7 +228,6 @@ public class RecommendationGenerator {
 						// concepts
 						break;
 					}
-
 				} else {
 					log.debug("path was empty");
 					continue;

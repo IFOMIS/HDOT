@@ -10,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
+import org.apache.axis.transport.jms.TopicConnector;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.exception.HdotExtensionException;
 import org.ifomis.ontologyaggregator.integration.HDOTExtender;
@@ -34,20 +35,21 @@ public class TestOntologyAggregator {
 		Properties properties = new Properties();
 
 		try {
-			properties.load(new FileInputStream("config/aggregator.properties"));
-			
+			properties
+					.load(new FileInputStream("config/aggregator.properties"));
+
 			String fileWithOntologies, terms = "";
 
 			if (args.length < 2) {
 				usage();
 				System.exit(0);
 			} else {
-				 terms = args[0].replace("_", " ");
-			
+				terms = args[0].replace("_", " ");
+
 			}
-			
+
 			String[] termList = terms.split(";");
-			
+
 			fileWithOntologies = properties.getProperty("fileOntologiesOrder");
 
 			SearchEngine se = new SearchEngine(fileWithOntologies);
@@ -61,8 +63,8 @@ public class TestOntologyAggregator {
 				log.info("\nRECOMMENDATION GENERATION\n");
 
 				RecommendationGenerator rg = new RecommendationGenerator(
-						properties.getProperty("fileOntology"), term, se.getRestrictedBps(),
-						start);
+						properties.getProperty("fileOntology"), term,
+						se.getRestrictedBps(), start);
 
 				boolean recommendationWasAccepted = processingSearchResults(
 						true, se, term, start, args[1], rg);
@@ -145,10 +147,11 @@ public class TestOntologyAggregator {
 		int[] indexes = computeIndexes(isTopFive, sizeOfresultList, term, start);
 		int startIndex = indexes[0];
 		int endIndex = indexes[1];
-
-		rg.generateRecommendation(
-				se.getListOfPaths().subList(startIndex, endIndex), isTopFive);
-
+		if (startIndex != -1) {
+			rg.generateRecommendation(
+					se.getListOfPaths().subList(startIndex, endIndex),
+					isTopFive);
+		}
 		if (isTopFive) {
 			log.info("number of valid recommendations under top 5 "
 					+ rg.getListOfRecommendations().size());
@@ -157,13 +160,14 @@ public class TestOntologyAggregator {
 				computeIndexes(false, sizeOfresultList, term, start);
 				int sIndex = indexes[0];
 				int eIndex = indexes[1];
-				rg.generateRecommendation(
-						se.getListOfPaths().subList(sIndex, eIndex), false);
+				if (sIndex != -1) {
+					rg.generateRecommendation(
+							se.getListOfPaths().subList(sIndex, eIndex), false);
+				}
 			}
 		} else {
 			log.info("number of valid recommendations top 5-10 "
 					+ rg.getListOfRecommendations().size());
-
 		}
 		RecommendationFilter rf = new RecommendationFilter(term,
 				rg.getListOfRecommendations(),
@@ -192,7 +196,9 @@ public class TestOntologyAggregator {
 				break;
 			}
 		}
-
+		if (rg.getListOfRecommendations().isEmpty()) {
+			rf.checkPotentialRecommendations();
+		}
 		return rf.isAccept();
 	}
 
@@ -215,13 +221,14 @@ public class TestOntologyAggregator {
 			if (sizeOfresultList < 10) {
 				if (sizeOfresultList <= 5) {
 					// well there were less than 5 results
-					terminate(start, term, true);
+					// terminate(start, term, true);
+					startIndex = -1;
+					endIndex = -1;
 				} else {
 					// there were more than 5 but less than 10
 					startIndex = 5;
 					endIndex = sizeOfresultList - 1;
 				}
-
 			} else {
 				// there were more than 10 results
 				startIndex = 5;

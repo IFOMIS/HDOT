@@ -29,7 +29,6 @@ public class EmailSender {
 	 */
 	public void sendMail(String subject, String notification) throws FileNotFoundException, IOException {
 
-		System.out.println("**************");
 		Properties properties = new Properties();
 
 
@@ -56,7 +55,6 @@ public class EmailSender {
 			}
 //			email.addTo("nikolina.koleva19@yahoo.de");
 
-			
 		} catch (EmailException e) {
 			e.printStackTrace();
 		}
@@ -66,10 +64,8 @@ public class EmailSender {
 		try {
 			sender.sendMail("test", "this is a test mail");
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
