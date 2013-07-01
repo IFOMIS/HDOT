@@ -60,9 +60,7 @@ public class SearchEngine {
 	private OntologyService restrictedBps;
 	private EmailSender mailSender;
 	private Properties properties;
-	public OntologyService getRestrictedBps() {
-		return restrictedBps;
-	}
+	
 
 	public SearchEngine(String fileWithOntologies)
 			throws IOException {
@@ -72,7 +70,7 @@ public class SearchEngine {
 		this.ontologiesList = FileUtils.readLines(fileOntologies);
 		this.mailSender = new EmailSender();
 		this.properties = new Properties();
-		properties.load(new FileInputStream("config/aggregator.properties"));
+		this.properties.load(new FileInputStream("config/aggregator.properties"));
 
 		log.debug("List of ontologies imported from file: "
 				+ fileWithOntologies);
@@ -221,5 +219,8 @@ public class SearchEngine {
 
 	public String getCurrentTerm() {
 		return searchedTerm;
+	}
+	public OntologyService getRestrictedBps() {
+		return restrictedBps;
 	}
 }

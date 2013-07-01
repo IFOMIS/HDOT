@@ -43,9 +43,7 @@ public class TestOntologyAggregator {
 				System.exit(0);
 			} else {
 				 terms = args[0].replace("_", " ");
-				 properties.setProperty("searchedTerms", terms);
-				 properties.setProperty("userID", args[1]);
-		    	 properties.store(new FileOutputStream("config/aggregator.properties"), null);
+			
 			}
 			
 			String[] termList = terms.split(";");
