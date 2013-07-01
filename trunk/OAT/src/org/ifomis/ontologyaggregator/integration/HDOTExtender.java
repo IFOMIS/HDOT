@@ -188,7 +188,9 @@ public class HDOTExtender {
 			// Now create the ontology - we use the ontology IRI (not the
 			// physical
 			// IRI)
-			this.newModule = this.ontology_manager.createOntology(ontologyIRI);
+//			this.newModule = this.ontology_manager.createOntology(ontologyIRI);
+			this.newModule = this.ontology_manager.createOntology(IRI.create("file:///svr/oat/data/hdot/user_modules/"+ this.nameOfNewModule));
+
 		}
 		OWLImportsDeclaration importDeclaraton = this.dataFactory
 				.getOWLImportsDeclaration(accceptedRecommendation
