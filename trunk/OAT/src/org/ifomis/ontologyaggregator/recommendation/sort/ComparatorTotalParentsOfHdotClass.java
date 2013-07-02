@@ -5,6 +5,13 @@ import java.util.Comparator;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 
 
+/**
+ *  Compares two @link{Recommendation}s wrt the number of the parents that matched
+ *	 the hdot class. Higher number is preferred.
+ *
+ * @author Nikolina
+ *
+ */
 public class ComparatorTotalParentsOfHdotClass implements Comparator<Recommendation>{
 
 	@Override

@@ -6,6 +6,12 @@ import java.io.IOException;
 import java.util.Properties;
 
 
+/**
+ * Resets the numbers used for the generation of new URIs.
+ * 
+ * @author Nikolina
+ *
+ */
 public class URINumberResetter {
 
 	/**

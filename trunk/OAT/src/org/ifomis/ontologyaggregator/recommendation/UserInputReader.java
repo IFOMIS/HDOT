@@ -4,6 +4,7 @@ import java.io.Console;
 import java.util.HashSet;
 import java.util.Set;
 
+
 public class UserInputReader {
 
 	 private Set<RecommendationAcceptListener> listeners;

@@ -4,6 +4,12 @@ import java.util.Comparator;
 
 import uk.ac.ebi.ontocat.bioportal.xmlbeans.OntologyBean;
 
+/**
+ * Compares two ontologies based on numver of classes that have one subclass.
+ * 
+ * @author Nikolina
+ * 
+ */
 public class ComparatorOneSubclass implements Comparator<OntologyBean> {
 
 	/*

@@ -17,10 +17,16 @@ import org.jdom2.output.XMLOutputter;
 
 import uk.ac.ebi.ontocat.bioportal.xmlbeans.MetricsBean;
 
+/**
+ * A parser for the MetricsBean of BioPortal.
+ * 
+ * @author Nikolina
+ *
+ */
 public class MetricsParser {
 
-	XMLOutputter printer = null;
-	Logger log = Logger.getLogger(MetricsParser.class);
+	private XMLOutputter printer = null;
+	private Logger log = Logger.getLogger(MetricsParser.class);
 
 	public MetricsParser() {
 		printer = new XMLOutputter();

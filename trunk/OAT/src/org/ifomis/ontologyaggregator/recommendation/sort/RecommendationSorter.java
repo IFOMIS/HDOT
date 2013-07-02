@@ -7,6 +7,12 @@ import org.apache.commons.collections.comparators.ComparatorChain;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 
 
+/**
+ * Sorts the recommendations.
+ * 
+ * @author Nikolina
+ *
+ */
 public class RecommendationSorter {
 
 	public void sortRecommendations(List<Recommendation> validRecommendations) {
