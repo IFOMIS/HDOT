@@ -1,0 +1,12 @@
+org.ifomis.ontologyaggregator.exception
+org.ifomis.ontologyaggregator.integration
+org.ifomis.ontologyaggregator.notifications
+org.ifomis.ontologyaggregator.parsing
+org.ifomis.ontologyaggregator.recommendation
+org.ifomis.ontologyaggregator.recommendation.sort
+org.ifomis.ontologyaggregator.search
+org.ifomis.ontologyaggregator.sort
+org.ifomis.ontologyaggregator.test
+org.ncbo.stanford.sparql.examples
+uk.ac.ebi.ontocat.bioportal
+uk.ac.ebi.ontocat.bioportal.xmlbeans
