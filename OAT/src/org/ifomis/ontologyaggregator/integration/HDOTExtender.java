@@ -90,6 +90,9 @@ public class HDOTExtender {
 
 	private String nameOfNewModule;
 
+	Properties properties = new Properties();
+
+	
 	public HDOTExtender(Recommendation accceptedRecommendation,
 			boolean includeSubclasses, OWLOntologyManager ontology_manager,
 			OWLOntology hdot_ontology, OntologyService ontologyService,
@@ -105,6 +108,7 @@ public class HDOTExtender {
 		this.uriManager = new HDOTURIManager(accceptedRecommendation,
 				includeSubclasses);
 		this.hdotVerifier = new HDOTVerifier();
+		this.properties.load(new FileInputStream("config/aggregator.properties"));
 
 		log.debug("extracted documentIRI:"
 				+ ontology_manager.getOntologyDocumentIRI(hdot_ontology)
@@ -189,7 +193,7 @@ public class HDOTExtender {
 			// physical
 			// IRI)
 //			this.newModule = this.ontology_manager.createOntology(ontologyIRI);
-			this.newModule = this.ontology_manager.createOntology(IRI.create("file:///svr/oat/data/hdot/user_modules/"+ this.nameOfNewModule));
+			this.newModule = this.ontology_manager.createOntology(IRI.create(properties.getProperty("pathToUserModules")+ this.nameOfNewModule));
 
 		}
 		OWLImportsDeclaration importDeclaraton = this.dataFactory
@@ -393,15 +397,12 @@ public class HDOTExtender {
 			throws OWLOntologyStorageException, URISyntaxException,
 			OWLOntologyCreationException, IOException {
 
-		Properties properties = new Properties();
-
 		
-		properties.load(new FileInputStream("config/aggregator.properties"));
 		// finally the ontology can be stored
 //		ontology_manager.saveOntology(newModule,
 //				IRI.create(this.pathToModules + this.nameOfNewModule));
 		ontology_manager.saveOntology(newModule,
-				IRI.create("file:///svr/oat/data/hdot/user_modules/" + this.nameOfNewModule));
+				IRI.create(properties.getProperty("pathToUserModules") + this.nameOfNewModule));
 		ontology_manager.removeOntology(newModule);
 
 		List<String> orderOfModules = FileUtils.readLines(new File(
