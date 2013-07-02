@@ -11,6 +11,12 @@ import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 
 import uk.ac.ebi.ontocat.OntologyServiceException;
 
+/**
+ * Compares two @link{Recommendation}s wrt the source ontology preference.
+ *  
+ * @author Nikolina
+ *
+ */
 public class ComparatorPredefinedListOfOntologies implements
 		Comparator<Recommendation> {
 

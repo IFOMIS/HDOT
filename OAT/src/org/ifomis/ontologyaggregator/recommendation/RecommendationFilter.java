@@ -10,6 +10,12 @@ import org.ifomis.ontologyaggregator.recommendation.sort.RecommendationSorter;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
+/**
+ * The Recommendation filter decides, which of the generated recommendations 
+ * will be displayed.
+ * @author Nikolina
+ *
+ */
 public class RecommendationFilter implements RecommendationAcceptListener {
 
 	private static final Logger log = Logger
@@ -45,6 +51,13 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 		this.mailSender = new EmailSender();
 	}
 
+	/**
+	 * checks if there are valid recommendatation
+	 * @throws OWLOntologyCreationException
+	 * @throws OWLOntologyStorageException
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 */
 	public void checkValidRecommendations()
 			throws OWLOntologyCreationException, OWLOntologyStorageException,
 			FileNotFoundException, IOException {

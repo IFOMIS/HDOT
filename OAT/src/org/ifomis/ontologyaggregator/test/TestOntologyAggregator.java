@@ -22,6 +22,12 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 import uk.ac.ebi.ontocat.OntologyServiceException;
 
+/**
+ * This is the mail class that tests the OAT.
+ * 
+ * @author Nikolina
+ *
+ */
 public class TestOntologyAggregator {
 	private static final Logger log = Logger
 			.getLogger(TestOntologyAggregator.class);
