@@ -1,13 +1,12 @@
 package org.ifomis.ontologyaggregator.integration;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
+import org.ifomis.ontologyaggregator.util.Configuration;
 
 import uk.ac.ebi.ontocat.OntologyServiceException;
 
@@ -19,7 +18,7 @@ import uk.ac.ebi.ontocat.OntologyServiceException;
  * 
  */
 public class HDOTURIManager {
-	
+
 	private boolean keepOriginalURI;
 	private Recommendation acceptedRecommendation;
 	private HDOTURIGenerator uriGenerator;
@@ -27,24 +26,18 @@ public class HDOTURIManager {
 	public HDOTURIManager(Recommendation acceptedRecommendation,
 			boolean includeSubclasses) throws OntologyServiceException,
 			IOException {
-		Properties properties = new Properties();
-		properties.load(new FileInputStream("config/aggregator.properties"));
-		
-				
+
 		List<String> predefinedOntologies = FileUtils.readLines(new File(
-				properties.getProperty("filePredefinedOntolodies")));
-		
+				Configuration.PREDEFINED_ONTOLOGIES_FILE.toURI()));
+
 		this.keepOriginalURI = predefinedOntologies
 				.contains(acceptedRecommendation.getHit().getOntology()
 						.getAbbreviation());
-//		System.out.println("???***" + acceptedRecommendation.getHit().getOntology()
-//						.getAbbreviation());
-//		
+
 		this.acceptedRecommendation = acceptedRecommendation;
-		
-		 this.uriGenerator = new HDOTURIGenerator(
-				acceptedRecommendation, includeSubclasses);
-		
+
+		this.uriGenerator = new HDOTURIGenerator(acceptedRecommendation,
+				includeSubclasses);
 	}
 
 	public boolean keepOriginalURI() {
@@ -61,10 +54,10 @@ public class HDOTURIManager {
 	public String generateNextHdotUri() throws IOException {
 		String hdotModuleIRI = acceptedRecommendation.getHdotModule()
 				.getOntologyID().getOntologyIRI().toString();
-		
+
 		String[] hdotModules = hdotModuleIRI.split("/");
 		String hdotModule = hdotModules[hdotModules.length - 1];
-		
+
 		String newHdotUri = uriGenerator.generateURI(hdotModule);
 		return newHdotUri;
 	}

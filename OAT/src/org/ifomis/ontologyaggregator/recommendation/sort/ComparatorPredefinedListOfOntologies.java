@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
+import org.ifomis.ontologyaggregator.util.Configuration;
 
 import uk.ac.ebi.ontocat.OntologyServiceException;
 
@@ -28,7 +29,7 @@ public class ComparatorPredefinedListOfOntologies implements
 
 		try {
 			predefinedOntologies = FileUtils.readLines(new File(
-					"data/predefinedListOfOntologies"));
+					Configuration.PREDEFINED_ONTOLOGIES_FILE.toURI()));
 
 			r1FromPredefinedList = predefinedOntologies.contains(r1.getHit()
 					.getOntology().getAbbreviation());

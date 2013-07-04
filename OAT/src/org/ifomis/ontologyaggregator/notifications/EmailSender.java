@@ -24,50 +24,50 @@ public class EmailSender {
 	 *            the subject of the mail to be sent
 	 * @param notification
 	 *            the content of the mail to be sent
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
-	public void sendMail(String subject, String notification) throws FileNotFoundException, IOException {
-//TODO find out why it works on the local machine but not on the remote server
-//		Properties properties = new Properties();
-//
-//
-//    	properties.load(new FileInputStream("config/aggregator.properties"));
-//
-//    	String[] curators = properties.getProperty("curatorsMailAddresses").split(";");
-//
-//    	Email email = new SimpleEmail();
-//    	
-//    	email.setHostName("smtp.googlemail.com");
-//		email.setSmtpPort(465);
-//
-//		email.setAuthenticator(new DefaultAuthenticator("ontology.aggregator",
-//				"solution12"));
-//		email.setSSLOnConnect(true);
-//
-//		try {
-//			email.setFrom("ontology.aggregator@gmail.com");
-//			email.setSubject(subject);
-//			email.setMsg(notification);
-//			for (int i = 0; i < curators.length; i++) {
-//				System.out.println("email send to " + curators[i]);
-//				email.addTo(curators[i]);
-//				email.send();
-//			}
-////			email.addTo("nikolina.koleva19@yahoo.de");
-//
-//		} catch (EmailException e) {
-//			e.printStackTrace();
-//		}
+	public void sendMail(String subject, String notification)
+			throws FileNotFoundException, IOException {
+
+		// Properties properties = new Properties();
+		//
+		//
+		// properties.load(new FileInputStream("config/aggregator.properties"));
+		//
+		// String[] curators =
+		// properties.getProperty("curatorsMailAddresses").split(";");
+		//
+		// Email email = new SimpleEmail();
+		// TODO put in properties
+		// email.setHostName("smtp.googlemail.com");
+		// email.setSmtpPort(465);
+		//
+		// email.setAuthenticator(new
+		// DefaultAuthenticator("ontology.aggregator",
+		// "solution12"));
+		// email.setSSLOnConnect(true);
+		//
+		// try {
+		// email.setFrom("ontology.aggregator@gmail.com");
+		// email.setSubject(subject);
+		// email.setMsg(notification);
+		// for (int i = 0; i < curators.length; i++) {
+		// System.out.println("email send to " + curators[i]);
+		// email.addTo(curators[i]);
+		// email.send();
+		// }
+		// // email.addTo("nikolina.koleva19@yahoo.de");
+		//
+		// } catch (EmailException e) {
+		// e.printStackTrace();
+		// }
 	}
-	public static void main(String[] args) {
+
+	public static void main(String[] args) throws FileNotFoundException, IOException {
 		EmailSender sender = new EmailSender();
-		try {
-			sender.sendMail("test", "this is a test mail");
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+
+		sender.sendMail("test", "this is a test mail");
+
 	}
 }

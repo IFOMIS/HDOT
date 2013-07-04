@@ -1,21 +1,18 @@
 package org.ifomis.ontologyaggregator.integration;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.Writer;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.exception.HdotExtensionException;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
+import org.ifomis.ontologyaggregator.util.Configuration;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.io.OWLOntologyDocumentTarget;
 import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.AddImport;
 import org.semanticweb.owlapi.model.IRI;
@@ -26,8 +23,10 @@ import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLImportsDeclaration;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+import org.semanticweb.owlapi.util.SimpleIRIMapper;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
 import uk.ac.ebi.ontocat.OntologyService;
@@ -68,7 +67,7 @@ public class HDOTExtender {
 	/**
 	 * The ontology manager
 	 */
-	private OWLOntologyManager ontology_manager;
+	private OWLOntologyManager ontologyManager;
 
 	/**
 	 * The path to the modules.
@@ -90,9 +89,6 @@ public class HDOTExtender {
 
 	private String nameOfNewModule;
 
-	Properties properties = new Properties();
-
-	
 	public HDOTExtender(Recommendation accceptedRecommendation,
 			boolean includeSubclasses, OWLOntologyManager ontology_manager,
 			OWLOntology hdot_ontology, OntologyService ontologyService,
@@ -101,14 +97,13 @@ public class HDOTExtender {
 			HdotExtensionException, OWLOntologyCreationException {
 
 		// initialize fields
-		this.ontology_manager = OWLManager.createOWLOntologyManager();
-		this.dataFactory = this.ontology_manager.getOWLDataFactory();
+		this.ontologyManager = OWLManager.createOWLOntologyManager();
+		this.dataFactory = this.ontologyManager.getOWLDataFactory();
 		this.acceptedRecommendation = accceptedRecommendation;
 		this.nameOfNewModule = "hdot_module_user" + userID + ".owl";
 		this.uriManager = new HDOTURIManager(accceptedRecommendation,
 				includeSubclasses);
 		this.hdotVerifier = new HDOTVerifier();
-		this.properties.load(new FileInputStream("config/aggregator.properties"));
 
 		log.debug("extracted documentIRI:"
 				+ ontology_manager.getOntologyDocumentIRI(hdot_ontology)
@@ -171,6 +166,7 @@ public class HDOTExtender {
 
 		File directory = new File(new URI(pathToModules));
 
+		// TODO fix IO tools commons
 		for (File f : directory.listFiles()) {
 			if (f.getName().equals(this.nameOfNewModule)) {
 				found = true;
@@ -180,7 +176,7 @@ public class HDOTExtender {
 		if (found) {
 			log.debug("MODULE EXISTS");
 
-			this.newModule = this.ontology_manager
+			this.newModule = this.ontologyManager
 					.loadOntologyFromOntologyDocument(new File(new URI(
 							this.pathToModules + this.nameOfNewModule)));
 		} else {
@@ -189,20 +185,20 @@ public class HDOTExtender {
 			IRI ontologyIRI = IRI.create("http://www.ifomis.org/hdot/"
 					+ this.nameOfNewModule);
 
-			// Now create the ontology - we use the ontology IRI (not the
-			// physical
-			// IRI)
-//			this.newModule = this.ontology_manager.createOntology(ontologyIRI);
-			this.newModule = this.ontology_manager.createOntology(IRI.create(properties.getProperty("pathToUserModules")+ this.nameOfNewModule));
-
+			IRI documentIRI = Configuration.PATH_TO_AUTHORIZED_USER_MODULES
+					.resolve(this.nameOfNewModule);
+			OWLOntologyIRIMapper iriMapper = new SimpleIRIMapper(ontologyIRI,
+					documentIRI);
+			ontologyManager.addIRIMapper(iriMapper);
+			this.newModule = this.ontologyManager.createOntology(ontologyIRI);
 		}
+
 		OWLImportsDeclaration importDeclaraton = this.dataFactory
 				.getOWLImportsDeclaration(accceptedRecommendation
 						.getHdotModule().getOntologyID().getOntologyIRI());
 
-		this.ontology_manager.applyChange(new AddImport(newModule,
+		this.ontologyManager.applyChange(new AddImport(newModule,
 				importDeclaraton));
-
 	}
 
 	/**
@@ -311,7 +307,7 @@ public class HDOTExtender {
 
 		AddAxiom addAxiom = new AddAxiom(newModule, axiom);
 
-		ontology_manager.applyChange(addAxiom);
+		ontologyManager.applyChange(addAxiom);
 		// log.debug("axioms after class insertion: "
 		// + newModule.getAxioms().toString());
 
@@ -331,7 +327,7 @@ public class HDOTExtender {
 
 		OWLAxiom ax = dataFactory.getOWLAnnotationAssertionAxiom(
 				hitForIntegration.getIRI(), commentAnno);
-		ontology_manager.applyChange(new AddAxiom(newModule, ax));
+		ontologyManager.applyChange(new AddAxiom(newModule, ax));
 		// log.debug("axioms after label insertion : "
 		// + newModule.getAxioms().toString());
 
@@ -353,7 +349,7 @@ public class HDOTExtender {
 
 			OWLAxiom ax = dataFactory.getOWLAnnotationAssertionAxiom(
 					hitForIntegration.getIRI(), defAnno);
-			ontology_manager.applyChange(new AddAxiom(newModule, ax));
+			ontologyManager.applyChange(new AddAxiom(newModule, ax));
 		}
 
 		// log.debug("axioms after integrate definitions: "
@@ -374,7 +370,7 @@ public class HDOTExtender {
 
 		OWLAxiom ax = dataFactory.getOWLAnnotationAssertionAxiom(
 				hitForIntegration.getIRI(), sourceAnno);
-		ontology_manager.applyChange(new AddAxiom(newModule, ax));
+		ontologyManager.applyChange(new AddAxiom(newModule, ax));
 
 		// log.debug("axioms after integrate original ids: "
 		// + newModule.getAxioms().toString());
@@ -397,41 +393,40 @@ public class HDOTExtender {
 			throws OWLOntologyStorageException, URISyntaxException,
 			OWLOntologyCreationException, IOException {
 
-		
 		// finally the ontology can be stored
-//		ontology_manager.saveOntology(newModule,
-//				IRI.create(this.pathToModules + this.nameOfNewModule));
-		ontology_manager.saveOntology(newModule,
-				IRI.create(properties.getProperty("pathToUserModules") + this.nameOfNewModule));
-		ontology_manager.removeOntology(newModule);
+		// ontology_manager.saveOntology(newModule,
+		// IRI.create(this.pathToModules + this.nameOfNewModule));
+		ontologyManager.saveOntology(
+				newModule,Configuration.PATH_TO_AUTHORIZED_USER_MODULES.resolve(this.nameOfNewModule));
+		ontologyManager.removeOntology(newModule);
 
-		List<String> orderOfModules = FileUtils.readLines(new File(
-				properties.getProperty("fileSortingHdotModulesURIs")));
+		List<String> orderOfModules = FileUtils.readLines(new File(Configuration.MODULES_SORTING_FILE.toURI()));
+		
 		String newModuleIRI = newModule.getOntologyID().getOntologyIRI()
 				.toString();
 
 		// add the module id and import the new module if it does not already
 		// exist
 		if (!orderOfModules.contains(newModuleIRI)) {
-			OWLOntology hdot_container = this.ontology_manager
-					.loadOntologyFromOntologyDocument(new File(
-							properties.getProperty("fileOntology")));
+			OWLOntology hdot_container = this.ontologyManager
+					.loadOntologyFromOntologyDocument(new File(Configuration.HDOT_CONTAINER_AUTHORIZED.toURI()));
 			// import the new module in hdot_all.owl and save it
 
 			OWLImportsDeclaration importDeclaraton = this.dataFactory
 					.getOWLImportsDeclaration(newModule.getOntologyID()
 							.getOntologyIRI());
 
-			this.ontology_manager.applyChange(new AddImport(hdot_container,
+			this.ontologyManager.applyChange(new AddImport(hdot_container,
 					importDeclaraton));
 
-			ontology_manager.saveOntology(hdot_container);
+			ontologyManager.saveOntology(hdot_container);
 			// ontology_manager.saveOntology(hdot_all,
 			// IRI.create("https://code.google.com/p/hdot/source/browse/trunk/hdot_module_user2.owl"));
 			// add the new module to the list of sorted ids of the hdot modules
 
 			orderOfModules.add(0, newModuleIRI);
-			FileUtils.writeLines(new File(properties.getProperty("fileSortingHdotModulesURIs")),
+			FileUtils.writeLines(
+					new File(Configuration.MODULES_SORTING_FILE.toURI()),
 					orderOfModules);
 		}
 		log.info("The extended HDOT module is saved in: " + this.pathToModules

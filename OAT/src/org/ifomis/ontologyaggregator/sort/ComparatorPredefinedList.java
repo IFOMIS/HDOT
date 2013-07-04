@@ -7,6 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.ifomis.ontologyaggregator.util.Configuration;
 
 import uk.ac.ebi.ontocat.bioportal.xmlbeans.OntologyBean;
 
@@ -31,7 +32,7 @@ public class ComparatorPredefinedList implements Comparator<OntologyBean> {
 		List<String> predefinedOntologies = new ArrayList<>();
 		
 		try {
-			predefinedOntologies = FileUtils.readLines(new File("data/predefinedListOfOntologies"));
+			predefinedOntologies = FileUtils.readLines(new File(Configuration.PREDEFINED_ONTOLOGIES_FILE.toURI()));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

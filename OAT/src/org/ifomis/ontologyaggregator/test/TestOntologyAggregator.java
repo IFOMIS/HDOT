@@ -1,14 +1,11 @@
 package org.ifomis.ontologyaggregator.test;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Properties;
 
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.exception.HdotExtensionException;
@@ -17,16 +14,18 @@ import org.ifomis.ontologyaggregator.recommendation.RecommendationFilter;
 import org.ifomis.ontologyaggregator.recommendation.RecommendationGenerator;
 import org.ifomis.ontologyaggregator.recommendation.UserInputReader;
 import org.ifomis.ontologyaggregator.search.SearchEngine;
+import org.ifomis.ontologyaggregator.util.Configuration;
+import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 import uk.ac.ebi.ontocat.OntologyServiceException;
 
 /**
- * This is the mail class that tests the OAT.
+ * This is the main class that tests the OAT.
  * 
  * @author Nikolina
- *
+ * 
  */
 public class TestOntologyAggregator {
 	private static final Logger log = Logger
@@ -34,72 +33,58 @@ public class TestOntologyAggregator {
 
 	/**
 	 * @param args
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		long start = System.currentTimeMillis();
-		Properties properties = new Properties();
+//		Properties properties = new Properties();
 
-		try {
-			properties
-					.load(new FileInputStream("config/aggregator.properties"));
+//		properties.load(new FileInputStream("config/aggregator.properties"));
 
-			String fileWithOntologies, terms = "";
+		Configuration.getInstance();
+		
+		String terms = "";
 
-			if (args.length < 2) {
-				usage();
-				System.exit(0);
-			} else {
-				terms = args[0].replace("_", " ");
+		if (args.length < 2) {
+			usage();
+			System.exit(0);
+		} else {
+			terms = args[0].replace("_", " ");
 
+		}
+
+		String[] termList = terms.split(";");
+
+		IRI fileWithOntologies = Configuration.ONTO_IDS_FILE;
+
+		SearchEngine se = new SearchEngine(fileWithOntologies);
+		for (int i = 0; i < termList.length; i++) {
+			String term = termList[i];
+			se.searchTermInBioPortal(term);
+			if (se.getListOfPaths().size() == 0) {
+				log.info("list of paths with hits is empty");
+				terminate(start, term, true);
 			}
+			log.info("\nRECOMMENDATION GENERATION\n");
 
-			String[] termList = terms.split(";");
+			RecommendationGenerator rg = new RecommendationGenerator(
+					Configuration.HDOT_CONTAINER_AUTHORIZED, term,
+					se.getRestrictedBps(), start);
 
-			fileWithOntologies = properties.getProperty("fileOntologiesOrder");
+			boolean recommendationWasAccepted = processingSearchResults(true,
+					se, term, start, args[1], rg);
 
-			SearchEngine se = new SearchEngine(fileWithOntologies);
-			for (int i = 0; i < termList.length; i++) {
-				String term = termList[i];
-				se.searchTermInBioPortal(term);
-				if (se.getListOfPaths().size() == 0) {
-					log.info("list of paths with hits is empty");
-					terminate(start, term, true);
+			if (!recommendationWasAccepted) {
+				log.info("search for further recommendations ...");
+
+				boolean recommendationWasAcceptedSecondTurn = processingSearchResults(
+						false, se, term, start, args[1], rg);
+
+				if (!recommendationWasAcceptedSecondTurn) {
+					log.info("NO RECOMMENDATION FOUND IN THE TOP 5-10 HITS");
 				}
-				log.info("\nRECOMMENDATION GENERATION\n");
-
-				RecommendationGenerator rg = new RecommendationGenerator(
-						properties.getProperty("fileOntology"), term,
-						se.getRestrictedBps(), start);
-
-				boolean recommendationWasAccepted = processingSearchResults(
-						true, se, term, start, args[1], rg);
-
-				if (!recommendationWasAccepted) {
-					log.info("search for further recommendations ...");
-
-					boolean recommendationWasAcceptedSecondTurn = processingSearchResults(
-							false, se, term, start, args[1], rg);
-
-					if (!recommendationWasAcceptedSecondTurn) {
-						log.info("NO RECOMMENDATION FOUND IN THE TOP 5-10 HITS");
-					}
-				}
-				terminate(start, term, false);
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (OntologyServiceException e) {
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			e.printStackTrace();
-		} catch (OWLOntologyStorageException e) {
-			e.printStackTrace();
-		} catch (HdotExtensionException e) {
-			e.printStackTrace();
-		} catch (OWLOntologyCreationException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
+			terminate(start, term, false);
 		}
 	}
 
@@ -117,22 +102,22 @@ public class TestOntologyAggregator {
 		log.info("Execution time was (in min) " + mins + ":" + restsecs
 				+ " sec.");
 
-		File logSearchFile = new File("log/loggingSearchEngine.html");
 
-		File logRecommendFile = new File(
-				"log/loggingRecommendationGeneration.html");
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+		File logSearchFile = new File(Configuration.LOG_PATH.resolve("loggingSearchEngine.html").toURI());
+
+		File logRecommendFile = new File(Configuration.LOG_PATH.resolve("loggingRecommendationGeneration.html").toURI());
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
 		String date = dateFormat.format(new Date());
 
-		logSearchFile.renameTo(new File("log/" + date + "_" + term
-				+ "_loggingSearchEngine.html"));
+		logSearchFile.renameTo(new File(Configuration.LOG_PATH.resolve(date + "_" + term.replace(" ", "_")
+				+ "_loggingSearchEngine.html").toURI()));
 
-		logRecommendFile.renameTo(new File("log/" + date + "_" + term
-				+ "_loggingRecommendationGeneration.html"));
+		logRecommendFile.renameTo(new File(Configuration.LOG_PATH.resolve( date + "_" + term.replace(" ", "_")
+				+ "_loggingRecommendationGeneration.html").toURI()));
 
 		log.info("Done.");
-		System.out.println("Log messages written in: log/" + date + "_" + term
-				+ "_loggingSearchEngine.html and " + date + "_" + term
+		System.out.println("Log messages written in: log/" + date + "_" + term.replace(" ", "_")
+				+ "_loggingSearchEngine.html and " + date + "_" + term.replace(" ", "_")
 				+ "_loggingRecommendationGeneration.html");
 
 		if (shouldExit) {
