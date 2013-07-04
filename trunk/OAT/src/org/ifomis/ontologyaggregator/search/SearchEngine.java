@@ -1,19 +1,19 @@
 package org.ifomis.ontologyaggregator.search;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Properties;
 import java.util.Stack;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.notifications.EmailSender;
+import org.ifomis.ontologyaggregator.util.Configuration;
+import org.semanticweb.owlapi.model.IRI;
 
 import uk.ac.ebi.ontocat.OntologyService;
 import uk.ac.ebi.ontocat.OntologyTerm;
@@ -40,7 +40,7 @@ public class SearchEngine {
 	/**
 	 * The date format for the time stamp.
 	 */
-	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+	private DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
 
 	/**
 	 * The time as a unique stamp in order to distinguish the produced files.
@@ -59,23 +59,18 @@ public class SearchEngine {
 
 	private OntologyService restrictedBps;
 	private EmailSender mailSender;
-	private Properties properties;
-	
 
-	public SearchEngine(String fileWithOntologies)
-			throws IOException {
+	public SearchEngine(IRI fileWithOntologies) throws IOException {
 
-		File fileOntologies = new File(fileWithOntologies);
+		File fileOntologies = new File(fileWithOntologies.toURI());
 
 		this.ontologiesList = FileUtils.readLines(fileOntologies);
 		this.mailSender = new EmailSender();
-		this.properties = new Properties();
-		this.properties.load(new FileInputStream("config/aggregator.properties"));
 
 		log.debug("List of ontologies imported from file: "
 				+ fileWithOntologies);
 
-		}
+	}
 
 	/**
 	 * Searches the given term in BioPortal. The the ontologyList specifies the
@@ -112,13 +107,15 @@ public class SearchEngine {
 					"BioPortal has retrived no results for the term\" "
 							+ searchedTerm
 							+ "\"\n or the server is not responding");
-	
+
 			System.exit(0);
 		}
 
 		log.info(listWithHits.size() + " hits for the searched term: " + term);
-		FileUtils.writeLines(new File("data/listsWithHits/" + searchedTerm
-				+ "_listOfHits.txt"), listWithHits);
+		FileUtils.writeLines(
+				new File(Configuration.DATA_PATH.resolve(
+						"listsWithHits/" + searchedTerm.replace(" ", "_") + "_listOfHits.txt")
+						.toURI()), listWithHits);
 		listOfPaths = new ArrayList<>();
 
 		int counterForQueriesRootPath = 0;
@@ -142,7 +139,7 @@ public class SearchEngine {
 
 			int similarityScore = ot.getContext().getSimilarityScore();
 			if (similarityScore > 90) {
-				
+
 				sb1.append("\n\t\tURI of the hit = ");
 				sb1.append(ot.getURI());
 				sb1.append("\n\t\tlabel of the hit = ");
@@ -163,12 +160,12 @@ public class SearchEngine {
 						.computeAllPaths(ot.getOntology().getAbbreviation(), ot);
 
 				listOfPaths.add(listOfAllPathsForOt);
-//				log.info(ot.getURI() + "\t" + ot.getLabel());
+				// log.info(ot.getURI() + "\t" + ot.getLabel());
 
-//				log.info("getCounterForHitsThatDoNotHaveAnyPath: "
-//						+ pathExtractor.getCounterForHitsThatDoNotHaveAnyPath());
-//				log.info("counterForQueriesRootPath "
-//						+ counterForQueriesRootPath);
+				// log.info("getCounterForHitsThatDoNotHaveAnyPath: "
+				// + pathExtractor.getCounterForHitsThatDoNotHaveAnyPath());
+				// log.info("counterForQueriesRootPath "
+				// + counterForQueriesRootPath);
 
 				if (counterForQueriesRootPath == threshold) {
 
@@ -201,10 +198,14 @@ public class SearchEngine {
 
 		log.info(totalEmptyResponces + " empty responses from sparql.");
 
-		FileUtils.write(new File("sparql/fail/" + this.date + "_" + term
-				+ "_fail"), pathExtractor.getSbFailed().toString());
-		FileUtils.write(new File("sparql/success/" + this.date + "_" + term
-				+ "_success"), pathExtractor.getSbSuccess().toString());
+		FileUtils.write(
+				new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
+						"fail/" + this.date + "_" + term.replace(" ", "_") + "_fail").toURI()),
+				pathExtractor.getSbFailed().toString());
+		FileUtils.write(
+				new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
+						"success/" + this.date + "_" + term.replace(" ", "_") + "_success")
+						.toURI()), pathExtractor.getSbSuccess().toString());
 
 		log.info("explored paths in total: " + listOfPaths.size());
 
@@ -218,6 +219,7 @@ public class SearchEngine {
 	public String getCurrentTerm() {
 		return searchedTerm;
 	}
+
 	public OntologyService getRestrictedBps() {
 		return restrictedBps;
 	}

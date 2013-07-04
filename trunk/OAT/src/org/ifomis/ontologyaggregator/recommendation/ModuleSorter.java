@@ -5,9 +5,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
+import org.ifomis.ontologyaggregator.util.Configuration;
 import org.semanticweb.owlapi.model.OWLOntology;
 
 /**
@@ -19,10 +19,11 @@ import org.semanticweb.owlapi.model.OWLOntology;
 public class ModuleSorter {
 
 	/**
-	 * Sorts the HDOT modules. The file data/sortedHdotModuleIds contain the sorted
-	 * module IDs.
+	 * Sorts the HDOT modules. The file data/sortedHdotModuleIds contain the
+	 * sorted module IDs.
 	 * 
-	 * @param hdotModules unsorted modules of HDOT
+	 * @param hdotModules
+	 *            unsorted modules of HDOT
 	 * @return array with sorted HDOT modules
 	 * @throws IOException
 	 */
@@ -30,29 +31,26 @@ public class ModuleSorter {
 			throws IOException {
 
 		OWLOntology[] sortedHdotModules = new OWLOntology[hdotModules.size()];
-		Properties properties = new Properties();
-		properties.load(new FileInputStream("config/aggregator.properties"));
 
-		try {
-			List<String> sortedIds = FileUtils.readLines(new File(
-					properties.getProperty("fileSortingHdotModulesURIs")));
+		List<String> sortedIds = FileUtils.readLines(new File(
+				Configuration.MODULES_SORTING_FILE.toURI()));
 
-			for (OWLOntology owlOntology : hdotModules) {
-				String currentId = owlOntology.getOntologyID().getOntologyIRI().toString();
-//				System.out.println("sorted ids " + sortedIds);
-//				System.out.println("sorted modules " + sortedHdotModules.toString());
-//				System.out.println(sortedIds.indexOf(currentId));
-//				System.out.println("current id " + currentId);
-				sortedHdotModules[sortedIds.indexOf(currentId)] = owlOntology;
-			}
-			// System.out.println("Sorted HDOT modules:");
-			// for (int i = 0; i < sortedHdotModules.length; i++) {
-			// OWLOntology module = sortedHdotModules[i];
-			// System.out.println("module Nr: " + i +"is" + module);
-			// }
-		} catch (IOException e) {
-			e.printStackTrace();
+		for (OWLOntology owlOntology : hdotModules) {
+			String currentId = owlOntology.getOntologyID().getOntologyIRI()
+					.toString();
+			// System.out.println("sorted ids " + sortedIds);
+			// System.out.println("sorted modules " +
+			// sortedHdotModules.toString());
+			// System.out.println(sortedIds.indexOf(currentId));
+			// System.out.println("current id " + currentId);
+			sortedHdotModules[sortedIds.indexOf(currentId)] = owlOntology;
 		}
+		// System.out.println("Sorted HDOT modules:");
+		// for (int i = 0; i < sortedHdotModules.length; i++) {
+		// OWLOntology module = sortedHdotModules[i];
+		// System.out.println("module Nr: " + i +"is" + module);
+		// }
+
 		return sortedHdotModules;
 	}
 }

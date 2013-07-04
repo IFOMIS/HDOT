@@ -10,7 +10,7 @@ import org.apache.commons.collections.comparators.ComparatorChain;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.parsing.MetricsParser;
-
+import org.ifomis.ontologyaggregator.util.Configuration;
 
 import uk.ac.ebi.ontocat.Ontology;
 import uk.ac.ebi.ontocat.OntologyService;
@@ -79,7 +79,9 @@ public class OntologySorter {
 	@SuppressWarnings("unchecked")
 	public void sortOntologyBeans() throws IOException {
 		log.debug("Start sorting ontologies.");
-		FileUtils.writeLines(new File("data/beforeSortingChainComparator.txt"),
+		FileUtils.writeLines(
+				new File(Configuration.DATA_PATH.resolve(
+						"orderbeforeRunningChainComparator.txt").toURI()),
 				listOfOntologyBeans);
 
 		ComparatorChain comparatorChain = new ComparatorChain();
@@ -107,50 +109,14 @@ public class OntologySorter {
 		}
 		// write the accessions in a file since it is needed for the search
 		// engine
-		FileUtils.writeLines(new File("data/test/listOfOntoIds"),
+		FileUtils.writeLines(new File(Configuration.ONTO_IDS_FILE.toURI()),
 				listOfAccessions);
 
 		// write the sorted ontologies in a file so that they can be viewed
-		FileUtils.writeLines(new File("data/test/sortingC1-9.txt"),
+		FileUtils.writeLines(
+				new File(Configuration.DATA_PATH
+						.resolve("ontologySortingC1-9.txt").toURI()),
 				listOfOntologyBeans);
-
-		// List<OntologyBean> copyOfBeans = new ArrayList<OntologyBean>();
-		//
-		// for (int i = listOfOntologyBeans.size() - 1; i >= 0; i--) {
-		// OntologyBean bean = listOfOntologyBeans.get(i);
-		// copyOfBeans.add(bean);
-		// }
-		// Collections.sort(copyOfBeans, new ComparatorClassesWithNoAuthor());
-		// FileUtils.writeLines(new File("data/sortingC6.txt"),
-		// copyOfBeans);
-		//
-		//
-		// List<OntologyBean> copyOfBeans1 = new ArrayList<OntologyBean>();
-		// for (int i = listOfOntologyBeans.size() - 1; i >= 0; i--) {
-		// OntologyBean bean = listOfOntologyBeans.get(i);
-		// copyOfBeans1.add(bean);
-		// }
-		// Collections.sort(copyOfBeans1, new
-		// ComparatorClassesWithNoDocumentation());
-		// FileUtils.writeLines(new File("data/sortingC7.txt"),
-		// copyOfBeans1);
-		//
-		// List<OntologyBean> copyOfBeans2 = new ArrayList<OntologyBean>();
-		// for (int i = listOfOntologyBeans.size() - 1; i >= 0; i--) {
-		// OntologyBean bean = listOfOntologyBeans.get(i);
-		// copyOfBeans2.add(bean);
-		// }
-		// Collections.sort(copyOfBeans2, new ComparatorDepthOfHierarchy());
-		// FileUtils.writeLines(new File("data/sortingC8.txt"),
-		// copyOfBeans2);
-		//
-		List<OntologyBean> copyOfBeans3 = new ArrayList<OntologyBean>();
-		for (int i = listOfOntologyBeans.size() - 1; i >= 0; i--) {
-			OntologyBean bean = listOfOntologyBeans.get(i);
-			copyOfBeans3.add(bean);
-		}
-		Collections.sort(copyOfBeans3, new ComparatorOneSubclass());
-		FileUtils.writeLines(new File("data/test/sortingC9.txt"), copyOfBeans3);
 
 		log.info(listOfOntologyBeans + "ontologies were compared");
 	}

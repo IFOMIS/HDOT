@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.Stack;
 
+import org.ifomis.ontologyaggregator.util.Configuration;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.IRI;
@@ -44,7 +45,7 @@ public class Recommendation {
 	private List<OntologyTerm> hitChildren;
 
 	private Stack<OntologyTerm> hitHierarchy;
-	private OWLOntology hdot_all;
+	private OWLOntology hdot;
 
 	public Stack<OntologyTerm> getHitHierarchy() {
 		return hitHierarchy;
@@ -64,7 +65,7 @@ public class Recommendation {
 		this.labelsMatched = labelsMatched;
 		this.searchedTerm = searchedTerm;
 		this.hdotHierarchy = hierarchy;
-		this.hdot_all = hdot_all;
+		this.hdot = hdot_all;
 		this.hdotModule = hdotModule;
 		this.parentNoOfHit = parentNo;
 		this.matchedClass = matchedClass;
@@ -103,7 +104,7 @@ public class Recommendation {
 
 			String label = "";
 			// get the labels of the parents to display them
-			for (OWLOntology currOnto : hdot_all.getImports()) {
+			for (OWLOntology currOnto : hdot.getImports()) {
 				if (!entryOfHierarchy.getAnnotations(currOnto).isEmpty()) {
 					label = retriveRdfsLabel(entryOfHierarchy
 							.getAnnotations(currOnto));
@@ -247,11 +248,12 @@ public class Recommendation {
 		return matchedParents;
 	}
 	
+	//TODO complete impl
 	public void exportChildrenToOWLFile() throws OWLOntologyCreationException,
 			OWLOntologyStorageException {
-		OWLOntologyManager ontology_manager = OWLManager
+		OWLOntologyManager ontologyManager = OWLManager
 				.createOWLOntologyManager();
-		OWLDataFactory dataFactory = ontology_manager.getOWLDataFactory();
+		OWLDataFactory dataFactory = ontologyManager.getOWLDataFactory();
 
 		IRI ontologyIRI = IRI.create("http://www.ifomis.org/hdot/"
 				+ hit.getOntologyAccession() + "_subclasses");
@@ -259,7 +261,7 @@ public class Recommendation {
 		// Now create the ontology - we use the ontology IRI (not the
 		// physical
 		// IRI)
-		OWLOntology owlFileThatConsinsSubclasses = ontology_manager
+		OWLOntology owlFileThatConsinsSubclasses = ontologyManager
 				.createOntology(ontologyIRI);
 
 		OWLClass classHIT = dataFactory.getOWLClass(IRI.create(hit.getURI()));
@@ -268,7 +270,7 @@ public class Recommendation {
 				dataFactory.getOWLThing());
 
 		AddAxiom addAxiom = new AddAxiom(owlFileThatConsinsSubclasses, axiom);
-		ontology_manager.applyChange(addAxiom);
+		ontologyManager.applyChange(addAxiom);
 
 		for (OntologyTerm child : hitChildren) {
 
@@ -277,7 +279,7 @@ public class Recommendation {
 					classHIT);
 			AddAxiom childAddAxiom = new AddAxiom(owlFileThatConsinsSubclasses,
 					childAxiom);
-			ontology_manager.applyChange(childAddAxiom);
+			ontologyManager.applyChange(childAddAxiom);
 
 		}
 		// extract the path to the physical documents from the ontology iri
@@ -289,9 +291,9 @@ public class Recommendation {
 		// pathToModules += partsOfPath[i] + "/";
 		//
 		// }
-		ontology_manager.saveOntology(
+		ontologyManager.saveOntology(
 				owlFileThatConsinsSubclasses,
-				IRI.create(new File("data/" + hit.getAccession()
-						+ "_subclasses.owl")));
+				IRI.create(new File(Configuration.DATA_PATH.resolve(hit.getLabel()
+						+ "_subclasses.owl").toURI())));
 	}
 }

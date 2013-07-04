@@ -2,7 +2,6 @@ package org.ifomis.ontologyaggregator.recommendation;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -11,17 +10,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 import java.util.Stack;
 
-import javax.management.relation.InvalidRelationIdException;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.ifomis.ontologyaggregator.util.Configuration;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
@@ -29,10 +27,8 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.util.CommonBaseIRIMapper;
-import org.semanticweb.owlapi.util.SimpleIRIMapper;
+
 
 import uk.ac.ebi.ontocat.OntologyService;
 import uk.ac.ebi.ontocat.OntologyServiceException;
@@ -50,18 +46,18 @@ public class RecommendationGenerator {
 	private static final Logger log = Logger
 			.getLogger(RecommendationGenerator.class);
 
-	File statisticsFile = new File("data/statistics");
-	FileWriter statistcsWriter = new FileWriter(statisticsFile, true);
+	// File statisticsFile = new File("data/statistics");
+	// FileWriter statistcsWriter = new FileWriter(statisticsFile, true);
 
 	/**
 	 * The hdot ontology where the term is going to be inserted as a class.
 	 */
-	private OWLOntology hdot_ontology;
+	private OWLOntology hdotOntology;
 
 	/**
 	 * The manager of the ontology.
 	 */
-	private OWLOntologyManager ontology_manager;
+	private OWLOntologyManager ontologyManager;
 
 	/**
 	 * the current hit
@@ -123,7 +119,7 @@ public class RecommendationGenerator {
 	/**
 	 * Creates a RecommendationGenerator and loads the specified input ontology.
 	 * 
-	 * @param ontoIn
+	 * @param HDOT_CONTAINER_AUTHORIZED
 	 *            the ontology to be loaded
 	 * @param ontoOut
 	 *            the extended ontology that is saved
@@ -132,9 +128,9 @@ public class RecommendationGenerator {
 	 * @throws URISyntaxException
 	 * @throws OntologyServiceException
 	 */
-	public RecommendationGenerator(String ontoIn, String searchedTerm,
-			OntologyService ontologyService, long start) throws IOException,
-			URISyntaxException, OntologyServiceException {
+	public RecommendationGenerator(IRI HDOT_CONTAINER_AUTHORIZED,
+			String searchedTerm, OntologyService ontologyService, long start)
+			throws IOException, URISyntaxException, OntologyServiceException {
 
 		// initialize the fields
 		this.start = start;
@@ -147,29 +143,28 @@ public class RecommendationGenerator {
 		this.properties = new Properties();
 		properties.load(new FileInputStream("config/aggregator.properties"));
 
-		this.importedOntologies = FileUtils.readLines(new File(properties
-				.getProperty("fileImportedOntologiesURIs")));
+		this.importedOntologies = FileUtils.readLines(new File(
+				Configuration.IMPORTED_ONTOLOGIES_FILE.toURI()));
 
 		// Get hold of an ontology manager
-		this.ontology_manager = OWLManager.createOWLOntologyManager();
+		this.ontologyManager = OWLManager.createOWLOntologyManager();
 		this.searchedTerm = searchedTerm;
 
 		try {
 			// Now load the local copy of hdot that include all modules
 
-			this.hdot_ontology = ontology_manager
-					.loadOntologyFromOntologyDocument(IRI.create(new File(
-							ontoIn)));
+			this.hdotOntology = ontologyManager
+					.loadOntologyFromOntologyDocument(HDOT_CONTAINER_AUTHORIZED);
 
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
 		}
 
-		log.info("Loaded ontology: " + hdot_ontology);
-	
-		List<OWLOntology> hdotModules = ontology_manager
-				.getSortedImportsClosure(hdot_ontology);
-		
+		log.info("Loaded ontology: " + hdotOntology);
+
+		List<OWLOntology> hdotModules = ontologyManager
+				.getSortedImportsClosure(hdotOntology);
+
 		sortedHdotModules = new ModuleSorter().sortHdotModules(hdotModules);
 
 		// generateRecommendation(listOfPathsOfAllHits);
@@ -338,9 +333,9 @@ public class RecommendationGenerator {
 
 		Recommendation recommendation = new Recommendation(hitsCounter,
 				currentHit, conceptIdsMatch, labelsMatch, searchedTerm,
-				hierarchyOfHdotClass, hierarchyOfHit, hdot_ontology,
-				hdotModule, counterForParents, matchedConcept, definitions,
-				synonyms, childrenOfHit, numMatchedParents);
+				hierarchyOfHdotClass, hierarchyOfHit, hdotOntology, hdotModule,
+				counterForParents, matchedConcept, definitions, synonyms,
+				childrenOfHit, numMatchedParents);
 
 		// log.info(recommendation.toString());
 
@@ -370,21 +365,28 @@ public class RecommendationGenerator {
 			log.info("Execution time was " + (end - start) + " ms.");
 			log.info("Execution time was " + mins + ":" + restsecs + " sec.");
 
-			File logSearchFile = new File("log/loggingSearchEngine.html");
+			File logSearchFile = new File(Configuration.LOG_PATH.resolve(
+					"loggingSearchEngine.html").toURI());
 
-			File logRecommendFile = new File(
-					"log/loggingRecommendationGeneration.html");
+			File logRecommendFile = new File(Configuration.LOG_PATH.resolve(
+					"loggingRecommendationGeneration.html").toURI());
+
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
 			String date = dateFormat.format(new Date());
 
-			logSearchFile.renameTo(new File("log/" + date + "_" + searchedTerm
-					+ "_loggingSearchEngine.html"));
+			logSearchFile.renameTo(new File(Configuration.LOG_PATH.resolve(
+					date + "_" + searchedTerm + "_loggingSearchEngine.html")
+					.toURI()));
 
-			logRecommendFile.renameTo(new File("log/" + date + "_"
-					+ searchedTerm + "_loggingRecommendationGeneration.html"));
+			logRecommendFile
+					.renameTo(new File(Configuration.LOG_PATH.resolve(
+							date + "_" + searchedTerm
+									+ "_loggingRecommendationGeneration.html")
+							.toURI()));
 
 			log.info("Done.");
-			log.info("Log messages written in: log/" + date + "_"
+			log.info("Log messages written in: "
+					+ Configuration.LOG_PATH.toString() + date + "_"
 					+ searchedTerm + "_loggingSearchEngine.html and " + date
 					+ "_" + searchedTerm
 					+ "_loggingRecommendationGeneration.html");
@@ -524,7 +526,7 @@ public class RecommendationGenerator {
 		// check if the current class is hdot_core
 		boolean isHdotCore = (currentOntology.getOntologyID().getOntologyIRI()
 				.toString().contains(FileUtils.readFileToString(new File(
-				properties.getProperty("fileCoreModule")))));
+				Configuration.CORE_MODULE_FILE.toURI()))));
 
 		Recommendation recommendation = buildRecommendaton(currentOntology,
 				matchedTerm);
@@ -547,7 +549,7 @@ public class RecommendationGenerator {
 		if (hdotClass.getSuperClasses(currentOntology).size() == 0) {
 			log.debug("THE MATCHED CLASS IS IMPORTED IN THIS MODULE");
 
-			if (!(hdotClass.getSubClasses(ontology_manager.getOntologies())
+			if (!(hdotClass.getSubClasses(ontologyManager.getOntologies())
 					.isEmpty())) {
 				log.debug("BUT IT IS NOT A LEAF NODE");
 				log.debug("search for further matches ...\n");
@@ -582,7 +584,7 @@ public class RecommendationGenerator {
 			// retriveRdfsLabel(classInHierarchy.getAnnotations(currentOntology));
 			String label = "";
 			// get the labels of the parents to display them
-			for (OWLOntology currOnto : hdot_ontology.getImports()) {
+			for (OWLOntology currOnto : hdotOntology.getImports()) {
 				if (!classInHierarchy.getAnnotations(currOnto).isEmpty()) {
 					label = retriveRdfsLabel(classInHierarchy
 							.getAnnotations(currOnto));
@@ -649,7 +651,7 @@ public class RecommendationGenerator {
 		while (parent != null) {
 
 			Set<OWLClassExpression> superClasses = parent
-					.getSuperClasses(ontology_manager.getOntologies());
+					.getSuperClasses(ontologyManager.getOntologies());
 
 			OWLClass parent_old = parent;
 
@@ -712,11 +714,11 @@ public class RecommendationGenerator {
 	}
 
 	public OWLOntologyManager getOntology_manager() {
-		return ontology_manager;
+		return ontologyManager;
 	}
 
 	public OWLOntology getHdot_ontology() {
-		return hdot_ontology;
+		return hdotOntology;
 	}
 
 	public OntologyService getOntologyService() {

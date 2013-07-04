@@ -12,6 +12,7 @@ import java.util.Stack;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.ifomis.ontologyaggregator.util.Configuration;
 import org.ncbo.stanford.sparql.examples.SimpleTest;
 
 import uk.ac.ebi.ontocat.OntologyTerm;
@@ -66,8 +67,8 @@ public class RootpathExtractor {
 	public RootpathExtractor(String currentTerm, String date) {
 		this.searchedTerm = currentTerm;
 		this.date = date;
-		sbFailed = new StringBuffer();
-		sbSuccess = new StringBuffer();
+		this.sbFailed = new StringBuffer();
+		this.sbSuccess = new StringBuffer();
 
 		listOfQueries = new ArrayList<>();
 	}
@@ -101,10 +102,10 @@ public class RootpathExtractor {
 		String response = executeSparqlQuery(ot.getURI().toString());
 
 		List<String> parents = parseSparqlResponse(response);
-		
-		//there are no parents retrieved by the last SPARQL query
+
+		// there are no parents retrieved by the last SPARQL query
 		if (parents.size() == 0) {
-//			 log.info("path" + path);
+			// log.info("path" + path);
 
 			Stack<OntologyTerm> deepCopyOfPath = getDeepReverseCopy(path);
 			// log.info("path.peek(): " + deepCopyOfPath.peek());
@@ -114,10 +115,10 @@ public class RootpathExtractor {
 
 				listOfPaths.add(deepCopyOfPath);
 			} else {
-//				 log.debug("!!!!!!!soll leer sein!!!!!!!!!!!! " +
-//				 deepCopyOfPath );
+				// log.debug("!!!!!!!soll leer sein!!!!!!!!!!!! " +
+				// deepCopyOfPath );
 
-//				++counterForEmptyResonses;
+				// ++counterForEmptyResonses;
 			}
 		}
 		for (String parent : parents) {
@@ -294,17 +295,17 @@ public class RootpathExtractor {
 	private void writePathToRootIntoFile(String ontologyAbbreviation,
 			OntologyTerm ot) throws IOException {
 
-		File outFile = new File("sparql/" + this.date + "_" + searchedTerm
-				+ "/" + ontologyAbbreviation + "-"
-				+ ot.getLabel().replace("/", "_or_"));
+		File outFile = new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
+				this.date + "_" + searchedTerm.replace(" ", "_") + "/" + ontologyAbbreviation.replace(" ", "_")).toURI());
 
-		new File("sparql/queries/" + this.date + "_" + searchedTerm).mkdir();
+		new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
+				"queries/" + this.date + "_" + searchedTerm.replace(" ", "_")).toURI()).mkdir();
 
 		// write the queries executed in this iteration for the particular
 		// term in a file in order to be able to look at them
-		File outQueryFile = new File("sparql/queries/" + this.date + "_"
-				+ searchedTerm + "/" + ontologyAbbreviation + "-"
-				+ ot.getLabel());
+		File outQueryFile = new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
+				"queries/" + this.date + "_" + searchedTerm.replace(" ", "_") + "/"
+						+ ontologyAbbreviation.replace(" ", "_") + "-" + ot.getLabel().replace(" ", "_")).toURI());
 		FileUtils.writeLines(outQueryFile, listOfQueries, "\n");
 		FileUtils.writeLines(outFile, listOfPaths);
 
