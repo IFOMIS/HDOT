@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.commons.mail.EmailException;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.notifications.EmailSender;
 import org.ifomis.ontologyaggregator.recommendation.sort.RecommendationSorter;
@@ -11,12 +12,12 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 /**
- * The Recommendation filter decides, which of the generated recommendations 
- * will be displayed.
+ * The Recommendation filter sorts the generated recommendations.
+ * 
  * @author Nikolina
- *
+ * 
  */
-public class RecommendationFilter implements RecommendationAcceptListener {
+public class RecommendationFilter {
 
 	private static final Logger log = Logger
 			.getLogger(RecommendationFilter.class);
@@ -31,11 +32,6 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 
 	private String searchedTerm;
 
-	private boolean accept = false;
-
-	private Recommendation acceptedRecommendation;
-
-	private boolean includeSubclasses = false;
 
 	public RecommendationFilter(String searchedTerm,
 			List<Recommendation> validRecommendations,
@@ -52,26 +48,29 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 	}
 
 	/**
-	 * checks if there are valid recommendatation
+	 * checks if there are valid recommendations
+	 * 
 	 * @throws OWLOntologyCreationException
 	 * @throws OWLOntologyStorageException
 	 * @throws FileNotFoundException
 	 * @throws IOException
+	 * @throws EmailException 
 	 */
-	public void checkValidRecommendations()
+	public List<Recommendation> checkValidRecommendations()
 			throws OWLOntologyCreationException, OWLOntologyStorageException,
-			FileNotFoundException, IOException {
+			FileNotFoundException, IOException, EmailException {
+		Recommendation validRecommendation = null;
 
 		if (!validRecommendations.isEmpty()) {
 
 			if (validRecommendations.size() == 1) {
 				log.info("SINGLE RECOMMENDATION");
 
-				Recommendation recommendation = validRecommendations.get(0);
+				validRecommendation = validRecommendations.get(0);
 
-				log.info(recommendation.toString());
-				if (!(recommendation.getHitChildren() == null)) {
-					recommendation.exportChildrenToOWLFile();
+				// log.info(validRecommendation.toString());
+				if (!(validRecommendation.getHitChildren() == null)) {
+					validRecommendation.exportChildrenToOWLFile();
 				}
 
 			} else {
@@ -82,16 +81,12 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 				log.info(validRecommendations.size()
 						+ " RECOMMENDATIONS WERE GENERATED");
 
-				log.info(validRecommendations.get(0).toString());
-
-				// int i = 0;
-				// for (Recommendation rec : validRecommendations) {
-				// ++i;
-				// log.info("recommendation No:" + i);
-				// log.info(rec.toString());
-				// }
+				// validRecommendation = validRecommendations.get(0);
 			}
+		} else {
+			checkPotentialRecommendations();
 		}
+		return validRecommendations;
 	}
 
 	/**
@@ -99,9 +94,10 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 	 * 
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws EmailException 
 	 */
 	public void checkPotentialRecommendations() throws FileNotFoundException,
-			IOException {
+			IOException, EmailException {
 		if (recommendationsInImportedOntologies.isEmpty()
 				&& recommendationsOfImportedNotLeafMatches.isEmpty()
 				&& inCoreNotLeafs.isEmpty()) {
@@ -172,52 +168,5 @@ public class RecommendationFilter implements RecommendationAcceptListener {
 			}
 			mailSender.sendMail(subject, mailBuffer.toString());
 		}
-	}
-
-	@Override
-	public void readInputAccept(
-			RecommendationAcceptEvent recommendationAcceptEvent) {
-		if (recommendationAcceptEvent.getAccept().equalsIgnoreCase("yes")) {
-			log.info("the user accepted the recommendation.");
-			accept = true;
-
-			acceptedRecommendation = validRecommendations.get(0);
-		} else {
-			try {
-				mailSender.sendMail("THE USER REJECTED THE RECOMMENDATION",
-						validRecommendations.get(0).toString());
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			validRecommendations.remove(0);
-			log.info("the user rejected the recommendation.");
-			accept = false;
-		}
-	}
-
-	@Override
-	public void readInputIncludeSubclasses(
-			IncludeSubClassesEvent includeClassesEvent) {
-		if (includeClassesEvent.getIncludeSubClasses().equalsIgnoreCase("yes")) {
-			log.info("the user wants to include the subClasses of the term.");
-			this.includeSubclasses = true;
-		} else {
-			log.info("the user does not want to include the subClasses of the term.");
-			this.includeSubclasses = false;
-		}
-	}
-
-	public boolean isIncludeSubclasses() {
-		return includeSubclasses;
-	}
-
-	public Recommendation getAcceptedRecommendation() {
-		return acceptedRecommendation;
-	}
-
-	public boolean isAccept() {
-		return accept;
 	}
 }
