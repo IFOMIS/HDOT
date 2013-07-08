@@ -32,8 +32,17 @@ public class Configuration {
 	public static IRI CORE_MODULE_FILE;
 	public static IRI HDOT_CONTAINER_AUTHORIZED;
 	public static IRI HDOT_CONTAINER_NOT_AUTHORIZED;
+	public static String[] CURATORS;
 
 	private Properties PROPERTIES;
+
+	public static String SMTP_USERNAME;
+
+	public static String SMTP_PASS;
+
+	public static Integer SMTP_PORT;
+
+	public static String SMTP_HOST;
 
 	private Configuration() throws IOException {
 		BASE_PATH = IRI.create(new File(""));
@@ -74,6 +83,12 @@ public class Configuration {
 
 		HDOT_CONTAINER_NOT_AUTHORIZED = HDOT_PATH
 				.resolve("fileOntologyContainerNotAuthorized");
+		
+		CURATORS = PROPERTIES.getProperty("curatorsMailAddresses").split(";");
+		SMTP_USERNAME = (String) PROPERTIES.get("smtpUsername");
+		SMTP_PASS = (String) PROPERTIES.get("smtpPassword");
+		SMTP_PORT = Integer.parseInt((String) PROPERTIES.get("smtpPort"));
+		SMTP_HOST = (String) PROPERTIES.get("smtpHost");
 	}
 
 	public static Configuration getInstance() throws IOException {
