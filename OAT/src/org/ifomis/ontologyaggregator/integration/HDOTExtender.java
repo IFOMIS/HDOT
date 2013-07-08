@@ -89,10 +89,12 @@ public class HDOTExtender {
 
 	private String nameOfNewModule;
 
+	//TODO use user rights for the integration of new modules
+	private boolean userRights;
+
 	public HDOTExtender(Recommendation accceptedRecommendation,
-			boolean includeSubclasses, OWLOntologyManager ontology_manager,
-			OWLOntology hdot_ontology, OntologyService ontologyService,
-			String userID) throws OntologyServiceException, IOException,
+			boolean includeSubclasses, OWLOntology hdotOntology, OntologyService ontologyService,
+			String userID, boolean userRights) throws OntologyServiceException, IOException,
 			OWLOntologyStorageException, URISyntaxException,
 			HdotExtensionException, OWLOntologyCreationException {
 
@@ -101,17 +103,19 @@ public class HDOTExtender {
 		this.dataFactory = this.ontologyManager.getOWLDataFactory();
 		this.acceptedRecommendation = accceptedRecommendation;
 		this.nameOfNewModule = "hdot_module_user" + userID + ".owl";
+		this.userRights = userRights;
 		this.uriManager = new HDOTURIManager(accceptedRecommendation,
 				includeSubclasses);
 		this.hdotVerifier = new HDOTVerifier();
+//
+//		log.debug("extracted documentIRI:"
+//				+ ontologyManager.getOntologyDocumentIRI(hdot_ontology)
+//						.toString());
 
-		log.debug("extracted documentIRI:"
-				+ ontology_manager.getOntologyDocumentIRI(hdot_ontology)
-						.toString());
-
+		;
 		// extract the path to the physical documents from the ontology iri
-		String[] partsOfPath = ontology_manager
-				.getOntologyDocumentIRI(hdot_ontology).toString().split("/");
+		String[] partsOfPath = ontologyManager
+				.getOntologyDocumentIRI(hdotOntology).toString().split("/");
 
 		for (int i = 0; i < partsOfPath.length - 1; i++) {
 			this.pathToModules += partsOfPath[i] + "/";
