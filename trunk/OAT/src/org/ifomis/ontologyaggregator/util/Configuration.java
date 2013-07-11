@@ -82,7 +82,8 @@ public class Configuration {
 				.getProperty("fileOntologyContainerAuthorized"));
 
 		HDOT_CONTAINER_NOT_AUTHORIZED = HDOT_PATH
-				.resolve("fileOntologyContainerNotAuthorized");
+				.resolve(PROPERTIES
+						.getProperty("fileOntologyContainerNotAuthorized"));
 		
 		CURATORS = PROPERTIES.getProperty("curatorsMailAddresses").split(";");
 		SMTP_USERNAME = (String) PROPERTIES.get("smtpUsername");
