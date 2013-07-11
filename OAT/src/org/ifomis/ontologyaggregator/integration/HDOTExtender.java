@@ -2,7 +2,6 @@ package org.ifomis.ontologyaggregator.integration;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -89,12 +88,13 @@ public class HDOTExtender {
 
 	private String nameOfNewModule;
 
-	//TODO use user rights for the integration of new modules
+	// TODO use user rights for the integration of new modules
 	private boolean userRights;
 
 	public HDOTExtender(Recommendation accceptedRecommendation,
-			boolean includeSubclasses, OWLOntology hdotOntology, OntologyService ontologyService,
-			String userID, boolean userRights) throws OntologyServiceException, IOException,
+			boolean includeSubclasses, OWLOntology hdotOntology,
+			OntologyService ontologyService, String userID, boolean userRights)
+			throws OntologyServiceException, IOException,
 			OWLOntologyStorageException, URISyntaxException,
 			HdotExtensionException, OWLOntologyCreationException {
 
@@ -107,20 +107,6 @@ public class HDOTExtender {
 		this.uriManager = new HDOTURIManager(accceptedRecommendation,
 				includeSubclasses);
 		this.hdotVerifier = new HDOTVerifier();
-//
-//		log.debug("extracted documentIRI:"
-//				+ ontologyManager.getOntologyDocumentIRI(hdot_ontology)
-//						.toString());
-
-		;
-		// extract the path to the physical documents from the ontology iri
-		String[] partsOfPath = ontologyManager
-				.getOntologyDocumentIRI(hdotOntology).toString().split("/");
-
-		for (int i = 0; i < partsOfPath.length - 1; i++) {
-			this.pathToModules += partsOfPath[i] + "/";
-
-		}
 
 		initNewModule(accceptedRecommendation);
 
@@ -149,51 +135,48 @@ public class HDOTExtender {
 						false);
 			}
 		}
-		createNewModuleAndUpdateHdotAll();
+		if (userRights) {
+			createNewVisibleModuleAndUpdateHdotAll();
+		} else {
+			createNewModuleForCuration();
+		}
 	}
-
-	// private void ensureNotAlreadyContainedInHDOT(OntologyTerm subClass)
-	// throws OWLOntologyCreationException {
-	// OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-	// manager.loadOntologyFromOntologyDocument(new
-	// File("data/hdot/hdot_all.owl"));
-	// Set<OWLOntology> hdotModules = ontology_manager.getOntologies();
-	// for (OWLOntology owlOntology : hdotModules) {
-	// if(owlOntology.getClassesInSignature())
-	// }
-	// }
 
 	private void initNewModule(Recommendation accceptedRecommendation)
 			throws OWLOntologyCreationException, URISyntaxException {
 		boolean found = false;
-		log.debug("path to hdot ontology " + this.pathToModules);
+//		log.debug("path to hdot ontology " + this.pathToModules);
 
-		File directory = new File(new URI(pathToModules));
+		File directory = new File(Configuration.PATH_TO_AUTHORIZED_USER_MODULES.toURI());
 
-		// TODO fix IO tools commons
-		for (File f : directory.listFiles()) {
-			if (f.getName().equals(this.nameOfNewModule)) {
-				found = true;
-				break;
-			}
+
+		IRI ontologyIRI = IRI.create("http://www.ifomis.org/hdot/"
+				+ this.nameOfNewModule);
+
+		IRI documentIRI ;
+		if(userRights){
+			documentIRI = Configuration.PATH_TO_AUTHORIZED_USER_MODULES
+					.resolve(this.nameOfNewModule);
+			found = new File(directory, this.nameOfNewModule).exists();
+
+		} else {
+			documentIRI = Configuration.PATH_TO_NOT_AUTHORIZED_USER_MODULES
+					.resolve(this.nameOfNewModule);
+			//for the not authorized modules we will have every time new module
 		}
+		 
+		OWLOntologyIRIMapper iriMapper = new SimpleIRIMapper(ontologyIRI,
+				documentIRI);
+		ontologyManager.addIRIMapper(iriMapper);
+		
 		if (found) {
 			log.debug("MODULE EXISTS");
 
-			this.newModule = this.ontologyManager
-					.loadOntologyFromOntologyDocument(new File(new URI(
-							this.pathToModules + this.nameOfNewModule)));
+			this.newModule = ontologyManager.loadOntology(documentIRI);
+
 		} else {
 			log.debug("MODULE DOES NOT EXIST");
 
-			IRI ontologyIRI = IRI.create("http://www.ifomis.org/hdot/"
-					+ this.nameOfNewModule);
-
-			IRI documentIRI = Configuration.PATH_TO_AUTHORIZED_USER_MODULES
-					.resolve(this.nameOfNewModule);
-			OWLOntologyIRIMapper iriMapper = new SimpleIRIMapper(ontologyIRI,
-					documentIRI);
-			ontologyManager.addIRIMapper(iriMapper);
 			this.newModule = this.ontologyManager.createOntology(ontologyIRI);
 		}
 
@@ -238,22 +221,23 @@ public class HDOTExtender {
 			log.debug("new uri" + newHdotURI);
 
 		}
+//		OntologyBean o1 = (OntologyBean) newClass.getOntology();
+//		log.info("*************METAANNO*************");
+//		log.info(o1.getMetaAnnotation());
+//		log.info("--");
+//		log.info(o1.getDescription());
+//		log.info("--");
+//		log.info(o1.getDocumentation());
+//		log.info("--");
+//		log.info(o1.getMetricsBean());
+//		log.info("--");
+//		ArrayList<Integer> groupIds = o1.getGroupIds();
+//		for (Integer integer : groupIds) {
+//			log.info(integer);
+//		}
+//		log.info("***********************************");
+		
 		// add new class wrt accepted recommendation
-		OntologyBean o1 = (OntologyBean) newClass.getOntology();
-		log.info("*************METAANNO*************");
-		log.info(o1.getMetaAnnotation());
-		log.info("--");
-		log.info(o1.getDescription());
-		log.info("--");
-		log.info(o1.getDocumentation());
-		log.info("--");
-		log.info(o1.getMetricsBean());
-		log.info("--");
-		ArrayList<Integer> groupIds = o1.getGroupIds();
-		for (Integer integer : groupIds) {
-			log.info(integer);
-		}
-		log.info("***********************************");
 		integrateClass(newClass, parent, newHdotURI, isTheActualHit);
 		log.debug("class is integrated");
 
@@ -393,19 +377,21 @@ public class HDOTExtender {
 	 * @throws OWLOntologyCreationException
 	 * @throws IOException
 	 */
-	private void createNewModuleAndUpdateHdotAll()
+	private void createNewVisibleModuleAndUpdateHdotAll()
 			throws OWLOntologyStorageException, URISyntaxException,
 			OWLOntologyCreationException, IOException {
 
 		// finally the ontology can be stored
 		// ontology_manager.saveOntology(newModule,
 		// IRI.create(this.pathToModules + this.nameOfNewModule));
-		ontologyManager.saveOntology(
-				newModule,Configuration.PATH_TO_AUTHORIZED_USER_MODULES.resolve(this.nameOfNewModule));
+		ontologyManager.saveOntology(newModule,
+				Configuration.PATH_TO_AUTHORIZED_USER_MODULES
+						.resolve(this.nameOfNewModule));
 		ontologyManager.removeOntology(newModule);
 
-		List<String> orderOfModules = FileUtils.readLines(new File(Configuration.MODULES_SORTING_FILE.toURI()));
-		
+		List<String> orderOfModules = FileUtils.readLines(new File(
+				Configuration.MODULES_SORTING_FILE.toURI()));
+
 		String newModuleIRI = newModule.getOntologyID().getOntologyIRI()
 				.toString();
 
@@ -413,7 +399,8 @@ public class HDOTExtender {
 		// exist
 		if (!orderOfModules.contains(newModuleIRI)) {
 			OWLOntology hdot_container = this.ontologyManager
-					.loadOntologyFromOntologyDocument(new File(Configuration.HDOT_CONTAINER_AUTHORIZED.toURI()));
+					.loadOntologyFromOntologyDocument(new File(
+							Configuration.HDOT_CONTAINER_AUTHORIZED.toURI()));
 			// import the new module in hdot_all.owl and save it
 
 			OWLImportsDeclaration importDeclaraton = this.dataFactory
@@ -423,7 +410,7 @@ public class HDOTExtender {
 			this.ontologyManager.applyChange(new AddImport(hdot_container,
 					importDeclaraton));
 
-			ontologyManager.saveOntology(hdot_container);
+			this.ontologyManager.saveOntology(hdot_container);
 			// ontology_manager.saveOntology(hdot_all,
 			// IRI.create("https://code.google.com/p/hdot/source/browse/trunk/hdot_module_user2.owl"));
 			// add the new module to the list of sorted ids of the hdot modules
@@ -435,5 +422,27 @@ public class HDOTExtender {
 		}
 		log.info("The extended HDOT module is saved in: " + this.pathToModules
 				+ this.nameOfNewModule);
+	}
+
+	private void createNewModuleForCuration()
+			throws OWLOntologyStorageException, OWLOntologyCreationException {
+		
+		ontologyManager.saveOntology(newModule,
+				Configuration.PATH_TO_NOT_AUTHORIZED_USER_MODULES
+						.resolve(this.nameOfNewModule));
+		ontologyManager.removeOntology(newModule);
+		
+		OWLOntology hdot_container_not_autorized = this.ontologyManager
+				.loadOntologyFromOntologyDocument(new File(
+						Configuration.HDOT_CONTAINER_NOT_AUTHORIZED.toURI()));
+		
+		OWLImportsDeclaration importDeclaraton = this.dataFactory
+				.getOWLImportsDeclaration(newModule.getOntologyID()
+						.getOntologyIRI());
+
+		this.ontologyManager.applyChange(new AddImport(hdot_container_not_autorized,
+				importDeclaraton));
+
+		this.ontologyManager.saveOntology(hdot_container_not_autorized);
 	}
 }

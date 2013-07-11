@@ -160,6 +160,12 @@ public class SearchEngine {
 						.computeAllPaths(ot.getOntology().getAbbreviation(), ot);
 
 				listOfPaths.add(listOfAllPathsForOt);
+				
+				for (Stack<OntologyTerm> stack : listOfAllPathsForOt) {
+					System.out.println("+++" + stack);
+				}
+				System.out.println( "counter for empty responses: " + pathExtractor
+							.getCounterForHitsThatDoNotHaveAnyPath());
 				// log.info(ot.getURI() + "\t" + ot.getLabel());
 
 				// log.info("getCounterForHitsThatDoNotHaveAnyPath: "
@@ -167,6 +173,8 @@ public class SearchEngine {
 				// log.info("counterForQueriesRootPath "
 				// + counterForQueriesRootPath);
 
+				
+				//TODO debug
 				if (counterForQueriesRootPath == threshold) {
 
 					int emptyResponces = pathExtractor
