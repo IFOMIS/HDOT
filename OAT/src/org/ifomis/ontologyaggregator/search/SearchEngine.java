@@ -161,11 +161,11 @@ public class SearchEngine {
 
 				listOfPaths.add(listOfAllPathsForOt);
 				
-				for (Stack<OntologyTerm> stack : listOfAllPathsForOt) {
-					System.out.println("+++" + stack);
-				}
-				System.out.println( "counter for empty responses: " + pathExtractor
-							.getCounterForHitsThatDoNotHaveAnyPath());
+//				for (Stack<OntologyTerm> stack : listOfAllPathsForOt) {
+//					System.out.println("+++" + stack);
+//				}
+//				System.out.println( "counter for empty responses: " + pathExtractor
+//							.getCounterForHitsThatDoNotHaveAnyPath());
 				// log.info(ot.getURI() + "\t" + ot.getLabel());
 
 				// log.info("getCounterForHitsThatDoNotHaveAnyPath: "
