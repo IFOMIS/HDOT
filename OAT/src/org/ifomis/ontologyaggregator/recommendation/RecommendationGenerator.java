@@ -371,7 +371,7 @@ public class RecommendationGenerator {
 			File logRecommendFile = new File(Configuration.LOG_PATH.resolve(
 					"loggingRecommendationGeneration.html").toURI());
 
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
 			String date = dateFormat.format(new Date());
 
 			logSearchFile.renameTo(new File(Configuration.LOG_PATH.resolve(
