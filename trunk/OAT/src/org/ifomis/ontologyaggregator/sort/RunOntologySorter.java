@@ -40,7 +40,7 @@ public class RunOntologySorter {
 
 		File logFile = new File(Configuration.LOG_PATH.resolve(
 				"loggingSorting.html").toURI());
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
 		String date = dateFormat.format(new Date());
 
 		logFile.renameTo(new File(Configuration.LOG_PATH.resolve(

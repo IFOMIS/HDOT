@@ -45,7 +45,7 @@ public class TestSearchEngine {
 		}
 
 		File logFile = new File("log/loggingSearchEngine.html");
-		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
 		String date = dateFormat.format(new Date());
 
 		logFile.renameTo(new File("log/" + date + "_loggingSearchEngine.html"));

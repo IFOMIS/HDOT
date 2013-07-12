@@ -26,7 +26,7 @@ public class ComparatorDateRelease implements Comparator<OntologyBean> {
 //		System.out.println("Date Comparator");
 		String[] o1dateTokens = o1.getDateReleased().split(" ");
 		String[] o2dateTokens = o2.getDateReleased().split(" ");
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
 
 		Date dateThreshold = null;
 		Date o1ReleasedDate = null;
