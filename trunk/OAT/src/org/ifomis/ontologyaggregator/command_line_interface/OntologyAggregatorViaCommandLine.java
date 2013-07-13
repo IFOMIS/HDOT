@@ -15,6 +15,8 @@ import org.ifomis.ontologyaggregator.workflow.OntologyAggregatorWorkflow;
 public class OntologyAggregatorViaCommandLine extends
 		OntologyAggregatorWorkflow {
 
+	private Recommendation recommendation;
+
 	public OntologyAggregatorViaCommandLine(String terms, String userId,
 			boolean userRights) throws Exception {
 		super(terms, userId, userRights);
@@ -47,7 +49,9 @@ public class OntologyAggregatorViaCommandLine extends
 		inputReader.startListeningAcceptInput();
 
 		result[0] = inputListener.isAccept();
-		if (inputListener.isAccept()) {
+System.out.println(recommendation.getHitChildren()  + "****");
+		if (inputListener.isAccept()
+				&& (recommendation.getHitChildren() != null ) ) {
 			inputReader.startListeningIncludeSubclassesInput();
 		}
 		result[1] = inputListener.isIncludeSubclasses();
@@ -57,6 +61,7 @@ public class OntologyAggregatorViaCommandLine extends
 
 	@Override
 	public void displayRecommendation(Recommendation recommendation) {
+		this.recommendation = recommendation;
 		System.out.println(recommendation.toString());
 	}
 

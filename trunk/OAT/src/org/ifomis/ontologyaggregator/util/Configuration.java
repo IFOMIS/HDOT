@@ -3,9 +3,14 @@ package org.ifomis.ontologyaggregator.util;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;
+import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.util.SimpleIRIMapper;
 
 /**
  * Utility that sets up the configuration of the OAT.
@@ -99,6 +104,24 @@ public class Configuration {
 		return instance;
 	}
 
+	public static OWLOntologyManager mapIrisOfUserModules(OWLOntologyManager ontologyManager) throws IOException {
+		List<String> modulesSorted = FileUtils.readLines(new File(
+				Configuration.MODULES_SORTING_FILE.toURI()));
+
+		for (String moduleIri : modulesSorted) {
+			if (moduleIri.contains("hdot_module_user")) {
+				String[] moduleIriParts = moduleIri.split("/");
+				IRI ontologyIRI = IRI.create(moduleIri);
+
+				IRI documentIRI = Configuration.PATH_TO_AUTHORIZED_USER_MODULES
+						.resolve(moduleIriParts[moduleIriParts.length - 1]);
+				OWLOntologyIRIMapper iriMapper = new SimpleIRIMapper(
+						ontologyIRI, documentIRI);
+				ontologyManager.addIRIMapper(iriMapper);
+			}
+		}
+		return ontologyManager;
+	}
 	public static void main(String[] args) throws Exception {
 
 		Configuration configuration = new Configuration();

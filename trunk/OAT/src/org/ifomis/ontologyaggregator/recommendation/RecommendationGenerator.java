@@ -16,7 +16,6 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.Stack;
 
-
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.util.Configuration;
@@ -27,8 +26,9 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
+import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-
+import org.semanticweb.owlapi.util.SimpleIRIMapper;
 
 import uk.ac.ebi.ontocat.OntologyService;
 import uk.ac.ebi.ontocat.OntologyServiceException;
@@ -128,9 +128,9 @@ public class RecommendationGenerator {
 	 * @throws URISyntaxException
 	 * @throws OntologyServiceException
 	 */
-	public RecommendationGenerator(IRI HDOT_CONTAINER_AUTHORIZED,
-			String searchedTerm, OntologyService ontologyService, long start)
-			throws IOException, URISyntaxException, OntologyServiceException {
+	public RecommendationGenerator(String searchedTerm,
+			OntologyService ontologyService, long start) throws IOException,
+			URISyntaxException, OntologyServiceException {
 
 		// initialize the fields
 		this.start = start;
@@ -150,11 +150,12 @@ public class RecommendationGenerator {
 		this.ontologyManager = OWLManager.createOWLOntologyManager();
 		this.searchedTerm = searchedTerm;
 
+		this.ontologyManager  = Configuration.mapIrisOfUserModules(ontologyManager);
+
 		try {
 			// Now load the local copy of hdot that include all modules
-
 			this.hdotOntology = ontologyManager
-					.loadOntologyFromOntologyDocument(HDOT_CONTAINER_AUTHORIZED);
+					.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_AUTHORIZED);
 
 		} catch (OWLOntologyCreationException e) {
 			e.printStackTrace();
@@ -170,6 +171,8 @@ public class RecommendationGenerator {
 		// generateRecommendation(listOfPathsOfAllHits);
 
 	}
+
+	
 
 	/**
 	 * Process all five best candidates and generates recommendation for
@@ -350,9 +353,12 @@ public class RecommendationGenerator {
 	private void isMatchedClassTheSearchedTerm(OntologyTerm matchedConcept) {
 
 		if (counterForParents == 0) {
-			log.error("OAT SHOULD NOT BE EVOKED! Since:");
+			log.error("\n\n");
+			log.error("##############################################################################################################################");
+			log.error("\t\t\t\tOAT SHOULD NOT BE EVOKED! Since:");
 			log.error("The concept: " + matchedConcept + " already exists.");
-
+			log.error("##############################################################################################################################");
+			log.error("\n\n");
 			long end = System.currentTimeMillis();
 
 			long milliseconds = (end - start);
@@ -375,20 +381,20 @@ public class RecommendationGenerator {
 			String date = dateFormat.format(new Date());
 
 			logSearchFile.renameTo(new File(Configuration.LOG_PATH.resolve(
-					date + "_" + searchedTerm + "_loggingSearchEngine.html")
+					date + "_" + searchedTerm.replace(" ", "_") + "_loggingSearchEngine.html")
 					.toURI()));
 
 			logRecommendFile
 					.renameTo(new File(Configuration.LOG_PATH.resolve(
-							date + "_" + searchedTerm
+							date + "_" + searchedTerm.replace(" ", "_")
 									+ "_loggingRecommendationGeneration.html")
 							.toURI()));
 
 			log.info("Done.");
 			log.info("Log messages written in: "
 					+ Configuration.LOG_PATH.toString() + date + "_"
-					+ searchedTerm + "_loggingSearchEngine.html and " + date
-					+ "_" + searchedTerm
+					+ searchedTerm.replace(" ", "_") + "_loggingSearchEngine.html and " + date
+					+ "_" + searchedTerm.replace(" ", "_")
 					+ "_loggingRecommendationGeneration.html");
 			System.exit(0);
 		}

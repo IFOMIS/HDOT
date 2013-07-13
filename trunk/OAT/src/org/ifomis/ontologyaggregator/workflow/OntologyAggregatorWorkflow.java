@@ -1,6 +1,7 @@
 package org.ifomis.ontologyaggregator.workflow;
 
 import java.util.List;
+import java.util.Stack;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -19,6 +20,7 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
 import uk.ac.ebi.ontocat.OntologyServiceException;
+import uk.ac.ebi.ontocat.OntologyTerm;
 
 /**
  * Implements the workflow of the Ontology Aggregator. Two undespecified methods
@@ -41,6 +43,7 @@ public abstract class OntologyAggregatorWorkflow {
 			boolean userRights) throws Exception {
 		this.start = System.currentTimeMillis();
 
+		this.mailSender = new EmailSender();
 		// 0. load configuration
 		Configuration.getInstance();
 
@@ -53,7 +56,7 @@ public abstract class OntologyAggregatorWorkflow {
 			log.info("Search for term " + term + " in BioPortal");
 			// 1. search term
 			SearchEngine se = searchTerm();
-
+			
 			// 2. generate and sort recommendations
 			RecommendationGenerator rgTopFive = generateRecommendations(se,
 					isTopFive);
@@ -104,15 +107,18 @@ public abstract class OntologyAggregatorWorkflow {
 				} else {
 					mailSender.sendMail("THE USER REJECTED THE RECOMMENDATION",
 							topRecommendation.toString());
+					recommendations.remove(0);
 				}
 			}
 		}
+		terminate(start, terms, false);
 	}
 
 	private SearchEngine searchTerm() throws Exception {
 		IRI fileWithOntologies = Configuration.ONTO_IDS_FILE;
 		SearchEngine se = new SearchEngine(fileWithOntologies);
 		se.searchTermInBioPortal(term);
+	
 		if (se.getListOfPaths().size() == 0) {
 			log.info("list of paths with hits is empty");
 			terminate(start, term, true);
@@ -148,8 +154,8 @@ public abstract class OntologyAggregatorWorkflow {
 	private RecommendationGenerator generateRecommendations(SearchEngine se,
 			boolean isTopFive) throws IOException, URISyntaxException,
 			OntologyServiceException {
-		RecommendationGenerator rg = new RecommendationGenerator(
-				Configuration.HDOT_CONTAINER_AUTHORIZED, term,
+		
+		RecommendationGenerator rg = new RecommendationGenerator(term,
 				se.getRestrictedBps(), start);
 		int sizeOfresultList = se.getListOfPaths().size();
 		log.debug("in process results size of list with Paths: "

@@ -296,16 +296,24 @@ public class RootpathExtractor {
 			OntologyTerm ot) throws IOException {
 
 		File outFile = new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
-				this.date + "_" + searchedTerm.replace(" ", "_") + "/" + ontologyAbbreviation.replace(" ", "_")).toURI());
+				this.date + "_" + searchedTerm.replace(" ", "_") + "/"
+						+ ontologyAbbreviation.replace(" ", "_")).toURI());
 
 		new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
-				"queries/" + this.date + "_" + searchedTerm.replace(" ", "_")).toURI()).mkdir();
+				"queries/" + this.date + "_" + searchedTerm.replace(" ", "_"))
+				.toURI()).mkdir();
 
 		// write the queries executed in this iteration for the particular
 		// term in a file in order to be able to look at them
 		File outQueryFile = new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
-				"queries/" + this.date + "_" + searchedTerm.replace(" ", "_") + "/"
-						+ ontologyAbbreviation.replace(" ", "_") + "-" + ot.getLabel().replace(" ", "_")).toURI());
+				"queries/"
+						+ this.date
+						+ "_"
+						+ searchedTerm.replace(" ", "_")
+						+ "/"
+						+ ontologyAbbreviation.replace(" ", "_").replace("/",
+								"_")).toURI());
+		
 		FileUtils.writeLines(outQueryFile, listOfQueries, "\n");
 		FileUtils.writeLines(outFile, listOfPaths);
 
