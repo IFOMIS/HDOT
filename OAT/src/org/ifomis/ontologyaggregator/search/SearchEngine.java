@@ -201,6 +201,16 @@ public class SearchEngine {
 		log.info("skos:prefLabels= " + pathExtractor.getCounterForPrefLabels());
 		log.info("rdfs:labels= " + pathExtractor.getCounterForLabels());
 
+		if(totalCounterForQueriesRootPath == 0){
+			log.info("None of the resluts has similarity higher than 90% with the searched term " + term);
+			// continue;
+			mailSender.sendMail("NONE OF THE RESULT WAS SIMLILAR TO THE SEARCHED TERM",
+					"BioPortal has retrived results that are not similar (90%) for the term\" "
+							+ searchedTerm
+							+ "\"\n or the server is not responding");
+
+			System.exit(0);
+		}
 		log.info(totalCounterForQueriesRootPath
 				+ " queries for the root path were sent.");
 
