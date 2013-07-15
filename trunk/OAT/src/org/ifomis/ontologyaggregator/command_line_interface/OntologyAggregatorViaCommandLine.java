@@ -49,7 +49,7 @@ public class OntologyAggregatorViaCommandLine extends
 		inputReader.startListeningAcceptInput();
 
 		result[0] = inputListener.isAccept();
-System.out.println(recommendation.getHitChildren()  + "****");
+
 		if (inputListener.isAccept()
 				&& (recommendation.getHitChildren() != null ) ) {
 			inputReader.startListeningIncludeSubclassesInput();

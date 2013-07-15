@@ -297,7 +297,7 @@ public class RootpathExtractor {
 
 		File outFile = new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
 				this.date + "_" + searchedTerm.replace(" ", "_") + "/"
-						+ ontologyAbbreviation.replace(" ", "_")).toURI());
+						+ ontologyAbbreviation.replace(" ", "_").replace("/", "_").replace("-", "_")).toURI());
 
 		new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
 				"queries/" + this.date + "_" + searchedTerm.replace(" ", "_"))
@@ -311,9 +311,9 @@ public class RootpathExtractor {
 						+ "_"
 						+ searchedTerm.replace(" ", "_")
 						+ "/"
-						+ ontologyAbbreviation.replace(" ", "_").replace("/",
-								"_")).toURI());
-		
+						+ ontologyAbbreviation.replace(" ", "_")
+								.replace("/", "_").replace("-", "_")).toURI());
+
 		FileUtils.writeLines(outQueryFile, listOfQueries, "\n");
 		FileUtils.writeLines(outFile, listOfPaths);
 
@@ -364,9 +364,11 @@ public class RootpathExtractor {
 	}
 
 	public static void main(String[] args) throws Exception {
-		RootpathExtractor rpe = new RootpathExtractor("blood", "");
-		rpe.computeAllPaths("RCD", new OntologyTerm("", "", "Blood", new URI(
-				"http://purl.bioontology.org/ontology/RCD/X79cn")));
+		Configuration.getInstance();
+
+		RootpathExtractor rpe = new RootpathExtractor("bone marrow", "");
+		rpe.computeAllPaths("ICF-D840-D859", new OntologyTerm("", "",
+				"Bone marrow", new URI("http://who.int/icf#TitleTerm_1212")));
 	}
 
 }
