@@ -1,3 +1,4 @@
+org.ifomis.ontologyaggregator.command_line_interface
 org.ifomis.ontologyaggregator.exception
 org.ifomis.ontologyaggregator.integration
 org.ifomis.ontologyaggregator.notifications
@@ -6,7 +7,8 @@ org.ifomis.ontologyaggregator.recommendation
 org.ifomis.ontologyaggregator.recommendation.sort
 org.ifomis.ontologyaggregator.search
 org.ifomis.ontologyaggregator.sort
-org.ifomis.ontologyaggregator.test
+org.ifomis.ontologyaggregator.util
+org.ifomis.ontologyaggregator.workflow
 org.ncbo.stanford.sparql.examples
 uk.ac.ebi.ontocat.bioportal
 uk.ac.ebi.ontocat.bioportal.xmlbeans
