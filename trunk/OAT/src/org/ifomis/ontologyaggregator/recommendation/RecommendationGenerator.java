@@ -127,10 +127,12 @@ public class RecommendationGenerator {
 	 * @throws IOException
 	 * @throws URISyntaxException
 	 * @throws OntologyServiceException
+	 * @throws OWLOntologyCreationException
 	 */
 	public RecommendationGenerator(String searchedTerm,
 			OntologyService ontologyService, long start) throws IOException,
-			URISyntaxException, OntologyServiceException {
+			URISyntaxException, OntologyServiceException,
+			OWLOntologyCreationException {
 
 		// initialize the fields
 		this.start = start;
@@ -141,7 +143,8 @@ public class RecommendationGenerator {
 		this.listOfInCoreNotLeafMatches = new ArrayList<>();
 		this.listImportedNotLeafMatches = new ArrayList<>();
 		this.properties = new Properties();
-		properties.load(new FileInputStream("config/aggregator.properties"));
+		this.properties
+				.load(new FileInputStream("config/aggregator.properties"));
 
 		this.importedOntologies = FileUtils.readLines(new File(
 				Configuration.IMPORTED_ONTOLOGIES_FILE.toURI()));
@@ -150,16 +153,12 @@ public class RecommendationGenerator {
 		this.ontologyManager = OWLManager.createOWLOntologyManager();
 		this.searchedTerm = searchedTerm;
 
-		this.ontologyManager  = Configuration.mapIrisOfUserModules(ontologyManager);
+		this.ontologyManager = Configuration
+				.mapIrisOfVisibleUserModules(ontologyManager);
 
-		try {
-			// Now load the local copy of hdot that include all modules
-			this.hdotOntology = ontologyManager
-					.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_AUTHORIZED);
-
-		} catch (OWLOntologyCreationException e) {
-			e.printStackTrace();
-		}
+		// Now load the local copy of hdot that include all modules
+		this.hdotOntology = ontologyManager
+				.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_AUTHORIZED);
 
 		log.info("Loaded ontology: " + hdotOntology);
 
@@ -167,12 +166,7 @@ public class RecommendationGenerator {
 				.getSortedImportsClosure(hdotOntology);
 
 		sortedHdotModules = new ModuleSorter().sortHdotModules(hdotModules);
-
-		// generateRecommendation(listOfPathsOfAllHits);
-
 	}
-
-	
 
 	/**
 	 * Process all five best candidates and generates recommendation for
@@ -184,17 +178,13 @@ public class RecommendationGenerator {
 	 * @throws IOException
 	 * @throws OntologyServiceException
 	 */
-	public void generateRecommendation(
-			List<List<Stack<OntologyTerm>>> listOfPathsOfAllHits,
-			boolean isTopFive) throws URISyntaxException, IOException,
+	public void generateRecommendations(
+			List<List<Stack<OntologyTerm>>> listOfPathsOfAllHits) throws URISyntaxException, IOException,
 			OntologyServiceException {
 
 		// init depending if first or second run
-		if (isTopFive) {
-			hitsCounter = 0;
-		} else {
-			hitsCounter = 5;
-		}
+		hitsCounter = 0;
+
 		recommendationCounter = 0;
 
 		// loop over hits
@@ -340,8 +330,6 @@ public class RecommendationGenerator {
 				counterForParents, matchedConcept, definitions, synonyms,
 				childrenOfHit, numMatchedParents);
 
-		// log.info(recommendation.toString());
-
 		return recommendation;
 	}
 
@@ -350,54 +338,21 @@ public class RecommendationGenerator {
 	 *            the match found in HDOT
 	 * @return true if the match is the found concept
 	 */
-	private void isMatchedClassTheSearchedTerm(OntologyTerm matchedConcept) {
+	private boolean isMatchedClassTheSearchedTerm(OntologyTerm matchedConcept) {
 
+		boolean matchedClassIsTerm = false;
+		// TODO debug
 		if (counterForParents == 0) {
+			matchedClassIsTerm = true;
+
 			log.error("\n\n");
 			log.error("##############################################################################################################################");
 			log.error("\t\t\t\tOAT SHOULD NOT BE EVOKED! Since:");
 			log.error("The concept: " + matchedConcept + " already exists.");
 			log.error("##############################################################################################################################");
 			log.error("\n\n");
-			long end = System.currentTimeMillis();
-
-			long milliseconds = (end - start);
-
-			long seconds = (milliseconds / 1000);
-
-			long mins = seconds / 60;
-			long restsecs = seconds % 60;
-
-			log.info("Execution time was " + (end - start) + " ms.");
-			log.info("Execution time was " + mins + ":" + restsecs + " sec.");
-
-			File logSearchFile = new File(Configuration.LOG_PATH.resolve(
-					"loggingSearchEngine.html").toURI());
-
-			File logRecommendFile = new File(Configuration.LOG_PATH.resolve(
-					"loggingRecommendationGeneration.html").toURI());
-
-			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd_HH-mm");
-			String date = dateFormat.format(new Date());
-
-			logSearchFile.renameTo(new File(Configuration.LOG_PATH.resolve(
-					date + "_" + searchedTerm.replace(" ", "_") + "_loggingSearchEngine.html")
-					.toURI()));
-
-			logRecommendFile
-					.renameTo(new File(Configuration.LOG_PATH.resolve(
-							date + "_" + searchedTerm.replace(" ", "_")
-									+ "_loggingRecommendationGeneration.html")
-							.toURI()));
-
-			log.info("Done.");
-			log.info("Log messages written in: "
-					+ Configuration.LOG_PATH.toString() + date + "_"
-					+ searchedTerm.replace(" ", "_") + "_loggingSearchEngine.html and " + date
-					+ "_" + searchedTerm.replace(" ", "_")
-					+ "_loggingRecommendationGeneration.html");
-			System.exit(0);
 		}
+		return matchedClassIsTerm;
 	}
 
 	/**
@@ -496,8 +451,11 @@ public class RecommendationGenerator {
 						+ matchedTerm.getURI().toString() + "\t"
 						+ matchedTerm.getLabel());
 
-				isMatchedClassTheSearchedTerm(matchedTerm);
+				boolean matchedClassTheSearchedTerm = isMatchedClassTheSearchedTerm(matchedTerm);
 
+				if (matchedClassTheSearchedTerm) {
+					break;
+				}
 				extractHierarchyOfMatchedTerm(currentOntology, hdotClass);
 
 				countMatchingParents();

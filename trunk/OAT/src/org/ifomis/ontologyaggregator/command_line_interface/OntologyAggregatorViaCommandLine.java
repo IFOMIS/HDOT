@@ -3,6 +3,8 @@
  */
 package org.ifomis.ontologyaggregator.command_line_interface;
 
+import java.util.Arrays;
+
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 import org.ifomis.ontologyaggregator.workflow.OntologyAggregatorWorkflow;
 
@@ -17,9 +19,8 @@ public class OntologyAggregatorViaCommandLine extends
 
 	private Recommendation recommendation;
 
-	public OntologyAggregatorViaCommandLine(String terms, String userId,
-			boolean userRights) throws Exception {
-		super(terms, userId, userRights);
+	public OntologyAggregatorViaCommandLine() throws Exception {
+		super();
 
 	}
 
@@ -35,28 +36,25 @@ public class OntologyAggregatorViaCommandLine extends
 		} else {
 			terms = args[0].replace("_", " ");
 		}
-		OntologyAggregatorViaCommandLine oat = new OntologyAggregatorViaCommandLine(
-				terms, args[1], Boolean.parseBoolean(args[2]));
+		OntologyAggregatorViaCommandLine oat = new OntologyAggregatorViaCommandLine();
+		oat.start(Arrays.asList(terms.split(",")), args[1], Boolean.parseBoolean(args[2]));
 	}
 
 	@Override
-	public boolean[] checkUserInput() {
-		boolean[] result = new boolean[2];
+	public boolean checkUserInput() {
 
 		UserInputReader inputReader = new UserInputReader();
 		RecommendationAcceptListenerImpl inputListener = new RecommendationAcceptListenerImpl();
 		inputReader.addUserInputListener(inputListener);
 		inputReader.startListeningAcceptInput();
 
-		result[0] = inputListener.isAccept();
-
 		if (inputListener.isAccept()
 				&& (recommendation.getHitChildren() != null ) ) {
 			inputReader.startListeningIncludeSubclassesInput();
 		}
-		result[1] = inputListener.isIncludeSubclasses();
+		recommendation.setIncludeSubclasses(inputListener.isIncludeSubclasses());
 
-		return result;
+		return inputListener.isAccept();
 	}
 
 	@Override
@@ -67,6 +65,6 @@ public class OntologyAggregatorViaCommandLine extends
 
 	private static void usage() {
 		System.out
-				.println("usage: java -jar OntologyAggregator.jar <term1;term2...> <userID> <userRights>\nyou can specify one or more terms\nnote: terms that have more than one word have to be written in quotes, e.g. \"bone marrow\"\n the userRights are true if the user can directly modify HDOT and false otherwise");
+				.println("usage: java -jar OntologyAggregator.jar <term1,term2...> <userID> <userRights>\nyou can specify one or more terms\nnote: terms that have more than one word have to be written in quotes, e.g. \"bone marrow\"\n the userRights are true if the user can directly modify HDOT and false otherwise");
 	}
 }
