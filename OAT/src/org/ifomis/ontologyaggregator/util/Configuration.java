@@ -32,6 +32,7 @@ public class Configuration {
 
 	public static IRI ONTO_IDS_FILE;
 	public static IRI MODULES_SORTING_FILE;
+	public static IRI MODULES_FOR_CURATION;
 	public static IRI PREDEFINED_ONTOLOGIES_FILE;
 	public static IRI IMPORTED_ONTOLOGIES_FILE;
 	public static IRI CORE_MODULE_FILE;
@@ -48,6 +49,7 @@ public class Configuration {
 	public static Integer SMTP_PORT;
 
 	public static String SMTP_HOST;
+
 
 	private Configuration() throws IOException {
 		BASE_PATH = IRI.create(new File(""));
@@ -74,6 +76,9 @@ public class Configuration {
 		MODULES_SORTING_FILE = CONF_PATH.resolve(PROPERTIES
 				.getProperty("fileSortingHdotModulesURIs"));
 
+		MODULES_FOR_CURATION = CONF_PATH.resolve(PROPERTIES
+				.getProperty("fileHdotModulesForCurationURIs"));
+		
 		PREDEFINED_ONTOLOGIES_FILE = CONF_PATH.resolve(PROPERTIES
 				.getProperty("filePredefinedOntolodies"));
 
@@ -104,16 +109,35 @@ public class Configuration {
 		return instance;
 	}
 
-	public static OWLOntologyManager mapIrisOfUserModules(OWLOntologyManager ontologyManager) throws IOException {
+	public static OWLOntologyManager mapIrisOfVisibleUserModules(OWLOntologyManager ontologyManager) throws IOException {
 		List<String> modulesSorted = FileUtils.readLines(new File(
 				Configuration.MODULES_SORTING_FILE.toURI()));
 
 		for (String moduleIri : modulesSorted) {
-			if (moduleIri.contains("hdot_module_user")) {
+			if (moduleIri.contains("hdot_module")) {
 				String[] moduleIriParts = moduleIri.split("/");
 				IRI ontologyIRI = IRI.create(moduleIri);
 
 				IRI documentIRI = Configuration.PATH_TO_AUTHORIZED_USER_MODULES
+						.resolve(moduleIriParts[moduleIriParts.length - 1]);
+				OWLOntologyIRIMapper iriMapper = new SimpleIRIMapper(
+						ontologyIRI, documentIRI);
+				ontologyManager.addIRIMapper(iriMapper);
+			}
+		}
+		return ontologyManager;
+	}
+	
+	public static OWLOntologyManager mapIrisOfUserModulesForCuration(OWLOntologyManager ontologyManager) throws IOException {
+		List<String> modulesSorted = FileUtils.readLines(new File(
+				Configuration.MODULES_FOR_CURATION.toURI()));
+
+		for (String moduleIri : modulesSorted) {
+			if (moduleIri.contains("hdot_module")) {
+				String[] moduleIriParts = moduleIri.split("/");
+				IRI ontologyIRI = IRI.create(moduleIri);
+
+				IRI documentIRI = Configuration.PATH_TO_NOT_AUTHORIZED_USER_MODULES
 						.resolve(moduleIriParts[moduleIriParts.length - 1]);
 				OWLOntologyIRIMapper iriMapper = new SimpleIRIMapper(
 						ontologyIRI, documentIRI);

@@ -23,10 +23,8 @@ public class HDOTURIManager {
 	private Recommendation acceptedRecommendation;
 	private HDOTURIGenerator uriGenerator;
 
-	public HDOTURIManager(Recommendation acceptedRecommendation,
-			boolean includeSubclasses) throws OntologyServiceException,
-			IOException {
-
+	public void checkURIs(Recommendation acceptedRecommendation)
+			throws IOException, OntologyServiceException {
 		List<String> predefinedOntologies = FileUtils.readLines(new File(
 				Configuration.PREDEFINED_ONTOLOGIES_FILE.toURI()));
 
@@ -37,10 +35,11 @@ public class HDOTURIManager {
 		this.acceptedRecommendation = acceptedRecommendation;
 
 		this.uriGenerator = new HDOTURIGenerator(acceptedRecommendation,
-				includeSubclasses);
+				acceptedRecommendation.includeSubclasses());
 	}
 
-	public boolean keepOriginalURI() {
+	public boolean keepOriginalURI() throws IOException,
+			OntologyServiceException {
 
 		return this.keepOriginalURI;
 	}

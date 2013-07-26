@@ -1,9 +1,9 @@
 package org.ifomis.ontologyaggregator.integration;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
@@ -31,7 +31,6 @@ import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import uk.ac.ebi.ontocat.OntologyService;
 import uk.ac.ebi.ontocat.OntologyServiceException;
 import uk.ac.ebi.ontocat.OntologyTerm;
-import uk.ac.ebi.ontocat.bioportal.xmlbeans.OntologyBean;
 
 /**
  * Extends HDOT with the class that is recommended and confirmed by the user.
@@ -51,11 +50,6 @@ public class HDOTExtender {
 	 * the HDOTVerifier that check the consistency of the extended ontology.
 	 */
 	private HDOTVerifier hdotVerifier;
-
-	/**
-	 * The recommendation that was accepted by the user.
-	 */
-	private Recommendation acceptedRecommendation;
 
 	private static final Logger log = Logger.getLogger(HDOTExtender.class);
 	/**
@@ -91,26 +85,32 @@ public class HDOTExtender {
 	// TODO use user rights for the integration of new modules
 	private boolean userRights;
 
-	public HDOTExtender(Recommendation accceptedRecommendation,
-			boolean includeSubclasses, OWLOntology hdotOntology,
-			OntologyService ontologyService, String userID, boolean userRights)
-			throws OntologyServiceException, IOException,
+	private OntologyService ontologyService;
+
+	public HDOTExtender(OntologyService ontologyService, String userID,
+			boolean userRights) throws OntologyServiceException, IOException,
 			OWLOntologyStorageException, URISyntaxException,
 			HdotExtensionException, OWLOntologyCreationException {
 
 		// initialize fields
 		this.ontologyManager = OWLManager.createOWLOntologyManager();
 		this.dataFactory = this.ontologyManager.getOWLDataFactory();
-		this.acceptedRecommendation = accceptedRecommendation;
 		this.nameOfNewModule = "hdot_module_user" + userID + ".owl";
 		this.userRights = userRights;
-		this.uriManager = new HDOTURIManager(accceptedRecommendation,
-				includeSubclasses);
+		this.uriManager = new HDOTURIManager();
 		this.hdotVerifier = new HDOTVerifier();
+		this.ontologyService = ontologyService;
+	}
 
-		initNewModule(accceptedRecommendation);
+	public void integrarteHitInHDOT(Recommendation acceptedRecommendation)
+			throws OWLOntologyStorageException, OWLOntologyCreationException,
+			URISyntaxException, HdotExtensionException, IOException,
+			OntologyServiceException {
 
-		// extends HDOT with the actual hit
+		this.uriManager.checkURIs(acceptedRecommendation);
+
+		initNewModule(acceptedRecommendation);
+
 		extendHDOT(
 				acceptedRecommendation.getHit(),
 				dataFactory.getOWLClass(IRI.create(acceptedRecommendation
@@ -119,12 +119,11 @@ public class HDOTExtender {
 
 		// in case the user want extends HDOT with the subclasses of the actual
 		// hit
-		if (includeSubclasses) {
+		if (acceptedRecommendation.includeSubclasses()) {
 
-			List<OntologyTerm> subClasses = accceptedRecommendation
+			List<OntologyTerm> subClasses = acceptedRecommendation
 					.getHitChildren();
 
-			
 			for (OntologyTerm subClass : subClasses) {
 				// TODO ensure that the classes are not already contained in
 				// hdot
@@ -136,6 +135,7 @@ public class HDOTExtender {
 						false);
 			}
 		}
+
 		if (userRights) {
 			createNewVisibleModuleAndUpdateHdotAll();
 		} else {
@@ -250,7 +250,6 @@ public class HDOTExtender {
 
 		integrateOriginalId(newClass);
 		log.debug("original id is integrated");
-
 		if (hdotVerifier.verifyOntology(newModule)) {
 			log.debug("extended ontology is verified");
 
@@ -259,6 +258,7 @@ public class HDOTExtender {
 					"HDOT cannot be extended due to inconsistency");
 		}
 	}
+
 
 	/**
 	 * Integrates the new class with the given uri.
@@ -368,8 +368,9 @@ public class HDOTExtender {
 			throws OWLOntologyStorageException, URISyntaxException,
 			OWLOntologyCreationException, IOException {
 
-		this.ontologyManager  = Configuration.mapIrisOfUserModules(this.ontologyManager);
-		
+		this.ontologyManager = Configuration
+				.mapIrisOfVisibleUserModules(this.ontologyManager);
+
 		// finally the ontology can be stored
 		// ontology_manager.saveOntology(newModule,
 		// IRI.create(this.pathToModules + this.nameOfNewModule));
@@ -400,7 +401,7 @@ public class HDOTExtender {
 					importDeclaraton));
 
 			this.ontologyManager.saveOntology(hdot_container);
-			
+
 			// add the new module to the list of sorted ids of the hdot modules
 			orderOfModules.add(0, newModuleIRI);
 			FileUtils.writeLines(
@@ -413,7 +414,11 @@ public class HDOTExtender {
 	}
 
 	private void createNewModuleForCuration()
-			throws OWLOntologyStorageException, OWLOntologyCreationException {
+			throws OWLOntologyStorageException, OWLOntologyCreationException,
+			IOException {
+
+		this.ontologyManager = Configuration
+				.mapIrisOfUserModulesForCuration(this.ontologyManager);
 
 		this.ontologyManager.saveOntology(this.newModule,
 				Configuration.PATH_TO_NOT_AUTHORIZED_USER_MODULES
@@ -433,8 +438,12 @@ public class HDOTExtender {
 
 		this.ontologyManager.saveOntology(hdot_container_not_autorized);
 
+		List<String> lines = FileUtils.readLines(new File(Configuration.MODULES_FOR_CURATION.toURI()));
+		lines.add(newModule.getOntologyID().getOntologyIRI().toString());
+		FileUtils.writeLines(new File(Configuration.MODULES_FOR_CURATION.toURI()), lines);
+		
 		log.info("The extended HDOT module is saved in: "
 				+ Configuration.PATH_TO_NOT_AUTHORIZED_USER_MODULES.toString()
-				 + this.nameOfNewModule);
+				+ this.nameOfNewModule);
 	}
 }

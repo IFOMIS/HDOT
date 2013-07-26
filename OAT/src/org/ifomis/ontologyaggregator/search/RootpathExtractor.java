@@ -73,13 +73,12 @@ public class RootpathExtractor {
 		listOfQueries = new ArrayList<>();
 	}
 
-	public List<Stack<OntologyTerm>> computeAllPaths(
-			String ontologyAbbreviation, OntologyTerm ot) throws Exception {
+	public List<Stack<OntologyTerm>> computeAllPaths(OntologyTerm ot) throws Exception {
 
 		// counterForHitsThatDoNotHaveAnyPath = 0;
 		listOfPaths = new ArrayList<>();
 
-		this.ontologyAbbreviation = ontologyAbbreviation.toUpperCase();
+		this.ontologyAbbreviation = ot.getOntology().getAbbreviation().toString().toUpperCase();
 
 		enumerate(ot);
 		writePathToRootIntoFile(this.ontologyAbbreviation, ot);
@@ -87,6 +86,7 @@ public class RootpathExtractor {
 		if (listOfPaths.isEmpty()) {
 			++counterForHitsThatDoNotHaveAnyPath;
 		}
+		log.info(ot.toString());
 		log.info("\t\tnumber of extracted paths: " + listOfPaths.size());
 		log.info("---------------------------------------------------------------------");
 
@@ -104,7 +104,7 @@ public class RootpathExtractor {
 		List<String> parents = parseSparqlResponse(response);
 
 		// there are no parents retrieved by the last SPARQL query
-		if (parents.size() == 0) {
+		if (parents.isEmpty()) {
 			// log.info("path" + path);
 
 			Stack<OntologyTerm> deepCopyOfPath = getDeepReverseCopy(path);
@@ -318,7 +318,6 @@ public class RootpathExtractor {
 		FileUtils.writeLines(outFile, listOfPaths);
 
 		if (outFile.length() == 0) {
-			log.info("\t\tfor the term: " + ot.toString());
 			log.info("\t\tSPARQL response is empty");
 
 			++counterForEmptyResonses;
@@ -367,8 +366,8 @@ public class RootpathExtractor {
 		Configuration.getInstance();
 
 		RootpathExtractor rpe = new RootpathExtractor("bone marrow", "");
-		rpe.computeAllPaths("ICF-D840-D859", new OntologyTerm("", "",
+		rpe.computeAllPaths(new OntologyTerm("", "",
 				"Bone marrow", new URI("http://who.int/icf#TitleTerm_1212")));
 	}
-
+// "ICF-D840-D859"
 }

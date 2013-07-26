@@ -1,6 +1,7 @@
 package org.ifomis.ontologyaggregator.search;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -10,12 +11,15 @@ import java.util.List;
 import java.util.Stack;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.mail.EmailException;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.notifications.EmailSender;
 import org.ifomis.ontologyaggregator.util.Configuration;
+import org.ifomis.ontologyaggregator.util.StatisticsPrinter;
 import org.semanticweb.owlapi.model.IRI;
 
 import uk.ac.ebi.ontocat.OntologyService;
+import uk.ac.ebi.ontocat.OntologyServiceException;
 import uk.ac.ebi.ontocat.OntologyTerm;
 import uk.ac.ebi.ontocat.bioportal.BioportalOntologyService;
 import uk.ac.ebi.ontocat.virtual.CompositeServiceNoThreads;
@@ -60,30 +64,33 @@ public class SearchEngine {
 	private OntologyService restrictedBps;
 	private EmailSender mailSender;
 
+	private List<OntologyTerm> listWithHits;
+
+	private RootpathExtractor pathExtractor;
+	private List<OntologyTerm> goodCandidates = new ArrayList<>();
+
 	public SearchEngine(IRI fileWithOntologies) throws IOException {
 
 		File fileOntologies = new File(fileWithOntologies.toURI());
 
 		this.ontologiesList = FileUtils.readLines(fileOntologies);
 		this.mailSender = new EmailSender();
-
 		log.debug("List of ontologies imported from file: "
 				+ fileWithOntologies);
-
 	}
 
 	/**
 	 * Searches the given term in BioPortal. The the ontologyList specifies the
 	 * sorting of the ontologies.
 	 * 
-	 * @return list of stacks that store the root paths of the first 5 hits
+	 * @return 
 	 * @throws Exception
 	 */
-	public List<List<Stack<OntologyTerm>>> searchTermInBioPortal(String term)
-			throws Exception {
+	public boolean searchTermInBioPortal(String term) throws Exception {
 
 		OntologyService bps = CompositeServiceNoThreads
 				.getService(new BioportalOntologyService());
+		this.pathExtractor = new RootpathExtractor(term, date);
 
 		// create a restricted BioPortal ontology service that searches in the
 		// ontologies specified in the given list and considers their order
@@ -94,34 +101,22 @@ public class SearchEngine {
 
 		this.searchedTerm = term;
 
+		boolean failed = false;
+
 		log.info("Search for term: " + term);
 
-		List<OntologyTerm> listWithHits = restrictedBps.searchAll(term);
+		failed = queryBioPortal();
 
-		RootpathExtractor pathExtractor = new RootpathExtractor(searchedTerm,
-				date);
-		if (listWithHits == null) {
-			log.info("No results for " + term);
-			// continue;
-			mailSender.sendMail("NO RESULTS RETRIEVED FROM BioPortal",
-					"BioPortal has retrived no results for the term\" "
-							+ searchedTerm
-							+ "\"\n or the server is not responding");
-
-			System.exit(0);
+		if (failed) {
+			return failed;
 		}
+		filterGoodCandidates();
+		failed = extractRoothPathsForGoodCandidates();
+		
+		return failed;
+	}
 
-		log.info(listWithHits.size() + " hits for the searched term: " + term);
-		FileUtils.writeLines(
-				new File(Configuration.DATA_PATH.resolve(
-						"listsWithHits/" + searchedTerm.replace(" ", "_") + "_listOfHits.txt")
-						.toURI()), listWithHits);
-		listOfPaths = new ArrayList<>();
-
-		int counterForQueriesRootPath = 0;
-		int totalCounterForQueriesRootPath = 0;
-		int totalEmptyResponces = 0;
-		int threshold = 10;
+	private void filterGoodCandidates() throws OntologyServiceException {
 
 		for (int i = 0; i < listWithHits.size(); i++) {
 			OntologyTerm ot = listWithHits.get(i);
@@ -149,85 +144,112 @@ public class SearchEngine {
 				sb1.append("\n\t\tThe term will be processed further, since the similatity score of searched term and hit is greater than 90%.");
 				log.info(sb1.toString());
 
-				++counterForQueriesRootPath;
-				++totalCounterForQueriesRootPath;
+				goodCandidates.add(ot);
+			}
+		}
+		log.info(goodCandidates.size()
+				+ " good candidates are in the result list");
+	}
 
-				// log.debug("THE DESCRIPTION OF THE ONTOLOGY:");
-				//
-				// log.debug(ot.getOntology().getDescription());
+	/**
+	 * @return
+	 * @throws OntologyServiceException
+	 * @throws Exception
+	 */
+	private boolean extractRoothPathsForGoodCandidates()
+			throws OntologyServiceException, Exception {
+		listOfPaths = new ArrayList<>();
 
-				List<Stack<OntologyTerm>> listOfAllPathsForOt = pathExtractor
-						.computeAllPaths(ot.getOntology().getAbbreviation(), ot);
+		int counterForQueriesRootPath = 0;
+		int totalCounterForQueriesRootPath = 0;
+		int totalEmptyResponces = 0;
+		int threshold = 10;
 
-				listOfPaths.add(listOfAllPathsForOt);
-				
-//				for (Stack<OntologyTerm> stack : listOfAllPathsForOt) {
-//					System.out.println("+++" + stack);
-//				}
-//				System.out.println( "counter for empty responses: " + pathExtractor
-//							.getCounterForHitsThatDoNotHaveAnyPath());
-				// log.info(ot.getURI() + "\t" + ot.getLabel());
+		log.debug("__________________________________________________________________________________________");
 
-				// log.info("getCounterForHitsThatDoNotHaveAnyPath: "
-				// + pathExtractor.getCounterForHitsThatDoNotHaveAnyPath());
-				// log.info("counterForQueriesRootPath "
-				// + counterForQueriesRootPath);
+		for (OntologyTerm goodCandidate : goodCandidates) {
 
-				
-				//TODO debug
-				if (counterForQueriesRootPath == threshold) {
+			++counterForQueriesRootPath;
+			++totalCounterForQueriesRootPath;
 
-					int emptyResponces = pathExtractor
-							.getCounterForHitsThatDoNotHaveAnyPath();
-					totalEmptyResponces += emptyResponces;
-					if (emptyResponces > 0) {
-						log.debug("do not have any path: " + emptyResponces);
+			List<Stack<OntologyTerm>> listOfAllPathsForGoodCandidate = pathExtractor
+					.computeAllPaths(goodCandidate);
 
-						threshold = emptyResponces;
-						// set the counter for empty responses to 0 otherwise to
-						// many queries are sent
-						pathExtractor.setCounterForHitsThatDoNotHaveAnyPath(0);
-						counterForQueriesRootPath = 0;
-						continue;
-					} else {
-						log.debug("all hits have at least one path.");
+			listOfPaths.add(listOfAllPathsForGoodCandidate);
 
-						break;
-					}
+			if (counterForQueriesRootPath == threshold) {
+
+				int emptyResponces = pathExtractor
+						.getCounterForHitsThatDoNotHaveAnyPath();
+				totalEmptyResponces += emptyResponces;
+
+				if (emptyResponces > 0) {
+					log.debug("does not have any path: " + emptyResponces);
+
+					threshold = emptyResponces;
+					// set the counter for empty responses to 0 otherwise to
+					// many queries are sent
+					pathExtractor.setCounterForHitsThatDoNotHaveAnyPath(0);
+					counterForQueriesRootPath = 0;
+					continue;
+				} else {
+					log.debug("all hits have at least one path.");
+
+					break;
 				}
 			}
 			log.debug("__________________________________________________________________________________________");
 		}
+
 		log.info("skos:prefLabels= " + pathExtractor.getCounterForPrefLabels());
 		log.info("rdfs:labels= " + pathExtractor.getCounterForLabels());
 
-		if(totalCounterForQueriesRootPath == 0){
-			log.info("None of the resluts has similarity higher than 90% with the searched term " + term);
-			// continue;
-			mailSender.sendMail("NONE OF THE RESULT WAS SIMLILAR TO THE SEARCHED TERM",
-					"BioPortal has retrived results that are not similar (90%) for the term\" "
-							+ searchedTerm
-							+ "\"\n or the server is not responding");
-
-			System.exit(0);
-		}
 		log.info(totalCounterForQueriesRootPath
 				+ " queries for the root path were sent.");
 
 		log.info(totalEmptyResponces + " empty responses from sparql.");
 
-		FileUtils.write(
-				new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
-						"fail/" + this.date + "_" + term.replace(" ", "_") + "_fail").toURI()),
+		StatisticsPrinter.writeFailPathsInExternalFile(searchedTerm,
 				pathExtractor.getSbFailed().toString());
-		FileUtils.write(
-				new File(Configuration.SPARQL_OUTPUT_PATH.resolve(
-						"success/" + this.date + "_" + term.replace(" ", "_") + "_success")
-						.toURI()), pathExtractor.getSbSuccess().toString());
+
+		StatisticsPrinter.writeSuccessPathsInExternalFile(searchedTerm,
+				pathExtractor.getSbSuccess().toString());
 
 		log.info("explored paths in total: " + listOfPaths.size());
 
-		return listOfPaths;
+		return (totalCounterForQueriesRootPath == 0);
+	}
+
+	/**
+	 * @param term
+	 * @return if there are hits returned by BioPortal true and else false
+	 * 
+	 * @throws OntologyServiceException
+	 * @throws FileNotFoundException
+	 * @throws IOException
+	 * @throws EmailException
+	 */
+	private boolean queryBioPortal() throws OntologyServiceException,
+			FileNotFoundException, IOException, EmailException {
+		listWithHits = restrictedBps.searchAll(searchedTerm);
+
+		if (listWithHits == null) {
+			log.info("No results for " + searchedTerm);
+			// continue;
+			mailSender.sendMail("NO RESULTS RETRIEVED FROM BioPortal",
+					"BioPortal has retrived no results for the term\" "
+							+ searchedTerm
+							+ "\"\n or the server is not responding");
+
+			return true;
+		}
+		log.info(listWithHits.size() + " hits for the searched term: "
+				+ searchedTerm);
+		FileUtils.writeLines(
+				new File(Configuration.DATA_PATH.resolve(
+						"listsWithHits/" + searchedTerm.replace(" ", "_")
+								+ "_listOfHits.txt").toURI()), listWithHits);
+		return false;
 	}
 
 	public List<List<Stack<OntologyTerm>>> getListOfPaths() {
@@ -241,4 +263,5 @@ public class SearchEngine {
 	public OntologyService getRestrictedBps() {
 		return restrictedBps;
 	}
+
 }

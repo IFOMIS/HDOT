@@ -46,6 +46,7 @@ public class Recommendation {
 
 	private Stack<OntologyTerm> hitHierarchy;
 	private OWLOntology hdot;
+	private boolean includeSubclasses;
 
 	public Stack<OntologyTerm> getHitHierarchy() {
 		return hitHierarchy;
@@ -295,5 +296,12 @@ public class Recommendation {
 				owlFileThatConsinsSubclasses,
 				IRI.create(new File(Configuration.DATA_PATH.resolve(hit.getLabel()
 						+ "_subclasses.owl").toURI())));
+	}
+
+	public boolean includeSubclasses() {
+		return this.includeSubclasses;
+	}
+	public boolean setIncludeSubclasses(boolean includeOrNot) {
+		return this.includeSubclasses = includeOrNot;
 	}
 }
