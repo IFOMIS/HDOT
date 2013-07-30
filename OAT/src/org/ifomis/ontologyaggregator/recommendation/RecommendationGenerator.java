@@ -118,6 +118,12 @@ public class RecommendationGenerator {
 
 	private boolean matchedClassIsSearchedTerm;
 
+	private OntologyTerm matchedClass;
+
+	public OntologyTerm getMatchedClass() {
+		return matchedClass;
+	}
+
 	public boolean isMatchedClassIsSearchedTerm() {
 		return matchedClassIsSearchedTerm;
 	}
@@ -446,7 +452,7 @@ public class RecommendationGenerator {
 			// to collect the hierarchy and set the accessions
 			if (matchedTerm != null) {
 				log.info("_________________________________________________");
-
+				
 				matchedTerm.setURI(new URI(hdotClass.toStringID()));
 				matchedTerm.setLabel(pureLabelOfHdotClass);
 				matchedTerm.setOntologyAccession(currentOntology
@@ -459,6 +465,9 @@ public class RecommendationGenerator {
 						+ matchedTerm.getURI().toString() + "\t"
 						+ matchedTerm.getLabel());
 
+
+				matchedClass = matchedTerm;
+				
 				boolean matchedClassTheSearchedTerm = isMatchedClassTheSearchedTerm(matchedTerm);
 
 				if (matchedClassTheSearchedTerm) {
