@@ -116,6 +116,12 @@ public class RecommendationGenerator {
 
 	private Properties properties;
 
+	private boolean matchedClassIsSearchedTerm;
+
+	public boolean isMatchedClassIsSearchedTerm() {
+		return matchedClassIsSearchedTerm;
+	}
+
 	/**
 	 * Creates a RecommendationGenerator and loads the specified input ontology.
 	 * 
@@ -286,12 +292,15 @@ public class RecommendationGenerator {
 
 				if (matchedConcept != null) {
 					// return true in order to terminate
-
+					if(counterForParents==0){
+						--recommendationCounter;
+					}
 					path.clear();
 					return true;
 
 				} else {
 					log.debug("no match found");
+					
 				}
 				log.debug("____________________________________________________________________");
 			}
@@ -340,10 +349,9 @@ public class RecommendationGenerator {
 	 */
 	private boolean isMatchedClassTheSearchedTerm(OntologyTerm matchedConcept) {
 
-		boolean matchedClassIsTerm = false;
-		// TODO debug
+		matchedClassIsSearchedTerm = false;
 		if (counterForParents == 0) {
-			matchedClassIsTerm = true;
+			matchedClassIsSearchedTerm = true;
 
 			log.error("\n\n");
 			log.error("##############################################################################################################################");
@@ -352,7 +360,7 @@ public class RecommendationGenerator {
 			log.error("##############################################################################################################################");
 			log.error("\n\n");
 		}
-		return matchedClassIsTerm;
+		return matchedClassIsSearchedTerm;
 	}
 
 	/**
