@@ -62,8 +62,17 @@ public abstract class OntologyAggregatorWorkflow {
 			RecommendationGenerator rg = new RecommendationGenerator(term,
 					se.getRestrictedBps(), start);
 
-			rg.generateRecommendations(se.getListOfPaths());
-
+			boolean termAlreadyInHDOT = rg.generateRecommendations(se.getListOfPaths());
+			
+			if(termAlreadyInHDOT){
+				mailSender
+						.sendMail("OAT SHOULD NOT BE EVOKED", "The concept:"
+								+ rg.getMatchedClass()
+								+ " is already contained in HDOT");
+				StatisticsPrinter.printFinalTimeAndLogLocations(start, term);
+				return;
+			}
+				
 			// 3. sort the recommendations
 			List<Recommendation> recommendations = fiterGeneratedRecommendations(rg);
 

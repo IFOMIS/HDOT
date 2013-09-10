@@ -190,7 +190,7 @@ public class RecommendationGenerator {
 	 * @throws IOException
 	 * @throws OntologyServiceException
 	 */
-	public void generateRecommendations(
+	public boolean generateRecommendations(
 			List<List<Stack<OntologyTerm>>> listOfPathsOfAllHits)
 			throws URISyntaxException, IOException, OntologyServiceException {
 
@@ -225,12 +225,16 @@ public class RecommendationGenerator {
 					this.currentHit = path.peek();
 					// log.info("current hit=" + this.currentHit);
 					printPath(path);
-
-					if (recommend(path)) {
+					
+					int returnValue = recommend(path);
+					
+					if (returnValue == 1) {
 						++recommendationCounter;
 						// if term has been recommended do not examine next
 						// concepts
 						break;
+					} else if(returnValue == 0){
+						return true;
 					}
 				} else {
 					log.debug("path was empty");
@@ -254,6 +258,7 @@ public class RecommendationGenerator {
 			log.info(recommendationCounter
 					+ " RECOMMENDATION(S) WERE GENERATED");
 		}
+		return false;
 	}
 
 	private void printPath(Stack<OntologyTerm> path) {
@@ -273,11 +278,10 @@ public class RecommendationGenerator {
 	 * @throws IOException
 	 * @throws OntologyServiceException
 	 */
-	private boolean recommend(Stack<OntologyTerm> path)
+	private int recommend(Stack<OntologyTerm> path)
 			throws URISyntaxException, IOException, OntologyServiceException {
 
 		OntologyTerm currentCandidate = null;
-		boolean termHasBeenRecommended = false;
 
 		while (!path.isEmpty()) {
 
@@ -306,11 +310,12 @@ public class RecommendationGenerator {
 
 				if (matchedConcept != null) {
 					// return true in order to terminate
-					if (counterForParents == 0) {
+					if (matchedClassIsSearchedTerm) {
 						--recommendationCounter;
+						return 0;
 					}
 					path.clear();
-					return true;
+					return 1;
 
 				} else {
 					log.debug("no match found");
@@ -323,7 +328,7 @@ public class RecommendationGenerator {
 			path.pop();
 			++counterForParents;
 		}
-		return termHasBeenRecommended;
+		return -1;
 	}
 
 	/**
