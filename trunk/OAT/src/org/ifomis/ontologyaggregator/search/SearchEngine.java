@@ -238,13 +238,9 @@ public class SearchEngine {
 			FileNotFoundException, IOException, EmailException {
 		listWithHits = restrictedBps.searchAll(searchedTerm);
 
-		if (listWithHits == null) {
+		if (listWithHits.isEmpty()) {
 			log.info("No results for " + searchedTerm);
 			// continue;
-			mailSender.sendMail("NO RESULTS RETRIEVED FROM BioPortal",
-					"BioPortal has retrived no results for the term\" "
-							+ searchedTerm
-							+ "\"\n or the server is not responding");
 
 			return true;
 		}
