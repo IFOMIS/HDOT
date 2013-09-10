@@ -191,8 +191,8 @@ public class RecommendationGenerator {
 	 * @throws OntologyServiceException
 	 */
 	public void generateRecommendations(
-			List<List<Stack<OntologyTerm>>> listOfPathsOfAllHits) throws URISyntaxException, IOException,
-			OntologyServiceException {
+			List<List<Stack<OntologyTerm>>> listOfPathsOfAllHits)
+			throws URISyntaxException, IOException, OntologyServiceException {
 
 		// init depending if first or second run
 		hitsCounter = 0;
@@ -224,6 +224,7 @@ public class RecommendationGenerator {
 				if (!path.isEmpty()) {
 					this.currentHit = path.peek();
 					// log.info("current hit=" + this.currentHit);
+					printPath(path);
 
 					if (recommend(path)) {
 						++recommendationCounter;
@@ -252,6 +253,13 @@ public class RecommendationGenerator {
 		} else {
 			log.info(recommendationCounter
 					+ " RECOMMENDATION(S) WERE GENERATED");
+		}
+	}
+
+	private void printPath(Stack<OntologyTerm> path) {
+
+		for (OntologyTerm ontologyTerm : path) {
+			log.info(ontologyTerm.getURI() + "\t" + ontologyTerm.getLabel());
 		}
 	}
 
@@ -298,7 +306,7 @@ public class RecommendationGenerator {
 
 				if (matchedConcept != null) {
 					// return true in order to terminate
-					if(counterForParents==0){
+					if (counterForParents == 0) {
 						--recommendationCounter;
 					}
 					path.clear();
@@ -306,7 +314,7 @@ public class RecommendationGenerator {
 
 				} else {
 					log.debug("no match found");
-					
+
 				}
 				log.debug("____________________________________________________________________");
 			}
@@ -452,7 +460,7 @@ public class RecommendationGenerator {
 			// to collect the hierarchy and set the accessions
 			if (matchedTerm != null) {
 				log.info("_________________________________________________");
-				
+
 				matchedTerm.setURI(new URI(hdotClass.toStringID()));
 				matchedTerm.setLabel(pureLabelOfHdotClass);
 				matchedTerm.setOntologyAccession(currentOntology
@@ -465,9 +473,8 @@ public class RecommendationGenerator {
 						+ matchedTerm.getURI().toString() + "\t"
 						+ matchedTerm.getLabel());
 
-
 				matchedClass = matchedTerm;
-				
+
 				boolean matchedClassTheSearchedTerm = isMatchedClassTheSearchedTerm(matchedTerm);
 
 				if (matchedClassTheSearchedTerm) {

@@ -215,7 +215,12 @@ public class SearchEngine {
 		StatisticsPrinter.writeSuccessPathsInExternalFile(searchedTerm,
 				pathExtractor.getSbSuccess().toString());
 
-		log.info("explored paths in total: " + listOfPaths.size());
+		int totalExploredPaths = 0;
+		
+		for (List<Stack<OntologyTerm>> listOfPathsCurrEntry: listOfPaths) {
+			totalExploredPaths += listOfPathsCurrEntry.size();
+		}
+		log.info("explored paths in total: " + totalExploredPaths);
 
 		return (totalCounterForQueriesRootPath == 0);
 	}

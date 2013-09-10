@@ -76,7 +76,7 @@ public class RecommendationFilter {
 			} else {
 				// sort recommendations and pick the first one
 				RecommendationSorter recommendationSorter = new RecommendationSorter();
-				recommendationSorter.sortRecommendations(validRecommendations);
+				validRecommendations = recommendationSorter.sortRecommendations(validRecommendations);
 
 				log.info(validRecommendations.size()
 						+ " RECOMMENDATIONS WERE GENERATED");

@@ -294,7 +294,7 @@ public class Recommendation {
 		// }
 		ontologyManager.saveOntology(
 				owlFileThatConsinsSubclasses,
-				IRI.create(new File(Configuration.DATA_PATH.resolve(hit.getLabel()
+				IRI.create(new File(Configuration.DATA_PATH.resolve(hit.getLabel().replace(" ", "-")
 						+ "_subclasses.owl").toURI())));
 	}
 
