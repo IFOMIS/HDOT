@@ -66,7 +66,7 @@ public abstract class OntologyAggregatorWorkflow {
 			
 			if(termAlreadyInHDOT){
 				mailSender
-						.sendMail("OAT SHOULD NOT BE EVOKED", "The concept: "
+						.sendMail("OAT SHOULD NOT BE EVOKED", "searched term:" + term + "\nThe concept: "
 								+ rg.getMatchedClass()
 								+ " is already contained in HDOT");
 				StatisticsPrinter.printFinalTimeAndLogLocations(start, term);
