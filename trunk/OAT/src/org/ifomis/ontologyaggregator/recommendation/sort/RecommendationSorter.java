@@ -15,7 +15,7 @@ import org.ifomis.ontologyaggregator.recommendation.Recommendation;
  */
 public class RecommendationSorter {
 
-	public void sortRecommendations(List<Recommendation> validRecommendations) {
+	public List<Recommendation> sortRecommendations(List<Recommendation> validRecommendations) {
 		ComparatorChain comparatorChain = new ComparatorChain();
 		comparatorChain.addComparator(new ComparatorPredefinedListOfOntologies());
 		comparatorChain.addComparator(new ComparatorDefinitions());
@@ -23,6 +23,7 @@ public class RecommendationSorter {
 		comparatorChain.addComparator(new ComparatorPositionOfMatchedParent());
 		comparatorChain.addComparator(new ComparatorTotalMatchedParents());
 		Collections.sort(validRecommendations, comparatorChain);
-
+		
+		return validRecommendations;
 	}
 }

@@ -88,7 +88,7 @@ public abstract class OntologyAggregatorWorkflow {
 					hdotExtender.integrarteHitInHDOT(topRecommendation);
 					break;
 				} else {
-					mailSender.sendMail("THE USER REJECTED THE RECOMMENDATION",
+					mailSender.sendMail(term + " THE USER REJECTED THE RECOMMENDATION",
 							topRecommendation.toString());
 					recommendations.remove(0);
 				}
