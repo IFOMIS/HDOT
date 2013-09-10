@@ -225,15 +225,15 @@ public class RecommendationGenerator {
 					this.currentHit = path.peek();
 					// log.info("current hit=" + this.currentHit);
 					printPath(path);
-					
+
 					int returnValue = recommend(path);
-					
+
 					if (returnValue == 1) {
 						++recommendationCounter;
 						// if term has been recommended do not examine next
 						// concepts
 						break;
-					} else if(returnValue == 0){
+					} else if (returnValue == 0) {
 						return true;
 					}
 				} else {
@@ -277,9 +277,11 @@ public class RecommendationGenerator {
 	 * @throws URISyntaxException
 	 * @throws IOException
 	 * @throws OntologyServiceException
+	 * @return -1 if recommendation can not be generated, 0 if the term already
+	 *         exists and 1 if a recommendation can be generated
 	 */
-	private int recommend(Stack<OntologyTerm> path)
-			throws URISyntaxException, IOException, OntologyServiceException {
+	private int recommend(Stack<OntologyTerm> path) throws URISyntaxException,
+			IOException, OntologyServiceException {
 
 		OntologyTerm currentCandidate = null;
 
