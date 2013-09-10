@@ -55,6 +55,12 @@ public abstract class OntologyAggregatorWorkflow {
 			// 1. search term
 			if (searchTerm()) {
 				log.info("list of paths with hits is empty or no paths extracted");
+				mailSender
+						.sendMail(
+								term + " NO RESULTS RETRIEVED FROM BioPortal",
+							"BioPortal has retrived no results for the term\" "
+							+ term
+							+ "\"\n or the server is not responding");
 				break;
 			}
 			
