@@ -43,7 +43,7 @@ public class UserInputReader {
 	                }
 	            } while (d != null);
 	        }
-	    	notifyListenersAboutAcceptInput("no");
+//	    	notifyListenersAboutAcceptInput("no");
 	    }
 
 	    public void startListeningIncludeSubclassesInput() {
