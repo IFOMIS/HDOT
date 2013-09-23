@@ -51,9 +51,10 @@ public class OntologyAggregatorViaCommandLine extends
 		if (inputListener.isAccept()
 				&& (recommendation.getHitChildren() != null ) ) {
 			inputReader.startListeningIncludeSubclassesInput();
-		}
-		recommendation.setIncludeSubclasses(inputListener.isIncludeSubclasses());
+			recommendation.setIncludeSubclasses(inputListener.isIncludeSubclasses());
 
+			return inputListener.isIncludeSubclasses();
+		}
 		return inputListener.isAccept();
 	}
 

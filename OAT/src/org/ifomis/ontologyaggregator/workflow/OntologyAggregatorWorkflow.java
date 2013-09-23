@@ -50,7 +50,7 @@ public abstract class OntologyAggregatorWorkflow {
 
 		for (String term : terms) {
 			this.term = term;
-			
+
 			log.info("Search for term " + term + " in BioPortal");
 			// 1. search term
 			if (searchTerm()) {
@@ -58,27 +58,38 @@ public abstract class OntologyAggregatorWorkflow {
 				mailSender
 						.sendMail(
 								term + " NO RESULTS RETRIEVED FROM BioPortal",
-							"BioPortal has retrived no results for the term\" "
-							+ term
-							+ "\"\n or the server is not responding");
+								"BioPortal has retrived no results for the term\" "
+										+ term
+										+ "\"\n or the server is not responding");
 				break;
 			}
-			
+
 			// 2. generate recommendations
 			RecommendationGenerator rg = new RecommendationGenerator(term,
 					se.getRestrictedBps(), start);
 
-			boolean termAlreadyInHDOT = rg.generateRecommendations(se.getListOfPaths());
-			
-			if(termAlreadyInHDOT){
-				mailSender
-						.sendMail("OAT SHOULD NOT BE EVOKED", "searched term:" + term + "\nThe concept: "
+			int returnCode = rg.generateRecommendations(se.getListOfPaths());
+
+			if (returnCode == 0) {
+				mailSender.sendMail(
+						term + ": OAT SHOULD NOT BE EVOKED",
+						"searched term:" + term + "\nThe concept: "
 								+ rg.getMatchedClass()
 								+ " is already contained in HDOT");
 				StatisticsPrinter.printFinalTimeAndLogLocations(start, term);
 				return;
+			} else if (returnCode == 2) {
+				mailSender
+						.sendMail(
+								term
+										+ ": THE TERM WILL BE INCLUDED IN HDOT SOON",
+								"searched term:"
+										+ term
+										+ "\nThe concept will be soon included in HDOT");
+				StatisticsPrinter.printFinalTimeAndLogLocations(start, term);
+				return;
 			}
-				
+
 			// 3. sort the recommendations
 			List<Recommendation> recommendations = fiterGeneratedRecommendations(rg);
 
@@ -103,7 +114,8 @@ public abstract class OntologyAggregatorWorkflow {
 					hdotExtender.integrarteHitInHDOT(topRecommendation);
 					break;
 				} else {
-					mailSender.sendMail(term + " THE USER REJECTED THE RECOMMENDATION",
+					mailSender.sendMail(term
+							+ " THE USER REJECTED THE RECOMMENDATION",
 							topRecommendation.toString());
 					recommendations.remove(0);
 				}
@@ -114,6 +126,7 @@ public abstract class OntologyAggregatorWorkflow {
 
 	/**
 	 * Searches term in BioPortal
+	 * 
 	 * @return
 	 * @throws Exception
 	 */

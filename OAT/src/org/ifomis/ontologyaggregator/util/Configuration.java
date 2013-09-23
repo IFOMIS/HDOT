@@ -128,6 +128,23 @@ public class Configuration {
 		return ontologyManager;
 	}
 	
+	public static OWLOntologyManager mapIrisOfNotVisibleUserModules(OWLOntologyManager ontologyManager) throws IOException {
+		List<String> modulesForCuration = FileUtils.readLines(new File(
+				Configuration.MODULES_FOR_CURATION.toURI()));
+
+		for (String moduleIri : modulesForCuration) {
+				String[] moduleIriParts = moduleIri.split("/");
+				IRI ontologyIRI = IRI.create(moduleIri);
+
+				IRI documentIRI = Configuration.PATH_TO_NOT_AUTHORIZED_USER_MODULES
+						.resolve(moduleIriParts[moduleIriParts.length - 1]);
+				OWLOntologyIRIMapper iriMapper = new SimpleIRIMapper(
+						ontologyIRI, documentIRI);
+				ontologyManager.addIRIMapper(iriMapper);
+		}
+		return ontologyManager;
+	}
+	
 	public static OWLOntologyManager mapIrisOfUserModulesForCuration(OWLOntologyManager ontologyManager) throws IOException {
 		List<String> modulesSorted = FileUtils.readLines(new File(
 				Configuration.MODULES_FOR_CURATION.toURI()));

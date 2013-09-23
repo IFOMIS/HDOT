@@ -5,10 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,15 +17,12 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.util.Configuration;
 import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
-import org.semanticweb.owlapi.model.OWLOntologyIRIMapper;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.util.SimpleIRIMapper;
 
 import uk.ac.ebi.ontocat.OntologyService;
 import uk.ac.ebi.ontocat.OntologyServiceException;
@@ -168,6 +162,9 @@ public class RecommendationGenerator {
 		this.ontologyManager = Configuration
 				.mapIrisOfVisibleUserModules(ontologyManager);
 
+		this.ontologyManager = Configuration
+				.mapIrisOfUserModulesForCuration(ontologyManager);
+		
 		// Now load the local copy of hdot that include all modules
 		this.hdotOntology = ontologyManager
 				.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_AUTHORIZED);
@@ -189,16 +186,19 @@ public class RecommendationGenerator {
 	 * @throws URISyntaxException
 	 * @throws IOException
 	 * @throws OntologyServiceException
+	 * @throws OWLOntologyCreationException 
 	 */
-	public boolean generateRecommendations(
+	public int generateRecommendations(
 			List<List<Stack<OntologyTerm>>> listOfPathsOfAllHits)
-			throws URISyntaxException, IOException, OntologyServiceException {
+			throws URISyntaxException, IOException, OntologyServiceException, OWLOntologyCreationException {
 
-		// init depending if first or second run
 		hitsCounter = 0;
-
+		
 		recommendationCounter = 0;
 
+		//fake value
+		int returnValue = -100;
+		
 		// loop over hits
 		for (List<Stack<OntologyTerm>> listOfPaths : listOfPathsOfAllHits) {
 			++hitsCounter;
@@ -226,16 +226,19 @@ public class RecommendationGenerator {
 					// log.info("current hit=" + this.currentHit);
 					printPath(path);
 
-					int returnValue = recommend(path);
+					 returnValue = recommend(path);
 
 					if (returnValue == 1) {
 						++recommendationCounter;
 						// if term has been recommended do not examine next
 						// concepts
 						break;
-					} else if (returnValue == 0) {
-						return true;
-					}
+					} 
+//					else if (returnValue == 0) {
+//						return 0;
+//					} else if (returnValue == 2) {
+//						return 2;
+//					} 
 				} else {
 					log.debug("path was empty");
 					continue;
@@ -258,7 +261,7 @@ public class RecommendationGenerator {
 			log.info(recommendationCounter
 					+ " RECOMMENDATION(S) WERE GENERATED");
 		}
-		return false;
+		return returnValue;
 	}
 
 	private void printPath(Stack<OntologyTerm> path) {
@@ -278,16 +281,20 @@ public class RecommendationGenerator {
 	 * @throws IOException
 	 * @throws OntologyServiceException
 	 * @return -1 if recommendation can not be generated, 0 if the term already
-	 *         exists and 1 if a recommendation can be generated
+	 *         exists in HDOT, 1 if a recommendation can be generated and 2 if the
+	 *         term is found in one of the modules for curation.
+	 * @throws OWLOntologyCreationException 
 	 */
 	private int recommend(Stack<OntologyTerm> path) throws URISyntaxException,
-			IOException, OntologyServiceException {
+			IOException, OntologyServiceException, OWLOntologyCreationException {
 
 		OntologyTerm currentCandidate = null;
 
 		while (!path.isEmpty()) {
 
 			// iterate over all ontologies we can use it for modularization
+			// in a sorted order
+			
 			// for (OWLOntology hdotModule : hdotModules) {
 			for (int j = 0; j < sortedHdotModules.length; j++) {
 
@@ -308,7 +315,7 @@ public class RecommendationGenerator {
 				log.debug("Module: " + hdotModule.getOntologyID());
 
 				OntologyTerm matchedConcept = findMatch(currentCandidate,
-						hdotModule);
+						hdotModule, false);
 
 				if (matchedConcept != null) {
 					// return true in order to terminate
@@ -321,7 +328,12 @@ public class RecommendationGenerator {
 
 				} else {
 					log.debug("no match found");
-
+					if(counterForParents == 0){
+						boolean matchInCurationModules = checkInModulesForCuration(currentCandidate);
+						if (matchInCurationModules) {
+							return 2;
+						}
+					}
 				}
 				log.debug("____________________________________________________________________");
 			}
@@ -331,6 +343,35 @@ public class RecommendationGenerator {
 			++counterForParents;
 		}
 		return -1;
+	}
+
+	/**
+	 * @return true if a match was found in the not authorized container and
+	 *         false if not
+	 * 
+	 * @throws OWLOntologyCreationException
+	 * @throws IOException 
+	 * @throws OntologyServiceException 
+	 * @throws URISyntaxException 
+	 */
+	private boolean checkInModulesForCuration(OntologyTerm currentCandidate) throws OWLOntologyCreationException, URISyntaxException, OntologyServiceException, IOException {
+				
+//		OWLOntologyManager ontoManager = OWLManager.createOWLOntologyManager();
+		OWLOntology notAuthorizedContainer = ontologyManager
+				.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_NOT_AUTHORIZED);
+		Set<OWLOntology> modulesForCuration = notAuthorizedContainer
+				.getImports();
+		
+//		ontologyManager.removeOntology(notAuthorizedContainer);
+		
+		for (OWLOntology moduleForCuration : modulesForCuration) {
+			 OntologyTerm matchedTerm = findMatch(currentCandidate, moduleForCuration, true);
+			 
+			 if(matchedTerm != null){
+				 return true;
+			 }
+		}
+		return false;	 
 	}
 
 	/**
@@ -392,13 +433,16 @@ public class RecommendationGenerator {
 	 *            the candidate term we are looking at
 	 * @param currentOntology
 	 *            the current ontology we are looking at
+	 * @param currentOntologyIsModuleForCuration
+	 *            true if the given ontology is a module for curation
+	 * 
 	 * @return the concept where the term will be integrated under
 	 * @throws URISyntaxException
 	 * @throws OntologyServiceException
 	 * @throws IOException
 	 */
 	private OntologyTerm findMatch(OntologyTerm currentCandidate,
-			OWLOntology currentOntology) throws URISyntaxException,
+			OWLOntology currentOntology, boolean currentOntologyIsModuleForCuration) throws URISyntaxException,
 			OntologyServiceException, IOException {
 
 		numMatchedParents = 1;
@@ -481,9 +525,12 @@ public class RecommendationGenerator {
 						+ matchedTerm.getLabel());
 
 				matchedClass = matchedTerm;
-
-				boolean matchedClassTheSearchedTerm = isMatchedClassTheSearchedTerm(matchedTerm);
-
+				
+				boolean matchedClassTheSearchedTerm = false;
+				
+				if(!currentOntologyIsModuleForCuration)
+					matchedClassTheSearchedTerm = isMatchedClassTheSearchedTerm(matchedTerm);
+				
 				if (matchedClassTheSearchedTerm) {
 					break;
 				}
