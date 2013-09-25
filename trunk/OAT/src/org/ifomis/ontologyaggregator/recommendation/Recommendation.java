@@ -18,6 +18,7 @@ import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 
+import uk.ac.ebi.ontocat.OntologyServiceException;
 import uk.ac.ebi.ontocat.OntologyTerm;
 
 /**
@@ -136,7 +137,11 @@ public class Recommendation {
 		messageBuffer.append(hit.getURI().toString());
 		messageBuffer.append("\t");
 		messageBuffer.append(hit.getLabel());
-
+		try {
+			messageBuffer.append("\n\n\t\t\tsource ontology: " + hit.getOntology().getLabel());
+		} catch (OntologyServiceException e) {
+			e.printStackTrace();
+		}
 		messageBuffer.append("\n\n\t\t\tdefinotion(s):\n\t\t");
 
 		for (String def : hitDefinitions) {
