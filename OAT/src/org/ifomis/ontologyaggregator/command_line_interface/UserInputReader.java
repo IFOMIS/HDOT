@@ -26,7 +26,7 @@ public class UserInputReader {
 	    
 	    public void startListeningAcceptInput() {
 	        Console console = System.console();
-//	        System.out.println("console: " + console);
+	        System.out.println("console: " + console);
 	        if (console != null) {
 
 	        	String d = null;

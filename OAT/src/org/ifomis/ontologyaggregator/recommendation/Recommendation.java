@@ -48,6 +48,7 @@ public class Recommendation {
 	private Stack<OntologyTerm> hitHierarchy;
 	private OWLOntology hdot;
 	private boolean includeSubclasses;
+	private String importedFrom;
 
 	public Stack<OntologyTerm> getHitHierarchy() {
 		return hitHierarchy;
@@ -58,7 +59,7 @@ public class Recommendation {
 			List<OWLClass> hierarchy, Stack<OntologyTerm> hierarchyOfHit,
 			OWLOntology hdot_all, OWLOntology hdotModule, int parentNo,
 			OntologyTerm matchedClass, List<String> definitions,
-			List<String> synonyms, List<OntologyTerm> childrenOfHit, int matchedParents) {
+			List<String> synonyms, List<OntologyTerm> childrenOfHit, int matchedParents, String importedFrom) {
 
 		this.matchedParents = matchedParents;
 		this.hitNo = hitNo;
@@ -75,7 +76,9 @@ public class Recommendation {
 		this.hitSynonyms = synonyms;
 		this.hitChildren = childrenOfHit;
 		this.hitHierarchy = hierarchyOfHit;
-
+		
+		//back pointer to hdot module the parent was find in
+		this.importedFrom = importedFrom;
 	}
 
 	@Override
@@ -172,7 +175,9 @@ public class Recommendation {
 
 		messageBuffer
 				.append("\n\n\t\tThe hdot module where the match was found is: ");
-		messageBuffer.append(hdotModule.getOntologyID().getOntologyIRI().toString());
+//		messageBuffer.append(hdotModule.getOntologyID().getOntologyIRI().toString());
+		messageBuffer.append(importedFrom);
+		
 		messageBuffer
 				.append("\n==========================================================================");
 		messageBuffer
@@ -297,10 +302,10 @@ public class Recommendation {
 		// pathToModules += partsOfPath[i] + "/";
 		//
 		// }
-		ontologyManager.saveOntology(
-				owlFileThatConsinsSubclasses,
-				IRI.create(new File(Configuration.DATA_PATH.resolve(hit.getLabel().replace(" ", "-")
-						+ "_subclasses.owl").toURI())));
+//		ontologyManager.saveOntology(
+//				owlFileThatConsinsSubclasses,
+//				IRI.create(new File(Configuration.DATA_PATH.resolve(hit.getLabel().replace(" ", "-")
+//						+ "_subclasses.owl").toURI())));
 	}
 
 	public boolean includeSubclasses() {
@@ -308,5 +313,15 @@ public class Recommendation {
 	}
 	public boolean setIncludeSubclasses(boolean includeOrNot) {
 		return this.includeSubclasses = includeOrNot;
+	}
+
+	public String getURIOfModuleForURIGeneration() {
+		String uriOfModuleForURIGeneration;
+		if(!importedFrom.isEmpty()){
+			uriOfModuleForURIGeneration = importedFrom;
+		}else{
+			uriOfModuleForURIGeneration = hdotModule.getOntologyID().getOntologyIRI().toString();
+		}
+		return uriOfModuleForURIGeneration;
 	}
 }
