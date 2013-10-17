@@ -148,9 +148,9 @@ public class RecommendationGenerator {
 		this.listOfRecsPossibleInCoreOfHDOT = new ArrayList<>();
 		this.listOfInCoreNotLeafMatches = new ArrayList<>();
 		this.listImportedNotLeafMatches = new ArrayList<>();
-		this.properties = new Properties();
-		this.properties
-				.load(new FileInputStream("config/aggregator.properties"));
+//		this.properties = new Properties();
+//		this.properties
+//				.load(new FileInputStream("config/aggregator.properties"));
 
 		this.importedOntologies = FileUtils.readLines(new File(
 				Configuration.IMPORTED_ONTOLOGIES_FILE.toURI()));
@@ -381,12 +381,13 @@ public class RecommendationGenerator {
 	 *            the module where the match was found
 	 * @param matchedConcept
 	 *            class that matches a parent of the current hit
+	 * @param importedFrom 
 	 * @param termHasBeenRecommended
 	 * @return true if termHasBeenRecommended
 	 * @throws OntologyServiceException
 	 */
 	private Recommendation buildRecommendaton(OWLOntology hdotModule,
-			OntologyTerm matchedConcept) throws OntologyServiceException {
+			OntologyTerm matchedConcept, String importedFrom) throws OntologyServiceException {
 
 		List<String> definitions = ontologyService
 				.getDefinitions(this.currentHit);
@@ -399,7 +400,7 @@ public class RecommendationGenerator {
 				currentHit, conceptIdsMatch, labelsMatch, searchedTerm,
 				hierarchyOfHdotClass, hierarchyOfHit, hdotOntology, hdotModule,
 				counterForParents, matchedConcept, definitions, synonyms,
-				childrenOfHit, numMatchedParents);
+				childrenOfHit, numMatchedParents, importedFrom);
 
 		return recommendation;
 	}
@@ -511,7 +512,10 @@ public class RecommendationGenerator {
 			// to collect the hierarchy and set the accessions
 			if (matchedTerm != null) {
 				log.info("_________________________________________________");
-
+				
+				
+				String importedFrom = getImportedFromAnnotation(annotations);
+				
 				matchedTerm.setURI(new URI(hdotClass.toStringID()));
 				matchedTerm.setLabel(pureLabelOfHdotClass);
 				matchedTerm.setOntologyAccession(currentOntology
@@ -544,7 +548,7 @@ public class RecommendationGenerator {
 					continue;
 				} else {
 					listOfRecommendations.add(buildRecommendaton(
-							currentOntology, matchedTerm));
+							currentOntology, matchedTerm, importedFrom));
 				}
 
 				// in case a match was found quit the loop for the classes
@@ -557,6 +561,8 @@ public class RecommendationGenerator {
 		}
 		return matchedTerm;
 	}
+
+
 
 	private boolean extensionConditionsAreSatisfied(
 			OWLOntology currentOntology, OWLClass hdotClass,
@@ -571,7 +577,7 @@ public class RecommendationGenerator {
 				Configuration.CORE_MODULE_FILE.toURI()))));
 
 		Recommendation recommendation = buildRecommendaton(currentOntology,
-				matchedTerm);
+				matchedTerm, "");
 
 		// if the match is found in hdot core and the matched class is
 		// not a leaf node continue with the next class
@@ -738,7 +744,19 @@ public class RecommendationGenerator {
 		}
 		return pureLabelOfClass;
 	}
-
+	
+	private String getImportedFromAnnotation(Set<OWLAnnotation> annotations) {		
+		String importedFromAnnotation = "";
+		for (OWLAnnotation owlAnnotation : annotations) {
+			
+			// get just the rdfs: label annotations
+			if (owlAnnotation.toString().contains("IAO_0000412")) {
+				importedFromAnnotation = owlAnnotation.getValue().toString().split("\"")[1];
+			}
+		}
+		return importedFromAnnotation;
+	}
+	
 	public List<Recommendation> getListOfRecommendations() {
 		return listOfRecommendations;
 	}
@@ -767,4 +785,36 @@ public class RecommendationGenerator {
 		return ontologyService;
 	}
 
+	public static void main(String[] args) throws IOException, OWLOntologyCreationException {
+		
+		// 0. load configuration
+				Configuration.getInstance();
+		// Get hold of an ontology manager
+			OWLOntologyManager ontologyManager = OWLManager.createOWLOntologyManager();
+
+				ontologyManager = Configuration
+						.mapIrisOfVisibleUserModules(ontologyManager);
+
+				ontologyManager = Configuration
+						.mapIrisOfUserModulesForCuration(ontologyManager);
+				
+				// Now load the local copy of hdot that include all modules
+				OWLOntology hdotOntologi = ontologyManager
+						.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_AUTHORIZED);
+
+				log.info("Loaded ontology: " + hdotOntologi);
+
+				List<OWLOntology> hdotModules = ontologyManager
+						.getSortedImportsClosure(hdotOntologi);
+				for (OWLOntology module : hdotModules) {
+					Set<OWLClass> classes = module.getClassesInSignature();
+					
+					for (OWLClass owlClass : classes) {
+						Set<OWLAnnotation> annotations = owlClass.getAnnotations(module);
+						for (OWLAnnotation owlAnnotation : annotations) {
+							System.out.println(owlAnnotation);
+						}
+					}
+				}
+	}
 }

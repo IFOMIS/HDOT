@@ -47,20 +47,24 @@ public abstract class OntologyAggregatorWorkflow {
 
 	public void start(List<String> terms, String userId, boolean userRights)
 			throws Exception {
-
+		
+		boolean askForNewInput = false;
+		
 		for (String term : terms) {
 			this.term = term;
 
 			log.info("Search for term " + term + " in BioPortal");
 			// 1. search term
 			if (searchTerm()) {
-				log.info("list of paths with hits is empty or no paths extracted");
+				log.info("list of hits is empty or no paths were extracted");
 				mailSender
 						.sendMail(
 								term + " NO RESULTS RETRIEVED FROM BioPortal",
 								"BioPortal has retrived no results for the term\" "
 										+ term
 										+ "\"\n or the server is not responding");
+				//TODO jump to the beginning
+				askForNewInput = true;
 				break;
 			}
 
@@ -95,7 +99,7 @@ public abstract class OntologyAggregatorWorkflow {
 
 			if (recommendations.isEmpty()) {
 				log.info("NO RECOMMENDATIONS ARE GENERATED FOR THE TERM: "
-						+ term);
+						+ term);				
 				break;
 			}
 			while (!recommendations.isEmpty()) {
@@ -120,6 +124,9 @@ public abstract class OntologyAggregatorWorkflow {
 					recommendations.remove(0);
 				}
 			}
+		}
+		if(askForNewInput){
+			log.info("\n ***Please check the spelling of the term you search or try with a synonym.***");
 		}
 		StatisticsPrinter.printFinalTimeAndLogLocations(start, term);
 	}

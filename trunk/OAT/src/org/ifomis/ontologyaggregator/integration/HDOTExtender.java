@@ -87,6 +87,8 @@ public class HDOTExtender {
 
 	private OntologyService ontologyService;
 
+	private Recommendation acceptedRecommendation;
+
 	public HDOTExtender(OntologyService ontologyService, String userID,
 			boolean userRights) throws OntologyServiceException, IOException,
 			OWLOntologyStorageException, URISyntaxException,
@@ -106,7 +108,9 @@ public class HDOTExtender {
 			throws OWLOntologyStorageException, OWLOntologyCreationException,
 			URISyntaxException, HdotExtensionException, IOException,
 			OntologyServiceException {
-
+		
+		this.acceptedRecommendation = acceptedRecommendation;
+		
 		this.uriManager.checkURIs(acceptedRecommendation);
 
 		initNewModule(acceptedRecommendation);
@@ -250,6 +254,10 @@ public class HDOTExtender {
 
 		integrateOriginalId(newClass);
 		log.debug("original id is integrated");
+		
+		integrateHDOTModule(newClass);
+		log.debug("HDOT module annotation is integrated");
+		
 		if (hdotVerifier.verifyOntology(newModule)) {
 			log.debug("extended ontology is verified");
 
@@ -352,6 +360,33 @@ public class HDOTExtender {
 		ontologyManager.applyChange(new AddAxiom(newModule, ax));
 	}
 
+	
+	/**
+	 * Integrates the importedFrom annotation. The value is the module URI where
+	 * the matching parent was found.
+	 * 
+	 * @param newClass
+	 */
+	private void integrateHDOTModule(OntologyTerm newClass) {
+
+//		String value = "";
+//		
+//		if(acceptedRecommendation.getURIOfModuleForURIGeneration().equals("")){
+//			value =acceptedRecommendation.getHdotModule().getOntologyID().getOntologyIRI().toString();
+//		}else{
+//			value = acceptedRecommendation.getURIOfModuleForURIGeneration();
+//		}
+//		
+		OWLAnnotation importedFromAnno = dataFactory.getOWLAnnotation(dataFactory
+				.getOWLAnnotationProperty(IRI
+						.create("http://purl.obolibrary.org/obo/IAO_0000412")),
+				dataFactory.getOWLLiteral(acceptedRecommendation.getURIOfModuleForURIGeneration()));
+		
+		OWLAxiom ax = dataFactory.getOWLAnnotationAssertionAxiom(
+				hitForIntegration.getIRI(), importedFromAnno);
+		ontologyManager.applyChange(new AddAxiom(newModule, ax));
+	}
+	
 	/**
 	 * Saves the ontology administrated by the ontology manager. This method
 	 * should be used when the user is an expert.

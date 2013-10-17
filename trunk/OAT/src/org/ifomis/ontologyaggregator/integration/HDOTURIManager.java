@@ -51,12 +51,21 @@ public class HDOTURIManager {
 	 * @throws IOException
 	 */
 	public String generateNextHdotUri() throws IOException {
-		String hdotModuleIRI = acceptedRecommendation.getHdotModule()
-				.getOntologyID().getOntologyIRI().toString();
+		
+//		String hdotModuleIRI = acceptedRecommendation.getHdotModule()
+//				.getOntologyID().getOntologyIRI().toString();
 
+		String hdotModuleIRI = acceptedRecommendation.getURIOfModuleForURIGeneration();
+			
+		System.out.println(" hdotModuleIRI: " +hdotModuleIRI);
 		String[] hdotModules = hdotModuleIRI.split("/");
 		String hdotModule = hdotModules[hdotModules.length - 1];
-
+		
+//		if(hdotModule.contains("owl")){
+//			System.out.println("contains owl");
+//			System.out.println("###---- " + hdotModule);
+//			hdotModule = hdotModule.split("\\.")[0].toUpperCase();
+//		}
 		String newHdotUri = uriGenerator.generateURI(hdotModule);
 		return newHdotUri;
 	}

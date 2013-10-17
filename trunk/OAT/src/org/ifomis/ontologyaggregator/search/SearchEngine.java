@@ -103,8 +103,6 @@ public class SearchEngine {
 
 		boolean failed = false;
 
-		log.info("Search for term: " + term);
-
 		failed = queryBioPortal();
 
 		if (failed) {
