@@ -37,6 +37,10 @@ public abstract class OntologyAggregatorWorkflow {
 
 	private SearchEngine se;
 
+	private List<Recommendation> recommendations;
+
+	private List<Recommendation> potentialRecommendations;
+
 	public OntologyAggregatorWorkflow() throws Exception {
 		this.start = System.currentTimeMillis();
 
@@ -47,9 +51,9 @@ public abstract class OntologyAggregatorWorkflow {
 
 	public void start(List<String> terms, String userId, boolean userRights)
 			throws Exception {
-		
+
 		boolean askForNewInput = false;
-		
+
 		for (String term : terms) {
 			this.term = term;
 
@@ -63,7 +67,7 @@ public abstract class OntologyAggregatorWorkflow {
 								"BioPortal has retrived no results for the term\" "
 										+ term
 										+ "\"\n or the server is not responding");
-				//TODO jump to the beginning
+				// TODO jump to the beginning
 				askForNewInput = true;
 				break;
 			}
@@ -95,12 +99,18 @@ public abstract class OntologyAggregatorWorkflow {
 			}
 
 			// 3. sort the recommendations
-			List<Recommendation> recommendations = fiterGeneratedRecommendations(rg);
+			fiterGeneratedRecommendations(rg);
 
 			if (recommendations.isEmpty()) {
-				log.info("NO RECOMMENDATIONS ARE GENERATED FOR THE TERM: "
-						+ term);				
-				break;
+				if (potentialRecommendations.isEmpty()) {
+					log.info("NO RECOMMENDATIONS ARE GENERATED FOR THE TERM: "
+							+ term);
+					break;
+				} else {
+					log.info("A matched concept was found but the integration in HDOT is not possible yet. The curators are informed "
+							+ term);
+					break;
+				}
 			}
 			while (!recommendations.isEmpty()) {
 
@@ -125,7 +135,7 @@ public abstract class OntologyAggregatorWorkflow {
 				}
 			}
 		}
-		if(askForNewInput){
+		if (askForNewInput) {
 			log.info("\n ***Please check the spelling of the term you search or try with a synonym.***");
 		}
 		StatisticsPrinter.printFinalTimeAndLogLocations(start, term);
@@ -156,16 +166,18 @@ public abstract class OntologyAggregatorWorkflow {
 	 */
 	public abstract void displayRecommendation(Recommendation recommendation);
 
-	private List<Recommendation> fiterGeneratedRecommendations(
-			RecommendationGenerator rg) throws OWLOntologyCreationException,
-			OWLOntologyStorageException, FileNotFoundException, IOException,
-			EmailException {
+	private void fiterGeneratedRecommendations(RecommendationGenerator rg)
+			throws OWLOntologyCreationException, OWLOntologyStorageException,
+			FileNotFoundException, IOException, EmailException {
 		RecommendationFilter rf = new RecommendationFilter(term,
 				rg.getListOfRecommendations(),
 				rg.getListOfRecsPossibleInCoreOfHDOT(),
 				rg.getListImportedNotLeafMatches(),
 				rg.getListOfInCoreNotLeafMatches());
 
-		return rf.checkValidRecommendations();
+		rf.checkValidRecommendations();
+
+		recommendations = rf.getValidRecommendations();
+		potentialRecommendations = rf.getPotentialRecommendations();
 	}
 }

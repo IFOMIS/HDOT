@@ -247,17 +247,7 @@ public class RecommendationGenerator {
 
 			}
 		}
-		if (recommendationCounter == 0) {
-			log.info("NO SUITABLE RECOMMENDATION WAS FOUND!\n");
-
-			// mailSender
-			// .sendMail(
-			// "NO SUITABLE RECOMMENDATION WAS FOUND!",
-			// "Neither valid nor potentail recommendations were generated for the serched term "
-			// + searchedTerm
-			// +
-			// " because no match of a parent with HDOT class was recognized. ");
-		} else {
+		if (recommendationCounter > 0){
 			log.info(recommendationCounter
 					+ " RECOMMENDATION(S) WERE GENERATED");
 		}
