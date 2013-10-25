@@ -80,15 +80,16 @@ import com.thoughtworks.xstream.mapper.MapperWrapper;
  * 
  * @author Tomasz Adamusiak, Morris Swertz
  */
-public class BioportalOntologyService extends AbstractOntologyService implements OntologyService,
-Serializable {
+public class BioportalOntologyService extends AbstractOntologyService implements
+		OntologyService, Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/** The query url. */
 	private URL queryURL;
 
 	/** The Constant log. */
-	private static final Logger log = Logger.getLogger(BioportalOntologyService.class.getName());
+	private static final Logger log = Logger
+			.getLogger(BioportalOntologyService.class.getName());
 
 	/** The sw xml. */
 	private transient StringWriter swXML = null;
@@ -105,28 +106,26 @@ Serializable {
 	// transformations that strip surrounding xml markup
 	/** The Constant xsltBEAN. */
 	private static final String xsltBEAN = "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform'"
-		+ " version='1.0'>"
-		+ "<xsl:output method='xml' encoding='UTF-8'/>"
-		+ "<xsl:template match='/'>"
-		+ "<xsl:copy-of select='//data/classBean'/>"
-		+ "<xsl:copy-of select='//data/ontologyBean'/>"
-		+ "<xsl:copy-of select='//searchResultList'/>"
-		+ "<xsl:copy-of select='/success/data/list'/>"
-		+ "<xsl:copy-of select='//classBeanResultList'/>"
-		+ "</xsl:template>"
-		+ "</xsl:stylesheet>";
+			+ " version='1.0'>"
+			+ "<xsl:output method='xml' encoding='UTF-8'/>"
+			+ "<xsl:template match='/'>"
+			+ "<xsl:copy-of select='//data/classBean'/>"
+			+ "<xsl:copy-of select='//data/ontologyBean'/>"
+			+ "<xsl:copy-of select='//searchResultList'/>"
+			+ "<xsl:copy-of select='/success/data/list'/>"
+			+ "<xsl:copy-of select='//classBeanResultList'/>"
+			+ "</xsl:template>" + "</xsl:stylesheet>";
 
 	/** The Constant xsltSUCCESS. */
 	private static final String xsltSUCCESS = "<xsl:stylesheet xmlns:xsl='http://www.w3.org/1999/XSL/Transform'"
-		+ " version='1.0'>"
-		+ "<xsl:output method='xml' encoding='UTF-8'/>"
-		+ "<xsl:template match='/'>"
-		+ "<success>"
-		+ "<xsl:copy-of select='success/accessedResource'/>"
-		+ "<xsl:copy-of select='success/accessDate'/>"
-		+ "<xsl:copy-of select='success/data/page/numPages'/>"
-		+ "</success>"
-		+ "</xsl:template>" + "</xsl:stylesheet>";
+			+ " version='1.0'>"
+			+ "<xsl:output method='xml' encoding='UTF-8'/>"
+			+ "<xsl:template match='/'>"
+			+ "<success>"
+			+ "<xsl:copy-of select='success/accessedResource'/>"
+			+ "<xsl:copy-of select='success/accessDate'/>"
+			+ "<xsl:copy-of select='success/data/page/numPages'/>"
+			+ "</success>" + "</xsl:template>" + "</xsl:stylesheet>";
 
 	/** The Constant urlBASE. */
 	private static final String urlBASE = "http://rest.bioontology.org/bioportal/";
@@ -140,8 +139,7 @@ Serializable {
 	public BioportalOntologyService(String apikey) {
 		// Now map the xml to the java beans
 		// FIXME level?
-		urlAddOn = "&apikey=" + apikey
-		+ "&level=1";
+		urlAddOn = "&apikey=" + apikey + "&level=1";
 		configureXstream();
 	}
 
@@ -165,9 +163,11 @@ Serializable {
 				return new MapperWrapper(next) {
 					@SuppressWarnings("rawtypes")
 					@Override
-					public boolean shouldSerializeMember(Class definedIn, String fieldName) {
-						if (definedIn != Object.class){
-							return super.shouldSerializeMember(definedIn,fieldName);
+					public boolean shouldSerializeMember(Class definedIn,
+							String fieldName) {
+						if (definedIn != Object.class) {
+							return super.shouldSerializeMember(definedIn,
+									fieldName);
 						} else {
 							log.debug("Ignoring unexpected field <" + fieldName
 									+ "> in BioPortal xml output from "
@@ -189,7 +189,8 @@ Serializable {
 		xstream.omitField(InstanceBean.class, "instanceType");
 		// xstream.alias("searchResultList", SearchResultListBean.class);
 		xstream.addImplicitCollection(EntryBean.class, "UnmodifiableCollection");
-		xstream.addImplicitCollection(EntryBean.class, "strings", "string", String.class);
+		xstream.addImplicitCollection(EntryBean.class, "strings", "string",
+				String.class);
 		// xstream.addImplicitCollection(SearchResultListBean.class, "terms");
 		xstream.alias("searchResultList", List.class);
 		xstream.alias("classBeanResultList", Set.class);
@@ -209,8 +210,8 @@ Serializable {
 	 * @throws OntologyServiceException
 	 *             the ontology service exception
 	 */
-	private void processConceptUrl(String ontologyAccession, String termAccession)
-	throws OntologyServiceException {
+	private void processConceptUrl(String ontologyAccession,
+			String termAccession) throws OntologyServiceException {
 		processServiceURL("virtual/ontology/", ontologyAccession, termAccession);
 	}
 
@@ -229,20 +230,21 @@ Serializable {
 	// }
 
 	private void processPathUrl(String ontologyAccession, String termAccession)
-	throws OntologyServiceException {
+			throws OntologyServiceException {
 		processServiceURL("virtual/rootpath/", ontologyAccession, termAccession);
 	}
 
 	// Adding conceptid does not work for hierarchy services
 	// so you cannot pass urls as concept ids!
 	// this is a temporary workaround until BP guys fix it
-	private boolean temporarayBioportalFix(String signature, String termAccession) {
+	private boolean temporarayBioportalFix(String signature,
+			String termAccession) {
 		if (signature.contains("parents") || signature.contains("children")
 				|| signature.contains("rootpath")) {
 			try {
 				new URL(termAccession);
 				throw new UnsupportedOperationException(
-				"Currentlly URL concept ids not supported for hierarchy services");
+						"Currentlly URL concept ids not supported for hierarchy services");
 			} catch (MalformedURLException e) {
 				// it's not a URL so do nothing
 			}
@@ -251,18 +253,20 @@ Serializable {
 		return true;
 	}
 
-	private void processServiceURL(String signature, String ontologyID, String termAccession)
-	throws OntologyServiceException {
+	private void processServiceURL(String signature, String ontologyID,
+			String termAccession) throws OntologyServiceException {
 		try {
-			if (!termAccession.equals("") && temporarayBioportalFix(signature, termAccession)) {
-				termAccession = "?conceptid=" + URLEncoder.encode(termAccession, "UTF-8");
+			if (!termAccession.equals("")
+					&& temporarayBioportalFix(signature, termAccession)) {
+				termAccession = "?conceptid="
+						+ URLEncoder.encode(termAccession, "UTF-8");
 			}
 			// temporary for the fix, otherwise prepend after ontology + "/?"
 			else {
 				termAccession += "?";
 			}
-			this.queryURL = new URL(urlBASE + signature + ontologyID + "/" + termAccession
-					+ urlAddOn);
+			this.queryURL = new URL(urlBASE + signature + ontologyID + "/"
+					+ termAccession + urlAddOn);
 			transformRESTXML();
 		} catch (MalformedURLException e) {
 			throw new OntologyServiceException(e);
@@ -271,11 +275,12 @@ Serializable {
 		}
 	}
 
-	private void processGetAllURL(String ontologyAccession, Integer pageSize, Integer pageNum)
-	throws OntologyServiceException {
+	private void processGetAllURL(String ontologyAccession, Integer pageSize,
+			Integer pageNum) throws OntologyServiceException {
 		try {
-			this.queryURL = new URL(urlBASE + "virtual/ontology/" + ontologyAccession
-					+ "/all?pagesize=" + pageSize + "&pagenum=" + pageNum + urlAddOn);
+			this.queryURL = new URL(urlBASE + "virtual/ontology/"
+					+ ontologyAccession + "/all?pagesize=" + pageSize
+					+ "&pagenum=" + pageNum + urlAddOn);
 			transformRESTXML();
 		} catch (MalformedURLException e) {
 			throw new OntologyServiceException(e);
@@ -303,11 +308,12 @@ Serializable {
 			// colon in the begining will crash the service
 			keyword = keyword.replaceFirst("$:", "");
 			keyword = URLEncoder.encode(keyword, "UTF-8");
-			this.queryURL = new URL(urlBASE + "search/" + keyword + "/?maxnumhits=100"
-					+ urlAddOn + processSearchOptions(options) + "&ontologyids="
+			this.queryURL = new URL(urlBASE + "search/" + keyword
+					+ "/?maxnumhits=100" + urlAddOn
+					+ processSearchOptions(options) + "&ontologyids="
 					+ ontologyAccession);
 			transformRESTXML();
-			
+
 		} catch (MalformedURLException e) {
 			throw new OntologyServiceException(e);
 		} catch (UnsupportedEncodingException e) {
@@ -322,14 +328,16 @@ Serializable {
 	 * @throws OntologyServiceException
 	 * 
 	 */
-	private void processSearchUrl(String ontologyAccession, String termAccession, String query,
-			SearchOptions[] options) throws OntologyServiceException {
+	private void processSearchUrl(String ontologyAccession,
+			String termAccession, String query, SearchOptions[] options)
+			throws OntologyServiceException {
 		try {
 			query = URLEncoder.encode(query, "UTF-8");
 			String subtreeSetting = "&subtreerootconceptid="
-				+ URLEncoder.encode(termAccession, "UTF-8");
-			this.queryURL = new URL(urlBASE + "search/" + query + "/?maxnumhits=10000000"
-					+ urlAddOn + processSearchOptions(options) + "&ontologyids="
+					+ URLEncoder.encode(termAccession, "UTF-8");
+			this.queryURL = new URL(urlBASE + "search/" + query
+					+ "/?maxnumhits=10000000" + urlAddOn
+					+ processSearchOptions(options) + "&ontologyids="
 					+ ontologyAccession + subtreeSetting);
 			transformRESTXML();
 		} catch (MalformedURLException e) {
@@ -342,7 +350,8 @@ Serializable {
 
 	private String processSearchOptions(SearchOptions[] options) {
 		String val = "";
-		List<SearchOptions> al = new ArrayList<SearchOptions>(Arrays.asList(options));
+		List<SearchOptions> al = new ArrayList<SearchOptions>(
+				Arrays.asList(options));
 		if (al.contains(SearchOptions.INCLUDE_PROPERTIES)) {
 			val += "&includeproperties=1";
 		} else {
@@ -366,13 +375,15 @@ Serializable {
 	 * @throws OntologyServiceException
 	 *             the ontology service exception
 	 */
-	private void processOntologyUrl(String ontologyAccession) throws OntologyServiceException {
+	private void processOntologyUrl(String ontologyAccession)
+			throws OntologyServiceException {
 		processServiceURL("virtual/ontology/", ontologyAccession, "");
 	}
 
 	private void processOntologyUrl() throws OntologyServiceException {
 		try {
-			this.queryURL = new URI(urlBASE + "ontologies/?" + urlAddOn).toURL();
+			this.queryURL = new URI(urlBASE + "ontologies/?" + urlAddOn)
+					.toURL();
 			transformRESTXML();
 		} catch (MalformedURLException e) {
 			throw new OntologyServiceException(e);
@@ -405,15 +416,16 @@ Serializable {
 	 * @throws OntologyServiceException
 	 *             the ontology service exception
 	 */
-	private void searchConceptIDThroughLabel(String ontologyAccession, String secondaryTermAccession)
-	throws OntologyServiceException {
+	private void searchConceptIDThroughLabel(String ontologyAccession,
+			String secondaryTermAccession) throws OntologyServiceException {
 		processSearchUrl(ontologyAccession, secondaryTermAccession,
 				SearchOptions.INCLUDE_PROPERTIES);
 		// bioportal id for the concept found or exception thrown already
 		if (this.getSearchResults().size() == 0) {
 			throw new OntologyServiceException("Term not found");
 		}
-		processConceptUrl(ontologyAccession, this.getSearchResults().get(0).getAccession());
+		processConceptUrl(ontologyAccession, this.getSearchResults().get(0)
+				.getAccession());
 	}
 
 	/**
@@ -423,6 +435,47 @@ Serializable {
 	 *             the ontology service exception
 	 */
 	private void transformRESTXML() throws OntologyServiceException {
+
+		// ##############################
+		//
+		// try {
+		// DocumentBuilderFactory dbFactory = DocumentBuilderFactory
+		// .newInstance();
+		// DocumentBuilder db = dbFactory.newDocumentBuilder();
+		// db.setEntityResolver(new EntityResolver() {
+		//
+		// @Override
+		// public InputSource resolveEntity(String publicId,
+		// String systemId) throws SAXException, IOException {
+		// return null; // Never resolve any IDs
+		// }
+		// });
+		//
+		// System.out.println("BUILDING DOM");
+		// FileUtils.write(new File("data/restxmls/tmp.xml"), getCachedQuery());
+		//
+		// Document doc = db.parse(new
+		// FileInputStream("data/restxmls/tmp.xml"));
+		//
+		// // buffer rest output
+		// // String buffer = getCachedQuery();
+		// TransformerFactory transFact = TransformerFactory.newInstance();
+		// // transform to results ConceptBean, SearchResultListBean,
+		// // classBeanResultList
+		// Source sBEAN = new StreamSource(new StringReader(xsltBEAN));
+		// Transformer trans = transFact.newTransformer(sBEAN);
+		// swXML = new StringWriter();
+		//
+		// trans.transform(new DOMSource(doc.getDocumentElement()),
+		// new StreamResult(swXML));
+		//
+		// System.out.println("RUNNING TRANSFORM");
+		//
+		// } catch (Exception e) {
+		// e.printStackTrace();
+		// }
+		// ##############################
+
 		try {
 			// buffer rest output
 			String buffer = getCachedQuery();
@@ -432,12 +485,29 @@ Serializable {
 			Source sBEAN = new StreamSource(new StringReader(xsltBEAN));
 			Transformer trans = transFact.newTransformer(sBEAN);
 			swXML = new StringWriter();
-			trans.transform(new StreamSource(new StringReader(buffer)), new StreamResult(swXML));
+
+			long startTime = System.currentTimeMillis();
+
+			trans.transform(new StreamSource(new StringReader(buffer)),
+					new StreamResult(swXML));
+
+			long stopTime = System.currentTimeMillis();
+			long elapsedTime = stopTime - startTime;
+			System.out.println(" xsltBean: " + elapsedTime);
+			long startTime1 = System.currentTimeMillis();
+
 			// transform to status SuccessBean
 			Source sSUCCESS = new StreamSource(new StringReader(xsltSUCCESS));
 			trans = transFact.newTransformer(sSUCCESS);
+
 			metaXML = new StringWriter();
-			trans.transform(new StreamSource(new StringReader(buffer)), new StreamResult(metaXML));
+			trans.transform(new StreamSource(new StringReader(buffer)),
+					new StreamResult(metaXML));
+			
+			long stopTime1 = System.currentTimeMillis();
+			long elapsedTime1 = stopTime1 - startTime1;
+			System.out.println(" xsltSuccess: " + elapsedTime1);
+			
 		} catch (TransformerConfigurationException e) {
 			e.printStackTrace();
 			throw new OntologyServiceException(e);
@@ -485,7 +555,8 @@ Serializable {
 	 * @throws OntologyServiceException
 	 *             the ontology service exception
 	 */
-	private String readInputStreamAsString(InputStream in) throws OntologyServiceException {
+	private String readInputStreamAsString(InputStream in)
+			throws OntologyServiceException {
 		try {
 			StringBuffer fileData = new StringBuffer(1000);
 
@@ -544,14 +615,15 @@ Serializable {
 				// HttpURLConnection.getResponseCode()
 				if (!e.getMessage().contains("HTTP response code: 400")
 						&& !e.getMessage().contains("No parents")) {
-					log.error("Possible problems on BioPortal side - " + e + " on "
-							+ queryURL.toString());
+					log.error("Possible problems on BioPortal side - " + e
+							+ " on " + queryURL.toString());
 				}
 
 				throw new OntologyServiceException(e);
 			}
 		}
-		throw new OntologyServiceException("Could not access Bioportal REST services.");
+		throw new OntologyServiceException(
+				"Could not access Bioportal REST services.");
 	}
 
 	/**
@@ -661,14 +733,14 @@ Serializable {
 		List<Ontology> ontologies = new ArrayList<Ontology>();
 		List<Ontology> views = new ArrayList<Ontology>();
 		List<OntologyBean> ontologyBeans = new ArrayList<OntologyBean>();
-				
 
 		processOntologyUrl();
 		ontologies = (List<Ontology>) getBeanFromQuery();
 		processViewsUrl();
 		views = (List<Ontology>) getBeanFromQuery();
 
-		log.info(ontologies.size() + " ontologies and " + views.size() + " views");
+		log.info(ontologies.size() + " ontologies and " + views.size()
+				+ " views");
 		result.addAll(ontologies);
 		result.addAll(views);
 
@@ -676,7 +748,8 @@ Serializable {
 	}
 
 	@Override
-	public Ontology getOntology(String ontologyAccession) throws OntologyServiceException {
+	public Ontology getOntology(String ontologyAccession)
+			throws OntologyServiceException {
 		try {
 			processOntologyUrl(ontologyAccession);
 		} catch (OntologyServiceException e) {
@@ -687,21 +760,24 @@ Serializable {
 
 	@Override
 	public List<OntologyTerm> getRootTerms(String ontologyAccession)
-	throws OntologyServiceException {
+			throws OntologyServiceException {
 		// warning this uses and undocumented feature!
 		// need the no search version, so that the ontology is not searched for
 		// root
 		// in second pass on fail (takes too much time)
-		ConceptBean cb = (ConceptBean) getTermNoSearch(ontologyAccession, "root");
+		ConceptBean cb = (ConceptBean) getTermNoSearch(ontologyAccession,
+				"root");
 		if (cb == null) {
 			return Collections.emptyList();
 		}
-		return (List<OntologyTerm>) injectOntologyAccession(cb.getChildren(), ontologyAccession);
+		return (List<OntologyTerm>) injectOntologyAccession(cb.getChildren(),
+				ontologyAccession);
 	}
 
 	@Override
-	public List<OntologyTerm> searchOntology(String ontologyAccession, String query,
-			SearchOptions... options) throws OntologyServiceException {
+	public List<OntologyTerm> searchOntology(String ontologyAccession,
+			String query, SearchOptions... options)
+			throws OntologyServiceException {
 		// confirm the ontology exists
 		if (getOntology(ontologyAccession) == null) {
 			return Collections.emptyList();
@@ -711,8 +787,9 @@ Serializable {
 		return injectTermContext(getSearchResults(), query, options);
 	}
 
-	public List<OntologyTerm> searchSubtree(String ontologyAccession, String termAccession,
-			String query, SearchOptions... options) throws OntologyServiceException {
+	public List<OntologyTerm> searchSubtree(String ontologyAccession,
+			String termAccession, String query, SearchOptions... options)
+			throws OntologyServiceException {
 		// confirm the ontology exists
 		if (getOntology(ontologyAccession) == null) {
 			return Collections.emptyList();
@@ -724,7 +801,7 @@ Serializable {
 
 	@Override
 	public List<OntologyTerm> searchAll(String query, SearchOptions... options)
-	throws OntologyServiceException {
+			throws OntologyServiceException {
 		processSearchUrl(null, query, options);
 		log.info("SearchQuery=" + this.queryURL);
 		return injectTermContext(getSearchResults(), query, options);
@@ -732,7 +809,7 @@ Serializable {
 
 	@Override
 	public OntologyTerm getTerm(String ontologyAccession, String termAccession)
-	throws OntologyServiceException {
+			throws OntologyServiceException {
 		try {
 			processConceptUrl(ontologyAccession, termAccession);
 		} catch (OntologyServiceException e) { // try to catch the first one?
@@ -748,8 +825,8 @@ Serializable {
 	}
 
 	// used by the getRootTerms
-	private OntologyTerm getTermNoSearch(String ontologyAccession, String termAccession)
-	throws OntologyServiceException {
+	private OntologyTerm getTermNoSearch(String ontologyAccession,
+			String termAccession) throws OntologyServiceException {
 		try {
 			processConceptUrl(ontologyAccession, termAccession);
 		} catch (OntologyServiceException e) { // try to catch the first one?
@@ -761,7 +838,8 @@ Serializable {
 	}
 
 	@Override
-	public OntologyTerm getTerm(String termAccession) throws OntologyServiceException {
+	public OntologyTerm getTerm(String termAccession)
+			throws OntologyServiceException {
 		List<OntologyTerm> list = searchAll(termAccession);
 		if (list.size() == 0) {
 			return null;
@@ -772,8 +850,8 @@ Serializable {
 	}
 
 	@Override
-	public Map<String, List<String>> getAnnotations(String ontologyAccession, String termAccession)
-	throws OntologyServiceException {
+	public Map<String, List<String>> getAnnotations(String ontologyAccession,
+			String termAccession) throws OntologyServiceException {
 		OntologyTerm ot = getTerm(ontologyAccession, termAccession);
 		if (ot == null) {
 			return Collections.emptyMap();
@@ -782,8 +860,8 @@ Serializable {
 	}
 
 	@Override
-	public List<OntologyTerm> getChildren(String ontologyAccession, String termAccession)
-	throws OntologyServiceException {
+	public List<OntologyTerm> getChildren(String ontologyAccession,
+			String termAccession) throws OntologyServiceException {
 		OntologyTerm ot = getTerm(ontologyAccession, termAccession);
 		if (ot == null) {
 			return Collections.emptyList();
@@ -793,8 +871,8 @@ Serializable {
 	}
 
 	@Override
-	public List<OntologyTerm> getParents(String ontologyAccession, String termAccession)
-	throws OntologyServiceException {
+	public List<OntologyTerm> getParents(String ontologyAccession,
+			String termAccession) throws OntologyServiceException {
 		OntologyTerm ot = getTerm(ontologyAccession, termAccession);
 		if (ot == null) {
 			return Collections.emptyList();
@@ -803,8 +881,9 @@ Serializable {
 				((ConceptBean) ot).getParents(), ontologyAccession);
 	}
 
-	private Collection<OntologyTerm> injectOntologyAccession(Collection<OntologyTerm> list,
-			String ontologyAccession) throws OntologyServiceException {
+	private Collection<OntologyTerm> injectOntologyAccession(
+			Collection<OntologyTerm> list, String ontologyAccession)
+			throws OntologyServiceException {
 		for (OntologyTerm ot : list) {
 			ot.setOntologyAccession(ontologyAccession);
 		}
@@ -812,8 +891,8 @@ Serializable {
 	}
 
 	@Override
-	public List<OntologyTerm> getTermPath(String ontologyAccession, String termAccession)
-	throws OntologyServiceException {
+	public List<OntologyTerm> getTermPath(String ontologyAccession,
+			String termAccession) throws OntologyServiceException {
 		// PARSE THE XML OUTPUT
 		try {
 			processPathUrl(ontologyAccession, termAccession);
@@ -838,22 +917,25 @@ Serializable {
 
 		// GET TERMS FROM ACCESSIONS
 		List<OntologyTerm> path = new ArrayList<OntologyTerm>();
-		
+
 		for (String tAcc : Accessions) {
 			OntologyTerm ot = this.getTerm(ontologyAccession, tAcc);
-			if (ot==null) throw new OntologyServiceException("Unrecognisable term in path - " + tAcc );
+			if (ot == null)
+				throw new OntologyServiceException(
+						"Unrecognisable term in path - " + tAcc);
 			path.add(ot);
 		}
 		// include searched acc in path
 		path.add(this.getTerm(ontologyAccession, termAccession));
-		
+
 		Collections.reverse(path);
 		return path;
 	}
 
 	@Override
-	public Map<String, Set<OntologyTerm>> getRelations(String ontologyAccession, String termAccession)
-	throws OntologyServiceException {
+	public Map<String, Set<OntologyTerm>> getRelations(
+			String ontologyAccession, String termAccession)
+			throws OntologyServiceException {
 		throw new UnsupportedOperationException();
 	}
 
@@ -870,7 +952,8 @@ Serializable {
 	}
 
 	@Override
-	public String makeLookupHyperlink(String ontologyAccession, String termAccession) {
+	public String makeLookupHyperlink(String ontologyAccession,
+			String termAccession) {
 		try {
 			getTerm(ontologyAccession, termAccession);
 			return this.getQueryURL().toString();
@@ -882,8 +965,8 @@ Serializable {
 	}
 
 	@Override
-	public List<String> getSynonyms(String ontologyAccession, String termAccession)
-	throws OntologyServiceException {
+	public List<String> getSynonyms(String ontologyAccession,
+			String termAccession) throws OntologyServiceException {
 		OntologyTerm ot = getTerm(ontologyAccession, termAccession);
 		if (ot == null) {
 			return Collections.emptyList();
@@ -892,8 +975,8 @@ Serializable {
 	}
 
 	@Override
-	public List<String> getDefinitions(String ontologyAccession, String termAccession)
-	throws OntologyServiceException {
+	public List<String> getDefinitions(String ontologyAccession,
+			String termAccession) throws OntologyServiceException {
 		OntologyTerm ot = getTerm(ontologyAccession, termAccession);
 		if (ot == null) {
 			return Collections.emptyList();
@@ -903,7 +986,8 @@ Serializable {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public Set<OntologyTerm> getAllTerms(String ontologyAccession) throws OntologyServiceException {
+	public Set<OntologyTerm> getAllTerms(String ontologyAccession)
+			throws OntologyServiceException {
 		Set<OntologyTerm> result = new HashSet<OntologyTerm>();
 		Integer pageCount = 0;
 		Integer PAGESIZE = 300;
@@ -919,6 +1003,7 @@ Serializable {
 			processGetAllURL(ontologyAccession, PAGESIZE, pageNo);
 			result.addAll((Set<OntologyTerm>) getBeanFromQuery());
 		}
-		return (Set<OntologyTerm>) injectOntologyAccession(result, ontologyAccession);
+		return (Set<OntologyTerm>) injectOntologyAccession(result,
+				ontologyAccession);
 	}
 }

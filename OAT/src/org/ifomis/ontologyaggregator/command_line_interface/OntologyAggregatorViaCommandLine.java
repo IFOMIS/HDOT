@@ -68,4 +68,5 @@ public class OntologyAggregatorViaCommandLine extends
 		System.out
 				.println("usage: java -jar OntologyAggregator.jar <term1,term2...> <userID> <userRights>\nyou can specify one or more terms\nnote: terms that have more than one word have to be written in quotes, e.g. \"bone marrow\"\n the userRights are true if the user can directly modify HDOT and false otherwise");
 	}
+
 }

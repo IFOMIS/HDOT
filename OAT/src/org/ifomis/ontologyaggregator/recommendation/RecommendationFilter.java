@@ -2,6 +2,7 @@ package org.ifomis.ontologyaggregator.recommendation;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.mail.EmailException;
@@ -23,6 +24,7 @@ public class RecommendationFilter {
 			.getLogger(RecommendationFilter.class);
 
 	private List<Recommendation> validRecommendations;
+
 	private List<Recommendation> recommendationsInImportedOntologies;
 
 	private List<Recommendation> recommendationsOfImportedNotLeafMatches;
@@ -31,7 +33,6 @@ public class RecommendationFilter {
 	private EmailSender mailSender;
 
 	private String searchedTerm;
-
 
 	public RecommendationFilter(String searchedTerm,
 			List<Recommendation> validRecommendations,
@@ -54,7 +55,7 @@ public class RecommendationFilter {
 	 * @throws OWLOntologyStorageException
 	 * @throws FileNotFoundException
 	 * @throws IOException
-	 * @throws EmailException 
+	 * @throws EmailException
 	 */
 	public List<Recommendation> checkValidRecommendations()
 			throws OWLOntologyCreationException, OWLOntologyStorageException,
@@ -76,7 +77,8 @@ public class RecommendationFilter {
 			} else {
 				// sort recommendations and pick the first one
 				RecommendationSorter recommendationSorter = new RecommendationSorter();
-				validRecommendations = recommendationSorter.sortRecommendations(validRecommendations);
+				validRecommendations = recommendationSorter
+						.sortRecommendations(validRecommendations);
 
 				log.info(validRecommendations.size()
 						+ " RECOMMENDATIONS WERE GENERATED");
@@ -94,7 +96,7 @@ public class RecommendationFilter {
 	 * 
 	 * @throws IOException
 	 * @throws FileNotFoundException
-	 * @throws EmailException 
+	 * @throws EmailException
 	 */
 	public void checkPotentialRecommendations() throws FileNotFoundException,
 			IOException, EmailException {
@@ -168,5 +170,18 @@ public class RecommendationFilter {
 			}
 			mailSender.sendMail(subject, mailBuffer.toString());
 		}
+	}
+
+	public List<Recommendation> getValidRecommendations() {
+		return validRecommendations;
+	}
+
+	public List<Recommendation> getPotentialRecommendations() {
+		List<Recommendation> potentialRecommendations = new ArrayList<Recommendation>();
+		potentialRecommendations.addAll(inCoreNotLeafs);
+		potentialRecommendations.addAll(recommendationsInImportedOntologies);
+		potentialRecommendations
+				.addAll(recommendationsOfImportedNotLeafMatches);
+		return potentialRecommendations;
 	}
 }
