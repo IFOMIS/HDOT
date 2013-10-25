@@ -107,8 +107,7 @@ public abstract class OntologyAggregatorWorkflow {
 							+ term);
 					break;
 				} else {
-					log.info("A matched concept was found but the integration in HDOT is not possible yet. The curators are informed "
-							+ term);
+					log.info("A MATCHED CONCEPT WAS FOUND BUT THE INTEGRATION IN HDOT IS NOT YET POSSIBLE. THE CURATORS ARE INFORMED.");
 					break;
 				}
 			}
