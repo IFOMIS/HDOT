@@ -67,7 +67,7 @@
     <owl:ObjectProperty rdf:about="&hdot;HDOT_BSDS_018">
         <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
         <rdfs:label xml:lang="en">precedes</rdfs:label>
-        <obo:IAO_0000115 xml:lang="en">an occurrent o precedes an occurrent o&apos; iff the temporal location of o precedes that of o&apos;.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">an occurrent o precedes an occurrent o&#39; iff the temporal location of o precedes that of o&#39;.</obo:IAO_0000115>
         <rdfs:domain rdf:resource="&obo;BFO_0000003"/>
         <rdfs:range rdf:resource="&obo;BFO_0000003"/>
     </owl:ObjectProperty>
@@ -123,14 +123,33 @@
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000027"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CORE_032"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_101"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:onClass rdf:resource="&hdot;HDOT_BSDS_102"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_089"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CORE_032"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&obo;PATO_0001396"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -138,12 +157,6 @@
                 <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
                 <owl:onClass rdf:resource="&hdot;HDOT_BSDS_103"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&obo;PATO_0001396"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -157,19 +170,6 @@
                 <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
                 <owl:onClass rdf:resource="&hdot;HDOT_BSDS_104"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:onClass rdf:resource="&hdot;HDOT_BSDS_102"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_101"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">A processed material which derives from an organ and results from a process of dissection or histological sample preparation a portion(formerly an organ section is portion of an organ removed from the context of the organ)</obo:IAO_0000115>
@@ -375,8 +375,8 @@
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002234"/>
-                <owl:onClass rdf:resource="&hdot;HDOT_BSDS_003"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000155"/>
+                <owl:onClass rdf:resource="&hdot;HDOT_BSDS_015"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -388,8 +388,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000155"/>
-                <owl:onClass rdf:resource="&hdot;HDOT_BSDS_015"/>
+                <owl:onProperty rdf:resource="&obo;RO_0002234"/>
+                <owl:onClass rdf:resource="&hdot;HDOT_BSDS_003"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -415,7 +415,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_015 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_015">
-        <rdfs:label xml:lang="en">date of biomaterial storage</rdfs:label>
+        <rdfs:label xml:lang="en">date of specimen storage</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_014"/>
     </owl:Class>
     
@@ -424,7 +424,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_016 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_016">
-        <rdfs:label xml:lang="en">date of biomaterial collection</rdfs:label>
+        <rdfs:label xml:lang="en">date of specimen collection</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_014"/>
     </owl:Class>
     
@@ -437,14 +437,14 @@
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_038"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_BSDS_037"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_036"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_BSDS_037"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_036"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_038"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -795,21 +795,15 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_059"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:onClass rdf:resource="&obo;CHEBI_33259"/>
+                <owl:onClass rdf:resource="&obo;CHEBI_16670"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_013"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_067"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -820,8 +814,27 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_067"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_013"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_059"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_062"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:onClass rdf:resource="&obo;CHEBI_16646"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -840,20 +853,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:onClass rdf:resource="&obo;CHEBI_16670"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_062"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:onClass rdf:resource="&obo;CHEBI_16646"/>
+                <owl:onClass rdf:resource="&obo;CHEBI_33259"/>
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -935,14 +935,14 @@
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000125"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_051"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_051"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;float"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1453,13 +1453,58 @@
     
 
 
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_107 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_107">
+        <rdfs:label xml:lang="en">internal specimen identifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_033"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_108 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_108">
+        <rdfs:label xml:lang="en">donated material, every analysis possible</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_002"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_109 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_109">
+        <rdfs:label xml:lang="en">new informed consent for each analysis needed</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_002"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_110 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_110">
+        <rdfs:label xml:lang="en">analysis restricted</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_002"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_111 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_111">
+        <rdfs:label xml:lang="en">not yet known</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_002"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.ifomis.org/hdot/HDOT_CORE_032 -->
 
     <rdf:Description rdf:about="&hdot;HDOT_CORE_032">
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_051"/>
+                <owl:someValuesFrom rdf:resource="&obo;OBI_0100066"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1471,13 +1516,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:someValuesFrom rdf:resource="&obo;OBI_0100066"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_050"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_025"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_051"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1489,14 +1534,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_003"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_025"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_050"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_003"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1509,9 +1554,28 @@
     
 
 
+    <!-- http://www.ifomis.org/hdot/HDOT_CORE_035 -->
+
+    <rdf:Description rdf:about="&hdot;HDOT_CORE_035">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_050"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
     <!-- http://www.ifomis.org/hdot/HDOT_PM_0058 -->
 
     <rdf:Description rdf:about="&hdot;HDOT_PM_0058">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;RO_0002217"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_066"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
@@ -1519,16 +1583,10 @@
                 <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002217"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_066"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </rdf:Description>
 </rdf:RDF>
 
 
 
-<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
 
