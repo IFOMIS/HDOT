@@ -239,8 +239,20 @@
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_119"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
                 <owl:allValuesFrom rdf:resource="&hdot;HDOT_PM_0001"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_115"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -254,8 +266,20 @@
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_128"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
                 <owl:allValuesFrom rdf:resource="&hdot;HDOT_PM_0007"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_127"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -269,8 +293,20 @@
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_118"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
                 <owl:allValuesFrom rdf:resource="&hdot;HDOT_PM_0002"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_116"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -282,6 +318,18 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_007">
         <rdfs:label xml:lang="en">serum</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_117"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_120"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
@@ -299,8 +347,20 @@
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_121"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
                 <owl:allValuesFrom rdf:resource="&hdot;HDOT_PM_0013"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_122"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -314,8 +374,20 @@
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_124"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
                 <owl:allValuesFrom rdf:resource="&hdot;HDOT_CORE_021"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_123"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -327,6 +399,18 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_010">
         <rdfs:label xml:lang="en">bone marrow</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_125"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_126"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
@@ -344,8 +428,20 @@
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_131"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
                 <owl:allValuesFrom rdf:resource="&hdot;HDOT_PM_0005"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_132"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1458,6 +1554,18 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_105">
         <rdfs:label xml:lang="en">cell culture</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_134"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_133"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1527,6 +1635,18 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_112">
         <rdfs:label xml:lang="en">faeces</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_129"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_130"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1536,6 +1656,18 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_113">
         <rdfs:label xml:lang="en">saliva</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_135"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_136"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1545,6 +1677,378 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_114">
         <rdfs:label xml:lang="en">CSF</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_138"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_137"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_115 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_115">
+        <rdfs:label xml:lang="en">available amount of blood</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_116 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_116">
+        <rdfs:label xml:lang="en">received amount of plasma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_117 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_117">
+        <rdfs:label xml:lang="en">received amount of serum</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_118 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_118">
+        <rdfs:label xml:lang="en">available amount of plasma</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_119 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_119">
+        <rdfs:label xml:lang="en">received amount of blood</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_120 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_120">
+        <rdfs:label xml:lang="en">available amount of serum</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_121 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_121">
+        <rdfs:label xml:lang="en">received amount of tumour tissue</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_122 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_122">
+        <rdfs:label xml:lang="en">available amount of tumour tissue</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_123 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_123">
+        <rdfs:label xml:lang="en">received amount of normal tissue</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_124 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_124">
+        <rdfs:label xml:lang="en">available amount of normal tissue</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_125 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_125">
+        <rdfs:label xml:lang="en">available amount of bone marrow</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_126 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_126">
+        <rdfs:label xml:lang="en">received amount of bone marrow</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_127 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_127">
+        <rdfs:label xml:lang="en">received amount of urine</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_128 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_128">
+        <rdfs:label xml:lang="en">available amount of urine</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_129 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_129">
+        <rdfs:label xml:lang="en">received amount of faeces</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_130 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_130">
+        <rdfs:label xml:lang="en">available amount of faeces</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_131 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_131">
+        <rdfs:label xml:lang="en">received amount of cerebrospinal fluid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_132 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_132">
+        <rdfs:label xml:lang="en">available amount of cerebrospinal fluid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_133 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_133">
+        <rdfs:label xml:lang="en">received amount of cell culture</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_134 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_134">
+        <rdfs:label xml:lang="en">available amount of cell culture</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_135 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_135">
+        <rdfs:label xml:lang="en">received amount of saliva</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_136 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_136">
+        <rdfs:label xml:lang="en">available amount of saliva</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_137 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_137">
+        <rdfs:label xml:lang="en">received amount of CSF</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_138 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_138">
+        <rdfs:label xml:lang="en">available amount of CSF</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&owl;real"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
