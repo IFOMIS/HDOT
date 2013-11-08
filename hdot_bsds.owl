@@ -1399,7 +1399,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_090 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_090">
-        <rdfs:label xml:lang="en">percent tumour cells</rdfs:label>
+        <rdfs:label xml:lang="en">percentage tumour cells</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1414,7 +1414,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_091 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_091">
-        <rdfs:label xml:lang="en">percent normal cells</rdfs:label>
+        <rdfs:label xml:lang="en">percentage normal cells</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1429,7 +1429,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_092 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_092">
-        <rdfs:label xml:lang="en">percent necrosis</rdfs:label>
+        <rdfs:label xml:lang="en">percentage necrosis</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1444,7 +1444,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_093 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_093">
-        <rdfs:label xml:lang="en">percent stromal cells</rdfs:label>
+        <rdfs:label xml:lang="en">percentage stromal cells</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1459,7 +1459,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_094 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_094">
-        <rdfs:label xml:lang="en">percent lymphocyte infiltration</rdfs:label>
+        <rdfs:label xml:lang="en">percentage lymphocyte infiltration</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1474,7 +1474,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_095 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_095">
-        <rdfs:label xml:lang="en">percent monocyte infiltration</rdfs:label>
+        <rdfs:label xml:lang="en">percentage monocyte infiltration</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1489,7 +1489,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_096 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_096">
-        <rdfs:label xml:lang="en">percent granolucyte infiltration</rdfs:label>
+        <rdfs:label xml:lang="en">percentage granolucyte infiltration</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1504,7 +1504,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_097 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_097">
-        <rdfs:label xml:lang="en">percent neutrophile infiltration</rdfs:label>
+        <rdfs:label xml:lang="en">percentage neutrophile infiltration</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1519,7 +1519,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_098 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_098">
-        <rdfs:label xml:lang="en">percent eosinophile infiltration</rdfs:label>
+        <rdfs:label xml:lang="en">percentage eosinophile infiltration</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1534,7 +1534,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_099 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_099">
-        <rdfs:label xml:lang="en">percent p53 staining</rdfs:label>
+        <rdfs:label xml:lang="en">percentage p53 staining</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -1549,7 +1549,7 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_100 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_100">
-        <rdfs:label xml:lang="en">percent ki67 staining</rdfs:label>
+        <rdfs:label xml:lang="en">percentage ki67 staining</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
         <rdfs:subClassOf>
             <owl:Restriction>
@@ -2086,21 +2086,6 @@
     
 
 
-    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_142 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_BSDS_142">
-        <rdfs:label xml:lang="en">percentage normal cells</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_089"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&owl;real"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </owl:Class>
-    
-
-
     <!-- http://www.ifomis.org/hdot/HDOT_CORE_032 -->
 
     <rdf:Description rdf:about="&hdot;HDOT_CORE_032">
@@ -2202,12 +2187,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_103"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_142"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
