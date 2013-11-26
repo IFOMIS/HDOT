@@ -213,7 +213,7 @@ public class HDOTExtender {
 	 * @throws OWLOntologyCreationException
 	 * @throws OntologyServiceException
 	 */
-	public void extendHDOT(OntologyTerm newClass, OWLClass parent,
+	private void extendHDOT(OntologyTerm newClass, OWLClass parent,
 			List<String> definitions, boolean isTheActualHit)
 			throws OWLOntologyStorageException, URISyntaxException,
 			HdotExtensionException, IOException, OWLOntologyCreationException,

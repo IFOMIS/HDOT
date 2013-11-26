@@ -15,8 +15,11 @@ import org.ifomis.ontologyaggregator.search.SearchEngine;
 import org.ifomis.ontologyaggregator.util.Configuration;
 import org.ifomis.ontologyaggregator.util.StatisticsPrinter;
 import org.semanticweb.owlapi.model.IRI;
+import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
+
+import uk.ac.ebi.ontocat.OntologyTerm;
 
 /**
  * Implements the workflow of the Ontology Aggregator. Two underspecified
@@ -67,9 +70,8 @@ public abstract class OntologyAggregatorWorkflow {
 								"BioPortal has retrived no results for the term\" "
 										+ term
 										+ "\"\n or the server is not responding");
-				// TODO jump to the beginning
 				askForNewInput = true;
-				break;
+				continue;
 			}
 
 			// 2. generate recommendations
@@ -84,6 +86,7 @@ public abstract class OntologyAggregatorWorkflow {
 						"searched term:" + term + "\nThe concept: "
 								+ rg.getMatchedClass()
 								+ " is already contained in HDOT");
+						
 				StatisticsPrinter.printFinalTimeAndLogLocations(start, term);
 				return;
 			} else if (returnCode == 2) {
