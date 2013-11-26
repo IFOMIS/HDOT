@@ -148,9 +148,9 @@ public class RecommendationGenerator {
 		this.listOfRecsPossibleInCoreOfHDOT = new ArrayList<>();
 		this.listOfInCoreNotLeafMatches = new ArrayList<>();
 		this.listImportedNotLeafMatches = new ArrayList<>();
-//		this.properties = new Properties();
-//		this.properties
-//				.load(new FileInputStream("config/aggregator.properties"));
+		// this.properties = new Properties();
+		// this.properties
+		// .load(new FileInputStream("config/aggregator.properties"));
 
 		this.importedOntologies = FileUtils.readLines(new File(
 				Configuration.IMPORTED_ONTOLOGIES_FILE.toURI()));
@@ -164,7 +164,7 @@ public class RecommendationGenerator {
 
 		this.ontologyManager = Configuration
 				.mapIrisOfUserModulesForCuration(ontologyManager);
-		
+
 		// Now load the local copy of hdot that include all modules
 		this.hdotOntology = ontologyManager
 				.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_AUTHORIZED);
@@ -186,19 +186,20 @@ public class RecommendationGenerator {
 	 * @throws URISyntaxException
 	 * @throws IOException
 	 * @throws OntologyServiceException
-	 * @throws OWLOntologyCreationException 
+	 * @throws OWLOntologyCreationException
 	 */
 	public int generateRecommendations(
 			List<List<Stack<OntologyTerm>>> listOfPathsOfAllHits)
-			throws URISyntaxException, IOException, OntologyServiceException, OWLOntologyCreationException {
+			throws URISyntaxException, IOException, OntologyServiceException,
+			OWLOntologyCreationException {
 
 		hitsCounter = 0;
-		
+
 		recommendationCounter = 0;
 
-		//fake value
+		// fake value
 		int returnValue = -100;
-		
+
 		// loop over hits
 		for (List<Stack<OntologyTerm>> listOfPaths : listOfPathsOfAllHits) {
 			++hitsCounter;
@@ -226,19 +227,19 @@ public class RecommendationGenerator {
 					// log.info("current hit=" + this.currentHit);
 					printPath(path);
 
-					 returnValue = recommend(path);
+					returnValue = recommend(path);
 
 					if (returnValue == 1) {
 						++recommendationCounter;
 						// if term has been recommended do not examine next
 						// concepts
 						break;
-					} 
-//					else if (returnValue == 0) {
-//						return 0;
-//					} else if (returnValue == 2) {
-//						return 2;
-//					} 
+					}
+					// else if (returnValue == 0) {
+					// return 0;
+					// } else if (returnValue == 2) {
+					// return 2;
+					// }
 				} else {
 					log.debug("path was empty");
 					continue;
@@ -247,7 +248,7 @@ public class RecommendationGenerator {
 
 			}
 		}
-		if (recommendationCounter > 0){
+		if (recommendationCounter > 0) {
 			log.info(recommendationCounter
 					+ " RECOMMENDATION(S) WERE GENERATED");
 		}
@@ -271,9 +272,9 @@ public class RecommendationGenerator {
 	 * @throws IOException
 	 * @throws OntologyServiceException
 	 * @return -1 if recommendation can not be generated, 0 if the term already
-	 *         exists in HDOT, 1 if a recommendation can be generated and 2 if the
-	 *         term is found in one of the modules for curation.
-	 * @throws OWLOntologyCreationException 
+	 *         exists in HDOT, 1 if a recommendation can be generated and 2 if
+	 *         the term is found in one of the modules for curation.
+	 * @throws OWLOntologyCreationException
 	 */
 	private int recommend(Stack<OntologyTerm> path) throws URISyntaxException,
 			IOException, OntologyServiceException, OWLOntologyCreationException {
@@ -284,7 +285,7 @@ public class RecommendationGenerator {
 
 			// iterate over all ontologies we can use it for modularization
 			// in a sorted order
-			
+
 			// for (OWLOntology hdotModule : hdotModules) {
 			for (int j = 0; j < sortedHdotModules.length; j++) {
 
@@ -318,7 +319,7 @@ public class RecommendationGenerator {
 
 				} else {
 					log.debug("no match found");
-					if(counterForParents == 0){
+					if (counterForParents == 0) {
 						boolean matchInCurationModules = checkInModulesForCuration(currentCandidate);
 						if (matchInCurationModules) {
 							return 2;
@@ -340,28 +341,32 @@ public class RecommendationGenerator {
 	 *         false if not
 	 * 
 	 * @throws OWLOntologyCreationException
-	 * @throws IOException 
-	 * @throws OntologyServiceException 
-	 * @throws URISyntaxException 
+	 * @throws IOException
+	 * @throws OntologyServiceException
+	 * @throws URISyntaxException
 	 */
-	private boolean checkInModulesForCuration(OntologyTerm currentCandidate) throws OWLOntologyCreationException, URISyntaxException, OntologyServiceException, IOException {
-				
-//		OWLOntologyManager ontoManager = OWLManager.createOWLOntologyManager();
+	private boolean checkInModulesForCuration(OntologyTerm currentCandidate)
+			throws OWLOntologyCreationException, URISyntaxException,
+			OntologyServiceException, IOException {
+
+		// OWLOntologyManager ontoManager =
+		// OWLManager.createOWLOntologyManager();
 		OWLOntology notAuthorizedContainer = ontologyManager
 				.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_NOT_AUTHORIZED);
 		Set<OWLOntology> modulesForCuration = notAuthorizedContainer
 				.getImports();
-		
-//		ontologyManager.removeOntology(notAuthorizedContainer);
-		
+
+		// ontologyManager.removeOntology(notAuthorizedContainer);
+
 		for (OWLOntology moduleForCuration : modulesForCuration) {
-			 OntologyTerm matchedTerm = findMatch(currentCandidate, moduleForCuration, true);
-			 
-			 if(matchedTerm != null){
-				 return true;
-			 }
+			OntologyTerm matchedTerm = findMatch(currentCandidate,
+					moduleForCuration, true);
+
+			if (matchedTerm != null) {
+				return true;
+			}
 		}
-		return false;	 
+		return false;
 	}
 
 	/**
@@ -371,13 +376,14 @@ public class RecommendationGenerator {
 	 *            the module where the match was found
 	 * @param matchedConcept
 	 *            class that matches a parent of the current hit
-	 * @param importedFrom 
+	 * @param importedFrom
 	 * @param termHasBeenRecommended
 	 * @return true if termHasBeenRecommended
 	 * @throws OntologyServiceException
 	 */
 	private Recommendation buildRecommendaton(OWLOntology hdotModule,
-			OntologyTerm matchedConcept, String importedFrom) throws OntologyServiceException {
+			OntologyTerm matchedConcept, String importedFrom)
+			throws OntologyServiceException {
 
 		List<String> definitions = ontologyService
 				.getDefinitions(this.currentHit);
@@ -433,8 +439,9 @@ public class RecommendationGenerator {
 	 * @throws IOException
 	 */
 	private OntologyTerm findMatch(OntologyTerm currentCandidate,
-			OWLOntology currentOntology, boolean currentOntologyIsModuleForCuration) throws URISyntaxException,
-			OntologyServiceException, IOException {
+			OWLOntology currentOntology,
+			boolean currentOntologyIsModuleForCuration)
+			throws URISyntaxException, OntologyServiceException, IOException {
 
 		numMatchedParents = 1;
 		Set<OWLClass> classesInSignature = currentOntology
@@ -502,11 +509,13 @@ public class RecommendationGenerator {
 			// to collect the hierarchy and set the accessions
 			if (matchedTerm != null) {
 				log.info("_________________________________________________");
-				
-				
+
 				String importedFrom = getImportedFromAnnotation(annotations);
-				
+
 				matchedTerm.setURI(new URI(hdotClass.toStringID()));
+				String[] parts = hdotClass.getIRI().toURI().toString().split("/");
+				String accession = parts[parts.length - 2] + ":" + parts[parts.length - 1];
+				matchedTerm.setAccession(accession);
 				matchedTerm.setLabel(pureLabelOfHdotClass);
 				matchedTerm.setOntologyAccession(currentOntology
 						.getOntologyID().getOntologyIRI().toString());
@@ -519,16 +528,17 @@ public class RecommendationGenerator {
 						+ matchedTerm.getLabel());
 
 				matchedClass = matchedTerm;
-				
+
 				boolean matchedClassTheSearchedTerm = false;
-				
-				if(!currentOntologyIsModuleForCuration)
+
+				if (!currentOntologyIsModuleForCuration)
 					matchedClassTheSearchedTerm = isMatchedClassTheSearchedTerm(matchedTerm);
-				
+
+				extractHierarchyOfMatchedTerm(currentOntology, hdotClass);
+
 				if (matchedClassTheSearchedTerm) {
 					break;
 				}
-				extractHierarchyOfMatchedTerm(currentOntology, hdotClass);
 
 				countMatchingParents();
 
@@ -551,8 +561,6 @@ public class RecommendationGenerator {
 		}
 		return matchedTerm;
 	}
-
-
 
 	private boolean extensionConditionsAreSatisfied(
 			OWLOntology currentOntology, OWLClass hdotClass,
@@ -734,19 +742,20 @@ public class RecommendationGenerator {
 		}
 		return pureLabelOfClass;
 	}
-	
-	private String getImportedFromAnnotation(Set<OWLAnnotation> annotations) {		
+
+	private String getImportedFromAnnotation(Set<OWLAnnotation> annotations) {
 		String importedFromAnnotation = "";
 		for (OWLAnnotation owlAnnotation : annotations) {
-			
+
 			// get just the rdfs: label annotations
 			if (owlAnnotation.toString().contains("IAO_0000412")) {
-				importedFromAnnotation = owlAnnotation.getValue().toString().split("\"")[1];
+				importedFromAnnotation = owlAnnotation.getValue().toString()
+						.split("\"")[1];
 			}
 		}
 		return importedFromAnnotation;
 	}
-	
+
 	public List<Recommendation> getListOfRecommendations() {
 		return listOfRecommendations;
 	}
@@ -775,36 +784,67 @@ public class RecommendationGenerator {
 		return ontologyService;
 	}
 
-	public static void main(String[] args) throws IOException, OWLOntologyCreationException {
-		
-		// 0. load configuration
-				Configuration.getInstance();
-		// Get hold of an ontology manager
-			OWLOntologyManager ontologyManager = OWLManager.createOWLOntologyManager();
+	public List<OntologyTerm> getHierarchyOfHdotClass() {
+		List<OntologyTerm> result = new ArrayList<>();
 
-				ontologyManager = Configuration
-						.mapIrisOfVisibleUserModules(ontologyManager);
-
-				ontologyManager = Configuration
-						.mapIrisOfUserModulesForCuration(ontologyManager);
-				
-				// Now load the local copy of hdot that include all modules
-				OWLOntology hdotOntologi = ontologyManager
-						.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_AUTHORIZED);
-
-				log.info("Loaded ontology: " + hdotOntologi);
-
-				List<OWLOntology> hdotModules = ontologyManager
-						.getSortedImportsClosure(hdotOntologi);
-				for (OWLOntology module : hdotModules) {
-					Set<OWLClass> classes = module.getClassesInSignature();
-					
-					for (OWLClass owlClass : classes) {
-						Set<OWLAnnotation> annotations = owlClass.getAnnotations(module);
-						for (OWLAnnotation owlAnnotation : annotations) {
-							System.out.println(owlAnnotation);
-						}
-					}
+		for (int i = hierarchyOfHdotClass.size() - 1; i >= 0; i--) {
+			OWLClass entryOfHierarchy = hierarchyOfHdotClass.get(i);
+			OntologyTerm ot = new OntologyTerm();
+			ot.setURI(entryOfHierarchy.getIRI().toURI());
+			String[] parts = entryOfHierarchy.getIRI().toURI().toString().split("/");
+			String accession = parts[parts.length - 2] + ":" + parts[parts.length - 1];
+			ot.setAccession(accession);
+			String label = "";
+			// get the label of the OWLClass to set them in the ot
+			for (OWLOntology currOnto : hdotOntology.getImports()) {
+				if (!entryOfHierarchy.getAnnotations(currOnto).isEmpty()) {
+					label = retriveRdfsLabel(entryOfHierarchy
+							.getAnnotations(currOnto));
+					ot.setOntologyAccession(currOnto.getOntologyID()
+							.getOntologyIRI().toString());
+					break;
 				}
+			}
+			ot.setLabel(label);
+			result.add(ot);
+		}
+		return result;
+
+	}
+
+	public static void main(String[] args) throws IOException,
+			OWLOntologyCreationException {
+
+		// 0. load configuration
+		Configuration.getInstance();
+		// Get hold of an ontology manager
+		OWLOntologyManager ontologyManager = OWLManager
+				.createOWLOntologyManager();
+
+		ontologyManager = Configuration
+				.mapIrisOfVisibleUserModules(ontologyManager);
+
+		ontologyManager = Configuration
+				.mapIrisOfUserModulesForCuration(ontologyManager);
+
+		// Now load the local copy of hdot that include all modules
+		OWLOntology hdotOntologi = ontologyManager
+				.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_AUTHORIZED);
+
+		log.info("Loaded ontology: " + hdotOntologi);
+
+		List<OWLOntology> hdotModules = ontologyManager
+				.getSortedImportsClosure(hdotOntologi);
+		for (OWLOntology module : hdotModules) {
+			Set<OWLClass> classes = module.getClassesInSignature();
+
+			for (OWLClass owlClass : classes) {
+				Set<OWLAnnotation> annotations = owlClass
+						.getAnnotations(module);
+				for (OWLAnnotation owlAnnotation : annotations) {
+					System.out.println(owlAnnotation);
+				}
+			}
+		}
 	}
 }

@@ -493,7 +493,7 @@ public class BioportalOntologyService extends AbstractOntologyService implements
 
 			long stopTime = System.currentTimeMillis();
 			long elapsedTime = stopTime - startTime;
-			System.out.println(" xsltBean: " + elapsedTime);
+//			System.out.println(" xsltBean: " + elapsedTime);
 			long startTime1 = System.currentTimeMillis();
 
 			// transform to status SuccessBean
@@ -506,7 +506,7 @@ public class BioportalOntologyService extends AbstractOntologyService implements
 			
 			long stopTime1 = System.currentTimeMillis();
 			long elapsedTime1 = stopTime1 - startTime1;
-			System.out.println(" xsltSuccess: " + elapsedTime1);
+//			System.out.println(" xsltSuccess: " + elapsedTime1);
 			
 		} catch (TransformerConfigurationException e) {
 			e.printStackTrace();
