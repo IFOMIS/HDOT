@@ -324,4 +324,8 @@ public class Recommendation {
 		}
 		return uriOfModuleForURIGeneration;
 	}
+
+	public List<String> getHitSynonyms() {
+		return hitSynonyms;
+	}
 }
