@@ -328,4 +328,8 @@ public class Recommendation {
 	public List<String> getHitSynonyms() {
 		return hitSynonyms;
 	}
+
+	public OWLOntology getHdot() {
+		return hdot;
+	}
 }
