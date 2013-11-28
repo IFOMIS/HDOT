@@ -114,7 +114,7 @@ public class OntologySorter {
 
 		// write the sorted ontologies in a file so that they can be viewed
 		FileUtils.writeLines(
-				new File(Configuration.DATA_PATH
+				new File(Configuration.CONF_PATH
 						.resolve("ontologySortingC1-9.txt").toURI()),
 				listOfOntologyBeans);
 

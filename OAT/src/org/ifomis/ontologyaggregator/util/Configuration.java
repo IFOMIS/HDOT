@@ -23,6 +23,7 @@ public class Configuration {
 
 	public static IRI BASE_PATH;
 	public static IRI CONF_PATH;
+	public static IRI TRACK_PATH;
 	public static IRI LOG_PATH;
 	public static IRI DATA_PATH;
 	public static IRI SPARQL_OUTPUT_PATH;
@@ -55,6 +56,7 @@ public class Configuration {
 		BASE_PATH = IRI.create(new File(""));
 		CONF_PATH = BASE_PATH.resolve("config/");
 		LOG_PATH = BASE_PATH.resolve("log/");
+		TRACK_PATH = BASE_PATH.resolve("track/");
 		DATA_PATH = BASE_PATH.resolve("data/");
 		SPARQL_OUTPUT_PATH = BASE_PATH.resolve("sparql/");
 		HDOT_PATH = DATA_PATH.resolve("hdot/");
