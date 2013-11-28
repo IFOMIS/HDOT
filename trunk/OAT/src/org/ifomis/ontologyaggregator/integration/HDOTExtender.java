@@ -1,10 +1,12 @@
 package org.ifomis.ontologyaggregator.integration;
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -28,6 +30,7 @@ import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.util.SimpleIRIMapper;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
+import uk.ac.ebi.ontocat.Ontology;
 import uk.ac.ebi.ontocat.OntologyService;
 import uk.ac.ebi.ontocat.OntologyServiceException;
 import uk.ac.ebi.ontocat.OntologyTerm;
@@ -63,11 +66,6 @@ public class HDOTExtender {
 	private OWLOntologyManager ontologyManager;
 
 	/**
-	 * The path to the modules.
-	 */
-	private String pathToModules = "";
-
-	/**
 	 * The current class that should be integrated under HDOT.
 	 */
 	private OWLClass hitForIntegration;
@@ -82,7 +80,6 @@ public class HDOTExtender {
 
 	private String nameOfNewModule;
 
-	// TODO use user rights for the integration of new modules
 	private boolean userRights;
 
 	private OntologyService ontologyService;
@@ -108,13 +105,40 @@ public class HDOTExtender {
 			throws OWLOntologyStorageException, OWLOntologyCreationException,
 			URISyntaxException, HdotExtensionException, IOException,
 			OntologyServiceException {
-		
+
 		this.acceptedRecommendation = acceptedRecommendation;
-		
+
 		this.uriManager.checkURIs(acceptedRecommendation);
 
 		initNewModule(acceptedRecommendation);
+		
+		//keep track of used ontologies for the update service
+		Ontology sourceOntology = acceptedRecommendation.getHit().getOntology();
+		
+		Set<String> setOfUsedOntologies = new HashSet<>();
+		File usedOntologies = new File(Configuration.TRACK_PATH.toURI()
+				.resolve("usedOntologies.txt"));
+		if (usedOntologies.exists()){
+			List<String> listOfUsedOntologies = FileUtils.readLines(usedOntologies);
+			for (String onto : listOfUsedOntologies) {
+				setOfUsedOntologies.add(onto);
+			}
+		}
+		setOfUsedOntologies.add(sourceOntology.toString());
 
+		
+		List<String> listOfIntegratedTermsFromTheSourceOntology = new ArrayList<>();
+		File integratedTermsFromTheSourceOntology = new File(
+				Configuration.TRACK_PATH.toURI().resolve(
+						sourceOntology.getLabel().replace(" ", "_") + "terms.txt"));
+
+		if (integratedTermsFromTheSourceOntology.exists())
+			listOfIntegratedTermsFromTheSourceOntology = FileUtils
+					.readLines(integratedTermsFromTheSourceOntology);
+		
+		listOfIntegratedTermsFromTheSourceOntology.add(acceptedRecommendation.getHit().toString());
+		
+	
 		extendHDOT(
 				acceptedRecommendation.getHit(),
 				dataFactory.getOWLClass(IRI.create(acceptedRecommendation
@@ -129,7 +153,7 @@ public class HDOTExtender {
 					.getHitChildren();
 
 			for (OntologyTerm subClass : subClasses) {
-				// TODO ensure that the classes are not already contained in
+				//  ensure that the classes are not already contained in
 				// hdot
 				// ensureNotAlreadyContainedInHDOT(subClass);
 
@@ -137,14 +161,18 @@ public class HDOTExtender {
 						.getDefinitions(subClass);
 				extendHDOT(subClass, theAcceptedHit, definitionsOfSubClass,
 						false);
+				listOfIntegratedTermsFromTheSourceOntology.add(subClass.toString());
 			}
 		}
-
+		
 		if (userRights) {
 			createNewVisibleModuleAndUpdateHdotAll();
 		} else {
 			createNewModuleForCuration();
 		}
+		//store the used ontologies and list of integrated terms
+		FileUtils.writeLines(usedOntologies, setOfUsedOntologies);
+		FileUtils.writeLines(integratedTermsFromTheSourceOntology, listOfIntegratedTermsFromTheSourceOntology);
 	}
 
 	private void initNewModule(Recommendation accceptedRecommendation)
@@ -254,10 +282,10 @@ public class HDOTExtender {
 
 		integrateOriginalId(newClass);
 		log.debug("original id is integrated");
-		
+
 		integrateHDOTModule(newClass);
 		log.debug("HDOT module annotation is integrated");
-		
+
 		if (hdotVerifier.verifyOntology(newModule)) {
 			log.debug("extended ontology is verified");
 
@@ -266,7 +294,6 @@ public class HDOTExtender {
 					"HDOT cannot be extended due to inconsistency");
 		}
 	}
-
 
 	/**
 	 * Integrates the new class with the given uri.
@@ -360,7 +387,6 @@ public class HDOTExtender {
 		ontologyManager.applyChange(new AddAxiom(newModule, ax));
 	}
 
-	
 	/**
 	 * Integrates the importedFrom annotation. The value is the module URI where
 	 * the matching parent was found.
@@ -369,24 +395,26 @@ public class HDOTExtender {
 	 */
 	private void integrateHDOTModule(OntologyTerm newClass) {
 
-//		String value = "";
-//		
-//		if(acceptedRecommendation.getURIOfModuleForURIGeneration().equals("")){
-//			value =acceptedRecommendation.getHdotModule().getOntologyID().getOntologyIRI().toString();
-//		}else{
-//			value = acceptedRecommendation.getURIOfModuleForURIGeneration();
-//		}
-//		
-		OWLAnnotation importedFromAnno = dataFactory.getOWLAnnotation(dataFactory
-				.getOWLAnnotationProperty(IRI
+		// String value = "";
+		//
+		// if(acceptedRecommendation.getURIOfModuleForURIGeneration().equals("")){
+		// value
+		// =acceptedRecommendation.getHdotModule().getOntologyID().getOntologyIRI().toString();
+		// }else{
+		// value = acceptedRecommendation.getURIOfModuleForURIGeneration();
+		// }
+		//
+		OWLAnnotation importedFromAnno = dataFactory.getOWLAnnotation(
+				dataFactory.getOWLAnnotationProperty(IRI
 						.create("http://purl.obolibrary.org/obo/IAO_0000412")),
-				dataFactory.getOWLLiteral(acceptedRecommendation.getURIOfModuleForURIGeneration()));
-		
+				dataFactory.getOWLLiteral(acceptedRecommendation
+						.getURIOfModuleForURIGeneration()));
+
 		OWLAxiom ax = dataFactory.getOWLAnnotationAssertionAxiom(
 				hitForIntegration.getIRI(), importedFromAnno);
 		ontologyManager.applyChange(new AddAxiom(newModule, ax));
 	}
-	
+
 	/**
 	 * Saves the ontology administrated by the ontology manager. This method
 	 * should be used when the user is an expert.
@@ -473,10 +501,12 @@ public class HDOTExtender {
 
 		this.ontologyManager.saveOntology(hdot_container_not_autorized);
 
-		List<String> lines = FileUtils.readLines(new File(Configuration.MODULES_FOR_CURATION.toURI()));
+		List<String> lines = FileUtils.readLines(new File(
+				Configuration.MODULES_FOR_CURATION.toURI()));
 		lines.add(newModule.getOntologyID().getOntologyIRI().toString());
-		FileUtils.writeLines(new File(Configuration.MODULES_FOR_CURATION.toURI()), lines);
-		
+		FileUtils.writeLines(
+				new File(Configuration.MODULES_FOR_CURATION.toURI()), lines);
+
 		log.info("The extended HDOT module is saved in: "
 				+ Configuration.PATH_TO_NOT_AUTHORIZED_USER_MODULES.toString()
 				+ this.nameOfNewModule);
