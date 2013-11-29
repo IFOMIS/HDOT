@@ -15,34 +15,45 @@ public class SortingEvaluator {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		File newSorting = new File("data/sortingC1-9.txt");
-		File oldSorting = new File("data/sortingC1-9_old.txt");
+		File newSorting = new File("config/ontologySortingC1-9.txt");
+		File oldSorting = new File("config/ontologySortingC1-9_old.txt");
+		File newSortingIds = new File("config/listOfOntoIds");
+		File oldSortingIds = new File("config/listOfOntoIds_new");
+		
 		try {
-
 			SortingEvaluator se = new SortingEvaluator();
-			se.compareSortings(oldSorting, newSorting);
+			se.compareSortings(oldSorting, newSorting, oldSortingIds, newSortingIds);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
-	private void compareSortings(File oldSorting, File newSorting)
+	private void compareSortings(File oldSorting, File newSorting, File oldSortingIds, File newSortingIds)
 			throws IOException {
 		// load the sortings
 		List<String> oldSortingList = FileUtils.readLines(oldSorting);
 		List<String> newSortingList = FileUtils.readLines(newSorting);
 
+		List<String> oldSortingListIds = FileUtils.readLines(newSortingIds);
+		List<String> newSortingListIds = FileUtils.readLines(oldSortingIds);
+		
 		List<String> ontologiesNotInNewSorting = new ArrayList<String>();
 		List<String> ontologiesNotInOldSorting = new ArrayList<String>();
 
 		for (String currentOntology : oldSortingList) {
-			if (!newSortingList.contains(currentOntology)) {
+			String[] parts = currentOntology.split("=");
+			String currentOntologyID = parts[parts.length-1].replace(")","");
+			
+			if (!newSortingListIds.contains(currentOntologyID)) {
 				ontologiesNotInNewSorting.add(currentOntology);
 			}
 		}
 
 		for (String currentOntology : newSortingList) {
-			if (!oldSortingList.contains(currentOntology)) {
+			String[] parts = currentOntology.split("=");
+			String currentOntologyID = parts[parts.length-1].replace(")","");
+			
+			if (!oldSortingListIds.contains(currentOntologyID)) {
 				ontologiesNotInOldSorting.add(currentOntology);
 			}
 		}
@@ -61,6 +72,5 @@ public class SortingEvaluator {
 				+ ontologiesNotInOldSorting.size());
 		System.out
 				.println("summary saved in:\n\t\t data/ontologiesAddedInBioPortal.txt\n\t\t data/ontologiesRemovedFromBioPortal.txt");
-		
 	}
 }
