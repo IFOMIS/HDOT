@@ -809,8 +809,11 @@ public class RecommendationGenerator {
 			result.add(ot);
 		}
 		return result;
-
 	}
+	
+	 public boolean hasHierarchyOfHdotClass() {
+	        return hierarchyOfHdotClass != null;
+	    }
 
 	public static void main(String[] args) throws IOException,
 			OWLOntologyCreationException {
