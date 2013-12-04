@@ -235,9 +235,10 @@ public class RecommendationGenerator {
 						// concepts
 						break;
 					}
-					// else if (returnValue == 0) {
-					// return 0;
-					// } else if (returnValue == 2) {
+					 else if (returnValue == 0) {
+					 return 0;
+					 } 
+//					 else if (returnValue == 2) {
 					// return 2;
 					// }
 				} else {
@@ -537,6 +538,7 @@ public class RecommendationGenerator {
 				extractHierarchyOfMatchedTerm(currentOntology, hdotClass);
 
 				if (matchedClassTheSearchedTerm) {
+					
 					break;
 				}
 
