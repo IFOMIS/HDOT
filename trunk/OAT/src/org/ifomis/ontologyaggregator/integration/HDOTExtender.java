@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Stack;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
@@ -138,13 +139,17 @@ public class HDOTExtender {
 		
 		listOfIntegratedTermsFromTheSourceOntology.add(acceptedRecommendation.getHit().toString());
 		
+		//integrate superclasses
+		OWLClass parentOfHit = integrateSuperclasses();
 	
+		
 		extendHDOT(
 				acceptedRecommendation.getHit(),
-				dataFactory.getOWLClass(IRI.create(acceptedRecommendation
-						.getMatchedClass().getURI().toString())),
+				parentOfHit,
 				acceptedRecommendation.getHitDefinition(), true);
 
+		log.info("HIT is integrated");
+	
 		// in case the user want extends HDOT with the subclasses of the actual
 		// hit
 		if (acceptedRecommendation.includeSubclasses()) {
@@ -173,6 +178,42 @@ public class HDOTExtender {
 		//store the used ontologies and list of integrated terms
 		FileUtils.writeLines(usedOntologies, setOfUsedOntologies);
 		FileUtils.writeLines(integratedTermsFromTheSourceOntology, listOfIntegratedTermsFromTheSourceOntology);
+	}
+
+	private OWLClass integrateSuperclasses() throws OntologyServiceException,
+			OWLOntologyStorageException, OWLOntologyCreationException,
+			URISyntaxException, HdotExtensionException, IOException {
+
+		Stack<OntologyTerm> hitHierarchy = acceptedRecommendation
+				.getHitHierarchy();
+
+		int matchedParent = acceptedRecommendation.getParentNo();
+
+		log.info("start integrating superclasses");
+
+		OWLClass parent = dataFactory.getOWLClass(IRI
+				.create(acceptedRecommendation.getMatchedClass().getURI()
+						.toString()));
+		
+		
+		log.info("parent: " + parent);
+		
+		int positionOfMostSpecificMatchedParent = hitHierarchy.size() - matchedParent;
+		for (int i = positionOfMostSpecificMatchedParent; i <= matchedParent; i++) {
+			
+			OntologyTerm newClass = hitHierarchy.get(i);
+			log.info("child: " + newClass);
+			
+			List<String> defs = ontologyService.getDefinitions(newClass);
+			
+			
+			IRI parentIri = extendHDOT(newClass, parent, defs, false);
+			parent = dataFactory.getOWLClass(parentIri);
+			log.info("new Parent: " + parent.getIRI());
+
+		}
+		
+		return parent;
 	}
 
 	private void initNewModule(Recommendation accceptedRecommendation)
@@ -228,7 +269,7 @@ public class HDOTExtender {
 	 * @param newClass
 	 *            the class to be integrated in the ontology
 	 * @param parent
-	 *            the parent class of the new class
+	 *            the parent OWLclass in HDOT of the new class
 	 * @param definitions
 	 *            the definitions of the new class
 	 * @param isTheActualHit
@@ -240,8 +281,9 @@ public class HDOTExtender {
 	 * @throws IOException
 	 * @throws OWLOntologyCreationException
 	 * @throws OntologyServiceException
+	 * @return IRI of the new class integrated under HDOT
 	 */
-	private void extendHDOT(OntologyTerm newClass, OWLClass parent,
+	private IRI extendHDOT(OntologyTerm newClass, OWLClass parent,
 			List<String> definitions, boolean isTheActualHit)
 			throws OWLOntologyStorageException, URISyntaxException,
 			HdotExtensionException, IOException, OWLOntologyCreationException,
@@ -271,7 +313,7 @@ public class HDOTExtender {
 		// log.info("***********************************");
 
 		// add new class wrt accepted recommendation
-		integrateClass(newClass, parent, newHdotURI, isTheActualHit);
+		IRI hdotNewClassIRI = integrateClass(newClass, parent, newHdotURI, isTheActualHit);
 		log.debug("class is integrated");
 
 		integrateLabelOfNewClass(newClass);
@@ -293,6 +335,7 @@ public class HDOTExtender {
 			throw new HdotExtensionException(
 					"HDOT cannot be extended due to inconsistency");
 		}
+		return hdotNewClassIRI;
 	}
 
 	/**
@@ -303,9 +346,12 @@ public class HDOTExtender {
 	 * @param newHdotURI
 	 * @param isTheActualHit
 	 */
-	private void integrateClass(OntologyTerm newClass, OWLClass parent,
+	private IRI integrateClass(OntologyTerm newClass, OWLClass parent,
 			String newHdotURI, boolean isTheActualHit) {
 
+		
+		IRI resultIRI;
+		
 		log.debug("class for integration: " + newClass);
 		log.debug("parent of class for integration: " + parent);
 
@@ -317,6 +363,8 @@ public class HDOTExtender {
 				theAcceptedHit = dataFactory.getOWLClass(IRI.create(newClass
 						.getURI().toString()));
 			}
+			resultIRI = IRI.create(newClass
+					.getURI().toString());
 		} else {
 			hitForIntegration = dataFactory.getOWLClass(IRI.create(newHdotURI));
 
@@ -324,6 +372,7 @@ public class HDOTExtender {
 				theAcceptedHit = dataFactory
 						.getOWLClass(IRI.create(newHdotURI));
 			}
+			resultIRI = IRI.create(newHdotURI);
 		}
 
 		OWLAxiom axiom = dataFactory.getOWLSubClassOfAxiom(hitForIntegration,
@@ -332,6 +381,8 @@ public class HDOTExtender {
 		AddAxiom addAxiom = new AddAxiom(newModule, axiom);
 
 		ontologyManager.applyChange(addAxiom);
+		
+		return resultIRI;
 	}
 
 	/**
@@ -357,17 +408,19 @@ public class HDOTExtender {
 	 * @param definitions
 	 */
 	private void integrateDefinitionOfNewClass(List<String> definitions) {
-		for (String definition : definitions) {
-			OWLAnnotation defAnno = dataFactory
-					.getOWLAnnotation(
-							dataFactory
-									.getOWLAnnotationProperty(IRI
-											.create("http://purl.obolibrary.org/obo/IAO_0000115")),
-							dataFactory.getOWLLiteral(definition, "en"));
+		if(definitions != null){
+			for (String definition : definitions) {
+				OWLAnnotation defAnno = dataFactory
+						.getOWLAnnotation(
+								dataFactory
+										.getOWLAnnotationProperty(IRI
+												.create("http://purl.obolibrary.org/obo/IAO_0000115")),
+								dataFactory.getOWLLiteral(definition, "en"));
 
-			OWLAxiom ax = dataFactory.getOWLAnnotationAssertionAxiom(
-					hitForIntegration.getIRI(), defAnno);
-			ontologyManager.applyChange(new AddAxiom(newModule, ax));
+				OWLAxiom ax = dataFactory.getOWLAnnotationAssertionAxiom(
+						hitForIntegration.getIRI(), defAnno);
+				ontologyManager.applyChange(new AddAxiom(newModule, ax));
+			}
 		}
 	}
 
