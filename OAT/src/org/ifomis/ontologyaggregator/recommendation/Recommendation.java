@@ -1,10 +1,13 @@
 package org.ifomis.ontologyaggregator.recommendation;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.Stack;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.ifomis.ontologyaggregator.util.Configuration;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.AddAxiom;
@@ -50,9 +53,7 @@ public class Recommendation {
 	private boolean includeSubclasses;
 	private String importedFrom;
 
-	public Stack<OntologyTerm> getHitHierarchy() {
-		return hitHierarchy;
-	}
+
 
 	public Recommendation(int hitNo, OntologyTerm hit, boolean idsMatched,
 			boolean labelsMatched, String searchedTerm,
@@ -77,6 +78,7 @@ public class Recommendation {
 		this.hitChildren = childrenOfHit;
 		this.hitHierarchy = hierarchyOfHit;
 		
+		getMapOfMatchedParents();
 		//back pointer to hdot module the parent was find in
 		this.importedFrom = importedFrom;
 	}
@@ -202,7 +204,7 @@ public class Recommendation {
 			if (owlAnnotation.toString().contains("rdfs:label")) {
 				// log.info("label of currentClass: " +
 				// owlAnnotation.getValue());
-
+				
 				pureLabelOfClass = owlAnnotation.getValue().toString()
 						.split("\"")[1];
 				// log.info("pureLabelOfClass: " + pureLabelOfClass);
@@ -237,6 +239,10 @@ public class Recommendation {
 
 	public List<OWLClass> getHdotHierarchy() {
 		return hdotHierarchy;
+	}
+	
+	public Stack<OntologyTerm> getHitHierarchy() {
+		return hitHierarchy;
 	}
 
 	public OWLOntology getHdotModule() {
@@ -332,4 +338,19 @@ public class Recommendation {
 	public OWLOntology getHdot() {
 		return hdot;
 	}
+
+	public Map<OntologyTerm, OWLClass> getMapOfMatchedParents() {
+		Map<OntologyTerm, OWLClass> mapOfMatchedParents = new HashMap<>();
+		for (OntologyTerm ot : hitHierarchy) {
+			for (OWLClass oc : hdotHierarchy) {
+			
+				if (ot.getLabel().toLowerCase().equals(retriveRdfsLabel(oc
+										.getAnnotations(hdotModule))) || ot.equals(oc.getIRI().toURI().toString())) {
+					mapOfMatchedParents.put(ot, oc);
+				}
+			}
+		}
+		return mapOfMatchedParents;
+	}
+	
 }
