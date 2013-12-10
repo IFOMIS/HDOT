@@ -350,14 +350,10 @@ public class RecommendationGenerator {
 			throws OWLOntologyCreationException, URISyntaxException,
 			OntologyServiceException, IOException {
 
-		// OWLOntologyManager ontoManager =
-		// OWLManager.createOWLOntologyManager();
 		OWLOntology notAuthorizedContainer = ontologyManager
 				.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_NOT_AUTHORIZED);
 		Set<OWLOntology> modulesForCuration = notAuthorizedContainer
 				.getImports();
-
-		// ontologyManager.removeOntology(notAuthorizedContainer);
 
 		for (OWLOntology moduleForCuration : modulesForCuration) {
 			OntologyTerm matchedTerm = findMatch(currentCandidate,
@@ -707,14 +703,16 @@ public class RecommendationGenerator {
 			for (OWLClassExpression owlSuperClassExpression : superClasses) {
 
 				if (owlSuperClassExpression.isClassExpressionLiteral()) {
-
+					System.out.println("******" + parent.getIRI());
+					if (!this.hierarchyOfHdotClass.contains(parent))
+						this.hierarchyOfHdotClass.add(parent);
+					
 					// asOWLClass can be called only if the class
 					// expression is not anonymous
 					if (!owlSuperClassExpression.isAnonymous()) {
 						parent = owlSuperClassExpression.asOWLClass();
 					}
-					if (!this.hierarchyOfHdotClass.contains(parent))
-						this.hierarchyOfHdotClass.add(parent);
+					
 				}
 			}
 			// due to reflexivity
