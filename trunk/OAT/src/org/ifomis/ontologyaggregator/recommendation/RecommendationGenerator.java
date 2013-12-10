@@ -703,7 +703,6 @@ public class RecommendationGenerator {
 			for (OWLClassExpression owlSuperClassExpression : superClasses) {
 
 				if (owlSuperClassExpression.isClassExpressionLiteral()) {
-					System.out.println("******" + parent.getIRI());
 					if (!this.hierarchyOfHdotClass.contains(parent))
 						this.hierarchyOfHdotClass.add(parent);
 					
