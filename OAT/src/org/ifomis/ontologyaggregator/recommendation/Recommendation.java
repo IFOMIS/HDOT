@@ -79,6 +79,7 @@ public class Recommendation {
 		this.hitHierarchy = hierarchyOfHit;
 
 		getMapOfMatchedParents();
+		
 		// back pointer to hdot module the parent was find in
 		this.importedFrom = importedFrom;
 	}
@@ -344,39 +345,39 @@ public class Recommendation {
 		return hdot;
 	}
 
-//	private void countMatchingParents() throws IOException {
-//		Map<OntologyTerm, OWLClass> mapOfMatchedParents = new HashMap<>();
-//
-//		Map<String, String> urisTOLabels = new HashMap<>();
-//
-//		for (OntologyTerm ontologyTerm : hitHierarchy) {
-//			urisTOLabels.put(ontologyTerm.getURI().toString(), ontologyTerm
-//					.getLabel().toLowerCase());
-//		}
+	public String getDefMostSpecificParent(){
+		
+		OWLClass mostSpecificParent = hdotHierarchy.get(0); 
+		System.out.println("most specific parent: " + mostSpecificParent);
+		String def = "";
+		for (OWLOntology currOnto : hdot.getImports()) {
+			if (!mostSpecificParent.getAnnotations(currOnto).isEmpty()) {
+				def = retriveRdfsDef(mostSpecificParent
+						.getAnnotations(currOnto));
+				break;
+			}
+		}
+		return def;
+	}
+	
+	private String retriveRdfsDef(Set<OWLAnnotation> annotations) {
+		String def = "";
+		// get all the annotations of the current class and extract the
+		// label
+		for (OWLAnnotation owlAnnotation : annotations) {
+			// get just the rdfs: label annotations
+			if (owlAnnotation.toString().contains("IAO_0000115")) {
+//				 System.out.println("def of currentClass: " +
+//				 owlAnnotation.getValue());
 
-//		for (OWLClass classInHDotHierarchy : hdotHierarchy) {
-//			String uri = classInHDotHierarchy.toStringID();
-//			// String label =
-//			// retriveRdfsLabel(classInHierarchy.getAnnotations(currentOntology));
-//			String label = "";
-//			// get the labels of the parents to display them
-//			for (OWLOntology currOnto : hdot.getImports()) {
-//				if (!classInHDotHierarchy.getAnnotations(currOnto).isEmpty()) {
-//					label = retriveRdfsLabel(classInHDotHierarchy
-//							.getAnnotations(currOnto));
-//					break;
-//				}
-//			}
-//			label = label.toLowerCase();
-//
-//			if (urisTOLabels.containsKey(uri)
-//					|| (!(label.isEmpty()) && urisTOLabels.containsValue(label))) {
-//				mapOfMatchedParents.put(ot, classInHDotHierarchy);
-//				
-//			}
-//		}
-//		// log.debug("number of matching parents: " + numMatchedParents);
-//	}
+				def = owlAnnotation.getValue().toString()
+						.split("\"")[1];
+				// log.info("pureLabelOfClass: " + pureLabelOfClass);
+			}
+		}
+		return def;
+	}
+
 	public Map<OntologyTerm, OWLClass> getMapOfMatchedParents() {
 		Map<OntologyTerm, OWLClass> mapOfMatchedParents = new HashMap<>();
 		for (OntologyTerm ot : hitHierarchy) {
