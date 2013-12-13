@@ -70,7 +70,9 @@ public class OntologyAggregatorViaCommandLine extends
 		for (OntologyTerm ot : mapOfMatchedParents.keySet()) {
 			System.out.println("matched parent: " + ot);
 		}
+		System.out.println(recommendation.getDefMostSpecificParent());
 		System.out.println(recommendation.toString());
+		
 	}
 
 	private static void usage() {
