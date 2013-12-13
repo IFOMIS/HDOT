@@ -1,6 +1,7 @@
 package org.ifomis.ontologyaggregator.recommendation;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,14 +54,13 @@ public class Recommendation {
 	private boolean includeSubclasses;
 	private String importedFrom;
 
-
-
 	public Recommendation(int hitNo, OntologyTerm hit, boolean idsMatched,
 			boolean labelsMatched, String searchedTerm,
 			List<OWLClass> hierarchy, Stack<OntologyTerm> hierarchyOfHit,
 			OWLOntology hdot_all, OWLOntology hdotModule, int parentNo,
 			OntologyTerm matchedClass, List<String> definitions,
-			List<String> synonyms, List<OntologyTerm> childrenOfHit, int matchedParents, String importedFrom) {
+			List<String> synonyms, List<OntologyTerm> childrenOfHit,
+			int matchedParents, String importedFrom) {
 
 		this.matchedParents = matchedParents;
 		this.hitNo = hitNo;
@@ -77,9 +77,9 @@ public class Recommendation {
 		this.hitSynonyms = synonyms;
 		this.hitChildren = childrenOfHit;
 		this.hitHierarchy = hierarchyOfHit;
-		
+
 		getMapOfMatchedParents();
-		//back pointer to hdot module the parent was find in
+		// back pointer to hdot module the parent was find in
 		this.importedFrom = importedFrom;
 	}
 
@@ -93,7 +93,8 @@ public class Recommendation {
 
 		messageBuffer.append("\nsearched term:" + this.searchedTerm);
 		messageBuffer.append("\nhit No:" + hitNo);
-		messageBuffer.append("\nnumber of matched parents:" + this.matchedParents);
+		messageBuffer.append("\nnumber of matched parents:"
+				+ this.matchedParents);
 		messageBuffer.append("\n\tthe hit hierarchy:");
 		for (OntologyTerm parent : hitHierarchy) {
 			messageBuffer.append("\n\t\t");
@@ -122,10 +123,10 @@ public class Recommendation {
 			messageBuffer.append(label);
 
 		}
-		messageBuffer.append("\n\t\t");
-		messageBuffer.append(matchedClass.getURI().toString());
-		messageBuffer.append("\t");
-		messageBuffer.append(matchedClass.getLabel());
+//		messageBuffer.append("\n\t\t");
+//		messageBuffer.append(matchedClass.getURI().toString());
+//		messageBuffer.append("\t");
+//		messageBuffer.append(matchedClass.getLabel());
 
 		messageBuffer.append("\n\n\t\tparent No:" + (this.parentNoOfHit));
 		messageBuffer.append("  of the current hit matched the concept:\n\t\t");
@@ -143,7 +144,8 @@ public class Recommendation {
 		messageBuffer.append("\t");
 		messageBuffer.append(hit.getLabel());
 		try {
-			messageBuffer.append("\n\n\t\t\tsource ontology: " + hit.getOntology().getLabel());
+			messageBuffer.append("\n\n\t\t\tsource ontology: "
+					+ hit.getOntology().getLabel());
 		} catch (OntologyServiceException e) {
 			e.printStackTrace();
 		}
@@ -177,9 +179,9 @@ public class Recommendation {
 
 		messageBuffer
 				.append("\n\n\t\tThe hdot module where the match was found is: ");
-//		messageBuffer.append(hdotModule.getOntologyID().getOntologyIRI().toString());
+		// messageBuffer.append(hdotModule.getOntologyID().getOntologyIRI().toString());
 		messageBuffer.append(importedFrom);
-		
+
 		messageBuffer
 				.append("\n==========================================================================");
 		messageBuffer
@@ -204,7 +206,7 @@ public class Recommendation {
 			if (owlAnnotation.toString().contains("rdfs:label")) {
 				// log.info("label of currentClass: " +
 				// owlAnnotation.getValue());
-				
+
 				pureLabelOfClass = owlAnnotation.getValue().toString()
 						.split("\"")[1];
 				// log.info("pureLabelOfClass: " + pureLabelOfClass);
@@ -240,7 +242,7 @@ public class Recommendation {
 	public List<OWLClass> getHdotHierarchy() {
 		return hdotHierarchy;
 	}
-	
+
 	public Stack<OntologyTerm> getHitHierarchy() {
 		return hitHierarchy;
 	}
@@ -264,8 +266,8 @@ public class Recommendation {
 	public int getMatchedParents() {
 		return matchedParents;
 	}
-	
-	//TODO complete impl
+
+	// TODO complete impl
 	public void exportChildrenToOWLFile() throws OWLOntologyCreationException,
 			OWLOntologyStorageException {
 		OWLOntologyManager ontologyManager = OWLManager
@@ -308,25 +310,28 @@ public class Recommendation {
 		// pathToModules += partsOfPath[i] + "/";
 		//
 		// }
-//		ontologyManager.saveOntology(
-//				owlFileThatConsinsSubclasses,
-//				IRI.create(new File(Configuration.DATA_PATH.resolve(hit.getLabel().replace(" ", "-")
-//						+ "_subclasses.owl").toURI())));
+		// ontologyManager.saveOntology(
+		// owlFileThatConsinsSubclasses,
+		// IRI.create(new
+		// File(Configuration.DATA_PATH.resolve(hit.getLabel().replace(" ", "-")
+		// + "_subclasses.owl").toURI())));
 	}
 
 	public boolean includeSubclasses() {
 		return this.includeSubclasses;
 	}
+
 	public boolean setIncludeSubclasses(boolean includeOrNot) {
 		return this.includeSubclasses = includeOrNot;
 	}
 
 	public String getURIOfModuleForURIGeneration() {
 		String uriOfModuleForURIGeneration;
-		if(!importedFrom.isEmpty()){
+		if (!importedFrom.isEmpty()) {
 			uriOfModuleForURIGeneration = importedFrom;
-		}else{
-			uriOfModuleForURIGeneration = hdotModule.getOntologyID().getOntologyIRI().toString();
+		} else {
+			uriOfModuleForURIGeneration = hdotModule.getOntologyID()
+					.getOntologyIRI().toString();
 		}
 		return uriOfModuleForURIGeneration;
 	}
@@ -339,18 +344,84 @@ public class Recommendation {
 		return hdot;
 	}
 
+//	private void countMatchingParents() throws IOException {
+//		Map<OntologyTerm, OWLClass> mapOfMatchedParents = new HashMap<>();
+//
+//		Map<String, String> urisTOLabels = new HashMap<>();
+//
+//		for (OntologyTerm ontologyTerm : hitHierarchy) {
+//			urisTOLabels.put(ontologyTerm.getURI().toString(), ontologyTerm
+//					.getLabel().toLowerCase());
+//		}
+
+//		for (OWLClass classInHDotHierarchy : hdotHierarchy) {
+//			String uri = classInHDotHierarchy.toStringID();
+//			// String label =
+//			// retriveRdfsLabel(classInHierarchy.getAnnotations(currentOntology));
+//			String label = "";
+//			// get the labels of the parents to display them
+//			for (OWLOntology currOnto : hdot.getImports()) {
+//				if (!classInHDotHierarchy.getAnnotations(currOnto).isEmpty()) {
+//					label = retriveRdfsLabel(classInHDotHierarchy
+//							.getAnnotations(currOnto));
+//					break;
+//				}
+//			}
+//			label = label.toLowerCase();
+//
+//			if (urisTOLabels.containsKey(uri)
+//					|| (!(label.isEmpty()) && urisTOLabels.containsValue(label))) {
+//				mapOfMatchedParents.put(ot, classInHDotHierarchy);
+//				
+//			}
+//		}
+//		// log.debug("number of matching parents: " + numMatchedParents);
+//	}
 	public Map<OntologyTerm, OWLClass> getMapOfMatchedParents() {
 		Map<OntologyTerm, OWLClass> mapOfMatchedParents = new HashMap<>();
 		for (OntologyTerm ot : hitHierarchy) {
 			for (OWLClass oc : hdotHierarchy) {
-			
-				if (ot.getLabel().toLowerCase().equals(retriveRdfsLabel(oc
-										.getAnnotations(hdotModule))) || ot.equals(oc.getIRI().toURI().toString())) {
+				String otLabel = ot.getLabel().toLowerCase();
+				String ocLabel = "";
+				// get the labels of the parents to display them
+				for (OWLOntology currOnto : hdot.getImports()) {
+					if (!oc.getAnnotations(currOnto).isEmpty()) {
+						ocLabel = retriveRdfsLabel(oc
+								.getAnnotations(currOnto));
+						break;
+					}
+				}
+				boolean matched = compareIds(otLabel, ocLabel);
+
+				if (matched)
+					mapOfMatchedParents.put(ot, oc);
+				else if (ot.getURI().toString()
+								.equals(oc.getIRI().toURI().toString())) {
 					mapOfMatchedParents.put(ot, oc);
 				}
 			}
 		}
+		
 		return mapOfMatchedParents;
 	}
-	
+
+	private boolean compareIds(String otLabel, String ocLabel) {
+		if (otLabel.isEmpty() || ocLabel.isEmpty()) {
+			return false;
+		}
+		boolean result = false;
+		if (otLabel.trim().equalsIgnoreCase(ocLabel.trim())) {
+			result = true;
+
+		} else {
+			double similarityOfLabels = DiceCoefficient
+					.diceCoefficientOptimized(otLabel.toLowerCase(),
+							ocLabel.toLowerCase());
+			if (similarityOfLabels > 0.95) {
+				result = true;
+			}
+		}
+		return result;
+	}
+
 }

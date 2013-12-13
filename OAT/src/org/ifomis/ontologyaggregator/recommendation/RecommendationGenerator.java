@@ -640,6 +640,7 @@ public class RecommendationGenerator {
 			if (urisTOLabels.containsKey(uri)
 					|| (!(label.isEmpty()) && urisTOLabels.containsValue(label))) {
 				numMatchedParents++;
+				
 			}
 		}
 		// log.debug("number of matching parents: " + numMatchedParents);
@@ -701,7 +702,8 @@ public class RecommendationGenerator {
 
 			// iterate over super classes
 			for (OWLClassExpression owlSuperClassExpression : superClasses) {
-
+				if (!this.hierarchyOfHdotClass.contains(parent))
+					this.hierarchyOfHdotClass.add(parent);
 				if (owlSuperClassExpression.isClassExpressionLiteral()) {
 					if (!this.hierarchyOfHdotClass.contains(parent))
 						this.hierarchyOfHdotClass.add(parent);
@@ -714,6 +716,7 @@ public class RecommendationGenerator {
 					
 				}
 			}
+
 			// due to reflexivity
 			if (parent_old.equals(parent)) {
 				break;

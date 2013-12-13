@@ -4,9 +4,13 @@
 package org.ifomis.ontologyaggregator.command_line_interface;
 
 import java.util.Arrays;
+import java.util.Map;
 
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 import org.ifomis.ontologyaggregator.workflow.OntologyAggregatorWorkflow;
+import org.semanticweb.owlapi.model.OWLClass;
+
+import uk.ac.ebi.ontocat.OntologyTerm;
 
 /**
  * Extends the workflow and integrates a command line interface.
@@ -61,6 +65,11 @@ public class OntologyAggregatorViaCommandLine extends
 	@Override
 	public void displayRecommendation(Recommendation recommendation) {
 		this.recommendation = recommendation;
+		Map<OntologyTerm, OWLClass> mapOfMatchedParents = recommendation.getMapOfMatchedParents();
+		System.out.println("XXXXX matched parents XXXXXX");
+		for (OntologyTerm ot : mapOfMatchedParents.keySet()) {
+			System.out.println("matched parent: " + ot);
+		}
 		System.out.println(recommendation.toString());
 	}
 
