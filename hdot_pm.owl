@@ -209,6 +209,18 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/CHEBI_33696 -->
+
+    <owl:Class rdf:about="&obo;CHEBI_33696">
+        <rdfs:label xml:lang="en">nucleic acid</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_33695"/>
+        <obo:IAO_0000115 xml:lang="en">A macromolecule made up of nucleotide units and hydrolysable into certain pyrimidine or purine bases (usually adenine, cytosine, guanine, thymine, uracil), D-ribose or 2-deoxy-D-ribose and phosphoric acid.
+</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/CHEBI_33696</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/CHEBI_33839 -->
 
     <owl:Class rdf:about="&obo;CHEBI_33839">
@@ -858,14 +870,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0012"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_028"/>
+                <owl:someValuesFrom rdf:resource="&obo;GO_0008283"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_028"/>
-                <owl:someValuesFrom rdf:resource="&obo;GO_0008283"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0012"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119>http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Neoplasm</obo:IAO_0000119>
@@ -1424,16 +1436,77 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         </owl:equivalentClass>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&obo;BFO_0000019"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0062"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_62"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&obo;BFO_0000019"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0059 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0059">
+        <rdfs:label xml:lang="en">peptide</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_33695"/>
+        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#Peptide</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0060 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0060">
+        <rdfs:label xml:lang="en">protein domain</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_33695"/>
+        <obo:IAO_0000115 xml:lang="en">A part of protein sequence and structure that can evolve, function, and exist independently of the rest of the protein chain. Each domain forms a compact three-dimensional structure and often can be independently stable and folded. Many proteins consist of several structural domains. 
+</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#ProteinDomain</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0061 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0061">
+        <rdfs:label xml:lang="en">DNA</rdfs:label>
+        <rdfs:label>patient full name</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_33696"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0066"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0058"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A chain of deoxyribonucleotides.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#DNA</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0062 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0062">
+        <rdfs:label xml:lang="en">nucleic acid molecule</rdfs:label>
+        <rdfs:label>patient identifier</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_33696"/>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;IAO_0000219"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0058"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <obo:IAO_0000115 xml:lang="en">A complex, high-molecular-weight biochemical macromolecule composed of nucleotide chains that convey genetic information. The most common nucleic acids are deoxyribonucleic acid (DNA) and ribonucleic acid (RNA). Nucleic acids are found in all living cells and viruses. 
+</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#NucleicAcidMolecule</obo:IAO_0000119>
     </owl:Class>
     
 
@@ -1504,32 +1577,68 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     
 
 
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_61 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0069 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_PM_61">
-        <rdfs:label>patient full name</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0066"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;IAO_0000136"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0058"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+    <owl:Class rdf:about="&hdot;HDOT_PM_0069">
+        <rdfs:label xml:lang="en">nucleic acid region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_33696"/>
+        <obo:IAO_0000115 xml:lang="en">A sequence feature of nucleic acids</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#NucleicAcidRegion</obo:IAO_0000119>
     </owl:Class>
     
 
 
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_62 -->
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0070 -->
 
-    <owl:Class rdf:about="&hdot;HDOT_PM_62">
-        <rdfs:label>patient identifier</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;IAO_0000219"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0058"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
+    <owl:Class rdf:about="&hdot;HDOT_PM_0070">
+        <rdfs:label xml:lang="en">RNA</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;CHEBI_33696"/>
+        <obo:IAO_0000115 xml:lang="en">A chain of ribonucleotides.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#RNA</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0071 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0071">
+        <rdfs:label xml:lang="en">double strand DNA</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0061"/>
+        <obo:IAO_0000115 xml:lang="en">double stranded DNA molecules</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#DoubleStrandDNA</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0072 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0072">
+        <rdfs:label xml:lang="en">DNA region</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0061"/>
+        <obo:IAO_0000115 xml:lang="en">A chain of deoxyribonucleotides that is part of a longer chain of deoxyribunucleotides.
+</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#DNARegion</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0073 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0073">
+        <rdfs:label xml:lang="en">DNA molecule</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0061"/>
+        <obo:IAO_0000115 xml:lang="en">A chain of deoxyribonucleotides as it occures at a whole.</obo:IAO_0000115>
+        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#DNAMolecule</obo:IAO_0000119>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_PM_0074 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_PM_0074">
+        <rdfs:label xml:lang="en">lump</rdfs:label>
+        <rdfs:label xml:lang="en">tissue mass</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000027"/>
     </owl:Class>
     
 
