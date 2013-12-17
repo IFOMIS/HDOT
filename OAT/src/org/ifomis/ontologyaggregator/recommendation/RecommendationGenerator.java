@@ -234,11 +234,10 @@ public class RecommendationGenerator {
 						// if term has been recommended do not examine next
 						// concepts
 						break;
+					} else if (returnValue == 0) {
+						return 0;
 					}
-					 else if (returnValue == 0) {
-					 return 0;
-					 } 
-//					 else if (returnValue == 2) {
+					// else if (returnValue == 2) {
 					// return 2;
 					// }
 				} else {
@@ -319,6 +318,7 @@ public class RecommendationGenerator {
 					return 1;
 
 				} else {
+					
 					log.debug("no match found");
 					if (counterForParents == 0) {
 						boolean matchInCurationModules = checkInModulesForCuration(currentCandidate);
@@ -356,6 +356,17 @@ public class RecommendationGenerator {
 				.getImports();
 
 		for (OWLOntology moduleForCuration : modulesForCuration) {
+			
+			boolean importIsSortedModule = false;
+			//check if the import is one of the modules in hdot_all
+			for (int i = 0; i < sortedHdotModules.length; i++) {
+				OWLOntology sortedModule = sortedHdotModules[i];
+				if(sortedModule.getOntologyID().equals(moduleForCuration.getOntologyID()))
+					importIsSortedModule  = true;
+			}
+			if(importIsSortedModule)
+				continue;
+			
 			OntologyTerm matchedTerm = findMatch(currentCandidate,
 					moduleForCuration, true);
 
@@ -510,8 +521,10 @@ public class RecommendationGenerator {
 				String importedFrom = getImportedFromAnnotation(annotations);
 
 				matchedTerm.setURI(new URI(hdotClass.toStringID()));
-				String[] parts = hdotClass.getIRI().toURI().toString().split("/");
-				String accession = parts[parts.length - 2] + ":" + parts[parts.length - 1];
+				String[] parts = hdotClass.getIRI().toURI().toString()
+						.split("/");
+				String accession = parts[parts.length - 2] + ":"
+						+ parts[parts.length - 1];
 				matchedTerm.setAccession(accession);
 				matchedTerm.setLabel(pureLabelOfHdotClass);
 				matchedTerm.setOntologyAccession(currentOntology
@@ -530,11 +543,11 @@ public class RecommendationGenerator {
 
 				if (!currentOntologyIsModuleForCuration)
 					matchedClassTheSearchedTerm = isMatchedClassTheSearchedTerm(matchedTerm);
-
+				
 				extractHierarchyOfMatchedTerm(currentOntology, hdotClass);
 
 				if (matchedClassTheSearchedTerm) {
-					
+
 					break;
 				}
 
@@ -640,7 +653,7 @@ public class RecommendationGenerator {
 			if (urisTOLabels.containsKey(uri)
 					|| (!(label.isEmpty()) && urisTOLabels.containsValue(label))) {
 				numMatchedParents++;
-				
+
 			}
 		}
 		// log.debug("number of matching parents: " + numMatchedParents);
@@ -707,13 +720,13 @@ public class RecommendationGenerator {
 				if (owlSuperClassExpression.isClassExpressionLiteral()) {
 					if (!this.hierarchyOfHdotClass.contains(parent))
 						this.hierarchyOfHdotClass.add(parent);
-					
+
 					// asOWLClass can be called only if the class
 					// expression is not anonymous
 					if (!owlSuperClassExpression.isAnonymous()) {
 						parent = owlSuperClassExpression.asOWLClass();
 					}
-					
+
 				}
 			}
 
@@ -751,8 +764,9 @@ public class RecommendationGenerator {
 
 			// get just the rdfs: label annotations
 			if (owlAnnotation.toString().contains("IAO_0000412")) {
-				importedFromAnnotation = owlAnnotation.getValue().toString()
-						.split("\"")[1];
+				if (owlAnnotation.getValue().toString().split("\"").length > 1)
+					importedFromAnnotation = owlAnnotation.getValue()
+							.toString().split("\"")[1];
 			}
 		}
 		return importedFromAnnotation;
@@ -793,8 +807,10 @@ public class RecommendationGenerator {
 			OWLClass entryOfHierarchy = hierarchyOfHdotClass.get(i);
 			OntologyTerm ot = new OntologyTerm();
 			ot.setURI(entryOfHierarchy.getIRI().toURI());
-			String[] parts = entryOfHierarchy.getIRI().toURI().toString().split("/");
-			String accession = parts[parts.length - 2] + ":" + parts[parts.length - 1];
+			String[] parts = entryOfHierarchy.getIRI().toURI().toString()
+					.split("/");
+			String accession = parts[parts.length - 2] + ":"
+					+ parts[parts.length - 1];
 			ot.setAccession(accession);
 			String label = "";
 			// get the label of the OWLClass to set them in the ot
@@ -812,10 +828,10 @@ public class RecommendationGenerator {
 		}
 		return result;
 	}
-	
-	 public boolean hasHierarchyOfHdotClass() {
-	        return hierarchyOfHdotClass != null;
-	    }
+
+	public boolean hasHierarchyOfHdotClass() {
+		return hierarchyOfHdotClass != null;
+	}
 
 	public static void main(String[] args) throws IOException,
 			OWLOntologyCreationException {
