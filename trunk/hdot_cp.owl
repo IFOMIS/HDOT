@@ -70,7 +70,7 @@
     <owl:Class rdf:about="&obo;GO_0007626">
         <rdfs:label xml:lang="en">locomotory behavior</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;GO_0007610"/>
-        <obo:IAO_0000115 xml:lang="en">The specific movement from place to place of an organism in response to external or internal stimuli. Locomotion of a whole organism in a manner dependent upon some combination of that organism&apos;s internal state and external conditions.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">The specific movement from place to place of an organism in response to external or internal stimuli. Locomotion of a whole organism in a manner dependent upon some combination of that organism&#39;s internal state and external conditions.</obo:IAO_0000115>
         <obo:IAO_0000412 xml:lang="en">http://purl.obolibrary.org/obo/GO_0007626</obo:IAO_0000412>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/GO_0007626</obo:IAO_0000119>
     </owl:Class>
@@ -130,7 +130,7 @@
     <owl:Class rdf:about="&obo;MD_0000013">
         <rdfs:label xml:lang="en">depressed mood episode</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MD_0000024"/>
-        <rdfs:comment xml:lang="en">The criteria below are based on the formal DSM-IV criteria for a Major Depressive Episode. A diagnoses of major depressive episode requires that the patient has—over a two-week period—experienced five or more of the symptoms below, and these must be outside the patient&apos;s normal behaviour. Either depressed mood or decreased interest or pleasure must be one of the five (although both are frequently concomitant).
+        <rdfs:comment xml:lang="en">The criteria below are based on the formal DSM-IV criteria for a Major Depressive Episode. A diagnoses of major depressive episode requires that the patient has—over a two-week period—experienced five or more of the symptoms below, and these must be outside the patient&#39;s normal behaviour. Either depressed mood or decreased interest or pleasure must be one of the five (although both are frequently concomitant).
 
 Mood
     For the better part of nearly every day, the patient reports a depressed mood or appears depressed to others.
@@ -139,7 +139,7 @@ Mood
 Anhedonia and loss of interest
 
     For most of nearly every day, interest or pleasure is markedly decreased in nearly all activities (noted by the patient or by others).
-        People suffering with depression tend to lose interest in things they once found enjoyable. Activities are no longer enjoyable and there is often a loss of interest in or desire for sex. People who are depressed may say, &quot;I just don&apos;t care anymore,&quot; or &quot;nothing matters anymore.&quot; Friends and family of the depressed person may notice that he/she has withdrawn from friends, or has neglected or quit doing activities that were once a source of enjoyment.
+        People suffering with depression tend to lose interest in things they once found enjoyable. Activities are no longer enjoyable and there is often a loss of interest in or desire for sex. People who are depressed may say, &quot;I just don&#39;t care anymore,&quot; or &quot;nothing matters anymore.&quot; Friends and family of the depressed person may notice that he/she has withdrawn from friends, or has neglected or quit doing activities that were once a source of enjoyment.
 
 Change in eating, appetite, or weight
 
@@ -156,9 +156,9 @@ Sleep
 
 Motor activity
 
-    Nearly every day others can see that the patient&apos;s activity is agitated or slow.
+    Nearly every day others can see that the patient&#39;s activity is agitated or slow.
         People suffering from depression may be either quite agitated (psychomotor agitation), or very lethargic (psychomotor retardation) in their mannerisms and behavior. If a person is agitated, he or she may find it difficult to sit still, may pace the room, wring his/her hands, or fidget with clothes or objects. Someone with psychomotor retardation tends to move sluggishly, may move across a room very slowly, avert his/her eyes, sit slumped in a chair and speak slowly, saying little.
-        In terms of diagnosis, the agitation or slowing down of one&apos;s demeanor must be to the degree that it can be observed by others.
+        In terms of diagnosis, the agitation or slowing down of one&#39;s demeanor must be to the degree that it can be observed by others.
 
 Fatigue
 
@@ -212,15 +212,15 @@ In diagnosing the symptoms a trained therapist must take the following into acco
 
     <owl:Class rdf:about="&obo;MD_0000049">
         <rdfs:label xml:lang="en">depression</rdfs:label>
-        <rdfs:label xml:lang="en">depression disease</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;DOID_150"/>
         <hdot:patientLanguageDefinition xml:lang="en">Depression is a long lasting mood change, characterized by mild to deep sadness, reduced interest or pleasure in activities, social withdrawal with associated low self-esteem and fatigue</hdot:patientLanguageDefinition>
         <obo:IAO_0000115 xml:lang="en">Depression is a mental disease characterized by an all-encompassing low mood accompanied by low self-esteem, and by loss of interest or pleasure in living</obo:IAO_0000115>
-        <rdfs:comment xml:lang="en">Depression is defined as a psychophysical condition associated with loss events (e.g., loss through death of a loved one; loss of one&apos;s physical health), in which something or someone that is valued is lost and perceived as hard or impossible to regain.
+        <rdfs:comment xml:lang="en">Depression is defined as a psychophysical condition associated with loss events (e.g., loss through death of a loved one; loss of one&#39;s physical health), in which something or someone that is valued is lost and perceived as hard or impossible to regain.
 
 Depression is considered a heterogeneous condition in which different biologic abnormalities may be present such as a significant weight loss or gain, too little or too much sleep, physical agitation or slowing down, fatigue or loss of energy, feelings of worthlessness or excessive guilt, feelings of hopelessness and helplessness, lowered ability to think, to concentrate or make decisions and recurrent thoughts of death or suicide.
 
 p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
+        <oboInOwl:hasSynonym xml:lang="en">depression disease</oboInOwl:hasSynonym>
         <obo:IAO_0000115 xml:lang="en">depression disease is a disease of mental health that is realized in a depressed mood episode</obo:IAO_0000115>
     </owl:Class>
     
@@ -269,7 +269,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <rdfs:label xml:lang="en">grief</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000001"/>
         <hdot:patientLanguageDefinition xml:lang="en">Grief is an intense long lasting negative emotion caused by a subjective important loss</hdot:patientLanguageDefinition>
-        <obo:IAO_0000115 xml:lang="en">Grief is an intense negative emotion following a bereavement, i.e. the loss of a significant person through that person&apos;s death. [Source: OCEAS]</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Grief is an intense negative emotion following a bereavement, i.e. the loss of a significant person through that person&#39;s death. [Source: OCEAS]</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000016</obo:IAO_0000119>
     </owl:Class>
     
@@ -291,7 +291,6 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
 
     <owl:Class rdf:about="&obo;MFOEM_000028">
         <rdfs:label xml:lang="en">anxiety</rdfs:label>
-        <rdfs:label xml:lang="en">state anxiety</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000001"/>
         <obo:IAO_0000115 xml:lang="en">A negative, aversive emotion provoked by the prospect of future threat. Distinguished from fear since it is triggered by a distal threat whereas fear is triggered by an immediate threat. Often gradual and long-lasting, whereas fear usually has sudden onset and offset.   [Source: OCEAS]</obo:IAO_0000115>
         <rdfs:comment xml:lang="en">Anxiety can be defined as “an intense emotional response caused by the preconscious recognition that a repressed conflict is about to emerge into consciousness” (Gerrig, Zimbardo, 2002). This emotional state includes feelings of apprehension, tension, nervousness, and worry accompanied by physiological arousal related to future danger events, in which an unpleasant specific future crisis is fairly likely. More specifically, it is a condition of persistent and uncontrollable nervousness, stress, and worry that is triggered by anticipation of future events, memories of past events, or ruminations over day-to-day events, both trivial and major, with disproportionate fears of catastrophic consequences.
@@ -300,6 +299,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <hdot:patientLanguageDefinition xml:lang="en">Anxiety is an emotional state felt in uncertain situations that could lead to negative consequences</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000028</obo:IAO_0000119>
         <obo:IAO_0000412 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000028</obo:IAO_0000412>
+        <oboInOwl:hasSynonym xml:lang="en">state of anxiety</oboInOwl:hasSynonym>
     </owl:Class>
     
 
@@ -319,7 +319,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     <owl:Class rdf:about="&obo;MFOEM_000056">
         <rdfs:label xml:lang="en">sadness</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000001"/>
-        <obo:IAO_0000115 xml:lang="en">A negative emotion felt when an event is appraised as unpleasant, obstructive to one&apos;s goals and concerns, and one feels unable to cope with it or modify it. [Source: OCEAS]</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">A negative emotion felt when an event is appraised as unpleasant, obstructive to one&#39;s goals and concerns, and one feels unable to cope with it or modify it. [Source: OCEAS]</obo:IAO_0000115>
         <hdot:patientLanguageDefinition xml:lang="en">Sadness is a negative emotion caused by characterized by a feeling of melancholia and discouragement for something that the person is not able to reach or have</hdot:patientLanguageDefinition>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/MFOEM_000056</obo:IAO_0000119>
     </owl:Class>
@@ -428,7 +428,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     <owl:Class rdf:about="&obo;NBO_0000170">
         <rdfs:label xml:lang="en">memory behavior</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;NBO_0000607"/>
-        <obo:IAO_0000115 xml:lang="en">Behavior related with the ability of an organism&apos;s ability to store, retain, and recall information and experiences.</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Behavior related with the ability of an organism&#39;s ability to store, retain, and recall information and experiences.</obo:IAO_0000115>
         <obo:IAO_0000412 xml:lang="en">http://purl.obolibrary.org/obo/NBO_0000170</obo:IAO_0000412>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/NBO_0000170</obo:IAO_0000119>
     </owl:Class>
@@ -511,7 +511,6 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     <!-- http://www.ifomis.org/hdot/HDOT_CP_006 -->
 
     <owl:Class rdf:about="&hdot;HDOT_CP_006">
-        <rdfs:label xml:lang="en">appraisal of self-efficacy</rdfs:label>
         <rdfs:label xml:lang="en">self-efficacy belief</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000005"/>
         <rdfs:comment xml:lang="en">It can be otherwise described as the subjective perception (or belief) to be able to cope with life problems and to reach success. Being a subjective perception, or belief, patients are aware of their own competences. This awareness affects whether or not health behaviour change will be initiated, how much effort will be expended, and how long it will be sustained in the face of obstacles and failures. In particular, it influences the processes of planning, taking initiative, maintaining behavior change, and managing relapses
@@ -519,6 +518,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
 p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
         <obo:IAO_0000115 xml:lang="en">Self-efficacy appraisal is a cognitive representation which represents a judgment about one’s own ability to complete tasks and reach goals; a sense of control over one’s environment and behaviour</obo:IAO_0000115>
         <hdot:patientLanguageDefinition xml:lang="en">Self-efficacy belief is the belief to be autonomous and independent from others and to be useful to herself</hdot:patientLanguageDefinition>
+        <oboInOwl:hasSynonym xml:lang="en">appraisal of self-efficacy</oboInOwl:hasSynonym>
     </owl:Class>
     
 
@@ -605,8 +605,8 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
 
     <owl:Class rdf:about="&hdot;HDOT_CP_013">
         <rdfs:label xml:lang="en">GSRH</rdfs:label>
-        <rdfs:label xml:lang="en">global self-rated health</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000005"/>
+        <oboInOwl:hasSynonym xml:lang="en">global self-rated health</oboInOwl:hasSynonym>
         <obo:IAO_0000115 xml:lang="en">global self-rated health is the subjective perception of one’s own health; it is relative to how the patient believes his/her health state is.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">p-medicine Deliverable 14.2, Specification of linguistic schema</obo:IAO_0000119>
     </owl:Class>
@@ -799,7 +799,7 @@ p-medicine, Deliverable 14.2, Specification of linguistic schema</rdfs:comment>
     <owl:Class rdf:about="&hdot;HDOT_CP_039">
         <rdfs:label xml:lang="en">appraisal of physical abilities</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;MFOEM_000005"/>
-        <obo:IAO_0000115 xml:lang="en">Appraisal of physical abilities is an appraisal that specifies one&apos;s evaluation of her physical abilities</obo:IAO_0000115>
+        <obo:IAO_0000115 xml:lang="en">Appraisal of physical abilities is an appraisal that specifies one&#39;s evaluation of her physical abilities</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -876,7 +876,7 @@ threatening situations</hdot:patientLanguageDefinition>
     <!-- http://www.ifomis.org/hdot/HDOT_PM_0022 -->
 
     <rdf:Description rdf:about="&hdot;HDOT_PM_0022">
-        <rdfs:comment xml:lang="en">Being integrated in social life is an important factor to determining the patients&apos; functional response to their illness and its treatment.
+        <rdfs:comment xml:lang="en">Being integrated in social life is an important factor to determining the patients&#39; functional response to their illness and its treatment.
 
 A decrease propensity to communicate and interact with other people or decrement of social life may be associated with medical (e.g., pain) and psycho-social factors (e.g., fatigue, depression, low self esteem, distorted body image, financial problems) related to the cancer condition.
 
@@ -966,5 +966,5 @@ definition slightly changed according to the structure of the HDOT_CORE</obo:IAO
 
 
 
-<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
 
