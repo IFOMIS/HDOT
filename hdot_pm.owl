@@ -349,14 +349,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002218"/>
-                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
+                <owl:onProperty rdf:resource="&obo;RO_0002218"/>
+                <owl:someValuesFrom rdf:resource="&obo;OGMS_0000087"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -471,14 +471,14 @@
     <rdf:Description rdf:about="&obo;OGMS_0000087">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;has_age"/>
-                <owl:someValuesFrom rdf:resource="&obo;PATO_0000011"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000087"/>
+                <owl:someValuesFrom rdf:resource="&obo;OMRSE_00000007"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000087"/>
-                <owl:someValuesFrom rdf:resource="&obo;OMRSE_00000007"/>
+                <owl:onProperty rdf:resource="&hdot;has_age"/>
+                <owl:someValuesFrom rdf:resource="&obo;PATO_0000011"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
@@ -864,12 +864,6 @@
         <rdfs:subClassOf rdf:resource="&obo;OGMS_0000077"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0016"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_028"/>
                 <owl:someValuesFrom rdf:resource="&obo;GO_0008283"/>
             </owl:Restriction>
@@ -878,6 +872,12 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0012"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0016"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000119>http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#Neoplasm</obo:IAO_0000119>
@@ -914,9 +914,9 @@
     <!-- http://www.ifomis.org/hdot/HDOT_PM_0017 -->
 
     <owl:Class rdf:about="&hdot;HDOT_PM_0017">
-        <rdfs:label xml:lang="en">A part of a questionnaire.</rdfs:label>
         <rdfs:label xml:lang="en">questionnaire part</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000314"/>
+        <obo:IAO_0000115 xml:lang="en">A part of a questionnaire.</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -1476,7 +1476,6 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
 
     <owl:Class rdf:about="&hdot;HDOT_PM_0061">
         <rdfs:label xml:lang="en">DNA</rdfs:label>
-        <rdfs:label>patient full name</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;CHEBI_33696"/>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PM_0066"/>
         <rdfs:subClassOf>
@@ -1495,7 +1494,6 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
 
     <owl:Class rdf:about="&hdot;HDOT_PM_0062">
         <rdfs:label xml:lang="en">nucleic acid molecule</rdfs:label>
-        <rdfs:label>patient identifier</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;CHEBI_33696"/>
         <rdfs:subClassOf rdf:resource="&obo;IAO_0000578"/>
         <rdfs:subClassOf>
@@ -1636,9 +1634,9 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     <!-- http://www.ifomis.org/hdot/HDOT_PM_0074 -->
 
     <owl:Class rdf:about="&hdot;HDOT_PM_0074">
-        <rdfs:label xml:lang="en">lump</rdfs:label>
         <rdfs:label xml:lang="en">tissue mass</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000027"/>
+        <oboInOwl:hasSynonym xml:lang="en">lump</oboInOwl:hasSynonym>
     </owl:Class>
     
 

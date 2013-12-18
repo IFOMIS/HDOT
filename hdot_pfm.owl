@@ -2,6 +2,7 @@
 
 
 <!DOCTYPE rdf:RDF [
+    <!ENTITY fma "http://sig.uw.edu/fma#" >
     <!ENTITY hdot "http://www.ifomis.org/hdot/" >
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY obo "http://purl.obolibrary.org/obo/" >
@@ -20,14 +21,15 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#">
+     xmlns:oboInOwl="http://www.geneontology.org/formats/oboInOwl#"
+     xmlns:fma="http://sig.uw.edu/fma#">
     <owl:Ontology rdf:about="&hdot;hdot_pfm.owl">
         <hdot:publisher>Institute for Formal Ontology and Medical Information Science (IFOMIS)</hdot:publisher>
         <hdot:creator>Ulf Schwarz</hdot:creator>
         <hdot:title>The Health Data Ontology Trunk Pathological Formation Module (HDOT_PFM)</hdot:title>
         <hdot:creator>Emilio M.Sanfilippo</hdot:creator>
-        <owl:versionInfo>HDOT_Pathological Formation Module (hdot_pfm) contains information about pathological formation entities (e.g. neoplasm). Inasmuch as this ontology is developed for the project &amp;apos;p-medicine&amp;apos;, it mainly contains information about three types of neoplasm: breast neoplasm, blood neoplasm and kidney neoplasm. HDOT_PFM imports a small branch of the Human Disease Ontology (DOID), altough its semantics is slightly changed</owl:versionInfo>
         <hdot:creator>Luc Schneider</hdot:creator>
+        <owl:versionInfo>HDOT_Pathological Formation Module (hdot_pfm) contains information about pathological formation entities (e.g. neoplasm). Inasmuch as this ontology is developed for the project &amp;apos;p-medicine&amp;apos;, it mainly contains information about three types of neoplasm: breast neoplasm, blood neoplasm and kidney neoplasm. HDOT_PFM imports a small branch of the Human Disease Ontology (DOID), altough its semantics is slightly changed</owl:versionInfo>
         <owl:imports rdf:resource="&hdot;doid_import.owl"/>
         <owl:imports rdf:resource="&hdot;hdot_pm.owl"/>
     </owl:Ontology>
@@ -117,7 +119,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="http://sig.uw.edu/fma#Kidney"/>
+                <owl:someValuesFrom rdf:resource="&fma;Kidney"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>We follow the SIOP for the following classification of Nephroblastoma. </rdfs:comment>
@@ -164,7 +166,7 @@
 
     <!-- http://sig.uw.edu/fma#Kidney -->
 
-    <owl:Class rdf:about="http://sig.uw.edu/fma#Kidney">
+    <owl:Class rdf:about="&fma;Kidney">
         <rdfs:label>kidney</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_018"/>
         <obo:IAO_0000412>http://sig.uw.edu/fma#Kidney</obo:IAO_0000412>
@@ -433,9 +435,9 @@ Staging helps health care providers and researchers exchange information about p
     <!-- http://www.ifomis.org/hdot/HDOT_PFM_018 -->
 
     <owl:Class rdf:about="&hdot;HDOT_PFM_018">
-        <rdfs:label xml:lang="en">Metastasis or Metastases to ipsilateral axillary lymph node(s) fixed to one another or to other structures</rdfs:label>
         <rdfs:label xml:lang="en">N2a</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_014"/>
+        <obo:IAO_0000115 xml:lang="en">Metastasis or Metastases to ipsilateral axillary lymph node(s) fixed to one another or to other structures</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -744,9 +746,9 @@ Staging helps health care providers and researchers exchange information about p
     <!-- http://www.ifomis.org/hdot/HDOT_PFM_043 -->
 
     <owl:Class rdf:about="&hdot;HDOT_PFM_043">
-        <rdfs:label xml:lang="en"> Presence of distant metastasis cannot be assessed</rdfs:label>
         <rdfs:label xml:lang="en">pMX</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_042"/>
+        <obo:IAO_0000115 xml:lang="en"> Presence of distant metastasis cannot be assessed</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -754,9 +756,9 @@ Staging helps health care providers and researchers exchange information about p
     <!-- http://www.ifomis.org/hdot/HDOT_PFM_044 -->
 
     <owl:Class rdf:about="&hdot;HDOT_PFM_044">
-        <rdfs:label xml:lang="en">Distant metastasis (includes metastasis to ipsilateral supraventricular lymph node[s])</rdfs:label>
         <rdfs:label xml:lang="en">pM1</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_042"/>
+        <obo:IAO_0000115 xml:lang="en">Distant metastasis (includes metastasis to ipsilateral supraventricular lymph node[s])</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -764,9 +766,9 @@ Staging helps health care providers and researchers exchange information about p
     <!-- http://www.ifomis.org/hdot/HDOT_PFM_045 -->
 
     <owl:Class rdf:about="&hdot;HDOT_PFM_045">
-        <rdfs:label xml:lang="en">No distant metastasis</rdfs:label>
         <rdfs:label xml:lang="en">pM0</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_042"/>
+        <obo:IAO_0000115 xml:lang="en">No distant metastasis</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -802,7 +804,6 @@ Staging helps health care providers and researchers exchange information about p
     <!-- http://www.ifomis.org/hdot/HDOT_PFM_048 -->
 
     <owl:Class rdf:about="&hdot;HDOT_PFM_048">
-        <rdfs:label xml:lang="en">Metastasis to ipsilateral axillary lymph nodes that are fixed to one another or to other structures</rdfs:label>
         <rdfs:label xml:lang="en">pN2</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
@@ -813,6 +814,7 @@ Staging helps health care providers and researchers exchange information about p
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_041"/>
+        <obo:IAO_0000115 xml:lang="en">Metastasis to ipsilateral axillary lymph nodes that are fixed to one another or to other structures</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -820,9 +822,9 @@ Staging helps health care providers and researchers exchange information about p
     <!-- http://www.ifomis.org/hdot/HDOT_PFM_049 -->
 
     <owl:Class rdf:about="&hdot;HDOT_PFM_049">
-        <rdfs:label xml:lang="en">Micrometastasis greater than 0,2 mm but not more than 0,2 cm</rdfs:label>
         <rdfs:label xml:lang="en">pN1mi</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_041"/>
+        <obo:IAO_0000115 xml:lang="en">Micrometastasis greater than 0,2 mm but not more than 0,2 cm</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -830,7 +832,6 @@ Staging helps health care providers and researchers exchange information about p
     <!-- http://www.ifomis.org/hdot/HDOT_PFM_050 -->
 
     <owl:Class rdf:about="&hdot;HDOT_PFM_050">
-        <rdfs:label xml:lang="en">Metastasis to movable ipsilateral axillary lymph node(s)</rdfs:label>
         <rdfs:label xml:lang="en">pN1</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
@@ -842,6 +843,7 @@ Staging helps health care providers and researchers exchange information about p
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_041"/>
+        <obo:IAO_0000115 xml:lang="en">Metastasis to movable ipsilateral axillary lymph node(s)</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -1040,9 +1042,9 @@ Staging helps health care providers and researchers exchange information about p
     <!-- http://www.ifomis.org/hdot/HDOT_PFM_066 -->
 
     <owl:Class rdf:about="&hdot;HDOT_PFM_066">
-        <rdfs:label xml:lang="en">Metastasis or Metastases in clinically identifiable lymph nodes along the Arteria mammaria interna with at least one axillary lymph node metastasis or lymph node metastases in more than 3 axillary lymph nodes and in lymph nodes along the Arteria mammaria interna, proved by analysis of the sentinel lymph node(s) but not clinically identifiable</rdfs:label>
         <rdfs:label xml:lang="en">pN3b</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_047"/>
+        <obo:IAO_0000115 xml:lang="en">Metastasis or Metastases in clinically identifiable lymph nodes along the Arteria mammaria interna with at least one axillary lymph node metastasis or lymph node metastases in more than 3 axillary lymph nodes and in lymph nodes along the Arteria mammaria interna, proved by analysis of the sentinel lymph node(s) but not clinically identifiable</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -1212,7 +1214,7 @@ Staging helps health care providers and researchers exchange information about p
     <owl:Class rdf:about="&hdot;HDOT_PFM_083">
         <rdfs:label xml:lang="en">wilms tumor stage</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_001"/>
-        <obo:IAO_0000115>Stage of the Wilm&apos;s tumor</obo:IAO_0000115>
+        <obo:IAO_0000115>Stage of the Wilm&#39;s tumor</obo:IAO_0000115>
     </owl:Class>
     
 
@@ -1264,8 +1266,8 @@ e) Viable tumour infiltrates adjacent organs or vena cava but is completely rese
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_PFM_083"/>
         <obo:IAO_0000115 xml:lang="en">(a) The tumour limited to kidney or surrounded with ®brous pseudocapsule if outside of the normal contours of the kidney, the
 renal capsule or pseudocapsule may be in®ltrated with the tumor but it does not reach the outer surface, and it is completely
-resected (resection margins `clear&apos;)
-(b) The tumor may be protruding (`bulging&apos;) into the pelvic system and `dipping&apos; into the ureter (but it is not in®ltrating their
+resected (resection margins `clear&#39;)
+(b) The tumor may be protruding (`bulging&#39;) into the pelvic system and `dipping&#39; into the ureter (but it is not in®ltrating their
 walls)
 (c) The vessels of the renal sinus are not involved
 (d) Intrarenal vessel involvement may be present</obo:IAO_0000115>
@@ -1363,7 +1365,6 @@ walls)
 
     <owl:Class rdf:about="&hdot;HDOT_PFM_093">
         <rdfs:label>neoplasm volume</rdfs:label>
-        <rdfs:label>tumor volume</rdfs:label>
         <owl:equivalentClass>
             <owl:Class>
                 <owl:intersectionOf rdf:parseType="Collection">
@@ -1385,6 +1386,7 @@ walls)
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000918"/>
+        <oboInOwl:hasSynonym>tumor volume</oboInOwl:hasSynonym>
     </owl:Class>
     
 
@@ -1561,13 +1563,13 @@ walls)
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;has_magnitude"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_092"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_093"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;has_magnitude"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_093"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PFM_092"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -1581,5 +1583,5 @@ walls)
 
 
 
-<!-- Generated by the OWL API (version 3.3.1957) http://owlapi.sourceforge.net -->
+<!-- Generated by the OWL API (version 3.2.3.1824) http://owlapi.sourceforge.net -->
 
