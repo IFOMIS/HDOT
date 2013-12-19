@@ -318,7 +318,7 @@ public class RecommendationGenerator {
 					return 1;
 
 				} else {
-					
+
 					log.debug("no match found");
 					if (counterForParents == 0) {
 						boolean matchInCurationModules = checkInModulesForCuration(currentCandidate);
@@ -356,17 +356,18 @@ public class RecommendationGenerator {
 				.getImports();
 
 		for (OWLOntology moduleForCuration : modulesForCuration) {
-			
+
 			boolean importIsSortedModule = false;
-			//check if the import is one of the modules in hdot_all
+			// check if the import is one of the modules in hdot_all
 			for (int i = 0; i < sortedHdotModules.length; i++) {
 				OWLOntology sortedModule = sortedHdotModules[i];
-				if(sortedModule.getOntologyID().equals(moduleForCuration.getOntologyID()))
-					importIsSortedModule  = true;
+				if (sortedModule.getOntologyID().equals(
+						moduleForCuration.getOntologyID()))
+					importIsSortedModule = true;
 			}
-			if(importIsSortedModule)
+			if (importIsSortedModule)
 				continue;
-			
+
 			OntologyTerm matchedTerm = findMatch(currentCandidate,
 					moduleForCuration, true);
 
@@ -474,7 +475,7 @@ public class RecommendationGenerator {
 
 			String pureLabelOfHdotClass = retriveRdfsLabel(annotations);
 
-			// compare concept ids
+			// compare concept URIs
 			conceptIdsMatch = compareIds(currentCandidate.getURI().toString(),
 					hdotClass.toStringID());
 
@@ -494,8 +495,8 @@ public class RecommendationGenerator {
 			if (currentCandidate.getLabel().isEmpty()) {
 				continue;
 			}
-			labelsMatch = compareLabels(currentCandidate.getLabel().trim(),
-					pureLabelOfHdotClass.trim());
+			labelsMatch = compareLabelsAndSynonyms(currentCandidate.getLabel()
+					.trim(), pureLabelOfHdotClass.trim(), annotations);
 
 			if (labelsMatch) {
 
@@ -543,7 +544,7 @@ public class RecommendationGenerator {
 
 				if (!currentOntologyIsModuleForCuration)
 					matchedClassTheSearchedTerm = isMatchedClassTheSearchedTerm(matchedTerm);
-				
+
 				extractHierarchyOfMatchedTerm(currentOntology, hdotClass);
 
 				if (matchedClassTheSearchedTerm) {
@@ -659,12 +660,13 @@ public class RecommendationGenerator {
 		// log.debug("number of matching parents: " + numMatchedParents);
 	}
 
-	private boolean compareLabels(String currentLabel,
-			String pureLabelOfHdotClass) {
+	private boolean compareLabelsAndSynonyms(String currentLabel,
+			String pureLabelOfHdotClass, Set<OWLAnnotation> annotations) {
 
 		if (currentLabel.isEmpty() || pureLabelOfHdotClass.isEmpty()) {
 			return false;
 		}
+
 		boolean result = false;
 		if (currentLabel.trim().equalsIgnoreCase(pureLabelOfHdotClass.trim())) {
 			result = true;
@@ -683,6 +685,16 @@ public class RecommendationGenerator {
 				result = true;
 			}
 		}
+		String[] synonyms = retriveHasSynonyms(annotations);
+		if (synonyms == null)
+			return result;
+
+		for (int i = 0; i < synonyms.length; i++) {
+			String synonym = synonyms[i];
+			if (currentLabel.trim().equalsIgnoreCase(synonym.trim()))
+				return true;
+		}
+
 		return result;
 	}
 
@@ -758,6 +770,35 @@ public class RecommendationGenerator {
 		return pureLabelOfClass;
 	}
 
+	/**
+	 * Selects the hasSynonym relation from the given set of annotations.
+	 * 
+	 * @param annotations
+	 *            set of @link{OWLAnnotation}
+	 * @return the rdfs:label
+	 */
+	private String[] retriveHasSynonyms(Set<OWLAnnotation> annotations) {
+		String[] synonyms = null;
+		// get all the annotations of the current class and extract the
+		// label
+		for (OWLAnnotation owlAnnotation : annotations) {
+			// get just the rdfs: label annotations
+			if (owlAnnotation.toString().contains("hasSynonym")) {
+				System.out.println("************");
+				System.out.println(owlAnnotation.toString());
+				System.out.println(owlAnnotation.getValue().toString().split("\"")[1]);
+				System.out.println(owlAnnotation.getValue().toString().split("\"")[1]
+						.split(";"));
+				if(owlAnnotation.getValue().toString().split("\"")[1].equals("biospecimen"))
+					log.info("check and debug");
+				
+				synonyms = owlAnnotation.getValue().toString().split("\"")[1]
+						.split(";");
+			}
+		}
+		return synonyms;
+	}
+
 	private String getImportedFromAnnotation(Set<OWLAnnotation> annotations) {
 		String importedFromAnnotation = "";
 		for (OWLAnnotation owlAnnotation : annotations) {
@@ -831,41 +872,5 @@ public class RecommendationGenerator {
 
 	public boolean hasHierarchyOfHdotClass() {
 		return hierarchyOfHdotClass != null;
-	}
-
-	public static void main(String[] args) throws IOException,
-			OWLOntologyCreationException {
-
-		// 0. load configuration
-		Configuration.getInstance();
-		// Get hold of an ontology manager
-		OWLOntologyManager ontologyManager = OWLManager
-				.createOWLOntologyManager();
-
-		ontologyManager = Configuration
-				.mapIrisOfVisibleUserModules(ontologyManager);
-
-		ontologyManager = Configuration
-				.mapIrisOfUserModulesForCuration(ontologyManager);
-
-		// Now load the local copy of hdot that include all modules
-		OWLOntology hdotOntologi = ontologyManager
-				.loadOntologyFromOntologyDocument(Configuration.HDOT_CONTAINER_AUTHORIZED);
-
-		log.info("Loaded ontology: " + hdotOntologi);
-
-		List<OWLOntology> hdotModules = ontologyManager
-				.getSortedImportsClosure(hdotOntologi);
-		for (OWLOntology module : hdotModules) {
-			Set<OWLClass> classes = module.getClassesInSignature();
-
-			for (OWLClass owlClass : classes) {
-				Set<OWLAnnotation> annotations = owlClass
-						.getAnnotations(module);
-				for (OWLAnnotation owlAnnotation : annotations) {
-					System.out.println(owlAnnotation);
-				}
-			}
-		}
 	}
 }
