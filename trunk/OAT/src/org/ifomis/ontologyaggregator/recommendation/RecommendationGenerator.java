@@ -520,7 +520,10 @@ public class RecommendationGenerator {
 				log.info("_________________________________________________");
 
 				String importedFrom = getImportedFromAnnotation(annotations);
-
+				if(importedFrom.isEmpty())
+					importedFrom = currentOntology.getOntologyID()
+							.getOntologyIRI().toString();
+				
 				matchedTerm.setURI(new URI(hdotClass.toStringID()));
 				String[] parts = hdotClass.getIRI().toURI().toString()
 						.split("/");
@@ -784,13 +787,13 @@ public class RecommendationGenerator {
 		for (OWLAnnotation owlAnnotation : annotations) {
 			// get just the rdfs: label annotations
 			if (owlAnnotation.toString().contains("hasSynonym")) {
-				System.out.println("************");
-				System.out.println(owlAnnotation.toString());
-				System.out.println(owlAnnotation.getValue().toString().split("\"")[1]);
-				System.out.println(owlAnnotation.getValue().toString().split("\"")[1]
-						.split(";"));
-				if(owlAnnotation.getValue().toString().split("\"")[1].equals("biospecimen"))
-					log.info("check and debug");
+//				System.out.println("************");
+//				System.out.println(owlAnnotation.toString());
+//				System.out.println(owlAnnotation.getValue().toString().split("\"")[1]);
+//				System.out.println(owlAnnotation.getValue().toString().split("\"")[1]
+//						.split(";"));
+//				if(owlAnnotation.getValue().toString().split("\"")[1].equals("biospecimen"))
+//					log.debug("check and debug");
 				
 				synonyms = owlAnnotation.getValue().toString().split("\"")[1]
 						.split(";");
@@ -810,6 +813,7 @@ public class RecommendationGenerator {
 							.toString().split("\"")[1];
 			}
 		}
+
 		return importedFromAnnotation;
 	}
 
