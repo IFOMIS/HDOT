@@ -172,7 +172,7 @@ public class SearchEngine {
 
 			List<Stack<OntologyTerm>> listOfAllPathsForGoodCandidate = pathExtractor
 					.computeAllPaths(goodCandidate);
-
+			
 			listOfPaths.add(listOfAllPathsForGoodCandidate);
 
 			if (counterForQueriesRootPath == threshold) {

@@ -122,11 +122,14 @@ public class RootpathExtractor {
 			}
 		}
 		for (String parent : parents) {
-			// log.debug("parent" + parent);
 			// exclude exceptions
-			// if(parent.contains("hit complexity limit")){
-			// continue;
-			// }
+			 if(parent.contains("hit complexity limit")){
+				 log.info("parent" + parent);
+				 log.info("ontology: " + ontologyAbbreviation);
+				 path.clear();
+				 onPath.clear();
+			 return;
+			 }
 			String[] parentTokens = parent.split("\t");
 
 			String parentURI = parentTokens[0].substring(1,
@@ -204,7 +207,7 @@ public class RootpathExtractor {
 		} else if (!prefLabel.isEmpty()) {
 			labelToBeSet = prefLabel.split("\"")[1];
 		}
-		// log.debug("!!!! string for generatng URI: !!!"
+		// log.debug("!!!! string for generating URI: !!!"
 		// + parentTokens[0].substring(1, parentTokens[0].length() - 1));
 
 		concept.setURI(new URI(parentTokens[0].substring(1,
