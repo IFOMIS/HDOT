@@ -122,14 +122,14 @@
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_169"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_169"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -206,14 +206,14 @@
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000029"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CORE_031"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CORE_031"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -228,7 +228,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_119"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_168"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:allValuesFrom rdf:resource="&hdot;HDOT_PM_0001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -239,8 +245,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_193"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_168"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_164"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -252,19 +264,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_164"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_193"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:allValuesFrom rdf:resource="&hdot;HDOT_PM_0001"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_119"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -284,8 +284,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_185"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_188"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -296,8 +296,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_188"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_185"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_183"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -310,12 +316,6 @@
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_184"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_183"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -351,13 +351,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_120"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_117"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_117"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_120"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -371,38 +371,8 @@
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0016"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_181"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_172"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_088"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_100"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_092"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_180"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -414,7 +384,31 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&obo;PATO_0001396"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_091"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&obo;OBI_0600020"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_088"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_099"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0014"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -426,7 +420,31 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_097"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_177"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_181"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000187"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0016"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_092"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_090"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -437,20 +455,50 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000176"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0014"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&obo;OBI_0600020"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_096"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_095"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_094"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_179"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_173"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_172"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_171"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_104"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_093"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -468,13 +516,25 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_177"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_097"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_099"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_095"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_122"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&obo;PATO_0001396"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -486,73 +546,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_100"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_098"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_091"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_173"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_096"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_122"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_104"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_179"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_171"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_180"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_090"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_093"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_094"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -566,8 +566,8 @@
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_088"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_182"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -585,25 +585,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_179"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_123"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_182"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_172"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_177"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -615,19 +597,37 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_180"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_124"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_177"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_180"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_179"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_123"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_172"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_088"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -642,13 +642,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_126"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_125"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_125"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_126"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -719,14 +719,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000155"/>
-                <owl:onClass rdf:resource="&hdot;HDOT_BSDS_015"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_015"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000057"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_CORE_032"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1110,60 +1109,6 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_050">
         <rdfs:label xml:lang="en">biobank sample material</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000027"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_142"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_144"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_051"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_141"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_143"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_146"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&obo;PATO_0000146"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_147"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_151"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1171,125 +1116,24 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_051 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_051">
-        <rdfs:label xml:lang="en">biobank vial set</rdfs:label>
+        <rdfs:label xml:lang="en">biobank vial set by biochemical</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;BFO_0000027"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_158"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_062"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_199"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_160"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_198"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_067"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_161"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_060"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_013"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:onClass rdf:resource="&obo;CHEBI_36080"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:onClass rdf:resource="&obo;CHEBI_18059"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_155"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:onClass rdf:resource="&obo;CHEBI_33259"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_057"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_154"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_156"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:onClass rdf:resource="&obo;CHEBI_16670"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_059"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_157"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:onClass rdf:resource="&obo;CHEBI_16646"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_159"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1301,6 +1145,18 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_052">
         <rdfs:label xml:lang="en">DNA vial set</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_051"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_156"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_157"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1310,6 +1166,18 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_053">
         <rdfs:label xml:lang="en">RNA vial set</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_051"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_154"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_155"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1319,6 +1187,18 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_054">
         <rdfs:label xml:lang="en">protein vial set</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_051"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_159"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_158"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1328,6 +1208,18 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_055">
         <rdfs:label xml:lang="en">cell culture vial set</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_051"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_161"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_160"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1361,14 +1253,14 @@
         <rdfs:subClassOf rdf:resource="&obo;PATO_0000125"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_051"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;float"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000080"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_051"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1926,13 +1818,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_130"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_129"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_129"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_130"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1947,13 +1839,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_136"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_135"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_135"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_136"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -1968,13 +1860,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_138"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_137"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_137"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_138"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2236,8 +2128,8 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_143 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_143">
-        <rdfs:label xml:lang="en">ICD-O term</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_033"/>
+        <rdfs:label xml:lang="en">ICD-O</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_200"/>
     </owl:Class>
     
 
@@ -2245,8 +2137,8 @@
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_144 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_144">
-        <rdfs:label xml:lang="en">ICD-10 term</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_033"/>
+        <rdfs:label xml:lang="en">ICD-10</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_200"/>
     </owl:Class>
     
 
@@ -2273,6 +2165,12 @@
         <rdfs:subClassOf rdf:resource="&obo;OBI_0000011"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000155"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_145"/>
             </owl:Restriction>
@@ -2286,6 +2184,12 @@
     <owl:Class rdf:about="&hdot;HDOT_BSDS_147">
         <rdfs:label xml:lang="en">biomaterial sample availability</rdfs:label>
         <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -2348,11 +2252,11 @@
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_154">
         <rdfs:label xml:lang="en">number of isolated RNA vials</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_199"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2363,11 +2267,11 @@
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_155">
         <rdfs:label xml:lang="en">number of available RNA vials</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_198"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2378,11 +2282,11 @@
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_156">
         <rdfs:label xml:lang="en">number of isolated DNA vials</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_199"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2393,11 +2297,11 @@
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_157">
         <rdfs:label xml:lang="en">number of available DNA vials</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_198"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2408,11 +2312,11 @@
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_158">
         <rdfs:label xml:lang="en">number of isolated protein vials</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_199"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2423,11 +2327,11 @@
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_159">
         <rdfs:label xml:lang="en">number of available protein vials</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_198"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2438,11 +2342,11 @@
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_160">
         <rdfs:label xml:lang="en">number of isolated cell culture vials</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_199"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2453,11 +2357,11 @@
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_161">
         <rdfs:label xml:lang="en">number of available cell culture vials</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_198"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
-                <owl:someValuesFrom rdf:resource="&xsd;float"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2471,32 +2375,8 @@
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_050"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_115"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_119"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_168"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_164"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_192"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_195"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2513,8 +2393,32 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_195"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_119"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_192"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_164"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_115"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_168"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -2950,13 +2854,204 @@
     
 
 
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_196 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_196">
+        <rdfs:label xml:lang="en">biomaterial availability comment</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000300"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_197 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_197">
+        <rdfs:label xml:lang="en">biobank vial set</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;BFO_0000027"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:onClass rdf:resource="&hdot;HDOT_PM_0059"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:onClass rdf:resource="&obo;CHEBI_33259"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:onClass rdf:resource="&obo;CHEBI_18059"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_059"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000172"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_051"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:onClass rdf:resource="&obo;CHEBI_36080"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_060"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_062"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:onClass rdf:resource="&obo;CHEBI_16646"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_067"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_057"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_198 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_198">
+        <rdfs:label xml:lang="en">total number of available vials by biochemical</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_199 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_199">
+        <rdfs:label xml:lang="en">total number of isolated vials by biochemical</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_200 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_200">
+        <rdfs:label xml:lang="en">ICD class</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_033"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_201 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_201">
+        <rdfs:label xml:lang="en">ICD-8</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_200"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_202 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_202">
+        <rdfs:label xml:lang="en">biomaterial storage at -80°C</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_013"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000155"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_203"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_203 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_203">
+        <rdfs:label xml:lang="en">date and time of biomaterial storage at -80°C</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_051"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;dateTime"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_204 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_204">
+        <rdfs:label xml:lang="en">number of freeze-thaw cycles</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;PATO_0001241"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_001"/>
+                <owl:someValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_205 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_205">
+        <rdfs:label xml:lang="en">comment on variation and deviations from SOP; problems and issues</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&obo;IAO_0000300"/>
+    </owl:Class>
+    
+
+
     <!-- http://www.ifomis.org/hdot/HDOT_CORE_032 -->
 
     <rdf:Description rdf:about="&hdot;HDOT_CORE_032">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_107"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_142"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2964,6 +3059,108 @@
                 <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
                 <owl:onClass rdf:resource="&hdot;HDOT_BSDS_002"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_003"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_150"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&obo;PATO_0000146"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_205"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_067"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_151"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_147"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_025"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000159"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_204"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_051"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_196"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_202"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_036"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_141"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_200"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_143"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_028"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_012"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_144"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2980,26 +3177,14 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000171"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_003"/>
+                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_037"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_107"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;HDOT_CORE_028"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_012"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000110"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_051"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000086"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_025"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000056"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_146"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
@@ -3037,15 +3222,15 @@
     <rdf:Description rdf:about="&hdot;HDOT_PM_0058">
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
-                <owl:onClass rdf:resource="&hdot;HDOT_CORE_032"/>
-                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
+                <owl:onProperty rdf:resource="&obo;RO_0002217"/>
+                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_066"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&obo;RO_0002217"/>
-                <owl:someValuesFrom rdf:resource="&hdot;HDOT_BSDS_066"/>
+                <owl:onProperty rdf:resource="&obo;BFO_0000178"/>
+                <owl:onClass rdf:resource="&hdot;HDOT_CORE_032"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">0</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
