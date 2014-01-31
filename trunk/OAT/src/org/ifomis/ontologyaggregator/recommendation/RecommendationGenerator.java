@@ -114,6 +114,12 @@ public class RecommendationGenerator {
 
 	private OntologyTerm matchedClass;
 
+	/**
+	 * A list that contains all classes of the imported ontologies, needed for
+	 * HDOT extension constraints.
+	 */
+	private List<OWLClass> classesOfImportedOntologiesAndCore;
+
 	public OntologyTerm getMatchedClass() {
 		return matchedClass;
 	}
@@ -154,6 +160,7 @@ public class RecommendationGenerator {
 
 		this.importedOntologies = FileUtils.readLines(new File(
 				Configuration.IMPORTED_ONTOLOGIES_FILE.toURI()));
+		this.classesOfImportedOntologiesAndCore = new ArrayList<>();
 
 		// Get hold of an ontology manager
 		this.ontologyManager = OWLManager.createOWLOntologyManager();
@@ -245,7 +252,6 @@ public class RecommendationGenerator {
 					continue;
 				}
 				log.info("\n***************************************************************");
-
 			}
 		}
 		if (recommendationCounter > 0) {
@@ -305,6 +311,22 @@ public class RecommendationGenerator {
 
 				log.debug("Module: " + hdotModule.getOntologyID());
 
+				// fill in the list with the classes of imported ontologies and
+				// those asserted by HDOT_CORE
+				if (importedOntologies.contains(hdotModule.getOntologyID()
+						.getOntologyIRI().toString())
+						|| hdotModule
+								.getOntologyID()
+								.getOntologyIRI()
+								.toString()
+								.contains(
+										FileUtils.readFileToString(new File(
+												Configuration.CORE_MODULE_FILE
+														.toURI())))) {
+					classesOfImportedOntologiesAndCore.addAll(hdotModule
+							.getClassesInSignature());
+				}
+				
 				OntologyTerm matchedConcept = findMatch(currentCandidate,
 						hdotModule, false);
 
@@ -316,7 +338,7 @@ public class RecommendationGenerator {
 					}
 					path.clear();
 					return 1;
-
+					
 				} else {
 
 					log.debug("no match found");
@@ -512,7 +534,6 @@ public class RecommendationGenerator {
 					matchedTerm = new OntologyTerm();
 				}
 				matchedTerm.setLabel(pureLabelOfHdotClass);
-
 			}
 			// check after the comparison if a match was found
 			// to collect the hierarchy and set the accessions
@@ -520,10 +541,10 @@ public class RecommendationGenerator {
 				log.info("_________________________________________________");
 
 				String importedFrom = getImportedFromAnnotation(annotations);
-				if(importedFrom.isEmpty())
+				if (importedFrom.isEmpty())
 					importedFrom = currentOntology.getOntologyID()
 							.getOntologyIRI().toString();
-				
+
 				matchedTerm.setURI(new URI(hdotClass.toStringID()));
 				String[] parts = hdotClass.getIRI().toURI().toString()
 						.split("/");
@@ -550,10 +571,8 @@ public class RecommendationGenerator {
 
 				extractHierarchyOfMatchedTerm(currentOntology, hdotClass);
 
-				if (matchedClassTheSearchedTerm) {
-
+				if (matchedClassTheSearchedTerm)
 					break;
-				}
 
 				countMatchingParents();
 
@@ -607,16 +626,25 @@ public class RecommendationGenerator {
 			}
 		}
 
+		// The hdotClass is imported in the current ontology (module)
 		if (hdotClass.getSuperClasses(currentOntology).size() == 0) {
 			log.debug("THE MATCHED CLASS IS IMPORTED IN THIS MODULE");
 
+			// checks if the imported class is a leaf node
 			if (!(hdotClass.getSubClasses(ontologyManager.getOntologies())
 					.isEmpty())) {
-				log.debug("BUT IT IS NOT A LEAF NODE");
-				log.debug("search for further matches ...\n");
 
-				listImportedNotLeafMatches.add(recommendation);
-				result = false;
+				// checks if the imported class is contained in the imported
+				// ontologies
+				if (classesOfImportedOntologiesAndCore.contains(hdotClass)) {
+
+					log.debug("BUT IT IS NOT A LEAF NODE");
+					log.debug("search for further matches ...\n");
+
+					listImportedNotLeafMatches.add(recommendation);
+					result = false;
+				}
+				result = true;
 			}
 		}
 
@@ -787,14 +815,14 @@ public class RecommendationGenerator {
 		for (OWLAnnotation owlAnnotation : annotations) {
 			// get just the rdfs: label annotations
 			if (owlAnnotation.toString().contains("hasSynonym")) {
-//				System.out.println("************");
-//				System.out.println(owlAnnotation.toString());
-//				System.out.println(owlAnnotation.getValue().toString().split("\"")[1]);
-//				System.out.println(owlAnnotation.getValue().toString().split("\"")[1]
-//						.split(";"));
-//				if(owlAnnotation.getValue().toString().split("\"")[1].equals("biospecimen"))
-//					log.debug("check and debug");
-				
+				// System.out.println("************");
+				// System.out.println(owlAnnotation.toString());
+				// System.out.println(owlAnnotation.getValue().toString().split("\"")[1]);
+				// System.out.println(owlAnnotation.getValue().toString().split("\"")[1]
+				// .split(";"));
+				// if(owlAnnotation.getValue().toString().split("\"")[1].equals("biospecimen"))
+				// log.debug("check and debug");
+
 				synonyms = owlAnnotation.getValue().toString().split("\"")[1]
 						.split(";");
 			}
