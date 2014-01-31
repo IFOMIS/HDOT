@@ -180,7 +180,7 @@ public class Recommendation {
 
 		messageBuffer
 				.append("\n\n\t\tThe hdot module where the match was found is: ");
-		// messageBuffer.append(hdotModule.getOntologyID().getOntologyIRI().toString());
+		 messageBuffer.append(hdotModule.getOntologyID().getOntologyIRI().toString());
 		messageBuffer.append(importedFrom);
 
 		messageBuffer

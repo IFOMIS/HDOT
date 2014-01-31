@@ -87,6 +87,10 @@ public class HDOTExtender {
 
 	private Recommendation acceptedRecommendation;
 
+	private OWLOntology hdot_container;
+
+	private Set<OWLClass> allHdotClasses;
+
 	public HDOTExtender(OntologyService ontologyService, String userID,
 			boolean userRights) throws OntologyServiceException, IOException,
 			OWLOntologyStorageException, URISyntaxException,
@@ -100,6 +104,12 @@ public class HDOTExtender {
 		this.uriManager = new HDOTURIManager();
 		this.hdotVerifier = new HDOTVerifier();
 		this.ontologyService = ontologyService;
+		
+		this.hdot_container = this.ontologyManager
+				.loadOntologyFromOntologyDocument(new File(
+						Configuration.HDOT_CONTAINER_AUTHORIZED.toURI()));
+		this.allHdotClasses = hdot_container.getClassesInSignature(true);
+		
 	}
 
 	public void integrarteHitInHDOT(Recommendation acceptedRecommendation)
@@ -158,10 +168,16 @@ public class HDOTExtender {
 					.getHitChildren();
 
 			for (OntologyTerm subClass : subClasses) {
-				//  ensure that the classes are not already contained in
+				//skip integrating sub classes that already contained in
 				// hdot
-				// ensureNotAlreadyContainedInHDOT(subClass);
-
+				boolean classInHdot = allHdotClasses.contains(subClass);
+				
+				if(classInHdot){
+				
+					log.info("the sub class is already contained in HDOT");
+					continue;
+				}
+					
 				List<String> definitionsOfSubClass = ontologyService
 						.getDefinitions(subClass);
 				extendHDOT(subClass, theAcceptedHit, definitionsOfSubClass,
@@ -179,6 +195,7 @@ public class HDOTExtender {
 		FileUtils.writeLines(usedOntologies, setOfUsedOntologies);
 		FileUtils.writeLines(integratedTermsFromTheSourceOntology, listOfIntegratedTermsFromTheSourceOntology);
 	}
+
 
 	private OWLClass integrateSuperclasses() throws OntologyServiceException,
 			OWLOntologyStorageException, OWLOntologyCreationException,
@@ -504,9 +521,7 @@ public class HDOTExtender {
 		// add the module id and import the new module if it does not already
 		// exist
 		if (!orderOfModules.contains(newModuleIRI)) {
-			OWLOntology hdot_container = this.ontologyManager
-					.loadOntologyFromOntologyDocument(new File(
-							Configuration.HDOT_CONTAINER_AUTHORIZED.toURI()));
+			
 			// import the new module in hdot_all.owl and save it
 
 			OWLImportsDeclaration importDeclaraton = this.dataFactory
