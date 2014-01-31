@@ -1,4 +1,4 @@
-package org.ifomis.ontologyaggregator.integration;
+	package org.ifomis.ontologyaggregator.integration;
 
 import java.io.File;
 import java.io.IOException;
@@ -104,7 +104,9 @@ public class HDOTExtender {
 		this.uriManager = new HDOTURIManager();
 		this.hdotVerifier = new HDOTVerifier();
 		this.ontologyService = ontologyService;
-		
+		this.ontologyManager = Configuration
+				.mapIrisOfVisibleUserModules(ontologyManager);
+
 		this.hdot_container = this.ontologyManager
 				.loadOntologyFromOntologyDocument(new File(
 						Configuration.HDOT_CONTAINER_AUTHORIZED.toURI()));
