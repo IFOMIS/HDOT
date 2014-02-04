@@ -16,6 +16,7 @@ import java.util.Stack;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.util.Configuration;
+import org.ifomis.ontologyaggregator.util.OWLUtilities;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -495,7 +496,7 @@ public class RecommendationGenerator {
 			conceptIdsMatch = false;
 			labelsMatch = false;
 
-			String pureLabelOfHdotClass = retriveRdfsLabel(annotations);
+			String pureLabelOfHdotClass = OWLUtilities.retriveRdfsLabel(annotations);
 
 			// compare concept URIs
 			conceptIdsMatch = compareIds(currentCandidate.getURI().toString(),
@@ -675,7 +676,7 @@ public class RecommendationGenerator {
 			// get the labels of the parents to display them
 			for (OWLOntology currOnto : hdotOntology.getImports()) {
 				if (!classInHierarchy.getAnnotations(currOnto).isEmpty()) {
-					label = retriveRdfsLabel(classInHierarchy
+					label = OWLUtilities.retriveRdfsLabel(classInHierarchy
 							.getAnnotations(currOnto));
 					break;
 				}
@@ -716,7 +717,7 @@ public class RecommendationGenerator {
 				result = true;
 			}
 		}
-		String[] synonyms = retriveHasSynonyms(annotations);
+		String[] synonyms = OWLUtilities.retriveHasSynonyms(annotations);
 		if (synonyms == null)
 			return result;
 
@@ -780,55 +781,9 @@ public class RecommendationGenerator {
 		}
 	}
 
-	/**
-	 * Selects the rdfs:label from the given set of annotations.
-	 * 
-	 * @param annotations
-	 *            set of @link{OWLAnnotation}
-	 * @return the rdfs:label
-	 */
-	private String retriveRdfsLabel(Set<OWLAnnotation> annotations) {
-		String pureLabelOfClass = "";
-		// get all the annotations of the current class and extract the
-		// label
-		for (OWLAnnotation owlAnnotation : annotations) {
-			// get just the rdfs: label annotations
-			if (owlAnnotation.toString().contains("rdfs:label")) {
-				pureLabelOfClass = owlAnnotation.getValue().toString()
-						.split("\"")[1];
-			}
-		}
-		return pureLabelOfClass;
-	}
+	
 
-	/**
-	 * Selects the hasSynonym relation from the given set of annotations.
-	 * 
-	 * @param annotations
-	 *            set of @link{OWLAnnotation}
-	 * @return the rdfs:label
-	 */
-	private String[] retriveHasSynonyms(Set<OWLAnnotation> annotations) {
-		String[] synonyms = null;
-		// get all the annotations of the current class and extract the
-		// label
-		for (OWLAnnotation owlAnnotation : annotations) {
-			// get just the rdfs: label annotations
-			if (owlAnnotation.toString().contains("hasSynonym")) {
-				// System.out.println("************");
-				// System.out.println(owlAnnotation.toString());
-				// System.out.println(owlAnnotation.getValue().toString().split("\"")[1]);
-				// System.out.println(owlAnnotation.getValue().toString().split("\"")[1]
-				// .split(";"));
-				// if(owlAnnotation.getValue().toString().split("\"")[1].equals("biospecimen"))
-				// log.debug("check and debug");
-
-				synonyms = owlAnnotation.getValue().toString().split("\"")[1]
-						.split(";");
-			}
-		}
-		return synonyms;
-	}
+	
 
 	private String getImportedFromAnnotation(Set<OWLAnnotation> annotations) {
 		String importedFromAnnotation = "";
@@ -889,7 +844,7 @@ public class RecommendationGenerator {
 			// get the label of the OWLClass to set them in the ot
 			for (OWLOntology currOnto : hdotOntology.getImports()) {
 				if (!entryOfHierarchy.getAnnotations(currOnto).isEmpty()) {
-					label = retriveRdfsLabel(entryOfHierarchy
+					label = OWLUtilities.retriveRdfsLabel(entryOfHierarchy
 							.getAnnotations(currOnto));
 					ot.setOntologyAccession(currOnto.getOntologyID()
 							.getOntologyIRI().toString());

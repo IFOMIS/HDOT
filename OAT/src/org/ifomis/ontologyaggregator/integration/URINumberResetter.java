@@ -28,6 +28,7 @@ public class URINumberResetter {
     		properties.setProperty("counterForURIS_HDOT_PM", "0068");
     		properties.setProperty("counterForURIS_HDOT_CORE", "045");
     		properties.setProperty("counterForURIS_HDOT_BSDS", "104");
+    		properties.setProperty("counterForURIS_HDOT_BSDS", "046");
     		properties.store(new FileOutputStream("data/counter.properties"), null);
     		
 			System.out.println("URI numbers are  reset.");

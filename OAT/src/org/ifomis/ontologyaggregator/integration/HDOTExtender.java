@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.Stack;
@@ -14,6 +15,7 @@ import org.apache.log4j.Logger;
 import org.ifomis.ontologyaggregator.exception.HdotExtensionException;
 import org.ifomis.ontologyaggregator.recommendation.Recommendation;
 import org.ifomis.ontologyaggregator.util.Configuration;
+import org.ifomis.ontologyaggregator.util.OWLUtilities;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.AddImport;
@@ -89,7 +91,7 @@ public class HDOTExtender {
 
 	private OWLOntology hdot_container;
 
-	private Set<OWLClass> allHdotClasses;
+//	private Set<OWLClass> allHdotClasses;
 
 	public HDOTExtender(OntologyService ontologyService, String userID,
 			boolean userRights) throws OntologyServiceException, IOException,
@@ -110,7 +112,7 @@ public class HDOTExtender {
 		this.hdot_container = this.ontologyManager
 				.loadOntologyFromOntologyDocument(new File(
 						Configuration.HDOT_CONTAINER_AUTHORIZED.toURI()));
-		this.allHdotClasses = hdot_container.getClassesInSignature(true);
+//		this.allHdotClasses = hdot_container.getClassesInSignature(true);
 		
 	}
 
@@ -170,9 +172,9 @@ public class HDOTExtender {
 					.getHitChildren();
 
 			for (OntologyTerm subClass : subClasses) {
-				//skip integrating sub classes that already contained in
+				//skip integrating sub classes that are already contained in
 				// hdot
-				boolean classInHdot = allHdotClasses.contains(subClass);
+				boolean classInHdot = ensureSubClassIsNotAlreadyInHDOT(subClass);
 				
 				if(classInHdot){
 				
@@ -198,6 +200,30 @@ public class HDOTExtender {
 		FileUtils.writeLines(integratedTermsFromTheSourceOntology, listOfIntegratedTermsFromTheSourceOntology);
 	}
 
+
+	private boolean ensureSubClassIsNotAlreadyInHDOT(OntologyTerm subClass) {
+//		for (OWLClass hdotClass : allHdotClasses) {
+			
+		Set<OWLOntology> modules = hdot_container.getImports();
+		for (OWLOntology currModule : modules) {
+			Set<OWLClass> classesOfCurrModule = currModule.getClassesInSignature();
+			for (OWLClass owlClass : classesOfCurrModule) {
+				String hdotClassLabel = OWLUtilities.retriveRdfsLabel(owlClass.getAnnotations(currModule));
+
+				if (hdotClassLabel.equalsIgnoreCase(subClass.getLabel())
+						|| owlClass.toStringID().equals(
+								subClass.getURI().toString())) {
+					System.out.println("labels or uris are equal");
+					System.out.println(hdotClassLabel);
+					System.out.println();
+					return true;
+			}
+		}
+			
+//			}
+		}
+		return false;
+	}
 
 	private OWLClass integrateSuperclasses() throws OntologyServiceException,
 			OWLOntologyStorageException, OWLOntologyCreationException,
