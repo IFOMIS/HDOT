@@ -54,7 +54,9 @@
     // Datatypes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
-     -->   
+     -->
+
+    
 
 
     <!-- 
@@ -308,7 +310,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -320,13 +322,13 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000002"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&obo;BFO_0000117"/>
-                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000003"/>
+                <owl:someValuesFrom rdf:resource="&obo;MFOEM_000001"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <obo:IAO_0000115 xml:lang="en">An emotion process is a complex mental process that is a synchronized aggregate of constituent mental processes including an appraisal process as part, and which gives rise to an action tendency.</obo:IAO_0000115>
@@ -1586,7 +1588,7 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_CORE_045"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&hdot;IAO_0000219"/>
+                <owl:onProperty rdf:resource="&obo;IAO_0000219"/>
                 <owl:someValuesFrom rdf:resource="&hdot;HDOT_PM_0058"/>
             </owl:Restriction>
         </rdfs:subClassOf>
