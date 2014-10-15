@@ -69,7 +69,7 @@ public class OntologyBean extends Ontology{
 	private String preferredNameSlot;
 	private ArrayList<String> categoryIds;
 	private ArrayList<String> filenames;
-	private ArrayList<Integer> groupIds;
+	private ArrayList<String> groupIds;
 	private String filePath;
 	private String viewDefinition;
 	private String viewDefinitionLanguage;
@@ -300,11 +300,11 @@ public class OntologyBean extends Ontology{
 		return description;
 	}
 	
-	public ArrayList<Integer> getGroupIds() {
+	public ArrayList<String> getGroupIds() {
 		return groupIds;
 	}
 
-	public void setGroupIds(ArrayList<Integer> groupIds) {
+	public void setGroupIds(ArrayList<String> groupIds) {
 		this.groupIds = groupIds;
 	}
 	public String getId() {
