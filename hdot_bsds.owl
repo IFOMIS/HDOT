@@ -6222,6 +6222,1239 @@
         <rdfs:label xml:lang="en">intact</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_462"/>
     </owl:Class>
+
+
+        <!-- http://www.ifomis.org/hdot/HDOT_BSDS_465 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_465">
+        <rdfs:label xml:lang="en">hsa-miR-373*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_466 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_466">
+        <rdfs:label xml:lang="en">hsa-miR-3616-3p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_467 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_467">
+        <rdfs:label xml:lang="en">hsa-miR-4270</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_468 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_468">
+        <rdfs:label xml:lang="en">hsa-miR-3908</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_469 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_469">
+        <rdfs:label xml:lang="en">hsa-miR-1289</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_470 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_470">
+        <rdfs:label xml:lang="en">hsa-miR-1260</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_471 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_471">
+        <rdfs:label xml:lang="en">hsa-miR-374a*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_472 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_472">
+        <rdfs:label xml:lang="en">hsa-miR-501-3p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_473 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_473">
+        <rdfs:label xml:lang="en">hsa-miR-135b</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_474 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_474">
+        <rdfs:label xml:lang="en">hsa-miR-1324</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_475 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_475">
+        <rdfs:label xml:lang="en">hsa-miR-920</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_476 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_476">
+        <rdfs:label xml:lang="en">hsa-miR-624</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_477 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_477">
+        <rdfs:label xml:lang="en">hsa-miR-541*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_478 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_478">
+        <rdfs:label xml:lang="en">hsa-miR-550b</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_479 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_479">
+        <rdfs:label xml:lang="en">hsa-miR-4320</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_480 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_480">
+        <rdfs:label xml:lang="en">hsa-miR-25*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_481 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_481">
+        <rdfs:label xml:lang="en">hsa-miR-4260</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_482 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_482">
+        <rdfs:label xml:lang="en">hsa-miR-665</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_483 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_483">
+        <rdfs:label xml:lang="en">hsa-miR-4321</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_484 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_484">
+        <rdfs:label xml:lang="en">hsa-miR-503</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_485 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_485">
+        <rdfs:label xml:lang="en">hsa-miR-671-3p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_486 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_486">
+        <rdfs:label xml:lang="en">hsa-miR-664</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_487 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_487">
+        <rdfs:label xml:lang="en">hsa-miR-506</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_488 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_488">
+        <rdfs:label xml:lang="en">hsa-miR-198</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_489 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_489">
+        <rdfs:label xml:lang="en">hsa-miR-16-2*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_490 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_490">
+        <rdfs:label xml:lang="en">hsa-miR-222*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_491 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_491">
+        <rdfs:label xml:lang="en">hsa-miR-4323</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_492 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_492">
+        <rdfs:label xml:lang="en">hsa-miR-1181</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_493 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_493">
+        <rdfs:label xml:lang="en">hsa-miR-548c-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_494 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_494">
+        <rdfs:label xml:lang="en">hsa-miR-381</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_495 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_495">
+        <rdfs:label xml:lang="en">hsa-miR-3689a-3p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_496 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_496">
+        <rdfs:label xml:lang="en">hsa-miR-1539</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_497 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_497">
+        <rdfs:label xml:lang="en">hsa-miR-640</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_498 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_498">
+        <rdfs:label xml:lang="en">hsa-miR-516a-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_499 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_499">
+        <rdfs:label xml:lang="en">hsa-miR-1297</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_500 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_500">
+        <rdfs:label xml:lang="en">hsa-miR-549</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_501 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_501">
+        <rdfs:label xml:lang="en">hsa-miR-4307</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_502 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_502">
+        <rdfs:label xml:lang="en">hsa-miR-181d</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_503 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_503">
+        <rdfs:label xml:lang="en">hsa-miR-124</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_504 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_504">
+        <rdfs:label xml:lang="en">hsa-miR-520c-3p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_505 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_505">
+        <rdfs:label xml:lang="en">hsa-miR-3620</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_506 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_506">
+        <rdfs:label xml:lang="en">hsa-miR-3182</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_507 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_507">
+        <rdfs:label xml:lang="en">hsa-miR-1271</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_508 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_508">
+        <rdfs:label xml:lang="en">hsa-miR-9*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_509 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_509">
+        <rdfs:label xml:lang="en">hsa-miR-30c-2*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_510 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_510">
+        <rdfs:label xml:lang="en">hsa-miR-185*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_511 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_511">
+        <rdfs:label xml:lang="en">hsa-miR-4281</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_512 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_512">
+        <rdfs:label xml:lang="en">hsa-miR-608</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_513 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_513">
+        <rdfs:label xml:lang="en">hsa-miR-4261</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_514 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_514">
+        <rdfs:label xml:lang="en">hsa-miR-4304</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_515 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_515">
+        <rdfs:label xml:lang="en">hsa-miR-1228*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_516 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_516">
+        <rdfs:label xml:lang="en">hsa-miR-922</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_517 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_517">
+        <rdfs:label xml:lang="en">hsa-miR-4305</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_518 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_518">
+        <rdfs:label xml:lang="en">hsa-miR-3605-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_519 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_519">
+        <rdfs:label xml:lang="en">hsa-miR-422a</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_520 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_520">
+        <rdfs:label xml:lang="en">hsa-miR-152</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_521 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_521">
+        <rdfs:label xml:lang="en">hsa-miR-518c*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_522 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_522">
+        <rdfs:label xml:lang="en">hsa-miR-4306</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_523 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_523">
+        <rdfs:label xml:lang="en">hsa-miR-369-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_524 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_524">
+        <rdfs:label xml:lang="en">hsa-miR-124*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_525 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_525">
+        <rdfs:label xml:lang="en">hsa-miR-1290</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_526 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_526">
+        <rdfs:label xml:lang="en">hsa-miR-1911</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_527 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_527">
+        <rdfs:label xml:lang="en">hsa-let-7g</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_528 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_528">
+        <rdfs:label xml:lang="en">hsa-miR-320e</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_529 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_529">
+        <rdfs:label xml:lang="en">hsa-miR-1910</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_530 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_530">
+        <rdfs:label xml:lang="en">hsa-miR-3676</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_531 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_531">
+        <rdfs:label xml:lang="en">hsa-miR-3937</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_532 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_532">
+        <rdfs:label xml:lang="en">hsa-miR-20b*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_533 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_533">
+        <rdfs:label xml:lang="en">hsa-miR-1291</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_534 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_534">
+        <rdfs:label xml:lang="en">hsa-miR-297</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_535 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_535">
+        <rdfs:label xml:lang="en">hsa-miR-4269</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_536 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_536">
+        <rdfs:label xml:lang="en">hsa-miR-493</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_537 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_537">
+        <rdfs:label xml:lang="en">hsa-miR-497*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_538 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_538">
+        <rdfs:label xml:lang="en">hsa-miR-3663-3p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_539 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_539">
+        <rdfs:label xml:lang="en">hsa-miR-491-3p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_540 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_540">
+        <rdfs:label xml:lang="en">hsa-miR-1274a</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_541 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_541">
+        <rdfs:label xml:lang="en">hsa-miR-200a</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_542 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_542">
+        <rdfs:label xml:lang="en">hsa-miR-576-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_543 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_543">
+        <rdfs:label xml:lang="en">hsa-miR-567</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_544 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_544">
+        <rdfs:label xml:lang="en">hsa-miR-362-3p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_545 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_545">
+        <rdfs:label xml:lang="en">hsa-miR-548d-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_546 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_546">
+        <rdfs:label xml:lang="en">hsa-miR-3132</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_547 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_547">
+        <rdfs:label xml:lang="en">hsa-miR-3911</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_548 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_548">
+        <rdfs:label xml:lang="en">hsa-miR-3133</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_549 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_549">
+        <rdfs:label xml:lang="en">hsa-miR-522</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_550 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_550">
+        <rdfs:label xml:lang="en">hsa-miR-561</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_551 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_551">
+        <rdfs:label xml:lang="en">hsa-miR-523</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_552 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_552">
+        <rdfs:label xml:lang="en">hsa-miR-2115</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_553 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_553">
+        <rdfs:label xml:lang="en">hsa-miR-3667-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_554 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_554">
+        <rdfs:label xml:lang="en">hsa-miR-3135</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_555 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_555">
+        <rdfs:label xml:lang="en">hsa-miR-556-3p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_556 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_556">
+        <rdfs:label xml:lang="en">hsa-miR-556-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_557 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_557">
+        <rdfs:label xml:lang="en">hsa-miR-125b</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_558 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_558">
+        <rdfs:label xml:lang="en">hsa-miR-222</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_559 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_559">
+        <rdfs:label xml:lang="en">hsa-miR-302a*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_560 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_560">
+        <rdfs:label xml:lang="en">hsa-miR-3690</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_561 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_561">
+        <rdfs:label xml:lang="en">hsa-miR-3138</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_562 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_562">
+        <rdfs:label xml:lang="en">hsa-miR-621</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_563 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_563">
+        <rdfs:label xml:lang="en">hsa-miR-375</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_564 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_564">
+        <rdfs:label xml:lang="en">hsa-miR-3691</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_565 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_565">
+        <rdfs:label xml:lang="en">hsa-miR-3139</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_566 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_566">
+        <rdfs:label xml:lang="en">hsa-miR-362-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_567 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_567">
+        <rdfs:label xml:lang="en">hsa-let-7a*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_568 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_568">
+        <rdfs:label xml:lang="en">hsa-miR-502-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_569 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_569">
+        <rdfs:label xml:lang="en">hsa-miR-3672</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_570 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_570">
+        <rdfs:label xml:lang="en">hsa-miR-200b*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_571 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_571">
+        <rdfs:label xml:lang="en">hsa-miR-3167</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_572 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_572">
+        <rdfs:label xml:lang="en">hsa-miR-373</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_573 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_573">
+        <rdfs:label xml:lang="en">hsa-miR-1268</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_574 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_574">
+        <rdfs:label xml:lang="en">hsa-miR-3198</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_575 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_575">
+        <rdfs:label xml:lang="en">hsa-miR-3166</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_576 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_576">
+        <rdfs:label xml:lang="en">hsa-miR-632</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_577 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_577">
+        <rdfs:label xml:lang="en">hsa-miR-500a*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_578 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_578">
+        <rdfs:label xml:lang="en">hsa-miR-4297</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_579 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_579">
+        <rdfs:label xml:lang="en">hsa-miR-651</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_580 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_580">
+        <rdfs:label xml:lang="en">hsa-miR-612</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_581 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_581">
+        <rdfs:label xml:lang="en">hsa-miR-4298</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_582 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_582">
+        <rdfs:label xml:lang="en">hsa-miR-586</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_583 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_583">
+        <rdfs:label xml:lang="en">hsa-miR-92a</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_584 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_584">
+        <rdfs:label xml:lang="en">hsa-miR-518d-3p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_585 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_585">
+        <rdfs:label xml:lang="en">hsa-miR-3174</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_586 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_586">
+        <rdfs:label xml:lang="en">hsa-miR-18a*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_587 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_587">
+        <rdfs:label xml:lang="en">hsa-miR-3162</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_588 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_588">
+        <rdfs:label xml:lang="en">hsa-miR-3175</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_589 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_589">
+        <rdfs:label xml:lang="en">hsa-miR-4314</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_590 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_590">
+        <rdfs:label xml:lang="en">hsa-miR-1226</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_591 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_591">
+        <rdfs:label xml:lang="en">hsa-miR-3692*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_592 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_592">
+        <rdfs:label xml:lang="en">hsa-miR-376a*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_593 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_593">
+        <rdfs:label xml:lang="en">hsa-miR-3140</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_594 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_594">
+        <rdfs:label xml:lang="en">hsa-let-7e</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_595 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_595">
+        <rdfs:label xml:lang="en">hsa-miR-938</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_596 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_596">
+        <rdfs:label xml:lang="en">hsa-miR-96*</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_597 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_597">
+        <rdfs:label xml:lang="en">hsa-miR-3186-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_598 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_598">
+        <rdfs:label xml:lang="en">hsa-miR-4291</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_599 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_599">
+        <rdfs:label xml:lang="en">hsa-miR-765</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_600 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_600">
+        <rdfs:label xml:lang="en">hsa-miR-525-3p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
+
+
+    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_601 -->
+
+    <owl:Class rdf:about="&hdot;HDOT_BSDS_601">
+        <rdfs:label xml:lang="en">hsa-miR-3622a-5p</rdfs:label>
+        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
+    </owl:Class>
+
     
 
 
