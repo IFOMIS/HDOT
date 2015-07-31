@@ -6801,15 +6801,6 @@
     
 
 
-    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_527 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_BSDS_527">
-        <rdfs:label xml:lang="en">hsa-let-7g</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
-    </owl:Class>
-    
-
-
     <!-- http://www.ifomis.org/hdot/HDOT_BSDS_528 -->
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_528">
@@ -7444,15 +7435,6 @@
 
     <owl:Class rdf:about="&hdot;HDOT_BSDS_598">
         <rdfs:label xml:lang="en">hsa-miR-4291</rdfs:label>
-        <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_BSDS_599 -->
-
-    <owl:Class rdf:about="&hdot;HDOT_BSDS_599">
-        <rdfs:label xml:lang="en">hsa-miR-765</rdfs:label>
         <rdfs:subClassOf rdf:resource="&hdot;HDOT_BSDS_359"/>
     </owl:Class>
     
