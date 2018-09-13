@@ -193,6 +193,16 @@
     
 
 
+    <!-- http://purl.obolibrary.org/obo/CHEBI_33697 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CHEBI_33697">
+        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI_33696"/>
+        <obo:IAO_0000115 xml:lang="en">A chain of ribonucleotides.</obo:IAO_0000115>
+        <rdfs:label xml:lang="en">RNA</rdfs:label>
+    </owl:Class>
+    
+
+
     <!-- http://purl.obolibrary.org/obo/CHEBI_33839 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CHEBI_33839">
@@ -1532,18 +1542,6 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     
 
 
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0072 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0072">
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/hdot/HDOT_PM_0061"/>
-        <obo:IAO_0000115 xml:lang="en">A chain of deoxyribonucleotides that is part of a longer chain of deoxyribunucleotides.
-</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#DNARegion</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">DNA region</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://www.ifomis.org/hdot/HDOT_PM_0073 -->
 
     <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0073">
@@ -1576,16 +1574,6 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">patient identifier</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/http://purl.obolibrary.org/obo/CHEBI_33697 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/http://purl.obolibrary.org/obo/CHEBI_33697">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI_33696"/>
-        <obo:IAO_0000115 xml:lang="en">A chain of ribonucleotides.</obo:IAO_0000115>
-        <rdfs:label xml:lang="en">RNA</rdfs:label>
     </owl:Class>
     
 
