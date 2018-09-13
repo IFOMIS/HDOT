@@ -1521,17 +1521,6 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
     
 
 
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0069 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0069">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI_33696"/>
-        <obo:IAO_0000115 xml:lang="en">A sequence feature of nucleic acids</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#NucleicAcidRegion</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">nucleic acid region</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://www.ifomis.org/hdot/HDOT_PM_0071 -->
 
     <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0071">
