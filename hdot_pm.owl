@@ -127,28 +127,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/CHEBI_16646 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CHEBI_16646">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI_50860"/>
-        <obo:IAO_0000115 xml:lang="en">The generic term &apos;carbohydrate&apos; includes monosaccharides, oligosaccharides and polysaccharides as well as substances derived from monosaccharides by reduction of the carbonyl group (alditols), by oxidation of one or more hydroxy groups to afford the corresponding aldehydes, ketones, or carboxylic acids, or by replacement of one or more hydroxy group(s) by a hydrogen atom. Cyclitols are generally not regarded as carbohydrates.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/CHEBI_16646</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">carbohydrate</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/CHEBI_18059 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CHEBI_18059">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI_50860"/>
-        <obo:IAO_0000115 xml:lang="en">&apos;Lipids&apos; is a loosely defined term for substances of biological origin that are soluble in nonpolar solvents. They consist of saponifiable lipids, such as glycerides (fats and oils) and phospholipids, as well as nonsaponifiable lipids, principally steroids.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/CHEBI_18059</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">lipid</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/CHEBI_33694 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CHEBI_33694">
@@ -210,17 +188,6 @@
         <obo:IAO_0000115 xml:lang="en">A biological macromolecule minimally consisting of one polypeptide chain synthesized at the ribosome.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/CHEBI_36080</obo:IAO_0000119>
         <rdfs:label xml:lang="en">protein</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://purl.obolibrary.org/obo/CHEBI_50860 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CHEBI_50860">
-        <rdfs:subClassOf rdf:resource="http://www.ifomis.org/vdot/vdot_core.owl#CHEBI:33582"/>
-        <obo:IAO_0000115 xml:lang="en">Any molecular entity that contains carbon.</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/CHEBI_50860</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">organic molecular entity</rdfs:label>
     </owl:Class>
     
 
@@ -1542,12 +1509,6 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
         </rdfs:subClassOf>
         <rdfs:label xml:lang="en">patient identifier</rdfs:label>
     </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/vdot/vdot_core.owl#CHEBI:33582 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/vdot/vdot_core.owl#CHEBI:33582"/>
     
 
 
