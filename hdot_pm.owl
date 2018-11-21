@@ -138,17 +138,6 @@
     
 
 
-    <!-- http://purl.obolibrary.org/obo/CHEBI_16670 -->
-
-    <owl:Class rdf:about="http://purl.obolibrary.org/obo/CHEBI_16670">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI_50860"/>
-        <obo:IAO_0000115 xml:lang="en">Amide derived from two or more amino carboxylic acid molecules (the same or different) by formation of a covalent bond from the carbonyl carbon of one to the nitrogen atom of another with formal loss of water. The term is usually applied to structures formed from alpha-amino acids, but it includes those derived from any amino carboxylic acid.</obo:IAO_0000115>
-        <obo:IAO_0000119>http://purl.obolibrary.org/obo/CHEBI_16670</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">peptide</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://purl.obolibrary.org/obo/CHEBI_18059 -->
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/CHEBI_18059">
@@ -1416,28 +1405,6 @@ RAMR = (Observed Mortality Rate/Predicted Mortality Rate)* Overall (Weighted) Mo
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:label>patient</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0059 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0059">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI_33695"/>
-        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#Peptide</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">peptide</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://www.ifomis.org/hdot/HDOT_PM_0060 -->
-
-    <owl:Class rdf:about="http://www.ifomis.org/hdot/HDOT_PM_0060">
-        <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/CHEBI_33695"/>
-        <obo:IAO_0000115 xml:lang="en">A part of protein sequence and structure that can evolve, function, and exist independently of the rest of the protein chain. Each domain forms a compact three-dimensional structure and often can be independently stable and folded. Many proteins consist of several structural domains. 
-</obo:IAO_0000115>
-        <obo:IAO_0000119 xml:lang="en">http://www.bootstrep.eu/ontology/GRO#ProteinDomain</obo:IAO_0000119>
-        <rdfs:label xml:lang="en">protein domain</rdfs:label>
     </owl:Class>
     
 
