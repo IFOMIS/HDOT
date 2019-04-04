@@ -926,12 +926,6 @@
 
     <owl:Class rdf:about="http://purl.obolibrary.org/obo/IAO_0000015">
         <rdfs:subClassOf rdf:resource="http://purl.obolibrary.org/obo/BFO_0000019"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://purl.obolibrary.org/obo/BFO_0000059"/>
-                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/IAO_0000030"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
         <obo:IAO_0000112 xml:lang="en">The pattern in ink on a page of a paperback novel.</obo:IAO_0000112>
         <obo:IAO_0000115 xml:lang="en">A quality of an information bearer that imparts the information content.</obo:IAO_0000115>
         <obo:IAO_0000119 xml:lang="en">http://purl.obolibrary.org/obo/IAO_0000015</obo:IAO_0000119>
